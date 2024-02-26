@@ -34,10 +34,18 @@
 - MsSql + EntityFramework - adatbázis
 - ASP.NET Core Identity + JWT
 
+### Use case diagram
+![](/Shopy/assets/useCasek.png)
+
 ### Adatbázis terv
-- kép helye
+![](/Shopy/assets/databasePlan.png)
 
 ### Ütemterv
+- Feb. 19-25.
+    - Use case diagram
+    - Adatbázis terv
+    - React tanulás + web UI elkezdése
+    
 - Feb. 26. - Márc. 10.
     - Login/register felület megvalósítása design szempontból
     - Adatbázis létrehozása Code first megközelítéssel
@@ -48,7 +56,7 @@
     - backend + frontend haladás
 
 - Márc 25. - Ápr 7.
-    - todo
+    - Az eddigi haladás alapján tovább tervezni
 
 - Ápr. 8. - Ápr. 21.
     - todo
