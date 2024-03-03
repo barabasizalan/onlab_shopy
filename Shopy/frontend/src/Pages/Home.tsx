@@ -1,42 +1,39 @@
-import CategoryCard from "../components/CategoryCard"
-import { Flex } from "@chakra-ui/react"
-import Navbar from "../components/Navbar"
-import { Welcome } from "../components/Welcome"
+import React, { useState, useEffect } from 'react';
+import { Box } from '@chakra-ui/react';
+import ProductList from '../components/ProductList';
+import { Product } from '../Models/Product';
+import Navbar from '../components/Navbar';
+import { Welcome } from '../components/Welcome';
 
-const Home = () => {
-    const handleCardClick = () => {
-        console.log('Card clicked!');
-      };
+const Home: React.FC = () => {
+  const [products, setProducts] = useState<Product[]>([]);
 
-    return (
-        <>
-            <Navbar />
-            <Welcome />
-            <Flex justify="center" align="center" mt="8">
-            <CategoryCard
-                imageUrl="https://static.vecteezy.com/system/resources/thumbnails/008/532/596/small/kiwi-fruit-cutout-file-png.png"
-                title="Category 1"
-                description="Short description goes here."
-                onClick={handleCardClick}
-                margin={2}
-            />
-            <CategoryCard
-                imageUrl="https://i.pinimg.com/originals/7d/20/1f/7d201f08f054d30ba3dbb5348ca13492.png"
-                title="Category 2"
-                description="Short description goes here."
-                onClick={handleCardClick}
-                margin={2}
-            />
-            <CategoryCard
-                imageUrl="https://static.vecteezy.com/system/resources/thumbnails/008/532/596/small/kiwi-fruit-cutout-file-png.png"
-                title="Category 3"
-                description="Short description goes here."
-                onClick={handleCardClick}
-                margin={2}
-            />
-            </Flex>
-        </>
-  )
-}
+  useEffect(() => {
+    fetchProducts();
+  }, []);
 
-export default Home
+  const fetchProducts = async () => {
+    try {
+      const response = await fetch('https://localhost:44367/products/all?limit=7');
+      if (!response.ok) {
+        throw new Error('Failed to fetch products');
+      }
+      const data = await response.json();
+      setProducts(data);
+    } catch (error) {
+      console.error('Error fetching products:', error);
+    }
+  };
+
+  return (
+    <>
+    <Navbar />
+    <Welcome />
+    <Box p={4}>
+      <ProductList products={products} />
+    </Box>
+    </>
+);
+};
+
+export default Home;

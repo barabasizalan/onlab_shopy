@@ -17,8 +17,23 @@ namespace ShopyBackend.Controllers
 
         [HttpGet]
         [Route("all")]
-        public async Task<ActionResult<IEnumerable<Product>>> GetProducts() {
-            return await _context.Product.ToListAsync();
+        public async Task<ActionResult<IEnumerable<Product>>> GetProducts([FromQuery] int? limit) {
+            try
+            {
+                var query = _context.Product.Include(p => p.Category).AsQueryable();
+
+                if (limit != null)
+                {
+                    query = query.Take((int)limit);
+                }
+
+                var products = await query.ToListAsync();
+                return products;
+            } catch (Exception ex)
+            {
+                return StatusCode(500, "Internal server error!");
+            }
+
         }
 
 
@@ -44,19 +59,18 @@ namespace ShopyBackend.Controllers
         }
 
         [HttpGet]
-        [Route("category")]
-        public async Task<ActionResult<IEnumerable<Product>>> GetProductsByCategory([FromQuery] string categoryName)
+        public async Task<ActionResult<IEnumerable<Product>>> GetProductsByCategory([FromQuery] string category)
         {
             try
             {
-                var category = await _context.Category.FirstOrDefaultAsync(c => c.Name.Contains(categoryName));
-                if (category == null)
+                var categorySearch = await _context.Category.FirstOrDefaultAsync(c => c.Name.Contains(category));
+                if (categorySearch == null)
                 {
                     return NotFound("Category was not found!");
                 }
 
                 var products = await _context.Product
-                    .Where(p => p.CategoryId == category.Id)
+                    .Where(p => p.CategoryId == categorySearch.Id)
                     .ToListAsync();
 
                 return Ok(products);

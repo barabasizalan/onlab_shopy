@@ -10,9 +10,17 @@ namespace ShopyBackend
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-
+            builder.Services.AddCors(options => {
+                options.AddPolicy("AllowReactFrontend",
+                    builder =>
+                    {
+                        builder.WithOrigins("http://localhost:5173")
+                        .AllowAnyHeader()
+                        .AllowAnyMethod();
+                    });
+                }
+            );
             builder.Services.AddControllers();
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
             builder.Services.AddDbContext<ShopyDbContext>(options => options.UseSqlServer(
@@ -30,7 +38,7 @@ namespace ShopyBackend
 
             app.UseAuthorization();
 
-
+            app.UseCors("AllowReactFrontend");
             app.MapControllers();
 
             app.Run();

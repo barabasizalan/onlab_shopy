@@ -3,13 +3,13 @@ import { Box, Image, Text } from '@chakra-ui/react';
 
 interface CardProps {
   imageUrl: string;
-  title: string;
+  name: string;
   description: string;
   onClick?: () => void;
   margin: number;
 }
 
-const Card: React.FC<CardProps> = ({ imageUrl, title, description, onClick, margin: mx }) => {
+const CategoryCard: React.FC<CardProps> = ({ imageUrl, name, description, onClick, margin: mx }) => {
   return (
     <Box
       maxW="sm"
@@ -20,15 +20,17 @@ const Card: React.FC<CardProps> = ({ imageUrl, title, description, onClick, marg
       cursor="pointer"
       onClick={onClick}
       mx={mx}
-      height="100%"
+      height="400px"
+      width="400px"
       display="flex"
       flexDirection="column"
     >
-      <Image src={imageUrl} alt={title} maxW="300"/>
-
-      <Box p="6">
+      <Box m="6" height="70%" borderRadius="lg" overflow="hidden" display="flex" justifyContent="center" alignItems="center"> 
+        <Image src={imageUrl} alt={name} objectFit="scale-down" />
+      </Box>
+      <Box p="6" height="30%">
         <Text color="gray.500" fontWeight="semibold">
-          {title}
+          {name}
         </Text>
 
         <Text mt="1" fontWeight="semibold" lineHeight="tight">
@@ -39,4 +41,4 @@ const Card: React.FC<CardProps> = ({ imageUrl, title, description, onClick, marg
   );
 };
 
-export default Card;
+export default CategoryCard;
