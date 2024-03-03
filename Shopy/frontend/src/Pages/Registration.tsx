@@ -1,6 +1,5 @@
 import { useState } from "react";
 import {
-  Image,
   Flex,
   Heading,
   Input,
