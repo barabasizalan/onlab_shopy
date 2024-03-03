@@ -45,21 +45,38 @@
     - Use case diagram
     - Adatbázis terv
     - React tanulás + web UI elkezdése
-    
+<hr>
+
 - Feb. 26. - Márc. 10.
-    - Login/register felület megvalósítása design szempontból
-    - Adatbázis létrehozása Code first megközelítéssel
-    - Termékek lekérdezése backendtől és megjelenítés a képernyőn kártyák formájában
+    - Login/register felület megvalósítása design szempontból (kész)
+    - Adatbázis létrehozása Code first megközelítéssel (kész)
+    - Termékek lekérdezése backendtől és megjelenítés a képernyőn kártyák formájában (kész)
+    - Keresés termékekre, utána megjelenítés egy új oldalon
+    - Kategóriák kilistázva, és azok alapján is lehessen megjeleníteni mindegyikhez a kategóriákat
+    - Endpointok összegyűjtése, hogy mire lesz szükség + React query bevezetése
+    - Use Case újratervezése adminnal együtt
+<hr>
 
 - Márc. 11. - Márc  24. 
-    - ASP.NET Core Identity
-    - backend + frontend haladás
+    - ASP.NET Core Identity integrálása
+    - Authentikáció, JWT token
+<hr>
 
 - Márc 25. - Ápr 7.
-    - Az eddigi haladás alapján tovább tervezni
+    - Kosár tervezése, elemeket lehessen beletenni
+<hr>
 
 - Ápr. 8. - Ápr. 21.
     - todo
+<hr>
 
 - Ápr. 22. - Máj. 5.
-    -todo
+    - todo
+<hr>
+
+- Máj. 6. - Máj 19. 
+    - todo
+<hr>
+
+- Máj. 20. - Máj.24
+    - todo
