@@ -1,5 +1,6 @@
 import { useState } from "react";
 import {
+  Image,
   Flex,
   Heading,
   Input,
@@ -54,11 +55,19 @@ const Registration = () => {
               boxShadow="md">
               <FormControl>
                 <InputGroup>
+                  <InputLeftElement
+                    pointerEvents="none"
+                    children={<CFaUserAlt color="gray.400" />}
+                  />
                   <Input type="text" placeholder="username" />
                 </InputGroup>
               </FormControl>
               <FormControl>
                 <InputGroup>
+                  <InputLeftElement
+                    pointerEvents="none"
+                    children={<CFaUserAlt color="gray.400" />}
+                  />
                   <Input type="text" placeholder="first name" />
                 </InputGroup>
               </FormControl>
