@@ -12,10 +12,11 @@ import {
   Text,
   FormControl,
   InputRightElement,
-  InputLeftAddon
+  InputLeftAddon,
+  useToast
 } from "@chakra-ui/react";
 import { FaUserAlt, FaLock } from "react-icons/fa";
-import { Link as ReactRouterLink } from 'react-router-dom'
+import { Link as ReactRouterLink, useNavigate } from 'react-router-dom'
 import { Link as ChakraLink } from '@chakra-ui/react'
 
 import { MdOutlineAlternateEmail } from "react-icons/md";
@@ -32,6 +33,8 @@ const Registration = () => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
+  const toast = useToast();
+  const navigate = useNavigate();
 
   const handleShowClick = () => setShowPassword(!showPassword);
 
@@ -47,13 +50,38 @@ const Registration = () => {
         phoneNumber: phoneNumber
       });
       console.log(response.data);
-    } catch (error) {
+      toast({
+        title: "Successful registration",
+        description: "Please log in to continue.",
+        status: "success",
+        duration: 4000,
+        isClosable: true,
+        position: "top"
+      })
+
+      navigate('/login');
+      
+    } catch (error: any) {
       console.error('Registration failed: ', error);
-      setUsername('');
-      setEmail('')
-      setPassword('');
-      setConfirmPassword('');
-      setPhoneNumber('');
+      if (error.response && error.response.data && error.response.data.message) {
+        toast({
+          title: "Registration failed",
+          description: error.response.data.message,
+          status: "error",
+          duration: 3000,
+          isClosable: true,
+          position: "top"
+        });
+      } else {
+        toast({
+          title: "Registration failed",
+          description: "Please enter valid data.",
+          status: "error",
+          duration: 3000,
+          isClosable: true,
+          position: "top"
+        });
+      }
     }
   };
 
@@ -158,7 +186,7 @@ const Registration = () => {
                   </InputLeftAddon>
                   <Input
                     type='tel'
-                    placeholder='30 123 3212'
+                    placeholder='xx xxx xxxx'
                     value={phoneNumber}
                     onChange={(e) => setPhoneNumber(e.target.value)}
                     autoComplete="off"

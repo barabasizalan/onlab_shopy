@@ -21,15 +21,13 @@ interface AuthProviderProps {
 }
 
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false); //todo: fgv a cookie megnezesre
 
   const login = () => {
-    // Perform login logic, set isLoggedIn to true if successful
     setIsLoggedIn(true);
   };
 
   const logout = () => {
-    // Perform logout logic, set isLoggedIn to false
     setIsLoggedIn(false);
   };
 

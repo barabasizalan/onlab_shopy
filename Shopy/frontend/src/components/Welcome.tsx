@@ -26,15 +26,15 @@ import {
           <Stack spacing={{ base: '8', lg: '10' }}>
             <Stack spacing={{ base: '2', lg: '4' }}>
               <Heading size="xl" color="#000000">
-                Misguided
+                
               </Heading>
               <Heading size="xl" fontWeight="normal">
-                Refresh your wardrobe
+                Discover the endless possibilities - find your perfect match!
               </Heading>
             </Stack>
             <HStack spacing="3">
               <Link color="#000000" fontWeight="bold" fontSize="lg">
-                Discover our products
+                Shop now!
               </Link>
               <Icon color="#000000" as={FaArrowRight} />
             </HStack>

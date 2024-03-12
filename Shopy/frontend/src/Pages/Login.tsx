@@ -45,7 +45,7 @@ const Login = () => {
         username: username,
         password: password
       });
-
+      console.log(response.data);
       login();
 
       navigate('/');
@@ -107,7 +107,9 @@ const Login = () => {
                     type="text"
                     placeholder="username"
                     value={username}
-                    onChange={(e) => setUsername(e.target.value)} />
+                    onChange={(e) => setUsername(e.target.value)}
+                    autoComplete="off"
+                  />
                 </InputGroup>
               </FormControl>
               <FormControl>

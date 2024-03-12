@@ -34,13 +34,13 @@ namespace ShopyBackend.WebApi.Controllers
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] RegisterRequestDto registerRequest)
         {
-            var result = await _authService.RegisterAsync(registerRequest);
-            if (result)
+            var resultMessage = await _authService.RegisterAsync(registerRequest);
+            if (resultMessage == "Registration successful.")
             {
-                return Ok( new { Message = "Registration successful"});
+                return Ok( new { Message = resultMessage});
             } else
             {
-                return BadRequest( new { Message = "Registration failed"});
+                return BadRequest( new { Message = resultMessage});
             }
         }
 

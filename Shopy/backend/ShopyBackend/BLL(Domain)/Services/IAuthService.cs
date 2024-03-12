@@ -5,6 +5,6 @@ namespace ShopyBackend.BLL_Domain_
     public interface IAuthService
     {
         Task<bool> LoginAsync(LoginRequestDto loginRequest);
-        Task<bool> RegisterAsync(RegisterRequestDto registerRequest);
+        Task<string> RegisterAsync(RegisterRequestDto registerRequest);
     }
 }

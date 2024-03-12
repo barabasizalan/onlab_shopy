@@ -36,11 +36,18 @@ namespace ShopyBackend
 
             builder.Services.AddIdentity<User, IdentityRole>(options =>
                 { 
+                    //Password settings
                     options.Password.RequireDigit = true;
                     options.Password.RequireLowercase = true;
                     options.Password.RequireUppercase = true;
                     options.Password.RequireNonAlphanumeric = false;
                     options.Password.RequiredLength = 8;
+                    options.Password.RequiredUniqueChars = 6;
+
+                    //Signin settings
+                    options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(10);
+                    options.Lockout.MaxFailedAccessAttempts = 10;
+                    options.Lockout.AllowedForNewUsers = true;
                 })
                 .AddRoles<IdentityRole>()
                 .AddRoleManager<RoleManager<IdentityRole>>()
@@ -52,12 +59,10 @@ namespace ShopyBackend
 
             builder.Services.ConfigureApplicationCookie(options =>
             {
-                options.Cookie.HttpOnly = true;
-                options.ExpireTimeSpan = TimeSpan.FromDays(1);
-                options.LoginPath = "/Account/Login";
-                options.AccessDeniedPath = "/Account/AccessDenied";
+                options.Cookie.HttpOnly = false;
+                options.ExpireTimeSpan = TimeSpan.FromMinutes(30);
+                options.LoginPath = "/account/login";
                 options.SlidingExpiration = true;
-                options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
             });
 
             builder.Services.AddScoped<IAuthService, AuthService>();

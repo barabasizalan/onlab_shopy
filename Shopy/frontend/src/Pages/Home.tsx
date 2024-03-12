@@ -13,7 +13,7 @@ const Home: React.FC = () => {
 
   const fetchProducts = async () => {
     try {
-      const response = await fetch('https://localhost:44367/products/all');
+      const response = await fetch('https://localhost:44367/products/all?limit=8');
       if (!response.ok) {
         throw new Error('Failed to fetch products');
       }
@@ -26,6 +26,7 @@ const Home: React.FC = () => {
 
   return (
     <>
+    <Navbar />
     <Welcome />
     <Box p={4}>
       <ProductList products={products} />

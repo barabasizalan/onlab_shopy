@@ -3,32 +3,36 @@
   "WorkspaceRootPath": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\backend\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{92DEA340-9B8F-4A5F-8E36-477078D6D407}|ShopyBackend\\ShopyBackend.csproj|c:\\users\\zalan\\egyetem\\onlab2024\\onlab_shopy\\shopy\\backend\\shopybackend\\webapi\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{92DEA340-9B8F-4A5F-8E36-477078D6D407}|ShopyBackend\\ShopyBackend.csproj|solutionrelative:shopybackend\\webapi\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{92DEA340-9B8F-4A5F-8E36-477078D6D407}|ShopyBackend\\ShopyBackend.csproj|c:\\users\\zalan\\egyetem\\onlab2024\\onlab_shopy\\shopy\\backend\\shopybackend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{92DEA340-9B8F-4A5F-8E36-477078D6D407}|ShopyBackend\\ShopyBackend.csproj|solutionrelative:shopybackend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{92DEA340-9B8F-4A5F-8E36-477078D6D407}|ShopyBackend\\ShopyBackend.csproj|c:\\users\\zalan\\egyetem\\onlab2024\\onlab_shopy\\shopy\\backend\\shopybackend\\dal\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{92DEA340-9B8F-4A5F-8E36-477078D6D407}|ShopyBackend\\ShopyBackend.csproj|solutionrelative:shopybackend\\dal\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{92DEA340-9B8F-4A5F-8E36-477078D6D407}|ShopyBackend\\ShopyBackend.csproj|c:\\users\\zalan\\egyetem\\onlab2024\\onlab_shopy\\shopy\\backend\\shopybackend\\dal\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{92DEA340-9B8F-4A5F-8E36-477078D6D407}|ShopyBackend\\ShopyBackend.csproj|solutionrelative:shopybackend\\dal\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{92DEA340-9B8F-4A5F-8E36-477078D6D407}|ShopyBackend\\ShopyBackend.csproj|c:\\users\\zalan\\egyetem\\onlab2024\\onlab_shopy\\shopy\\backend\\shopybackend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{92DEA340-9B8F-4A5F-8E36-477078D6D407}|ShopyBackend\\ShopyBackend.csproj|solutionrelative:shopybackend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{92DEA340-9B8F-4A5F-8E36-477078D6D407}|ShopyBackend\\ShopyBackend.csproj|c:\\users\\zalan\\egyetem\\onlab2024\\onlab_shopy\\shopy\\backend\\shopybackend\\webapi\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{92DEA340-9B8F-4A5F-8E36-477078D6D407}|ShopyBackend\\ShopyBackend.csproj|solutionrelative:shopybackend\\webapi\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{92DEA340-9B8F-4A5F-8E36-477078D6D407}|ShopyBackend\\ShopyBackend.csproj|c:\\users\\zalan\\egyetem\\onlab2024\\onlab_shopy\\shopy\\backend\\shopybackend\\bll(domain)\\services\\iauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{92DEA340-9B8F-4A5F-8E36-477078D6D407}|ShopyBackend\\ShopyBackend.csproj|solutionrelative:shopybackend\\bll(domain)\\services\\iauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{92DEA340-9B8F-4A5F-8E36-477078D6D407}|ShopyBackend\\ShopyBackend.csproj|c:\\users\\zalan\\egyetem\\onlab2024\\onlab_shopy\\shopy\\backend\\shopybackend\\dal\\shopydbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{92DEA340-9B8F-4A5F-8E36-477078D6D407}|ShopyBackend\\ShopyBackend.csproj|solutionrelative:shopybackend\\dal\\shopydbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{92DEA340-9B8F-4A5F-8E36-477078D6D407}|ShopyBackend\\ShopyBackend.csproj|c:\\users\\zalan\\egyetem\\onlab2024\\onlab_shopy\\shopy\\backend\\shopybackend\\dal\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{92DEA340-9B8F-4A5F-8E36-477078D6D407}|ShopyBackend\\ShopyBackend.csproj|solutionrelative:shopybackend\\dal\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{92DEA340-9B8F-4A5F-8E36-477078D6D407}|ShopyBackend\\ShopyBackend.csproj|c:\\users\\zalan\\egyetem\\onlab2024\\onlab_shopy\\shopy\\backend\\shopybackend\\dal\\entities\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{92DEA340-9B8F-4A5F-8E36-477078D6D407}|ShopyBackend\\ShopyBackend.csproj|solutionrelative:shopybackend\\dal\\entities\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{92DEA340-9B8F-4A5F-8E36-477078D6D407}|ShopyBackend\\ShopyBackend.csproj|c:\\users\\zalan\\egyetem\\onlab2024\\onlab_shopy\\shopy\\backend\\shopybackend\\migrations\\20240312103327_productuserid.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{92DEA340-9B8F-4A5F-8E36-477078D6D407}|ShopyBackend\\ShopyBackend.csproj|solutionrelative:shopybackend\\migrations\\20240312103327_productuserid.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{92DEA340-9B8F-4A5F-8E36-477078D6D407}|ShopyBackend\\ShopyBackend.csproj|c:\\users\\zalan\\egyetem\\onlab2024\\onlab_shopy\\shopy\\backend\\shopybackend\\dal\\shopydbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{92DEA340-9B8F-4A5F-8E36-477078D6D407}|ShopyBackend\\ShopyBackend.csproj|solutionrelative:shopybackend\\dal\\shopydbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{92DEA340-9B8F-4A5F-8E36-477078D6D407}|ShopyBackend\\ShopyBackend.csproj|c:\\users\\zalan\\egyetem\\onlab2024\\onlab_shopy\\shopy\\backend\\shopybackend\\dal\\entities\\orderdetails.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -53,10 +57,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{92DEA340-9B8F-4A5F-8E36-477078D6D407}|ShopyBackend\\ShopyBackend.csproj|c:\\users\\zalan\\egyetem\\onlab2024\\onlab_shopy\\shopy\\backend\\shopybackend\\dal\\entities\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{92DEA340-9B8F-4A5F-8E36-477078D6D407}|ShopyBackend\\ShopyBackend.csproj|solutionrelative:shopybackend\\dal\\entities\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{92DEA340-9B8F-4A5F-8E36-477078D6D407}|ShopyBackend\\ShopyBackend.csproj|c:\\users\\zalan\\egyetem\\onlab2024\\onlab_shopy\\shopy\\backend\\shopybackend\\migrations\\20240312103327_productuserid.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{92DEA340-9B8F-4A5F-8E36-477078D6D407}|ShopyBackend\\ShopyBackend.csproj|solutionrelative:shopybackend\\migrations\\20240312103327_productuserid.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -70,7 +70,7 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 7,
               "Title": "ShopyDbContext.cs",
               "DocumentMoniker": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\backend\\ShopyBackend\\DAL\\ShopyDbContext.cs",
               "RelativeDocumentMoniker": "ShopyBackend\\DAL\\ShopyDbContext.cs",
@@ -83,18 +83,6 @@
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "Category.cs",
-              "DocumentMoniker": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\backend\\ShopyBackend\\DAL\\Entities\\Category.cs",
-              "RelativeDocumentMoniker": "ShopyBackend\\DAL\\Entities\\Category.cs",
-              "ToolTip": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\backend\\ShopyBackend\\DAL\\Entities\\Category.cs",
-              "RelativeToolTip": "ShopyBackend\\DAL\\Entities\\Category.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAoAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-03T16:38:46.313Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
               "Title": "20240312103327_ProductUserId.cs",
               "DocumentMoniker": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\backend\\ShopyBackend\\Migrations\\20240312103327_ProductUserId.cs",
               "RelativeDocumentMoniker": "ShopyBackend\\Migrations\\20240312103327_ProductUserId.cs",
@@ -106,13 +94,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 3,
               "Title": "IAuthService.cs",
               "DocumentMoniker": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\backend\\ShopyBackend\\BLL(Domain)\\Services\\IAuthService.cs",
               "RelativeDocumentMoniker": "ShopyBackend\\BLL(Domain)\\Services\\IAuthService.cs",
               "ToolTip": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\backend\\ShopyBackend\\BLL(Domain)\\Services\\IAuthService.cs",
               "RelativeToolTip": "ShopyBackend\\BLL(Domain)\\Services\\IAuthService.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAgAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAATAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-12T09:49:02.041Z"
             },
@@ -124,40 +112,51 @@
               "RelativeDocumentMoniker": "ShopyBackend\\DAL\\AuthService.cs",
               "ToolTip": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\backend\\ShopyBackend\\DAL\\AuthService.cs",
               "RelativeToolTip": "ShopyBackend\\DAL\\AuthService.cs",
-              "ViewState": "AQIAAA0AAAAAAAAAAAAwwBEAAAAIAAAA",
+              "ViewState": "AQIAAAgAAAAAAAAAAADgvxoAAAAMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-12T09:49:24.81Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "AccountController.cs",
               "DocumentMoniker": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\backend\\ShopyBackend\\WebApi\\Controllers\\AccountController.cs",
               "RelativeDocumentMoniker": "ShopyBackend\\WebApi\\Controllers\\AccountController.cs",
               "ToolTip": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\backend\\ShopyBackend\\WebApi\\Controllers\\AccountController.cs",
               "RelativeToolTip": "ShopyBackend\\WebApi\\Controllers\\AccountController.cs",
-              "ViewState": "AQIAAA4AAAAAAAAAAAApwBkAAAA0AAAA",
+              "ViewState": "AQIAABgAAAAAAAAAAAAmwCoAAABAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-12T09:50:30.525Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-12T09:50:30.525Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\backend\\ShopyBackend\\Program.cs",
               "RelativeDocumentMoniker": "ShopyBackend\\Program.cs",
               "ToolTip": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\backend\\ShopyBackend\\Program.cs",
               "RelativeToolTip": "ShopyBackend\\Program.cs",
-              "ViewState": "AQIAADEAAAAAAAAAAAAqwFYAAAAAAAAA",
+              "ViewState": "AQIAACwAAAAAAAAAAAAuwD0AAAAvAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-03T16:00:57.747Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
+              "Title": "Category.cs",
+              "DocumentMoniker": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\backend\\ShopyBackend\\DAL\\Entities\\Category.cs",
+              "RelativeDocumentMoniker": "ShopyBackend\\DAL\\Entities\\Category.cs",
+              "ToolTip": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\backend\\ShopyBackend\\DAL\\Entities\\Category.cs",
+              "RelativeToolTip": "ShopyBackend\\DAL\\Entities\\Category.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAoAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-03T16:38:46.313Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "User.cs",
               "DocumentMoniker": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\backend\\ShopyBackend\\DAL\\Entities\\User.cs",
               "RelativeDocumentMoniker": "ShopyBackend\\DAL\\Entities\\User.cs",
@@ -165,12 +164,11 @@
               "RelativeToolTip": "ShopyBackend\\DAL\\Entities\\User.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAATAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-07T15:20:03.86Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-07T15:20:03.86Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "Product.cs",
               "DocumentMoniker": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\backend\\ShopyBackend\\DAL\\Entities\\Product.cs",
               "RelativeDocumentMoniker": "ShopyBackend\\DAL\\Entities\\Product.cs",
@@ -182,7 +180,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "OrderDetails.cs",
               "DocumentMoniker": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\backend\\ShopyBackend\\DAL\\Entities\\OrderDetails.cs",
               "RelativeDocumentMoniker": "ShopyBackend\\DAL\\Entities\\OrderDetails.cs",
@@ -194,7 +192,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "Cart.cs",
               "DocumentMoniker": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\backend\\ShopyBackend\\DAL\\Entities\\Cart.cs",
               "RelativeDocumentMoniker": "ShopyBackend\\DAL\\Entities\\Cart.cs",
@@ -206,7 +204,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "ShopyBackend.csproj",
               "DocumentMoniker": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\backend\\ShopyBackend\\ShopyBackend.csproj",
               "RelativeDocumentMoniker": "ShopyBackend\\ShopyBackend.csproj",
@@ -218,7 +216,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "LoginRequestDto.cs",
               "DocumentMoniker": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\backend\\ShopyBackend\\BLL(Domain)\\DTO\\LoginRequestDto.cs",
               "RelativeDocumentMoniker": "ShopyBackend\\BLL(Domain)\\DTO\\LoginRequestDto.cs",
@@ -230,7 +228,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "Order.cs",
               "DocumentMoniker": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\backend\\ShopyBackend\\DAL\\Entities\\Order.cs",
               "RelativeDocumentMoniker": "ShopyBackend\\DAL\\Entities\\Order.cs",

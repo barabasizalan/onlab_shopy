@@ -9,7 +9,7 @@ interface CardProps {
   margin: number;
 }
 
-const CategoryCard: React.FC<CardProps> = ({ imageUrl, name, price, onClick, margin: mx }) => {
+const ProductCard: React.FC<CardProps> = ({ imageUrl, name, price, onClick, margin: mx }) => {
   return (
     <Box
       maxW="sm"
@@ -41,4 +41,4 @@ const CategoryCard: React.FC<CardProps> = ({ imageUrl, name, price, onClick, mar
   );
 };
 
-export default CategoryCard;
+export default ProductCard;
