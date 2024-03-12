@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Box } from '@chakra-ui/react';
 import ProductList from '../components/ProductList';
 import { Product } from '../Models/Product';
-import Navbar from '../components/Navbar';
 import { Welcome } from '../components/Welcome';
 
 const Home: React.FC = () => {
@@ -14,7 +13,7 @@ const Home: React.FC = () => {
 
   const fetchProducts = async () => {
     try {
-      const response = await fetch('https://localhost:44367/products/all?limit=7');
+      const response = await fetch('https://localhost:44367/products/all');
       if (!response.ok) {
         throw new Error('Failed to fetch products');
       }
@@ -27,7 +26,6 @@ const Home: React.FC = () => {
 
   return (
     <>
-    <Navbar />
     <Welcome />
     <Box p={4}>
       <ProductList products={products} />

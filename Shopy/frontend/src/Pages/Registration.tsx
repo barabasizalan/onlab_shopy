@@ -19,6 +19,7 @@ import { Link as ReactRouterLink } from 'react-router-dom'
 import { Link as ChakraLink } from '@chakra-ui/react'
 
 import { MdOutlineAlternateEmail } from "react-icons/md";
+import axios from "axios";
 
 const CFaUserAlt = chakra(FaUserAlt);
 const CFaLock = chakra(FaLock);
@@ -26,8 +27,35 @@ const CMdOutlineAlternateEmail = chakra(MdOutlineAlternateEmail);
 
 const Registration = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
 
   const handleShowClick = () => setShowPassword(!showPassword);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    try {
+      const response = await axios.post('https://localhost:44367/account/register', {
+        username: username,
+        email: email,
+        password: password,
+        confirmPassword: confirmPassword,
+        phoneNumber: phoneNumber
+      });
+      console.log(response.data);
+    } catch (error) {
+      console.error('Registration failed: ', error);
+      setUsername('');
+      setEmail('')
+      setPassword('');
+      setConfirmPassword('');
+      setPhoneNumber('');
+    }
+  };
 
   return (
     <Flex
@@ -46,7 +74,7 @@ const Registration = () => {
         <Heading color="teal.400">Ready to shop? Let's get started!</Heading>
         <Text> Fill out the form below and let the shopping spree begin!</Text>
         <Box minW={{ base: "90%", md: "568px" }}>
-          <form>
+          <form onSubmit={handleSubmit}>
             <Stack
               spacing={4}
               p="1rem"
@@ -58,30 +86,27 @@ const Registration = () => {
                     pointerEvents="none"
                     children={<CFaUserAlt color="gray.400" />}
                   />
-                  <Input type="text" placeholder="username" />
+                  <Input
+                    type="text"
+                    placeholder="username"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                    autoComplete="off"/>
                 </InputGroup>
               </FormControl>
-              <FormControl>
-                <InputGroup>
-                  <InputLeftElement
-                    pointerEvents="none"
-                    children={<CFaUserAlt color="gray.400" />}
-                  />
-                  <Input type="text" placeholder="first name" />
-                </InputGroup>
-              </FormControl>
-              <FormControl>
-                <InputGroup>
-                  <Input type="text" placeholder="last name" />
-                </InputGroup>
-              </FormControl>
+              
               <FormControl>
                 <InputGroup>
                   <InputLeftElement
                     pointerEvents="none"
                     children={<CMdOutlineAlternateEmail color="gray.400" />}
                   />
-                  <Input type="email" placeholder="email address" />
+                  <Input 
+                    type="email"
+                    placeholder="email address"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    autoComplete="off"/>
                 </InputGroup>
               </FormControl>
               <FormControl>
@@ -94,6 +119,30 @@ const Registration = () => {
                   <Input
                     type={showPassword ? "text" : "password"}
                     placeholder="Password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    autoComplete="new-password"
+                  />
+                  <InputRightElement width="4.5rem">
+                    <Button h="1.75rem" size="sm" onClick={handleShowClick}>
+                      {showPassword ? "Hide" : "Show"}
+                    </Button>
+                  </InputRightElement>
+                </InputGroup>
+              </FormControl>
+              <FormControl>
+                <InputGroup>
+                  <InputLeftElement
+                    pointerEvents="none"
+                    color="gray.300"
+                    children={<CFaLock color="gray.400" />}
+                  />
+                  <Input
+                    type={showPassword ? "text" : "password"}
+                    placeholder="Confirm password"
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
+                    autoComplete="new-password"
                   />
                   <InputRightElement width="4.5rem">
                     <Button h="1.75rem" size="sm" onClick={handleShowClick}>
@@ -107,7 +156,13 @@ const Registration = () => {
                   <InputLeftAddon>
                     +36
                   </InputLeftAddon>
-                  <Input type='tel' placeholder='phone number' />
+                  <Input
+                    type='tel'
+                    placeholder='30 123 3212'
+                    value={phoneNumber}
+                    onChange={(e) => setPhoneNumber(e.target.value)}
+                    autoComplete="off"
+                  />
                 </InputGroup>
               </FormControl>
               

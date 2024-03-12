@@ -4,12 +4,12 @@ import { Box, Image, Text } from '@chakra-ui/react';
 interface CardProps {
   imageUrl: string;
   name: string;
-  description: string;
+  price: number;
   onClick?: () => void;
   margin: number;
 }
 
-const CategoryCard: React.FC<CardProps> = ({ imageUrl, name, description, onClick, margin: mx }) => {
+const CategoryCard: React.FC<CardProps> = ({ imageUrl, name, price, onClick, margin: mx }) => {
   return (
     <Box
       maxW="sm"
@@ -20,8 +20,8 @@ const CategoryCard: React.FC<CardProps> = ({ imageUrl, name, description, onClic
       cursor="pointer"
       onClick={onClick}
       mx={mx}
-      height="400px"
-      width="400px"
+      height="300px"
+      width="300px"
       display="flex"
       flexDirection="column"
     >
@@ -34,7 +34,7 @@ const CategoryCard: React.FC<CardProps> = ({ imageUrl, name, description, onClic
         </Text>
 
         <Text mt="1" fontWeight="semibold" lineHeight="tight">
-          {description}
+          {price} €
         </Text>
       </Box>
     </Box>

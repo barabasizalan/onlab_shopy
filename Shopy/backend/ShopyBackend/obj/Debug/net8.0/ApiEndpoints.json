@@ -1,6 +1,38 @@
 [
   {
-    "ContainingType": "ShopyBackend.Controllers.CategoryController",
+    "ContainingType": "ShopyBackend.WebApi.Controllers.AccountController",
+    "Method": "Login",
+    "RelativePath": "account/login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "loginRequest",
+        "Type": "ShopyBackend.BLL_Domain_.DTO.LoginRequestDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ShopyBackend.WebApi.Controllers.AccountController",
+    "Method": "Register",
+    "RelativePath": "account/register",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "registerRequest",
+        "Type": "ShopyBackend.BLL_Domain_.DTO.RegisterRequestDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ShopyBackend.WebApi.Controllers.CategoryController",
     "Method": "GetCategories",
     "RelativePath": "Category/all",
     "HttpMethod": "GET",
@@ -9,7 +41,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[ShopyBackend.Models.Category, ShopyBackend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[ShopyBackend.DAL.Entities.Category, ShopyBackend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -20,7 +52,7 @@
     ]
   },
   {
-    "ContainingType": "ShopyBackend.Controllers.ProductsController",
+    "ContainingType": "ShopyBackend.WebApi.Controllers.ProductsController",
     "Method": "GetProductsByCategory",
     "RelativePath": "Products",
     "HttpMethod": "GET",
@@ -35,7 +67,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[ShopyBackend.Models.Product, ShopyBackend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[ShopyBackend.DAL.Entities.Product, ShopyBackend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -46,7 +78,7 @@
     ]
   },
   {
-    "ContainingType": "ShopyBackend.Controllers.ProductsController",
+    "ContainingType": "ShopyBackend.WebApi.Controllers.ProductsController",
     "Method": "SearchProduct",
     "RelativePath": "Products/{queryString}",
     "HttpMethod": "GET",
@@ -61,7 +93,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[ShopyBackend.Models.Product, ShopyBackend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[ShopyBackend.DAL.Entities.Product, ShopyBackend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -72,7 +104,7 @@
     ]
   },
   {
-    "ContainingType": "ShopyBackend.Controllers.ProductsController",
+    "ContainingType": "ShopyBackend.WebApi.Controllers.ProductsController",
     "Method": "GetProducts",
     "RelativePath": "Products/all",
     "HttpMethod": "GET",
@@ -87,7 +119,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[ShopyBackend.Models.Product, ShopyBackend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[ShopyBackend.DAL.Entities.Product, ShopyBackend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",

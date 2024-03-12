@@ -11,11 +11,14 @@ import {
   Box,
   Avatar,
   FormControl,
-  InputRightElement
+  InputRightElement,
+  useToast
 } from "@chakra-ui/react";
 import { FaUserAlt, FaLock } from "react-icons/fa";
-import { Link as ReactRouterLink } from 'react-router-dom'
+import { Link as ReactRouterLink, useNavigate } from 'react-router-dom'
 import { Link as ChakraLink } from '@chakra-ui/react'
+import axios from "axios";
+import { useAuth } from "../AuthContext";
 
 <ChakraLink as={ReactRouterLink} to='/home'>
   Home
@@ -26,8 +29,49 @@ const CFaLock = chakra(FaLock);
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const {login} = useAuth();
+  const navigate = useNavigate();
+  const toast = useToast();
 
   const handleShowClick = () => setShowPassword(!showPassword);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    try {
+      const response = await axios.post('https://localhost:44367/account/login', {
+        username: username,
+        password: password
+      });
+
+      login();
+
+      navigate('/');
+
+      toast({
+        title: "Login successful. Welcome " + username + "!",
+        status: "success",
+        duration: 3000,
+        isClosable: true,
+        position: "top"
+      })
+
+    } catch (error) {
+      console.error('Login failed: ', error);
+      setUsername('');
+      setPassword('');
+      toast({
+        title: "Login failed",
+        description: "Invalid username or password. Please try again.",
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+        position: "top"
+      });
+    }
+  };
 
   return (
     <Flex
@@ -47,7 +91,7 @@ const Login = () => {
         <Avatar bg="#bed1cf" />
         <Heading color="teal.400">Welcome</Heading>
         <Box minW={{ base: "90%", md: "468px" }}>
-          <form>
+          <form onSubmit={handleSubmit}>
             <Stack
               spacing={4}
               p="1rem"
@@ -59,7 +103,11 @@ const Login = () => {
                     pointerEvents="none"
                     children={<CFaUserAlt color="gray.300" />}
                   />
-                  <Input type="email" placeholder="email address" />
+                  <Input
+                    type="text"
+                    placeholder="username"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)} />
                 </InputGroup>
               </FormControl>
               <FormControl>
@@ -72,6 +120,8 @@ const Login = () => {
                   <Input
                     type={showPassword ? "text" : "password"}
                     placeholder="Password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
                   />
                   <InputRightElement width="4.5rem">
                     <Button h="1.75rem" size="sm" onClick={handleShowClick}>
