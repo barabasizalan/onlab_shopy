@@ -5,15 +5,15 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using ShopyBackend.DAL;
+using ShopyBackend.DAL.DbContext;
 
 #nullable disable
 
 namespace ShopyBackend.Migrations
 {
     [DbContext(typeof(ShopyDbContext))]
-    [Migration("20240312092149_ForeignKeyProblemSolved")]
-    partial class ForeignKeyProblemSolved
+    [Migration("20240319180929_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -271,8 +271,8 @@ namespace ShopyBackend.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ImageUrl")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<byte[]>("ImageData")
+                        .HasColumnType("varbinary(max)");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -285,8 +285,7 @@ namespace ShopyBackend.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("Vat")
                         .HasColumnType("int");
@@ -294,6 +293,8 @@ namespace ShopyBackend.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("CategoryId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Product");
                 });
@@ -481,17 +482,16 @@ namespace ShopyBackend.Migrations
             modelBuilder.Entity("ShopyBackend.DAL.Entities.Product", b =>
                 {
                     b.HasOne("ShopyBackend.DAL.Entities.Category", "Category")
-                        .WithMany("Products")
+                        .WithMany()
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Category");
-                });
+                    b.HasOne("ShopyBackend.DAL.Entities.User", null)
+                        .WithMany()
+                        .HasForeignKey("UserId");
 
-            modelBuilder.Entity("ShopyBackend.DAL.Entities.Category", b =>
-                {
-                    b.Navigation("Products");
+                    b.Navigation("Category");
                 });
 
             modelBuilder.Entity("ShopyBackend.DAL.Entities.Order", b =>

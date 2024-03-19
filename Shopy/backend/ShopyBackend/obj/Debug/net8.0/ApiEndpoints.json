@@ -9,7 +9,7 @@
     "Parameters": [
       {
         "Name": "loginRequest",
-        "Type": "ShopyBackend.BLL_Domain_.DTO.LoginRequestDto",
+        "Type": "ShopyBackend.WebApi.DTO.LoginRequestDto",
         "IsRequired": true
       }
     ],
@@ -25,7 +25,7 @@
     "Parameters": [
       {
         "Name": "registerRequest",
-        "Type": "ShopyBackend.BLL_Domain_.DTO.RegisterRequestDto",
+        "Type": "ShopyBackend.WebApi.DTO.RegisterRequestDto",
         "IsRequired": true
       }
     ],
@@ -52,9 +52,9 @@
     ]
   },
   {
-    "ContainingType": "ShopyBackend.WebApi.Controllers.ProductsController",
+    "ContainingType": "ShopyBackend.WebApi.Controllers.ProductController",
     "Method": "GetProductsByCategory",
-    "RelativePath": "Products",
+    "RelativePath": "Product/{category}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -63,6 +63,11 @@
         "Name": "category",
         "Type": "System.String",
         "IsRequired": false
+      },
+      {
+        "Name": "category",
+        "Type": "",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": [
@@ -78,9 +83,9 @@
     ]
   },
   {
-    "ContainingType": "ShopyBackend.WebApi.Controllers.ProductsController",
+    "ContainingType": "ShopyBackend.WebApi.Controllers.ProductController",
     "Method": "SearchProduct",
-    "RelativePath": "Products/{queryString}",
+    "RelativePath": "Product/{queryString}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -104,9 +109,9 @@
     ]
   },
   {
-    "ContainingType": "ShopyBackend.WebApi.Controllers.ProductsController",
+    "ContainingType": "ShopyBackend.WebApi.Controllers.ProductController",
     "Method": "GetProducts",
-    "RelativePath": "Products/all",
+    "RelativePath": "Product/all",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -114,6 +119,11 @@
       {
         "Name": "limit",
         "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "Cookie",
+        "Type": "System.String",
         "IsRequired": false
       }
     ],
@@ -128,5 +138,21 @@
         "StatusCode": 200
       }
     ]
+  },
+  {
+    "ContainingType": "ShopyBackend.WebApi.Controllers.ProductController",
+    "Method": "PublishProduct",
+    "RelativePath": "Product/publish",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "productFormDto",
+        "Type": "ShopyBackend.WebApi.DTO.ProductFormDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   }
 ]

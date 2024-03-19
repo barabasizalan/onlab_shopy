@@ -18,7 +18,7 @@ import { FaUserAlt, FaLock } from "react-icons/fa";
 import { Link as ReactRouterLink, useNavigate } from 'react-router-dom'
 import { Link as ChakraLink } from '@chakra-ui/react'
 import axios from "axios";
-import { useAuth } from "../AuthContext";
+import { useAuth } from "../Contexts/AuthContext";
 
 <ChakraLink as={ReactRouterLink} to='/home'>
   Home
@@ -34,6 +34,7 @@ const Login = () => {
   const {login} = useAuth();
   const navigate = useNavigate();
   const toast = useToast();
+  const [userId, setUserId] = useState<string | null>(null);
 
   const handleShowClick = () => setShowPassword(!showPassword);
 
@@ -45,7 +46,11 @@ const Login = () => {
         username: username,
         password: password
       });
+      
+      setUserId(response.data.userId);
+      
       console.log(response.data);
+      
       login();
 
       navigate('/');
@@ -91,7 +96,7 @@ const Login = () => {
         <Avatar bg="#bed1cf" />
         <Heading color="teal.400">Welcome</Heading>
         <Box minW={{ base: "90%", md: "468px" }}>
-          <form onSubmit={handleSubmit}>
+          <form name="loginForm" onSubmit={handleSubmit}>
             <Stack
               spacing={4}
               p="1rem"
@@ -104,6 +109,7 @@ const Login = () => {
                     children={<CFaUserAlt color="gray.300" />}
                   />
                   <Input
+                    name="loginUsername"
                     type="text"
                     placeholder="username"
                     value={username}
@@ -120,6 +126,7 @@ const Login = () => {
                     children={<CFaLock color="gray.300" />}
                   />
                   <Input
+                    name="loginPassword"
                     type={showPassword ? "text" : "password"}
                     placeholder="Password"
                     value={password}

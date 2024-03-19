@@ -24,15 +24,17 @@
     - Külön kategóriaként megtekinteni a termékeket
 - Should have
     - Publikált termék törlése
+    - Admin role, felhasználók kezelése(ha pl. valaki nem megfelelő tartalmat tesz közzé)
     - Megosztott kosár
 - Nice to have
+    - Publikáláskor több kép közzététele(adatbázis módosítással jár)
     - Termékek kedvelése
 
 ### Technikai rész
 - Navigációhoz React router.
 - React query a backend kommunikációhoz(aszinkron)
 - MsSql + EntityFramework - adatbázis
-- ASP.NET Core Identity + JWT
+- ASP.NET Core Identity + Cookie
 
 ### Use case diagram
 ![](/Shopy/assets/useCasek.png)
@@ -58,8 +60,11 @@
 <hr>
 
 - Márc. 11. - Márc  24. 
-    - ASP.NET Core Identity integrálása
-    - Authentikáció, JWT token
+    - ASP.NET Core Identity integrálása (kész)
+    - Authentikáció, süti (kész)
+    - Termék részletes nézete, képek megjelenítése
+    - Új termék felvétele
+    - Adatbázis módosítása a képek formátuma miatt (Kész)
 <hr>
 
 - Márc 25. - Ápr 7.

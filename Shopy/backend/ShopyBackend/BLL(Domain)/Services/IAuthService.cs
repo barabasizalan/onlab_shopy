@@ -1,4 +1,4 @@
-﻿using ShopyBackend.BLL_Domain_.DTO;
+﻿using ShopyBackend.WebApi.DTO;
 
 namespace ShopyBackend.BLL_Domain_
 {
@@ -6,5 +6,6 @@ namespace ShopyBackend.BLL_Domain_
     {
         Task<bool> LoginAsync(LoginRequestDto loginRequest);
         Task<string> RegisterAsync(RegisterRequestDto registerRequest);
+        Task<string> GetUserIdByUsername(string username);
     }
 }

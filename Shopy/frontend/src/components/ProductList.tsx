@@ -21,7 +21,7 @@ const ProductList: React.FC<ProductListProps> = ({ products }) => {
       {products.map(product => (
         <Box key={product.id}>
           <ProductCard
-            imageUrl={product.imageUrl}
+            imageData={product.imageData}
             name={product.name}
             price={product.price}
             onClick={() => handleCardClick(product)}

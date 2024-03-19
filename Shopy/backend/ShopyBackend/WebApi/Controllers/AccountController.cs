@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ShopyBackend.BLL_Domain_;
-using ShopyBackend.BLL_Domain_.DTO;
+using ShopyBackend.WebApi.DTO;
 
 namespace ShopyBackend.WebApi.Controllers
 {
@@ -21,9 +21,15 @@ namespace ShopyBackend.WebApi.Controllers
             var result = await _authService.LoginAsync(loginRequest);
             if (result)
             {
+                var userId = await _authService.GetUserIdByUsername(loginRequest.Username);
+
+                if (userId == null)
+                    return Unauthorized(new { Message = "Invalid username or password" });
+
                 return Ok( new {
                     Message = "Login successful",
-                    Username = loginRequest.Username
+                    Username = loginRequest.Username,
+                    UserId = userId
                 });
             } else
             {

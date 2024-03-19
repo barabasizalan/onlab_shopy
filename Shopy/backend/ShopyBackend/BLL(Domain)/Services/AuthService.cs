@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using ShopyBackend.BLL_Domain_;
-using ShopyBackend.BLL_Domain_.DTO;
 using ShopyBackend.DAL.Entities;
+using ShopyBackend.WebApi.DTO;
 
 namespace ShopyBackend.DAL
 {
@@ -54,6 +54,12 @@ namespace ShopyBackend.DAL
             };
             var result = await _signInManager.UserManager.CreateAsync(user, registerRequest.Password);
             return result.Succeeded ? "Registration successful." : "Registration failed.";
+        }
+
+        public async Task<string> GetUserIdByUsername(string username)
+        {
+            var user = await _userManager.FindByNameAsync(username);
+            return user?.Id;
         }
     }
 }

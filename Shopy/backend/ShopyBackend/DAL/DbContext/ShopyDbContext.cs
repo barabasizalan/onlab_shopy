@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using ShopyBackend.DAL.Entities;
 
-namespace ShopyBackend.DAL
+namespace ShopyBackend.DAL.DbContext
 {
     public class ShopyDbContext : IdentityDbContext<User>
     {

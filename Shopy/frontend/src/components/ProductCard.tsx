@@ -1,15 +1,21 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Box, Image, Text } from '@chakra-ui/react';
 
 interface CardProps {
-  imageUrl: string;
+  imageData: Blob;
   name: string;
   price: number;
   onClick?: () => void;
   margin: number;
 }
 
-const ProductCard: React.FC<CardProps> = ({ imageUrl, name, price, onClick, margin: mx }) => {
+const ProductCard: React.FC<CardProps> = ({ imageData, name, price, onClick, margin: mx }) => {
+
+  const imageUrl = React.useMemo(() => {
+    const blob = new Blob([imageData]);
+    return URL.createObjectURL(blob);
+  }, [imageData]);
+
   return (
     <Box
       maxW="sm"
@@ -26,7 +32,7 @@ const ProductCard: React.FC<CardProps> = ({ imageUrl, name, price, onClick, marg
       flexDirection="column"
     >
       <Box m="6" height="70%" borderRadius="lg" overflow="hidden" display="flex" justifyContent="center" alignItems="center"> 
-        <Image src={imageUrl} alt={name} objectFit="scale-down" />
+        <Image src={imageUrl} alt={name} objectFit="contain" />
       </Box>
       <Box p="6" height="30%">
         <Text color="gray.500" fontWeight="semibold">

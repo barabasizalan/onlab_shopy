@@ -1,4 +1,4 @@
-﻿namespace ShopyBackend.BLL_Domain_.DTO
+﻿namespace ShopyBackend.WebApi.DTO
 {
     public class LoginRequestDto
     {

@@ -15,8 +15,7 @@ namespace ShopyBackend.DAL.Entities
         public int CategoryId { get; set; }
         public int Vat { get; set; }
         public string UserId { get; set; }
-        public string? ImageUrl { get; set; }
-
+        public byte[]? ImageData { get; set; }
         public virtual Category Category { get; set; }
     }
 }

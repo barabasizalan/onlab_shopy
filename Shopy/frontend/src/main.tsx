@@ -3,7 +3,7 @@ import { ChakraProvider } from '@chakra-ui/react'
 import ReactDOM from 'react-dom/client'
 import { RouterProvider } from 'react-router-dom';
 import { router } from './Routes/Routes.tsx';
-import { AuthProvider } from './AuthContext.tsx';
+import { AuthProvider } from './Contexts/AuthContext.tsx';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 

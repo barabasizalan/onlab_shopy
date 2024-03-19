@@ -1,8 +1,9 @@
-
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using ShopyBackend.BLL_Domain_;
+using ShopyBackend.BLL_Domain_.Services;
 using ShopyBackend.DAL;
+using ShopyBackend.DAL.DbContext;
 using ShopyBackend.DAL.Entities;
 
 namespace ShopyBackend
@@ -18,9 +19,12 @@ namespace ShopyBackend
                 options.AddPolicy("AllowReactFrontend",
                     builder =>
                     {
-                        builder.WithOrigins("http://localhost:5173")
+                        builder
+                        .WithOrigins("http://localhost:5173")
+                        .WithOrigins("http://localhost:5173/")
                         .AllowAnyHeader()
                         .AllowAnyMethod()
+                        .WithExposedHeaders("Set-Cookie")
                         .AllowCredentials();
                     });
             }
@@ -60,14 +64,19 @@ namespace ShopyBackend
             builder.Services.ConfigureApplicationCookie(options =>
             {
                 options.Cookie.HttpOnly = false;
+                options.Cookie.SecurePolicy = CookieSecurePolicy.None;
+                options.Cookie.SameSite = SameSiteMode.None;
+                //options.LoginPath = "/account/login";
                 options.ExpireTimeSpan = TimeSpan.FromMinutes(30);
-                options.LoginPath = "/account/login";
-                options.SlidingExpiration = true;
+                options.Cookie.MaxAge = options.ExpireTimeSpan; // optional
+                options.Cookie.Name = "ShopyCookie";
             });
 
             builder.Services.AddScoped<IAuthService, AuthService>();
+            builder.Services.AddScoped<IProductRepository, ProductRepository>();
+            builder.Services.AddScoped<IProductService, ProductService>();
             
-            var app = builder.Build();
+             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())

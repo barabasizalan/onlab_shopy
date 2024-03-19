@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using ShopyBackend.DAL;
+using ShopyBackend.DAL.DbContext;
 
 #nullable disable
 
@@ -268,8 +268,8 @@ namespace ShopyBackend.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ImageUrl")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<byte[]>("ImageData")
+                        .HasColumnType("varbinary(max)");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -479,23 +479,16 @@ namespace ShopyBackend.Migrations
             modelBuilder.Entity("ShopyBackend.DAL.Entities.Product", b =>
                 {
                     b.HasOne("ShopyBackend.DAL.Entities.Category", "Category")
-                        .WithMany("Products")
+                        .WithMany()
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("ShopyBackend.DAL.Entities.User", "User")
+                    b.HasOne("ShopyBackend.DAL.Entities.User", null)
                         .WithMany()
                         .HasForeignKey("UserId");
 
                     b.Navigation("Category");
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("ShopyBackend.DAL.Entities.Category", b =>
-                {
-                    b.Navigation("Products");
                 });
 
             modelBuilder.Entity("ShopyBackend.DAL.Entities.Order", b =>

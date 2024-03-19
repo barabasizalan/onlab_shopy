@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using ShopyBackend.DAL;
+using ShopyBackend.DAL.DbContext;
 using ShopyBackend.DAL.Entities;
 
 namespace ShopyBackend.WebApi.Controllers
