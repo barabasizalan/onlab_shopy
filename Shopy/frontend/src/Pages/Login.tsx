@@ -29,12 +29,11 @@ const CFaLock = chakra(FaLock);
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const {login} = useAuth();
+  const {login, setUserId} = useAuth();
   const navigate = useNavigate();
   const toast = useToast();
-  const [userId, setUserId] = useState<string | null>(null);
 
   const handleShowClick = () => setShowPassword(!showPassword);
 
@@ -42,9 +41,11 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post('https://localhost:44367/account/login', {
-        username: username,
-        password: password
+      const response = await axios.post('https://localhost:44367/login?useSessionCookies=true', {
+        email: email,
+        password: password,
+        twoFactorCode: "",
+        twoFactorRecoveryCode: ""
       });
       
       setUserId(response.data.userId);
@@ -56,7 +57,7 @@ const Login = () => {
       navigate('/');
 
       toast({
-        title: "Login successful. Welcome " + username + "!",
+        title: "Login successful. Welcome " + email + "!",
         status: "success",
         duration: 3000,
         isClosable: true,
@@ -65,11 +66,11 @@ const Login = () => {
 
     } catch (error) {
       console.error('Login failed: ', error);
-      setUsername('');
+      setEmail('');
       setPassword('');
       toast({
         title: "Login failed",
-        description: "Invalid username or password. Please try again.",
+        description: "Invalid email or password. Please try again.",
         status: "error",
         duration: 3000,
         isClosable: true,
@@ -109,11 +110,11 @@ const Login = () => {
                     children={<CFaUserAlt color="gray.300" />}
                   />
                   <Input
-                    name="loginUsername"
+                    name="loginemail"
                     type="text"
-                    placeholder="username"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
+                    placeholder="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                     autoComplete="off"
                   />
                 </InputGroup>

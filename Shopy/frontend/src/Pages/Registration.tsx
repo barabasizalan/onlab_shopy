@@ -59,7 +59,7 @@ const Registration = () => {
         position: "top"
       })
 
-      navigate('/login');
+      navigate('/');
       
     } catch (error: any) {
       console.error('Registration failed: ', error);

@@ -1,50 +1,39 @@
-import React, { useEffect, useState } from 'react';
-import { Box, Image, Text } from '@chakra-ui/react';
+import {  Divider, HStack, Image, Text, VStack } from "@chakra-ui/react";
+import { Product } from "../Models/Product";
 
-interface CardProps {
-  imageData: Blob;
-  name: string;
-  price: number;
-  onClick?: () => void;
-  margin: number;
+interface ProductCardProps {
+    product: Product;
+    onClick?: () => void;
 }
 
-const ProductCard: React.FC<CardProps> = ({ imageData, name, price, onClick, margin: mx }) => {
+const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 
-  const imageUrl = React.useMemo(() => {
-    const blob = new Blob([imageData]);
-    return URL.createObjectURL(blob);
-  }, [imageData]);
-
-  return (
-    <Box
-      maxW="sm"
-      borderWidth="1px"
-      borderRadius="lg"
-      overflow="hidden"
-      boxShadow="lg"
-      cursor="pointer"
-      onClick={onClick}
-      mx={mx}
-      height="300px"
-      width="300px"
-      display="flex"
-      flexDirection="column"
-    >
-      <Box m="6" height="70%" borderRadius="lg" overflow="hidden" display="flex" justifyContent="center" alignItems="center"> 
-        <Image src={imageUrl} alt={name} objectFit="contain" />
-      </Box>
-      <Box p="6" height="30%">
-        <Text color="gray.500" fontWeight="semibold">
-          {name}
+    return (
+        <HStack
+        borderWidth="1px"
+        borderRadius="lg"
+        overflow="hidden"
+        boxShadow="md"
+        width="auto"
+        mb={4}
+        p={4}
+      >
+        <Image src={atob(product.imageBase64)} alt={product.name} boxSize="100px" objectFit="cover" mr={10}/>
+        <VStack width="auto" align="left">
+            <Text mt={2} fontSize="lg" fontWeight="bold" whiteSpace="nowrap">
+                {product.name}
+            </Text>
+            <Text fontSize="md" color="gray.500">
+                Available Quantity: {product.quantity}
+            </Text>
+        </VStack>
+        <Divider />
+        <Text mt={2} fontSize="lg" fontWeight="bold">
+          {product.price}€
         </Text>
-
-        <Text mt="1" fontWeight="semibold" lineHeight="tight">
-          {price} €
-        </Text>
-      </Box>
-    </Box>
-  );
+        
+      </HStack>
+    );
 };
 
 export default ProductCard;

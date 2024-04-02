@@ -3,7 +3,6 @@ import React, { createContext, useContext, useState, ReactNode, useEffect } from
 
 interface AuthContextType {
   isLoggedIn: boolean;
-  userId: string | null;
   login: () => void;
   logout: () => void;
   setUserId: (userId: string | null) => void;
@@ -25,12 +24,11 @@ interface AuthProviderProps {
 
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [userId, setUserId] = useState<string | null>(null);
 
   useEffect(() => {
     const cookieExists = document.cookie.split(';').some(cookie => {
       const [name, _] = cookie.split('=');
-      return name.trim() === 'ShopyCookie';
+      return name.trim() === '.AspNetCore.Identity.Application';
     });
     if (cookieExists) {
       setIsLoggedIn(true);
@@ -43,15 +41,17 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   };
 
   const logout = () => {
+    document.cookie = '.AspNetCore.Identity.Application=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+  
     setIsLoggedIn(false);
   };
 
   const updateUserId = (id: string | null) => {
-    setUserId(id);
+    console.log("User's id: " + id);
   };
 
   return (
-    <AuthContext.Provider value={{ isLoggedIn, userId, login, logout, setUserId: updateUserId }}>
+    <AuthContext.Provider value={{ isLoggedIn, login, logout, setUserId: updateUserId }}>
       {children}
     </AuthContext.Provider>
   );

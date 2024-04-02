@@ -9,18 +9,19 @@ import {
   Textarea,
   Image,
   Text,
+  useToast,
 } from "@chakra-ui/react";
 import Navbar from "../components/Navbar";
 import { Category } from "../Models/Category";
 import axios from "axios";
-import { useAuth } from "../Contexts/AuthContext";
+import { useNavigate } from "react-router";
 
 function Sell() {
   const [image, setImage] = useState<string>(
     "https://cdn3.iconfinder.com/data/icons/design-n-code/100/272127c4-8d19-4bd3-bd22-2b75ce94ccb4-512.png"
   );
   const [name, setName] = useState<string>("");
-  const [nameCharCount, setNameCharCount] = useState<number>(0); // State to keep track of character count for Name
+  const [nameCharCount, setNameCharCount] = useState<number>(0);
 
   const [description, setDescription] = useState<string>("");
   const [descriptionCharCount, setDescriptionCharCount] = useState<number>(0);
@@ -29,9 +30,9 @@ function Sell() {
   const [quantity, setQuantity] = useState<string>("");
 
   const [categories, setCategories] = useState<Category[]>([]);
-  const [selectedCategoryId, setSelectedCategoryId] = useState<number | null>(null); // State to track selected category
+  const [selectedCategoryId, setSelectedCategoryId] = useState<number | null>(null);
 
-  const {userId} = useAuth();
+  const toast = useToast();
 
   useEffect(() => {
     fetchCategories();
@@ -49,17 +50,17 @@ function Sell() {
   };
 
   const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = () => {
-        if (typeof reader.result === "string") {
-          setImage(reader.result);
-        }
-      };
-      reader.readAsDataURL(file);
-    }
+    const file = event.target.files![0];
+    const reader = new FileReader();
+  
+    reader.onload = () => {
+      const base64Image = reader.result as string;
+      setImage(base64Image);
+    };
+  
+    reader.readAsDataURL(file);
   };
+  
 
   const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const inputText = event.target.value;
@@ -86,14 +87,30 @@ function Sell() {
       price,
       quantity,
       categoryId: selectedCategoryId,
-      userId: userId,
-      imageData: null,
+      image: image,
     };
-
     try {
-      await axios.post('https://localhost:44367/product/publish', formData);
-
-      console.log('Product published successfully!');
+      const response = await axios.post('https://localhost:44367/product/publish', formData);
+      if(response.status === 200) {
+        toast({
+          title: "Product published successfully!",
+          status: "success",
+          duration: 3000,
+          isClosable: true,
+          position: "top"
+        });
+      } else {
+        toast({
+          title: "Product could not be published.",
+          description: "Please try again later.",
+          status: "error",
+          duration: 3000,
+          isClosable: true,
+          position: "top"
+        });
+      }
+      const navigate = useNavigate();
+      navigate('/');
     } catch (error) {
       console.error('Error publishing product:', error);
     }
@@ -141,9 +158,9 @@ function Sell() {
               <FormLabel>Select your product's photo</FormLabel>
               <Box flex="1" mr={4}>
                 <Box mb={4}>
-                  <Image src={image} alt="Product" maxH="200px" maxW="200px" />
+                  <Image src={image} alt="Product" maxH="170px" maxW="170px"/>
                 </Box>
-                <input type="file" onChange={handleImageChange} required />
+                <input type="file" onChange={handleImageChange}  required />
               </Box>
             </FormControl>
             <FormControl id="description" mb={4} isRequired>

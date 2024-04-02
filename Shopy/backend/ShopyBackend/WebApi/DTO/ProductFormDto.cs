@@ -7,7 +7,6 @@
         public decimal Price { get; set; }
         public int Quantity { get; set; }
         public int CategoryId { get; set; }
-        public string UserId { get; set; }
-        public byte[]? ImageData { get; set; }
+        public string Image { get; set; }
     }
 }

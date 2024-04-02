@@ -54,7 +54,7 @@
     - Adatbázis létrehozása Code first megközelítéssel (kész)
     - Termékek lekérdezése backendtől és megjelenítés a képernyőn kártyák formájában (kész)
     - Keresés termékekre, utána megjelenítés egy új oldalon
-    - Kategóriák kilistázva, és azok alapján is lehessen megjeleníteni mindegyikhez a kategóriákat
+    - Kategóriák kilistázva, és azok alapján is lehessen megjeleníteni mindegyikhez a termékeket
     - Endpointok összegyűjtése, hogy mire lesz szükség + React query bevezetése
     - Use Case újratervezése adminnal együtt
 <hr>
@@ -62,17 +62,22 @@
 - Márc. 11. - Márc  24. 
     - ASP.NET Core Identity integrálása (kész)
     - Authentikáció, süti (kész)
-    - Termék részletes nézete, képek megjelenítése
-    - Új termék felvétele
+    - Termék részletes nézete, képek megjelenítése (kész)
+    - Új termék felvétele (kész)
     - Adatbázis módosítása a képek formátuma miatt (Kész)
 <hr>
 
 - Márc 25. - Ápr 7.
-    - Kosár tervezése, elemeket lehessen beletenni
+    - Termékre keresni
+    - Felhasználó saját termékei:
+        - Lekérés -> megjelenítés (kész)
+        - Törlés (kész)
+        - Módosítás (kész) - todo: részleges módosítás
+    
 <hr>
 
 - Ápr. 8. - Ápr. 21.
-    - todo
+    - Kosár tervezése, elemeket lehessen beletenni
 <hr>
 
 - Ápr. 22. - Máj. 5.
@@ -85,3 +90,4 @@
 
 - Máj. 20. - Máj.24
     - todo
+    

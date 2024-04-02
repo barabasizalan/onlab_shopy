@@ -9,10 +9,10 @@ using ShopyBackend.DAL.DbContext;
 
 #nullable disable
 
-namespace ShopyBackend.Migrations
+namespace ShopyBackend.DAL.Migrations
 {
     [DbContext(typeof(ShopyDbContext))]
-    [Migration("20240319180929_InitialCreate")]
+    [Migration("20240322154542_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -158,6 +158,27 @@ namespace ShopyBackend.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("ShopyBackend.BLL_Domain_.Entities.Image", b =>
+                {
+                    b.Property<int>("ImageId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ImageId"));
+
+                    b.Property<DateTime>("Created")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2");
+
+                    b.Property<byte[]>("ImageData")
+                        .IsRequired()
+                        .HasColumnType("varbinary(max)");
+
+                    b.HasKey("ImageId");
+
+                    b.ToTable("Images");
+                });
+
             modelBuilder.Entity("ShopyBackend.DAL.Entities.Cart", b =>
                 {
                     b.Property<int>("Id")
@@ -271,8 +292,8 @@ namespace ShopyBackend.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<byte[]>("ImageData")
-                        .HasColumnType("varbinary(max)");
+                    b.Property<int>("ImageId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -293,6 +314,8 @@ namespace ShopyBackend.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("CategoryId");
+
+                    b.HasIndex("ImageId");
 
                     b.HasIndex("UserId");
 
@@ -487,11 +510,19 @@ namespace ShopyBackend.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("ShopyBackend.BLL_Domain_.Entities.Image", "Image")
+                        .WithMany()
+                        .HasForeignKey("ImageId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("ShopyBackend.DAL.Entities.User", null)
                         .WithMany()
                         .HasForeignKey("UserId");
 
                     b.Navigation("Category");
+
+                    b.Navigation("Image");
                 });
 
             modelBuilder.Entity("ShopyBackend.DAL.Entities.Order", b =>

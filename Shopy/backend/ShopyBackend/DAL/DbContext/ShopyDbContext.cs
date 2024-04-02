@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using ShopyBackend.BLL_Domain_.Entities;
 using ShopyBackend.DAL.Entities;
 
 namespace ShopyBackend.DAL.DbContext
@@ -13,6 +14,7 @@ namespace ShopyBackend.DAL.DbContext
         public DbSet<Category> Category { get; set; }
         public DbSet<Order> Order { get; set; }
         public DbSet<OrderDetails> OrderDetails { get; set; }
+        public DbSet<Image> Images { get; set; }
         public DbSet<Status> Status { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

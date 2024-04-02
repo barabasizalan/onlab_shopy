@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using ShopyBackend.DAL.DbContext;
+using ShopyBackend.BLL_Domain_.Services;
 using ShopyBackend.DAL.Entities;
 
 namespace ShopyBackend.WebApi.Controllers
@@ -9,18 +8,25 @@ namespace ShopyBackend.WebApi.Controllers
     [ApiController]
     public class CategoryController : ControllerBase
     {
-        private readonly ShopyDbContext _context;
+        private readonly ICategoryService _categoryService;
 
-        public CategoryController(ShopyDbContext context)
+        public CategoryController(ICategoryService categoryService)
         {
-            _context = context;
+            _categoryService = categoryService;
         }
 
         [HttpGet]
         [Route("all")]
         public async Task<ActionResult<IEnumerable<Category>>> GetCategories()
         {
-            return await _context.Category.ToListAsync();
+            try
+            {
+                var categories = await _categoryService.GetAllCategories();
+                return Ok(categories);
+            } catch(Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
         }
     }
 }

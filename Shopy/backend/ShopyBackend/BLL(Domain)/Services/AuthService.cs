@@ -2,24 +2,19 @@
 using ShopyBackend.BLL_Domain_;
 using ShopyBackend.DAL.Entities;
 using ShopyBackend.WebApi.DTO;
+using System.Threading.Tasks;
 
 namespace ShopyBackend.DAL
 {
-    public class AuthService: IAuthService
+    public class AuthService : IAuthService
     {
-        private readonly SignInManager<User> _signInManager;
         private readonly UserManager<User> _userManager;
+        private readonly SignInManager<User> _signInManager;
 
-        public AuthService(SignInManager<User> signInManager, UserManager<User> userManager)
+        public AuthService(UserManager<User> userManager, SignInManager<User> signInManager)
         {
-            _signInManager = signInManager;
             _userManager = userManager;
-        }
-
-        public async Task<bool> LoginAsync(LoginRequestDto loginRequest)
-        {
-            var result = await _signInManager.PasswordSignInAsync(loginRequest.Username, loginRequest.Password, false, false);
-            return result.Succeeded;
+            _signInManager = signInManager;
         }
 
         public async Task<string> RegisterAsync(RegisterRequestDto registerRequest)
@@ -44,22 +39,19 @@ namespace ShopyBackend.DAL
 
             if (registerRequest.Password != registerRequest.ConfirmPassword)
             {
-                return "Passwords do not match.";
+                return "Passwords don't match.";
             }
+
             var user = new User
             {
                 UserName = registerRequest.Username,
                 Email = registerRequest.Email,
                 PhoneNumber = registerRequest.PhoneNumber
             };
-            var result = await _signInManager.UserManager.CreateAsync(user, registerRequest.Password);
-            return result.Succeeded ? "Registration successful." : "Registration failed.";
-        }
 
-        public async Task<string> GetUserIdByUsername(string username)
-        {
-            var user = await _userManager.FindByNameAsync(username);
-            return user?.Id;
+            var result = await _userManager.CreateAsync(user, registerRequest.Password);
+
+            return result.Succeeded ? "Registration successful." : "Registration failed.";
         }
     }
 }

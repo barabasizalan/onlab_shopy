@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using ShopyBackend.BLL_Domain_.Entities;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ShopyBackend.DAL.Entities
@@ -15,7 +16,11 @@ namespace ShopyBackend.DAL.Entities
         public int CategoryId { get; set; }
         public int Vat { get; set; }
         public string UserId { get; set; }
-        public byte[]? ImageData { get; set; }
+
+        [Required]
+        [ForeignKey("Image")]
+        public int ImageId { get; set; }
+        public Image Image { get; set; }
         public virtual Category Category { get; set; }
     }
 }

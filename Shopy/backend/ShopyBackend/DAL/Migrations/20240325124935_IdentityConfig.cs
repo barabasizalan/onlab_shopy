@@ -2,10 +2,10 @@
 
 #nullable disable
 
-namespace ShopyBackend.Migrations
+namespace ShopyBackend.DAL.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class IdentityConfig : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
