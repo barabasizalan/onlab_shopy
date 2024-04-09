@@ -25,6 +25,7 @@
 - Should have
     - Publikált termék törlése
     - Admin role, felhasználók kezelése(ha pl. valaki nem megfelelő tartalmat tesz közzé)
+    - Termékekhez több részlet amire lehet szűrni
     - Megosztott kosár
 - Nice to have
     - Publikáláskor több kép közzététele(adatbázis módosítással jár)

@@ -21,11 +21,11 @@ namespace ShopyBackend.WebApi.Controllers
 
         [HttpGet]
         [Route("all")]
-        public async Task<ActionResult<IEnumerable<ProductDto>>> GetProducts([FromQuery] int? limit)
+        public async Task<ActionResult<PagedProductDto>> GetProducts([FromQuery] int? page, [FromQuery] int? pageSize)
         {
             try
             {
-                var products = await _productService.GetProducts(limit);
+                var products = await _productService.GetProducts(page, pageSize);
                 return Ok(products);
             }
             catch (Exception ex)
@@ -59,7 +59,7 @@ namespace ShopyBackend.WebApi.Controllers
 
         [HttpGet]
         [Route("name={queryString}")]
-        public async Task<ActionResult<IEnumerable<ProductDto>>> SearchProduct(string queryString)
+        public async Task<ActionResult<PagedProductDto>> SearchProduct(string queryString, [FromQuery] int? page, [FromQuery] int? pageSize)
         {
             if (string.IsNullOrEmpty(queryString))
             {
@@ -67,7 +67,7 @@ namespace ShopyBackend.WebApi.Controllers
             }
             try
             {
-                var products = await _productService.SearchProducts(queryString);
+                var products = await _productService.SearchProducts(queryString, page, pageSize);
                 return Ok(products);
             } catch (Exception ex)
             {

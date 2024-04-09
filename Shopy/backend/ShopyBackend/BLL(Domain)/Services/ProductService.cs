@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging.Abstractions;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging.Abstractions;
 using ShopyBackend.BLL_Domain_.Services;
 using ShopyBackend.DAL.Entities;
 using ShopyBackend.WebApi.DTO;
@@ -19,10 +20,17 @@ namespace ShopyBackend.DAL
             _imageService = imageService;
         }
 
-        public async Task<IEnumerable<ProductDto>> GetProducts(int? limit)
+        public async Task<PagedProductDto> GetProducts( int? page, int? pageSize)
         {
             var products = await _productRepository.GetAllProductsAsync();
+            var totalCount = products.Count();
+
             var productDtos = new List<ProductDto>();
+
+            if(page.HasValue && pageSize.HasValue)
+            {
+                products = products.Skip((page.Value - 1) * pageSize.Value).Take(pageSize.Value);
+            }
 
             foreach(var product in products)
             {
@@ -39,7 +47,11 @@ namespace ShopyBackend.DAL
 
             }
 
-            return limit.HasValue ? productDtos.Take(limit.Value) : productDtos;
+            return new PagedProductDto
+            {
+                Products = productDtos,
+                TotalCount = totalCount
+            };
         }
 
         public async Task<IEnumerable<Product>> GetProductsByCategory(string category)
@@ -47,10 +59,17 @@ namespace ShopyBackend.DAL
             return await _productRepository.GetProductsByCategoryAsync(category);
         }
 
-        public async Task<IEnumerable<ProductDto>> SearchProducts(string queryString)
+        public async Task<PagedProductDto> SearchProducts(string queryString, int? page, int? pageSize)
         {
             var products = await _productRepository.SearchProductsAsync(queryString);
+            var totalCount = products.Count();
+
             var productDtos = new List<ProductDto>();
+
+            if (page.HasValue && pageSize.HasValue)
+            {
+                products = products.Skip((page.Value - 1) * pageSize.Value).Take(pageSize.Value);
+            }
 
             foreach (var product in products)
             {
@@ -65,7 +84,12 @@ namespace ShopyBackend.DAL
                     ImageBase64 = Convert.ToBase64String(product.Image.ImageData)
                 });
             }
-            return productDtos;
+
+            return new PagedProductDto
+            { 
+                Products = productDtos,
+                TotalCount = totalCount
+            };
         }
 
         public async Task<IEnumerable<ProductDto>> GetProductsByUserId(string userId)

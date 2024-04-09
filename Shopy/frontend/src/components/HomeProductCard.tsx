@@ -31,7 +31,7 @@ const HomeProductCard: React.FC<CardProps> = ({ imageBase64, name, price, onClic
         <Image src={decodedImage} alt={name} objectFit="scale-down" objectPosition="center" height="100%" width="100%" />
       </Box>
       <Box p="6" height="30%">
-        <Text color="gray.500" fontWeight="semibold">
+        <Text color="gray.500" fontWeight="semibold" overflow="hidden" whiteSpace="nowrap" textOverflow="ellipsis">
           {name}
         </Text>
         <Flex
