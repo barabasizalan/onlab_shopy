@@ -11,16 +11,20 @@
       "RelativeMoniker": "D:0:0:{92DEA340-9B8F-4A5F-8E36-477078D6D407}|ShopyBackend\\ShopyBackend.csproj|solutionrelative:shopybackend\\dal\\repository implementation\\cartrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{92DEA340-9B8F-4A5F-8E36-477078D6D407}|ShopyBackend\\ShopyBackend.csproj|c:\\users\\zalan\\egyetem\\onlab2024\\onlab_shopy\\shopy\\backend\\shopybackend\\webapi\\dto\\cartdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{92DEA340-9B8F-4A5F-8E36-477078D6D407}|ShopyBackend\\ShopyBackend.csproj|solutionrelative:shopybackend\\webapi\\dto\\cartdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{92DEA340-9B8F-4A5F-8E36-477078D6D407}|ShopyBackend\\ShopyBackend.csproj|c:\\users\\zalan\\egyetem\\onlab2024\\onlab_shopy\\shopy\\backend\\shopybackend\\bll(domain)\\services\\cartservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{92DEA340-9B8F-4A5F-8E36-477078D6D407}|ShopyBackend\\ShopyBackend.csproj|solutionrelative:shopybackend\\bll(domain)\\services\\cartservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{92DEA340-9B8F-4A5F-8E36-477078D6D407}|ShopyBackend\\ShopyBackend.csproj|c:\\users\\zalan\\egyetem\\onlab2024\\onlab_shopy\\shopy\\backend\\shopybackend\\bll(domain)\\services\\icartservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{92DEA340-9B8F-4A5F-8E36-477078D6D407}|ShopyBackend\\ShopyBackend.csproj|solutionrelative:shopybackend\\bll(domain)\\services\\icartservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{92DEA340-9B8F-4A5F-8E36-477078D6D407}|ShopyBackend\\ShopyBackend.csproj|c:\\users\\zalan\\egyetem\\onlab2024\\onlab_shopy\\shopy\\backend\\shopybackend\\bll(domain)\\services\\cartservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{92DEA340-9B8F-4A5F-8E36-477078D6D407}|ShopyBackend\\ShopyBackend.csproj|solutionrelative:shopybackend\\bll(domain)\\services\\cartservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{92DEA340-9B8F-4A5F-8E36-477078D6D407}|ShopyBackend\\ShopyBackend.csproj|c:\\users\\zalan\\egyetem\\onlab2024\\onlab_shopy\\shopy\\backend\\shopybackend\\bll(domain)\\repository interfaces\\icartrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{92DEA340-9B8F-4A5F-8E36-477078D6D407}|ShopyBackend\\ShopyBackend.csproj|solutionrelative:shopybackend\\bll(domain)\\repository interfaces\\icartrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{92DEA340-9B8F-4A5F-8E36-477078D6D407}|ShopyBackend\\ShopyBackend.csproj|c:\\users\\zalan\\egyetem\\onlab2024\\onlab_shopy\\shopy\\backend\\shopybackend\\webapi\\dto\\cartdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{92DEA340-9B8F-4A5F-8E36-477078D6D407}|ShopyBackend\\ShopyBackend.csproj|solutionrelative:shopybackend\\webapi\\dto\\cartdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{92DEA340-9B8F-4A5F-8E36-477078D6D407}|ShopyBackend\\ShopyBackend.csproj|c:\\users\\zalan\\egyetem\\onlab2024\\onlab_shopy\\shopy\\backend\\shopybackend\\bll(domain)\\services\\productservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -37,10 +41,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{92DEA340-9B8F-4A5F-8E36-477078D6D407}|ShopyBackend\\ShopyBackend.csproj|c:\\users\\zalan\\egyetem\\onlab2024\\onlab_shopy\\shopy\\backend\\shopybackend\\bll(domain)\\repository interfaces\\iproductrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{92DEA340-9B8F-4A5F-8E36-477078D6D407}|ShopyBackend\\ShopyBackend.csproj|solutionrelative:shopybackend\\bll(domain)\\repository interfaces\\iproductrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{92DEA340-9B8F-4A5F-8E36-477078D6D407}|ShopyBackend\\ShopyBackend.csproj|c:\\users\\zalan\\egyetem\\onlab2024\\onlab_shopy\\shopy\\backend\\shopybackend\\bll(domain)\\repository interfaces\\icartrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{92DEA340-9B8F-4A5F-8E36-477078D6D407}|ShopyBackend\\ShopyBackend.csproj|solutionrelative:shopybackend\\bll(domain)\\repository interfaces\\icartrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{92DEA340-9B8F-4A5F-8E36-477078D6D407}|ShopyBackend\\ShopyBackend.csproj|c:\\users\\zalan\\egyetem\\onlab2024\\onlab_shopy\\shopy\\backend\\shopybackend\\dal\\repository implementation\\productrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -162,7 +162,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Document",
@@ -175,38 +175,24 @@
               "ViewState": "AQIAABwAAAAAAAAAAAAqwCsAAABIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-03T16:00:57.747Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "CartDto.cs",
-              "DocumentMoniker": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\backend\\ShopyBackend\\WebApi\\DTO\\CartDto.cs",
-              "RelativeDocumentMoniker": "ShopyBackend\\WebApi\\DTO\\CartDto.cs",
-              "ToolTip": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\backend\\ShopyBackend\\WebApi\\DTO\\CartDto.cs",
-              "RelativeToolTip": "ShopyBackend\\WebApi\\DTO\\CartDto.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAApAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-10T07:58:27.981Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
               "Title": "CartService.cs",
               "DocumentMoniker": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\backend\\ShopyBackend\\BLL(Domain)\\Services\\CartService.cs",
               "RelativeDocumentMoniker": "ShopyBackend\\BLL(Domain)\\Services\\CartService.cs",
               "ToolTip": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\backend\\ShopyBackend\\BLL(Domain)\\Services\\CartService.cs",
               "RelativeToolTip": "ShopyBackend\\BLL(Domain)\\Services\\CartService.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAArAAAA",
+              "ViewState": "AQIAACcAAAAAAAAAAAAwwDgAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-10T07:04:13.314Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "ProductService.cs",
               "DocumentMoniker": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\backend\\ShopyBackend\\BLL(Domain)\\Services\\ProductService.cs",
               "RelativeDocumentMoniker": "ShopyBackend\\BLL(Domain)\\Services\\ProductService.cs",
@@ -214,12 +200,11 @@
               "RelativeToolTip": "ShopyBackend\\BLL(Domain)\\Services\\ProductService.cs",
               "ViewState": "AQIAACEAAAAAAAAAAAAYwD0AAAAVAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-18T16:05:23.937Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-18T16:05:23.937Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "IProductService.cs",
               "DocumentMoniker": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\backend\\ShopyBackend\\BLL(Domain)\\Services\\IProductService.cs",
               "RelativeDocumentMoniker": "ShopyBackend\\BLL(Domain)\\Services\\IProductService.cs",
@@ -227,8 +212,7 @@
               "RelativeToolTip": "ShopyBackend\\BLL(Domain)\\Services\\IProductService.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAuwAsAAABKAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-18T16:10:31.244Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-18T16:10:31.244Z"
             },
             {
               "$type": "Document",
@@ -238,7 +222,7 @@
               "RelativeDocumentMoniker": "ShopyBackend\\BLL(Domain)\\Services\\ICartService.cs",
               "ToolTip": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\backend\\ShopyBackend\\BLL(Domain)\\Services\\ICartService.cs",
               "RelativeToolTip": "ShopyBackend\\BLL(Domain)\\Services\\ICartService.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAuwAcAAAA/AAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAuwAsAAABBAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-10T07:04:06.407Z",
               "EditorCaption": ""
@@ -251,7 +235,7 @@
               "RelativeDocumentMoniker": "ShopyBackend\\DAL\\Repository implementation\\CartRepository.cs",
               "ToolTip": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\backend\\ShopyBackend\\DAL\\Repository implementation\\CartRepository.cs",
               "RelativeToolTip": "ShopyBackend\\DAL\\Repository implementation\\CartRepository.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAwAAAA",
+              "ViewState": "AQIAACkAAAAAAAAAAAAswDsAAAA8AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-10T07:03:13.49Z",
               "EditorCaption": ""
@@ -264,14 +248,39 @@
               "RelativeDocumentMoniker": "ShopyBackend\\WebApi\\Controllers\\CartController.cs",
               "ToolTip": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\backend\\ShopyBackend\\WebApi\\Controllers\\CartController.cs",
               "RelativeToolTip": "ShopyBackend\\WebApi\\Controllers\\CartController.cs",
-              "ViewState": "AQIAAA0AAAAAAAAAAAA0wBwAAAARAAAA",
+              "ViewState": "AQIAACAAAAAAAAAAAADwvygAAAATAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-10T07:05:50.958Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 4,
+              "Title": "ICartRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\backend\\ShopyBackend\\BLL(Domain)\\Repository interfaces\\ICartRepository.cs",
+              "RelativeDocumentMoniker": "ShopyBackend\\BLL(Domain)\\Repository interfaces\\ICartRepository.cs",
+              "ToolTip": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\backend\\ShopyBackend\\BLL(Domain)\\Repository interfaces\\ICartRepository.cs",
+              "RelativeToolTip": "ShopyBackend\\BLL(Domain)\\Repository interfaces\\ICartRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAuwAoAAABGAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-10T07:02:30.872Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "CartDto.cs",
+              "DocumentMoniker": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\backend\\ShopyBackend\\WebApi\\DTO\\CartDto.cs",
+              "RelativeDocumentMoniker": "ShopyBackend\\WebApi\\DTO\\CartDto.cs",
+              "ToolTip": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\backend\\ShopyBackend\\WebApi\\DTO\\CartDto.cs",
+              "RelativeToolTip": "ShopyBackend\\WebApi\\DTO\\CartDto.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAApAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-10T07:58:27.981Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
               "Title": "IProductRepository.cs",
               "DocumentMoniker": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\backend\\ShopyBackend\\BLL(Domain)\\Repository interfaces\\IProductRepository.cs",
               "RelativeDocumentMoniker": "ShopyBackend\\BLL(Domain)\\Repository interfaces\\IProductRepository.cs",
@@ -279,8 +288,7 @@
               "RelativeToolTip": "ShopyBackend\\BLL(Domain)\\Repository interfaces\\IProductRepository.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAABJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-18T16:05:11.888Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-18T16:05:11.888Z"
             },
             {
               "$type": "Document",
@@ -292,25 +300,11 @@
               "RelativeToolTip": "ShopyBackend\\DAL\\Repository implementation\\ProductRepository.cs",
               "ViewState": "AQIAAAgAAAAAAAAAAAAIwBAAAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-18T16:12:43.185Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-18T16:12:43.185Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "ICartRepository.cs",
-              "DocumentMoniker": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\backend\\ShopyBackend\\BLL(Domain)\\Repository interfaces\\ICartRepository.cs",
-              "RelativeDocumentMoniker": "ShopyBackend\\BLL(Domain)\\Repository interfaces\\ICartRepository.cs",
-              "ToolTip": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\backend\\ShopyBackend\\BLL(Domain)\\Repository interfaces\\ICartRepository.cs",
-              "RelativeToolTip": "ShopyBackend\\BLL(Domain)\\Repository interfaces\\ICartRepository.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAuwAgAAAAtAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-10T07:02:30.872Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "ProductDto.cs",
               "DocumentMoniker": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\backend\\ShopyBackend\\WebApi\\DTO\\ProductDto.cs",
               "RelativeDocumentMoniker": "ShopyBackend\\WebApi\\DTO\\ProductDto.cs",
@@ -318,8 +312,7 @@
               "RelativeToolTip": "ShopyBackend\\WebApi\\DTO\\ProductDto.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-19T18:18:16.804Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-19T18:18:16.804Z"
             },
             {
               "$type": "Document",
@@ -331,8 +324,7 @@
               "RelativeToolTip": "ShopyBackend\\WebApi\\DTO\\PagedProductDto.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-09T18:07:47.32Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-09T18:07:47.32Z"
             },
             {
               "$type": "Document",
@@ -344,8 +336,7 @@
               "RelativeToolTip": "ShopyBackend\\WebApi\\Controllers\\ProductController.cs",
               "ViewState": "AQIAAF0AAAAAAAAAAAAowIIAAAAQAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-18T15:45:45.268Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-18T15:45:45.268Z"
             },
             {
               "$type": "Document",
@@ -357,8 +348,7 @@
               "RelativeToolTip": "ShopyBackend\\BLL(Domain)\\Entities\\Cart.cs",
               "ViewState": "AQIAAAEAAAAAAAAAAAAswBcAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-12T08:50:46.704Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-12T08:50:46.704Z"
             },
             {
               "$type": "Document",
@@ -370,8 +360,7 @@
               "RelativeToolTip": "ShopyBackend\\BLL(Domain)\\Entities\\Product.cs",
               "ViewState": "AQIAAAkAAAAAAAAAAAAQwBoAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-03T16:38:39.546Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-03T16:38:39.546Z"
             },
             {
               "$type": "Document",
@@ -383,8 +372,7 @@
               "RelativeToolTip": "ShopyBackend\\WebApi\\DTO\\AddToCartDto.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-10T07:11:50.277Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-10T07:11:50.277Z"
             },
             {
               "$type": "Document",

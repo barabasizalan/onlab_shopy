@@ -72,5 +72,39 @@ namespace ShopyBackend.WebApi.Controllers
                 return StatusCode(500, $"Internal server error: {ex.Message}");
             }
         }
+
+        [HttpDelete]
+        [Route("delete/all")]
+        public async Task<IActionResult> RemoveAllItemsFromCart()
+        {
+            try
+            {
+                var userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+                if (string.IsNullOrEmpty(userId))
+                {
+                    return Unauthorized("User is not authenticated.");
+                }
+
+                await _cartService.DeleteAllCartItems(userId);
+                return Ok("All cart items deleted successfully!");
+            } catch(Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
+        }
+
+        [HttpPut]
+        [Route("update/{cartId}")]
+        public async Task<IActionResult> UpdateCartItemQuantity([FromBody] int newQuantity, int cartId)
+        {
+            try
+            {
+                await _cartService.UpdateCartItemQuantity(cartId, newQuantity);
+                return Ok("Cart item quantity updated successfully!");
+            } catch(Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
+        }
     }
 }

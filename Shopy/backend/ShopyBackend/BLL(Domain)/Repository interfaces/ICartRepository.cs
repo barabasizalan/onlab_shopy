@@ -7,5 +7,7 @@ namespace ShopyBackend.BLL_Domain_.Repository_interfaces
         Task<IEnumerable<Cart>> GetAllCartItemsAsync(string userId);
         Task AddToCartAsync(Cart cart);
         Task DeleteFromCartAsync(int cartId);
+        Task DeleteAllFromCartAsync(string userId);
+        Task UpdateCartItemQuantityAsync(int cartId, int newQuantity);
     }
 }

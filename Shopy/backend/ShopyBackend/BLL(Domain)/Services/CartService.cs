@@ -46,5 +46,14 @@ namespace ShopyBackend.BLL_Domain_.Services
         {
             await _cartRepository.DeleteFromCartAsync(cartId);
         }
+
+        public async Task DeleteAllCartItems(string userId)
+        {
+            await _cartRepository.DeleteAllFromCartAsync(userId);
+        }
+        public async Task UpdateCartItemQuantity(int cartId, int newQuantity)
+        {
+            await _cartRepository.UpdateCartItemQuantityAsync(cartId, newQuantity);
+        }
     }
 }

@@ -8,5 +8,7 @@ namespace ShopyBackend.BLL_Domain_.Services
         Task<IEnumerable<CartDto>> GetCartItems(string userId);
         Task AddToCart(string userId, AddToCartDto addToCartDto);
         Task DeleteCartItem(int cartId);
+        Task DeleteAllCartItems(string userId);
+        Task UpdateCartItemQuantity(int cartId, int newQuantity);
     }
 }

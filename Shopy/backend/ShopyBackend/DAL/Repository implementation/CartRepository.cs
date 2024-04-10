@@ -5,7 +5,7 @@ using ShopyBackend.DAL.Entities;
 
 namespace ShopyBackend.DAL.Repository_implementation
 {
-    public class CartRepository: ICartRepository
+    public class CartRepository : ICartRepository
     {
         private readonly ShopyDbContext _context;
 
@@ -28,10 +28,36 @@ namespace ShopyBackend.DAL.Repository_implementation
         public async Task DeleteFromCartAsync(int cartId)
         {
             var cart = await _context.Cart.FindAsync(cartId);
-            if(cart != null)
+            if (cart != null)
             {
                 _context.Cart.Remove(cart);
                 await _context.SaveChangesAsync();
+            }
+        }
+
+        public async Task DeleteAllFromCartAsync(string userId)
+        {
+            var cartItems = await _context.Cart.Where(c => c.UserId == userId).ToListAsync();
+            if (cartItems != null)
+            {
+                _context.Cart.RemoveRange(cartItems);
+                await _context.SaveChangesAsync();
+            } else
+            {
+                throw new Exception("Cart is empty.");
+            }
+        }
+
+        public async Task UpdateCartItemQuantityAsync(int cartId, int newQuantity)
+        {
+            var cart = await _context.Cart.FindAsync(cartId);
+            if (cart != null)
+            {
+                cart.Quantity = newQuantity;
+                await _context.SaveChangesAsync();
+            } else
+            {
+                throw new Exception("Cart item not found.");
             }
         }
     }

@@ -63,6 +63,37 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "ShopyBackend.WebApi.Controllers.CartController",
+    "Method": "RemoveAllItemsFromCart",
+    "RelativePath": "Cart/delete/all",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ShopyBackend.WebApi.Controllers.CartController",
+    "Method": "UpdateCartItemQuantity",
+    "RelativePath": "Cart/update/{cartId}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "newQuantity",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "cartId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "ShopyBackend.WebApi.Controllers.CategoryController",
     "Method": "GetCategories",
     "RelativePath": "Category/all",
