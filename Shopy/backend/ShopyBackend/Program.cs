@@ -54,6 +54,8 @@ namespace ShopyBackend
             builder.Services.AddScoped<IImageService, ImageService>();
             builder.Services.AddScoped<IImageRepository, ImageRepository>();
             builder.Services.AddScoped<IAuthService,AuthService>();
+            builder.Services.AddScoped<ICartRepository, CartRepository>();
+            builder.Services.AddScoped<ICartService, CartService>();
 
             builder.Services.AddCors(options => {
                 options.AddPolicy("AllowReactFrontend",
@@ -90,7 +92,6 @@ namespace ShopyBackend
             app.UseAuthorization();
 
             app.MapControllers();
-
             app.Run();
         }
     }

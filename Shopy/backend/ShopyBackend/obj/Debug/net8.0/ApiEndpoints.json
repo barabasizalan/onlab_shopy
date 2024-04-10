@@ -16,6 +16,53 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "ShopyBackend.WebApi.Controllers.CartController",
+    "Method": "AddItemToCart",
+    "RelativePath": "Cart/add",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "addToCartDto",
+        "Type": "ShopyBackend.WebApi.DTO.AddToCartDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ShopyBackend.WebApi.Controllers.CartController",
+    "Method": "GetCartItems",
+    "RelativePath": "Cart/all",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ShopyBackend.WebApi.Controllers.CartController",
+    "Method": "RemoveItemFromCart",
+    "RelativePath": "Cart/delete/{cartId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "cartId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "cartId",
+        "Type": "",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "ShopyBackend.WebApi.Controllers.CategoryController",
     "Method": "GetCategories",
     "RelativePath": "Category/all",
