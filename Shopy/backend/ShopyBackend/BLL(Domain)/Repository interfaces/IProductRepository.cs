@@ -12,5 +12,7 @@ namespace ShopyBackend.BLL_Domain_.Services
         Task<Product> GetProductByIdAsync(int id);
         Task UpdateProductAsync(Product product);
         Task DeleteProductAsync(Product product);
+        Task<decimal> GetProductPriceAsync(int productId);
+        Task UpdateProductQuantityAsync(int productId, int quantity);
     }
 }

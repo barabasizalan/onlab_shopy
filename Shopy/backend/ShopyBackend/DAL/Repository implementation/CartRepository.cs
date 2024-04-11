@@ -16,31 +16,31 @@ namespace ShopyBackend.DAL.Repository_implementation
 
         public async Task<IEnumerable<Cart>> GetAllCartItemsAsync(string userId)
         {
-            return await _context.Cart.Include(c => c.Product).Where(c => c.UserId == userId).ToListAsync();
+            return await _context.Carts.Include(c => c.Product).Where(c => c.UserId == userId).ToListAsync();
         }
 
         public async Task AddToCartAsync(Cart cart)
         {
-            _context.Cart.Add(cart);
+            _context.Carts.Add(cart);
             await _context.SaveChangesAsync();
         }
 
         public async Task DeleteFromCartAsync(int cartId)
         {
-            var cart = await _context.Cart.FindAsync(cartId);
+            var cart = await _context.Carts.FindAsync(cartId);
             if (cart != null)
             {
-                _context.Cart.Remove(cart);
+                _context.Carts.Remove(cart);
                 await _context.SaveChangesAsync();
             }
         }
 
         public async Task DeleteAllFromCartAsync(string userId)
         {
-            var cartItems = await _context.Cart.Where(c => c.UserId == userId).ToListAsync();
+            var cartItems = await _context.Carts.Where(c => c.UserId == userId).ToListAsync();
             if (cartItems != null)
             {
-                _context.Cart.RemoveRange(cartItems);
+                _context.Carts.RemoveRange(cartItems);
                 await _context.SaveChangesAsync();
             } else
             {
@@ -50,10 +50,17 @@ namespace ShopyBackend.DAL.Repository_implementation
 
         public async Task UpdateCartItemQuantityAsync(int cartId, int newQuantity)
         {
-            var cart = await _context.Cart.FindAsync(cartId);
+            var cart = await _context.Carts.FindAsync(cartId);
             if (cart != null)
             {
-                cart.Quantity = newQuantity;
+                if (newQuantity == 0)
+                {
+                    _context.Carts.Remove(cart);
+                }
+                else
+                {
+                    cart.Quantity = newQuantity;
+                }
                 await _context.SaveChangesAsync();
             } else
             {

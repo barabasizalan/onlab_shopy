@@ -245,7 +245,7 @@ namespace ShopyBackend.DAL.Migrations
                     b.ToTable("Order");
                 });
 
-            modelBuilder.Entity("ShopyBackend.DAL.Entities.OrderDetails", b =>
+            modelBuilder.Entity("ShopyBackend.DAL.Entities.OrderDetail", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -271,7 +271,7 @@ namespace ShopyBackend.DAL.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("OrderDetails");
+                    b.ToTable("OrderDetail");
                 });
 
             modelBuilder.Entity("ShopyBackend.DAL.Entities.Product", b =>
@@ -316,7 +316,7 @@ namespace ShopyBackend.DAL.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Product");
+                    b.ToTable("Products");
                 });
 
             modelBuilder.Entity("ShopyBackend.DAL.Entities.Status", b =>
@@ -480,7 +480,7 @@ namespace ShopyBackend.DAL.Migrations
                     b.Navigation("Status");
                 });
 
-            modelBuilder.Entity("ShopyBackend.DAL.Entities.OrderDetails", b =>
+            modelBuilder.Entity("ShopyBackend.DAL.Entities.OrderDetail", b =>
                 {
                     b.HasOne("ShopyBackend.DAL.Entities.Order", "Order")
                         .WithMany("OrderDetails")

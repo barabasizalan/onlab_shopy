@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ShopyBackend")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3b924b0ed07e1c3d1eae17040ee67d670f3cfc36")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d96e7679fac24f4d135c4c076b917435c36de23e")]
 [assembly: System.Reflection.AssemblyProductAttribute("ShopyBackend")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ShopyBackend")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -16,7 +16,7 @@ namespace ShopyBackend.DAL.Repository_implementation
 
         public async Task<IEnumerable<Category>> GetAllCategoriesAsync()
         {
-            return await _context.Category.ToListAsync();
+            return await _context.Categories.ToListAsync();
         }
     }
 }

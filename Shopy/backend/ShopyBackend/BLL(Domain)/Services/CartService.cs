@@ -13,14 +13,14 @@ namespace ShopyBackend.BLL_Domain_.Services
             _cartRepository = cartRepository;
         }
 
-        public async Task<IEnumerable<CartDto>> GetCartItems(string userId)
+        public async Task<IEnumerable<CartItemDto>> GetCartItems(string userId)
         { 
             var cartItems = await _cartRepository.GetAllCartItemsAsync(userId);
-            var cartDtos = new List<CartDto>();
+            var cartDtos = new List<CartItemDto>();
 
             foreach (var cart in cartItems)
             {
-                cartDtos.Add(new CartDto
+                cartDtos.Add(new CartItemDto
                 {
                     Id = cart.Id,
                     ProductId = cart.ProductId,

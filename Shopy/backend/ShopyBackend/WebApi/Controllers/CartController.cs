@@ -61,7 +61,7 @@ namespace ShopyBackend.WebApi.Controllers
 
         [HttpDelete]
         [Route("delete/{cartId}")]
-        public async Task<IActionResult> RemoveItemFromCart([FromBody] int cartId)
+        public async Task<IActionResult> RemoveItemFromCart(int cartId)
         {
             try
             {
@@ -95,11 +95,15 @@ namespace ShopyBackend.WebApi.Controllers
 
         [HttpPut]
         [Route("update/{cartId}")]
-        public async Task<IActionResult> UpdateCartItemQuantity([FromBody] int newQuantity, int cartId)
+        public async Task<IActionResult> UpdateCartItemQuantity([FromQuery] int newQuantity, int cartId)
         {
             try
             {
                 await _cartService.UpdateCartItemQuantity(cartId, newQuantity);
+                if(newQuantity == 0)
+                {
+                    return Ok("Cart item removed successfully!");
+                }
                 return Ok("Cart item quantity updated successfully!");
             } catch(Exception ex)
             {

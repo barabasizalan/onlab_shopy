@@ -53,11 +53,6 @@
         "Name": "cartId",
         "Type": "System.Int32",
         "IsRequired": true
-      },
-      {
-        "Name": "cartId",
-        "Type": "",
-        "IsRequired": true
       }
     ],
     "ReturnTypes": []
@@ -83,7 +78,7 @@
       {
         "Name": "newQuantity",
         "Type": "System.Int32",
-        "IsRequired": true
+        "IsRequired": false
       },
       {
         "Name": "cartId",
@@ -144,6 +139,16 @@
         "StatusCode": 200
       }
     ]
+  },
+  {
+    "ContainingType": "ShopyBackend.WebApi.Controllers.OrderController",
+    "Method": "CreateOrder",
+    "RelativePath": "create-order",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
   },
   {
     "ContainingType": "Microsoft.AspNetCore.Routing.IdentityApiEndpointRouteBuilderExtensions\u002B\u003C\u003Ec__DisplayClass1_0\u00601[[ShopyBackend.DAL.Entities.User, ShopyBackend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",

@@ -5,7 +5,7 @@ namespace ShopyBackend.BLL_Domain_.Services
 {
     public interface ICartService
     {
-        Task<IEnumerable<CartDto>> GetCartItems(string userId);
+        Task<IEnumerable<CartItemDto>> GetCartItems(string userId);
         Task AddToCart(string userId, AddToCartDto addToCartDto);
         Task DeleteCartItem(int cartId);
         Task DeleteAllCartItems(string userId);

@@ -9,13 +9,13 @@ namespace ShopyBackend.DAL.DbContext
     {
         public ShopyDbContext(DbContextOptions<ShopyDbContext> options) : base(options) { }
 
-        public DbSet<Product> Product { get; set; }
-        public DbSet<Cart> Cart { get; set; }
-        public DbSet<Category> Category { get; set; }
-        public DbSet<Order> Order { get; set; }
-        public DbSet<OrderDetails> OrderDetails { get; set; }
+        public DbSet<Product> Products { get; set; }
+        public DbSet<Cart> Carts { get; set; }
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderDetail> OrderDetails { get; set; }
         public DbSet<Image> Images { get; set; }
-        public DbSet<Status> Status { get; set; }
+        public DbSet<Status> Statuses { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -31,12 +31,12 @@ namespace ShopyBackend.DAL.DbContext
                 .WithMany()
                 .HasForeignKey(p => p.CategoryId);
 
-            modelBuilder.Entity<OrderDetails>()
+            modelBuilder.Entity<OrderDetail>()
                 .HasOne(od => od.Order)
                 .WithMany(o => o.OrderDetails)
                 .HasForeignKey(od => od.OrderId);
 
-            modelBuilder.Entity<OrderDetails>()
+            modelBuilder.Entity<OrderDetail>()
                 .Property(od => od.PurchasePrice)
                 .HasColumnType("decimal(18,2)");
 
