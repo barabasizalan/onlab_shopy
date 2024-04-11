@@ -18,7 +18,11 @@ namespace ShopyBackend
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-            builder.Services.AddControllers();
+            builder.Services.AddControllers()
+                .AddJsonOptions(options =>
+                {
+                    options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles;
+                });
             builder.Services.AddDbContext<ShopyDbContext>(options => options.UseSqlServer(
                 builder.Configuration.GetConnectionString("ShopyConnection")));
 

@@ -5,6 +5,7 @@ namespace ShopyBackend.BLL_Domain_.Services
 {
     public interface IOrderService
     {
-        Task<Order> CreateOrder(string userId);
+        Task<OrderDto> CreateOrder(string userId);
+        Task<IEnumerable<OrderDto>> GetOrdersByUserId(string userId);
     }
 }

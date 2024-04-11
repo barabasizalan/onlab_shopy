@@ -215,7 +215,7 @@
   },
   {
     "ContainingType": "ShopyBackend.Program\u002B\u003C\u003Ec",
-    "Method": "\u003CMain\u003Eb__0_4",
+    "Method": "\u003CMain\u003Eb__0_5",
     "RelativePath": "logout",
     "HttpMethod": "POST",
     "IsController": false,
@@ -603,6 +603,26 @@
           "application/problem\u002Bjson"
         ],
         "StatusCode": 400
+      }
+    ]
+  },
+  {
+    "ContainingType": "ShopyBackend.WebApi.Controllers.OrderController",
+    "Method": "GetOrdersByUserId",
+    "RelativePath": "user/orders",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[ShopyBackend.WebApi.DTO.OrderDto, ShopyBackend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
       }
     ]
   }

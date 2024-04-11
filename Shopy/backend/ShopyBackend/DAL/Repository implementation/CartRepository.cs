@@ -53,6 +53,18 @@ namespace ShopyBackend.DAL.Repository_implementation
             var cart = await _context.Carts.FindAsync(cartId);
             if (cart != null)
             {
+                var product = await _context.Products.FindAsync(cart.ProductId);
+                if (product != null)
+                {
+                    if (newQuantity > product.Quantity)
+                    {
+                        throw new Exception("Not enough products in stock.");
+                    }
+                } else
+                {
+                    throw new Exception("Product not found.");
+                }
+
                 if (newQuantity == 0)
                 {
                     _context.Carts.Remove(cart);

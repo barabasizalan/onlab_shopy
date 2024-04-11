@@ -1,4 +1,5 @@
 ﻿using ShopyBackend.BLL_Domain_.Repository_interfaces;
+using ShopyBackend.DAL;
 using ShopyBackend.DAL.Entities;
 using ShopyBackend.WebApi.DTO;
 
@@ -7,10 +8,12 @@ namespace ShopyBackend.BLL_Domain_.Services
     public class CartService : ICartService
     {
         private readonly ICartRepository _cartRepository;
+        private readonly IProductRepository _productRepository;
         
-        public CartService(ICartRepository cartRepository)
+        public CartService(ICartRepository cartRepository, IProductRepository productRepository)
         {
             _cartRepository = cartRepository;
+            _productRepository = productRepository;
         }
 
         public async Task<IEnumerable<CartItemDto>> GetCartItems(string userId)
@@ -32,6 +35,24 @@ namespace ShopyBackend.BLL_Domain_.Services
 
         public async Task AddToCart(string userId, AddToCartDto addToCartDto)
         {
+            // Retrieve the product
+            var product = await _productRepository.GetProductByIdAsync(addToCartDto.ProductId);
+            if (product == null)
+            {
+                throw new Exception("Product not found.");
+            }
+
+            // Validate quantity
+            if (addToCartDto.Quantity <= 0)
+            {
+                throw new Exception("Quantity must be greater than zero.");
+            }
+            if (addToCartDto.Quantity > product.Quantity)
+            {
+                throw new Exception("Not enough products in stock.");
+            }
+
+            // Add to cart
             var cart = new Cart
             {
                 UserId = userId,

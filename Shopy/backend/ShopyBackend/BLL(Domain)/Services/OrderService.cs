@@ -19,23 +19,23 @@ namespace ShopyBackend.BLL_Domain_.Services
             _statusRepository = statusRepository;
         }
 
-        public async Task<Order> CreateOrder(string userId)
+        public async Task<OrderDto> CreateOrder(string userId)
         {
             var cartItems = await _cartRepository.GetAllCartItemsAsync(userId);
-            if(cartItems == null)
+            if (cartItems == null)
             {
                 throw new Exception("Cart is empty.");
             }
 
-            //Check if there are enough products in stock
-            foreach(var cartItem in cartItems)
+            // Check if there are enough products in stock
+            foreach (var cartItem in cartItems)
             {
                 var product = await _productRepository.GetProductByIdAsync(cartItem.ProductId);
-                if(product == null)
+                if (product == null)
                 {
                     throw new Exception("Product not found.");
                 }
-                if(cartItem.Quantity > product.Quantity)
+                if (cartItem.Quantity > product.Quantity)
                 {
                     throw new Exception("Not enough products in stock.");
                 }
@@ -46,6 +46,7 @@ namespace ShopyBackend.BLL_Domain_.Services
                 UserId = userId,
                 OrderDate = DateTime.Now,
                 StatusId = 0,
+                OrderDetails = new List<OrderDetail>()
             };
 
             Status status = await _statusRepository.GetStatusByNameAsync("Ordered");
@@ -58,19 +59,72 @@ namespace ShopyBackend.BLL_Domain_.Services
                 throw new Exception("Status not found.");
             }
 
-            await _orderRepository.AddOrderAsync(order);
-
-            //Update product quantities
-            foreach(var cartItem in cartItems)
+            foreach (var cartItem in cartItems)
             {
+                var orderDetail = new OrderDetail
+                {
+                    OrderId = order.Id,
+                    ProductId = cartItem.ProductId,
+                    Quantity = cartItem.Quantity,
+                    PurchasePrice = cartItem.Product.Price
+                };
+                order.OrderDetails.Add(orderDetail);
+
+                // Update product quantities
                 var product = await _productRepository.GetProductByIdAsync(cartItem.ProductId);
                 product.Quantity -= cartItem.Quantity;
                 await _productRepository.UpdateProductAsync(product);
             }
 
-            //Clear the cart
+            await _orderRepository.AddOrderAsync(order);
+
+            // Clear the cart
             await _cartRepository.DeleteAllFromCartAsync(userId);
-            return order;
+
+            var orderDto = MapOrderToDto(order);
+
+            return orderDto;
+        }
+
+        private OrderDto MapOrderToDto(Order order)
+        {
+            return new OrderDto
+            {
+                Id = order.Id,
+                OrderDate = order.OrderDate,
+                StatusId = order.StatusId,
+                OrderDetails = order.OrderDetails.Select(od => new OrderDetailDto
+                {
+                    Id = od.Id,
+                    OrderId = od.OrderId,
+                    ProductId = od.ProductId,
+                    Quantity = od.Quantity,
+                    PurchasePrice = od.PurchasePrice
+                }).ToList()
+            };
+        }
+
+        public async Task<IEnumerable<OrderDto>> GetOrdersByUserId(string userId)
+        {
+            var orders = await _orderRepository.GetOrdersByUserIdAsync(userId);
+            if(orders == null)
+            {
+                return Enumerable.Empty<OrderDto>();
+            }
+
+            var orderDtos = new List<OrderDto>();
+
+            foreach (var order in orders)
+            {
+                var orderDto = MapOrderToDto(order);
+                orderDtos.Add(orderDto);
+            }
+            foreach (var order in orderDtos)
+            {
+                await Console.Out.WriteLineAsync(order.ToString());
+            }
+
+            return orderDtos;
         }
     }
 }
