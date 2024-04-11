@@ -1,4 +1,4 @@
-import { Image, Flex, Button, HStack, chakra, Menu, MenuButton, MenuList, MenuItem, Divider, Text, Box, useToast, Icon } from '@chakra-ui/react';
+import { Image, Flex, Button, HStack, chakra, Menu, MenuButton, MenuList, MenuItem, Divider, Text, Box, useToast, Icon, Drawer, DrawerHeader, DrawerOverlay, DrawerBody, DrawerContent } from '@chakra-ui/react';
 import { MdShoppingCart } from 'react-icons/md'; // Import cart icon from react-icons/md
 import SearchBar from './SearchBar';
 import { Link } from 'react-router-dom';
@@ -9,12 +9,22 @@ import axios from 'axios';
 import { useSearchContext } from '../Contexts/SearchContext';
 import { useEffect, useState } from 'react';
 import { Category } from '../Models/Category';
+import { CartItem } from '../Models/CartItem';
 
 function Navbar() {
   const { isLoggedIn, logout } = useAuth();
   const toast = useToast();
   const { query } = useSearchContext();
   const [categories, setCategories] = useState<Category[]>([]);
+  const [cartItems, setCartItems] = useState<CartItem[]>([]);
+  const [cartDrawerOpen, setCartDrawerOpen] = useState(false);
+
+  useEffect(() => {
+    fetchCategories();
+    if(isLoggedIn) {
+      fetchCartItems();
+    }
+  }, []);
 
   const fetchCategories = async () => {
     try {
@@ -25,13 +35,19 @@ function Navbar() {
     }
   };
 
-  useEffect(() => {
-    fetchCategories();
-  }, []);
+  const fetchCartItems = async () => {
+    try {
+      const response = await axios.get<CartItem[]>('https://localhost:44367/cart/all');
+      setCartItems(response.data);
+    } catch (error) {
+      console.error('Error fetching cart items:', error);
+    }
+  }
 
   const handleImageClick = () => {
     window.location.href = '/';
   };
+
   const handleSellClick = () => {
     if (isLoggedIn) {
       window.location.href = '/sell';
@@ -44,7 +60,7 @@ function Navbar() {
         position: "top"
       });
     }
-  }
+  };
 
   const handleLogout = async () => {
     try {
@@ -71,6 +87,20 @@ function Navbar() {
       }
     } catch (error) {
       console.error('Error during logout:', error);
+    }
+  };
+
+  const handleCartClick = () => {
+    if(!isLoggedIn) {
+      toast({
+        title: "You need to be logged in to view your cart!",
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+        position: "top"
+      });
+    } else {
+      setCartDrawerOpen(true);
     }
   };
 
@@ -116,8 +146,20 @@ function Navbar() {
           </Button>
         </HStack>
         <HStack paddingStart="10">
-          <Button as="button" onClick={() => console.log("Cart clicked")} variant="ghost">
+          <Button as="button" onClick={handleCartClick} variant="ghost">
             <Icon as={MdShoppingCart} boxSize={6} />
+            {isLoggedIn && cartItems.length > 0 && (
+              <Box
+                bg="red"
+                w="20px"
+                h="20px"
+                borderRadius="50%"
+                position="absolute"
+                top="-1px"
+                right="-1px"
+                color="white"
+              >{isLoggedIn && cartItems.length > 0 && <Text>{cartItems.length}</Text>}</Box>
+            )}
           </Button>
         </HStack>
 
@@ -141,6 +183,23 @@ function Navbar() {
         </Menu>
         <Button pr={10}  variant="ghost">Popular products</Button>
       </Flex>
+      <Drawer
+        isOpen={cartDrawerOpen}
+        placement="right"
+        onClose={() => setCartDrawerOpen(false)}
+      >
+        <DrawerOverlay />
+        <DrawerContent >
+          <DrawerHeader>Your Cart</DrawerHeader>
+          <DrawerBody >
+            {/* Display cart items here */}
+            {cartItems.map(item => (
+              <Box key={item.id}>Product id: {item.productId}, quantity: {item.quantity}</Box>
+            ))}
+            <h1> ssdfsD </h1>
+          </DrawerBody>
+        </DrawerContent>
+      </Drawer>
     </chakra.header>
   )
 }

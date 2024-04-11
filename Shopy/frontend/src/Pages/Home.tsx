@@ -3,7 +3,6 @@ import { Box } from '@chakra-ui/react';
 import HomeProductList from '../components/HomeProductList';
 import { Product } from '../Models/Product';
 import { Welcome } from '../components/Welcome';
-import Navbar from '../components/Navbar';
 import axios from 'axios';
 
 axios.defaults.withCredentials = true;
