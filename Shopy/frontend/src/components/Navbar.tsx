@@ -1,5 +1,5 @@
 import { Image, Flex, Button, HStack, chakra, Menu, MenuButton, MenuList, MenuItem, Divider, Text, Box, useToast, Icon, Drawer, DrawerHeader, DrawerOverlay, DrawerBody, DrawerContent } from '@chakra-ui/react';
-import { MdShoppingCart } from 'react-icons/md'; // Import cart icon from react-icons/md
+import { MdShoppingCart } from 'react-icons/md';
 import SearchBar from './SearchBar';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../Contexts/AuthContext';
@@ -196,7 +196,6 @@ function Navbar() {
             {cartItems.map(item => (
               <Box key={item.id}>Product id: {item.productId}, quantity: {item.quantity}</Box>
             ))}
-            <h1> ssdfsD </h1>
           </DrawerBody>
         </DrawerContent>
       </Drawer>
