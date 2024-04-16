@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "/OhxEHvE50k2u/t1O4I8eDXICtHoPcEfgt83erqhxZrsh/rSTL9vS05TZQosGNJzYdw+paxKlArKJ/1ztPiOmA==",
+  "dgSpecHash": "s8X3H2gyJY3Ltn8mhGtYEd1aZnM5atLOd/z0Rjjs26ieI/6w+EDMcNT+8meTZoXtGXZwneLQC78BxstT3AK9qA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Zalan\\Egyetem\\Shopy\\Shopy\\BLL\\BLL.csproj",
+  "projectFilePath": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\BLL\\BLL.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Zalan\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\Zalan\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",

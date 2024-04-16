@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "zbmjsGUnBUyXv7xkq8DFmX3K/NErNww4i9O08TPNcGY+y1mJBjEvFn0XxDpOPSpPMkhKLO45USu9iht+LcwR9w==",
+  "dgSpecHash": "cR93Y06eJHFdKYtAfqdyd/2Jb5VEfRr/4psWrukkX4bGC7DgdUgl96GNaejQcfhVGdBImPuROtL5d+1so84F+g==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Zalan\\Egyetem\\Shopy\\Shopy\\DAL\\DAL.csproj",
+  "projectFilePath": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\DAL\\DAL.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Zalan\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\Zalan\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",

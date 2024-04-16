@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Zalan\\Egyetem\\Shopy\\Shopy\\BLL\\BLL.csproj": {}
+    "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\BLL\\BLL.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Zalan\\Egyetem\\Shopy\\Shopy\\BLL\\BLL.csproj": {
+    "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\BLL\\BLL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Zalan\\Egyetem\\Shopy\\Shopy\\BLL\\BLL.csproj",
+        "projectUniqueName": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\BLL\\BLL.csproj",
         "projectName": "BLL",
-        "projectPath": "C:\\Users\\Zalan\\Egyetem\\Shopy\\Shopy\\BLL\\BLL.csproj",
+        "projectPath": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\BLL\\BLL.csproj",
         "packagesPath": "C:\\Users\\Zalan\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Zalan\\Egyetem\\Shopy\\Shopy\\BLL\\obj\\",
+        "outputPath": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\BLL\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Zalan\\AppData\\Roaming\\NuGet\\NuGet.Config",

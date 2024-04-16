@@ -33,6 +33,7 @@ function Sell() {
   const [selectedCategoryId, setSelectedCategoryId] = useState<number | null>(null);
 
   const toast = useToast();
+  const nav = useNavigate();
 
   useEffect(() => {
     fetchCategories();
@@ -99,6 +100,7 @@ function Sell() {
           isClosable: true,
           position: "top"
         });
+        nav('/myproducts');
       } else {
         toast({
           title: "Product could not be published.",

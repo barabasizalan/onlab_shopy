@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "On5yFjMjm9p7OfWPtLkTI8UXUgYJ4/d342CE+++4bB3pLt0brY71ukzH1V9NnT4Q/hc8xHvFyeTkk/6qE/yT1A==",
+  "dgSpecHash": "DHOxrkOVl8zBzlCue/TjytllN7tuQEgmeqgj6qco3UORXyLyrLWu3CX+rz7cp3ggsJmenNTbEFO6r9qLKimZLw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Zalan\\Egyetem\\Shopy\\Shopy\\WebApi\\WebApi.csproj",
+  "projectFilePath": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\WebApi\\WebApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Zalan\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\Zalan\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",

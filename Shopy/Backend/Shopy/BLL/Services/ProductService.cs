@@ -119,7 +119,7 @@ namespace BLL.Services
                 Description = productFormDto.Description,
                 Price = productFormDto.Price,
                 Quantity = productFormDto.Quantity,
-                CategoryId = productFormDto.CategoryId,
+                CategoryId = (int)productFormDto.CategoryId,
                 Vat = 19,
                 UserId = userId,
                 ImageId = (await _imageService.CreateImage(productFormDto.Image)).ImageId
@@ -145,8 +145,6 @@ namespace BLL.Services
             product.Description = productFormDto.Description;
             product.Price = productFormDto.Price;
             product.Quantity = productFormDto.Quantity;
-            product.CategoryId = productFormDto.CategoryId;
-            product.ImageId = (await _imageService.CreateImage(productFormDto.Image)).ImageId;
 
             await _productRepository.UpdateProductAsync(product);
         }

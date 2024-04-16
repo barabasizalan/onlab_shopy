@@ -24,7 +24,6 @@ namespace WebApi
             builder.Services.AddDbContext<ShopyDbContext>(options => options.UseSqlServer(
                 builder.Configuration.GetConnectionString("ShopyConnection")));
 
-
             builder.Services.AddAuthorization();
             builder.Services.AddIdentityApiEndpoints<User>(options =>
             {

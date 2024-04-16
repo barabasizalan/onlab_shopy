@@ -99,7 +99,7 @@ function UsersProducts() {
   const handleSaveChanges = async () => {
     if (editedProduct) {
       try {
-        const { id, ...productFormDto } = editedProduct;
+        const { id, categoryId, imageBase64, ...productFormDto } = editedProduct;
         const response = await axios.put(
           `https://localhost:44367/product/update/${id}`,
           productFormDto

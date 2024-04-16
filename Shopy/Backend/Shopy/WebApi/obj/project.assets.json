@@ -4985,11 +4985,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Zalan\\Egyetem\\Shopy\\Shopy\\WebApi\\WebApi.csproj",
+      "projectUniqueName": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\WebApi\\WebApi.csproj",
       "projectName": "WebApi",
-      "projectPath": "C:\\Users\\Zalan\\Egyetem\\Shopy\\Shopy\\WebApi\\WebApi.csproj",
+      "projectPath": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\WebApi\\WebApi.csproj",
       "packagesPath": "C:\\Users\\Zalan\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Zalan\\Egyetem\\Shopy\\Shopy\\WebApi\\obj\\",
+      "outputPath": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\WebApi\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Zalan\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -5006,11 +5006,11 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\Zalan\\Egyetem\\Shopy\\Shopy\\BLL\\BLL.csproj": {
-              "projectPath": "C:\\Users\\Zalan\\Egyetem\\Shopy\\Shopy\\BLL\\BLL.csproj"
+            "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\BLL\\BLL.csproj": {
+              "projectPath": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\BLL\\BLL.csproj"
             },
-            "C:\\Users\\Zalan\\Egyetem\\Shopy\\Shopy\\DAL\\DAL.csproj": {
-              "projectPath": "C:\\Users\\Zalan\\Egyetem\\Shopy\\Shopy\\DAL\\DAL.csproj"
+            "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\DAL\\DAL.csproj": {
+              "projectPath": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\DAL\\DAL.csproj"
             }
           }
         }
