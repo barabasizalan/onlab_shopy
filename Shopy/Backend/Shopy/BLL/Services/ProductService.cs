@@ -119,7 +119,7 @@ namespace BLL.Services
                 Description = productFormDto.Description,
                 Price = productFormDto.Price,
                 Quantity = productFormDto.Quantity,
-                CategoryId = (int)productFormDto.CategoryId,
+                CategoryId = productFormDto.CategoryId,
                 Vat = 19,
                 UserId = userId,
                 ImageId = (await _imageService.CreateImage(productFormDto.Image)).ImageId

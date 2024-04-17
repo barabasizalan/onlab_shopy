@@ -9,5 +9,8 @@ namespace BLL.Entities
     {
         public virtual List<Order> Orders { get; set; }
 
+        public int? AddressId { get; set; }
+        public virtual Address Address { get; set; }
+
     }
 }

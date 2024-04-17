@@ -16,7 +16,7 @@ namespace WebApi.Controllers
 
         [HttpPost]
         [Route("create-order")]
-        public async Task<IActionResult> CreateOrder()
+        public async Task<IActionResult> CreateOrder([FromBody]int paymentMethodId)
         {
             try
             {
@@ -26,7 +26,7 @@ namespace WebApi.Controllers
                     return Unauthorized("User is not authenticated.");
                 }
 
-                var order = await _orderService.CreateOrder(userId);
+                var order = await _orderService.CreateOrder(userId, paymentMethodId);
 
                 return Ok(order);
 

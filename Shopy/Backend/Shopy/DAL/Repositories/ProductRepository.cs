@@ -25,7 +25,12 @@ namespace DAL.Repositories
 
         public async Task<Product> GetProductByIdAsync(int id)
         {
-            return await _context.Products.Where(p => p.Id == id).Include(p => p.Image).FirstOrDefaultAsync();
+            var product = await _context.Products.Where(p => p.Id == id).Include(p => p.Image).FirstOrDefaultAsync();
+            if (product == null)
+            {
+                throw new ArgumentException($"Product with ID {id} not found");
+            }
+            return product;
         }
 
         public async Task<IEnumerable<Product>> GetProductsByCategoryAsync(string category)

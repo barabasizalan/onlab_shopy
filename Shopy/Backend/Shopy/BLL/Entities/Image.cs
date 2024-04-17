@@ -6,6 +6,7 @@ namespace BLL.Entities
     public class Image
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ImageId { get; set; }
         [Required]
         public byte[] ImageData { get; set; }

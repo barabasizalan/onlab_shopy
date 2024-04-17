@@ -60,6 +60,10 @@ namespace WebApi
             builder.Services.AddScoped<IOrderRepository, OrderRepository>();
             builder.Services.AddScoped<IOrderService, OrderService>();
             builder.Services.AddScoped<IStatusRepository, StatusRepository>();
+            builder.Services.AddScoped<IPaymentMethodRepository, PaymentMethodRepository>();
+            builder.Services.AddScoped<IAddressRepository, AddressRepository>();
+            builder.Services.AddScoped<IAddressService, AddressSerivce>();
+            builder.Services.AddScoped<IUserRepository, UserRepository>();
 
             builder.Services.AddCors(options => {
                 options.AddPolicy("AllowReactFrontend",

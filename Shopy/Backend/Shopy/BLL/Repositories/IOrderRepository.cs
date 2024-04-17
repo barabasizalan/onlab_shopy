@@ -10,6 +10,7 @@ namespace BLL.Repositories
     public interface IOrderRepository
     {
         Task AddOrderAsync(Order order);
+
         Task<IEnumerable<Order>> GetOrdersByUserIdAsync(string userId);
     }
 }

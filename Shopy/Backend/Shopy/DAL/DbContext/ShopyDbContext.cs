@@ -1,11 +1,6 @@
 ﻿using BLL.Entities;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DAL.DbContext
 {
@@ -20,6 +15,8 @@ namespace DAL.DbContext
         public DbSet<OrderDetail> OrderDetails { get; set; }
         public DbSet<Image> Images { get; set; }
         public DbSet<Status> Statuses { get; set; }
+        public DbSet<PaymentMethod> PaymentMethods { get; set; }
+        public DbSet<Address> Addresses { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

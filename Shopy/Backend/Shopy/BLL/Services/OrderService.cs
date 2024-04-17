@@ -10,16 +10,18 @@ namespace BLL.Services
         private readonly ICartRepository _cartRepository;
         private readonly IProductRepository _productRepository;
         private readonly IStatusRepository _statusRepository;
+        private readonly IPaymentMethodRepository _paymentMethodRepository;
 
-        public OrderService(IOrderRepository orderRepository, ICartRepository cartRepository, IProductRepository productRepository, IStatusRepository statusRepository)
+        public OrderService(IOrderRepository orderRepository, ICartRepository cartRepository, IProductRepository productRepository, IStatusRepository statusRepository, IPaymentMethodRepository paymentMethodRepository)
         {
             _orderRepository = orderRepository;
             _cartRepository = cartRepository;
             _productRepository = productRepository;
             _statusRepository = statusRepository;
+            _paymentMethodRepository = paymentMethodRepository;
         }
 
-        public async Task<OrderDto> CreateOrder(string userId)
+        public async Task<OrderDto> CreateOrder(string userId, int paymentMethodId)
         {
             var cartItems = await _cartRepository.GetAllCartItemsAsync(userId);
             if (cartItems == null)
@@ -46,7 +48,8 @@ namespace BLL.Services
                 UserId = userId,
                 OrderDate = DateTime.Now,
                 StatusId = 0,
-                OrderDetails = new List<OrderDetail>()
+                OrderDetails = new List<OrderDetail>(),
+                PaymentMethodId = paymentMethodId
             };
 
             Status status = await _statusRepository.GetStatusByNameAsync("Ordered");
@@ -88,6 +91,13 @@ namespace BLL.Services
 
         private OrderDto MapOrderToDto(Order order)
         {
+            var paymentMethod = _paymentMethodRepository.GetPaymentMethodByIdAsync(order.PaymentMethodId).Result;
+
+            if(paymentMethod == null)
+            {
+                throw new Exception("Payment method not found.");
+            }
+
             return new OrderDto
             {
                 Id = order.Id,
@@ -100,7 +110,12 @@ namespace BLL.Services
                     ProductId = od.ProductId,
                     Quantity = od.Quantity,
                     PurchasePrice = od.PurchasePrice
-                }).ToList()
+                }).ToList(),
+                PaymentMethod = new PaymentMethodDto
+                {
+                    Id = paymentMethod.Id,
+                    Method = paymentMethod.Method
+                }
             };
         }
 
