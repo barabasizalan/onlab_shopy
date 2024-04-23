@@ -1,10 +1,12 @@
 // AuthContext.tsx
 import React, { createContext, useContext, useState, ReactNode, useEffect } from 'react';
+import API_URLS from '../apiConfig';
+import axios from 'axios';
 
 interface AuthContextType {
   isLoggedIn: boolean;
   login: () => void;
-  logout: () => void;
+  logout: () => Promise<boolean>;
   setUserId: (userId: string | null) => void;
 }
 
@@ -40,10 +42,20 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     setIsLoggedIn(true);
   };
 
-  const logout = () => {
-    document.cookie = '.AspNetCore.Identity.Application=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
-  
-    setIsLoggedIn(false);
+  const logout = async (): Promise<boolean> => {
+    try {
+      const response = await axios.post(API_URLS.logout);
+      if (response.status === 200) {
+        setIsLoggedIn(false);
+        return true;
+      }
+      console.error('Error logging out:', response);
+      return false;
+    } catch (error) {
+      console.error('Error logging out:', error);
+      return false;
+    }
+    
   };
 
   const updateUserId = (id: string | null) => {

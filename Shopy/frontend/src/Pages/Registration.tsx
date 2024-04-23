@@ -21,6 +21,7 @@ import { Link as ChakraLink } from '@chakra-ui/react'
 
 import { MdOutlineAlternateEmail } from "react-icons/md";
 import axios from "axios";
+import API_URLS from "../apiConfig";
 
 const CFaUserAlt = chakra(FaUserAlt);
 const CFaLock = chakra(FaLock);
@@ -42,7 +43,7 @@ const Registration = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post('https://localhost:44367/account/register', {
+      const response = await axios.post(API_URLS.register, {
         username: username,
         email: email,
         password: password,

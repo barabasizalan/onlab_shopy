@@ -6,7 +6,7 @@ namespace BLL.Services
     public interface IProductService
     {
         Task<PagedProductDto> GetProducts(int? page, int? pageSize);
-        Task<IEnumerable<Product>> GetProductsByCategory(string category);
+        Task<IEnumerable<Product>> GetProductsByCategory(int categoryId);
         Task<IEnumerable<ProductDto>> GetProductsByUserId(string userId);
         Task<PagedProductDto> SearchProducts(string queryString, int? page, int? pageSize);
         Task PublishProduct(ProductFormDto productFromDto, string userId);

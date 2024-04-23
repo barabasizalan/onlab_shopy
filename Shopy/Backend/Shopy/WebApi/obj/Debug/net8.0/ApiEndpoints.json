@@ -157,22 +157,6 @@
     ]
   },
   {
-    "ContainingType": "WebApi.Controllers.OrderController",
-    "Method": "CreateOrder",
-    "RelativePath": "create-order",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "paymentMethodId",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
     "ContainingType": "Microsoft.AspNetCore.Routing.IdentityApiEndpointRouteBuilderExtensions\u002B\u003C\u003Ec__DisplayClass1_0\u00601[[BLL.Entities.User, BLL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
     "Method": "\u003CMapIdentityApi\u003Eb__6",
     "RelativePath": "forgotPassword",
@@ -354,6 +338,42 @@
     ]
   },
   {
+    "ContainingType": "WebApi.Controllers.OrderController",
+    "Method": "CreateOrder",
+    "RelativePath": "Order/create-order",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "paymentMethodId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApi.Controllers.OrderController",
+    "Method": "GetOrdersByUserId",
+    "RelativePath": "Order/user/orders",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[BLL.DTO.OrderDto, BLL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "WebApi.Controllers.ProductController",
     "Method": "GetProducts",
     "RelativePath": "Product/all",
@@ -387,19 +407,14 @@
   {
     "ContainingType": "WebApi.Controllers.ProductController",
     "Method": "GetProductsByCategory",
-    "RelativePath": "Product/category={category}",
+    "RelativePath": "Product/category/{categoryId}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "category",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "category",
-        "Type": "",
+        "Name": "categoryId",
+        "Type": "System.Int32",
         "IsRequired": true
       }
     ],
@@ -433,8 +448,24 @@
   },
   {
     "ContainingType": "WebApi.Controllers.ProductController",
+    "Method": "PublishProduct",
+    "RelativePath": "Product/publish",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "productFormDto",
+        "Type": "BLL.DTO.ProductFormDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApi.Controllers.ProductController",
     "Method": "SearchProduct",
-    "RelativePath": "Product/name={queryString}",
+    "RelativePath": "Product/search",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -442,7 +473,7 @@
       {
         "Name": "queryString",
         "Type": "System.String",
-        "IsRequired": true
+        "IsRequired": false
       },
       {
         "Name": "page",
@@ -466,22 +497,6 @@
         "StatusCode": 200
       }
     ]
-  },
-  {
-    "ContainingType": "WebApi.Controllers.ProductController",
-    "Method": "PublishProduct",
-    "RelativePath": "Product/publish",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "productFormDto",
-        "Type": "BLL.DTO.ProductFormDto",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
   },
   {
     "ContainingType": "WebApi.Controllers.ProductController",
@@ -625,26 +640,6 @@
           "application/problem\u002Bjson"
         ],
         "StatusCode": 400
-      }
-    ]
-  },
-  {
-    "ContainingType": "WebApi.Controllers.OrderController",
-    "Method": "GetOrdersByUserId",
-    "RelativePath": "user/orders",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": [
-      {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[BLL.DTO.OrderDto, BLL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
       }
     ]
   }

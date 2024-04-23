@@ -15,6 +15,7 @@ import Navbar from "../components/Navbar";
 import { Category } from "../Models/Category";
 import axios from "axios";
 import { useNavigate } from "react-router";
+import API_URLS from "../apiConfig";
 
 function Sell() {
   const [image, setImage] = useState<string>(
@@ -42,7 +43,7 @@ function Sell() {
   const fetchCategories = async () => {
     try {
       const response = await axios.get<Category[]>(
-        "https://localhost:44367/Category/all"
+        API_URLS.getCategories
       );
       setCategories(response.data);
     } catch (error) {
@@ -91,7 +92,7 @@ function Sell() {
       image: image,
     };
     try {
-      const response = await axios.post('https://localhost:44367/product/publish', formData);
+      const response = await axios.post(API_URLS.publishProduct, formData);
       if(response.status === 200) {
         toast({
           title: "Product published successfully!",

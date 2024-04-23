@@ -21,6 +21,7 @@ import {
   Input,
   Textarea,
 } from "@chakra-ui/react";
+import API_URLS from "../apiConfig";
 
 function UsersProducts() {
   const [products, setProducts] = useState<Product[]>([]);
@@ -42,7 +43,7 @@ function UsersProducts() {
   const fetchProducts = async () => {
     try {
       const response = await axios.get<Product[]>(
-        "https://localhost:44367/product/user/all"
+        API_URLS.getUserProducts
       );
       setProducts(response.data);
     } catch (error) {
@@ -58,7 +59,7 @@ function UsersProducts() {
   const deleteProduct = async (productId: number) => {
     try {
       const response = await axios.delete(
-        `https://localhost:44367/product/delete/${productId}`
+        API_URLS.deleteProduct(productId)
       );
       if (response.status === 200) {
         setProducts((prevProducts) =>
@@ -101,7 +102,7 @@ function UsersProducts() {
       try {
         const { id, categoryId, imageBase64, ...productFormDto } = editedProduct;
         const response = await axios.put(
-          `https://localhost:44367/product/update/${id}`,
+          API_URLS.updateProduct(editedProduct.id),
           productFormDto
         );
         if (response.status === 200) {

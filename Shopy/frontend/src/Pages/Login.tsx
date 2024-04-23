@@ -12,13 +12,14 @@ import {
   Avatar,
   FormControl,
   InputRightElement,
-  useToast
+  useToast,
+  Link as ChakraLink,
 } from "@chakra-ui/react";
 import { FaUserAlt, FaLock } from "react-icons/fa";
-import { Link as ReactRouterLink, useNavigate } from 'react-router-dom'
-import { Link as ChakraLink } from '@chakra-ui/react'
+import { Link as ReactRouterLink, useNavigate } from 'react-router-dom';
 import axios from "axios";
 import { useAuth } from "../Contexts/AuthContext";
+import API_URLS from "../apiConfig";
 
 <ChakraLink as={ReactRouterLink} to='/home'>
   Home
@@ -41,7 +42,7 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post('https://localhost:44367/login?useSessionCookies=true', {
+      const response = await axios.post(API_URLS.login, {
         email: email,
         password: password,
         twoFactorCode: "",

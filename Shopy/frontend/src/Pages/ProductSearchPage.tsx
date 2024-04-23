@@ -19,6 +19,7 @@ import {
 } from "@chakra-ui/react";
 import { grey } from "@mui/material/colors";
 import { useNavigate } from "react-router";
+import API_URLS from "../apiConfig";
 
 function ProductSearchPage() {
   const [products, setProducts] = useState<Product[]>([]);
@@ -40,9 +41,9 @@ function ProductSearchPage() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        let url = `https://localhost:44367/Product/all?page=${page}&pageSize=${pageSize}`;
+        let url = API_URLS.getAllProducts(page, pageSize);
         if (query) {
-          url = `https://localhost:44367/Product/name=${query}?page=${page}&pageSize=${pageSize}`;
+          url = API_URLS.searchProducts(query, page, pageSize);
         }
         const response = await axios.get<any>(url);
         setProducts(response.data.products);
@@ -168,15 +169,19 @@ function ProductSearchPage() {
           </SimpleGrid>
           {totalResults > 0 && totalPages > 1 && (
             <Flex justify="center" mt={4}>
-              <Button disabled={page === 1} onClick={handlePrevPage}>
-                Previous Page
-              </Button>
+              {page > 1 && (
+                <Button disabled={page === 1} onClick={handlePrevPage}>
+                 Previous Page
+                </Button>
+              )}
               <Text m={2}>
                 Page {page} of {totalPages}
               </Text>
-              <Button disabled={page === totalPages} onClick={handleNextPage}>
-                Next Page
-              </Button>
+              {page < totalPages && (
+                <Button disabled={page === totalPages} onClick={handleNextPage}>
+                  Next Page
+                </Button>
+              )}
             </Flex>
           )}
           {totalResults > 0 && totalPages === 1 && (

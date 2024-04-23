@@ -52,9 +52,9 @@ namespace BLL.Services
             };
         }
 
-        public async Task<IEnumerable<Product>> GetProductsByCategory(string category)
+        public async Task<IEnumerable<Product>> GetProductsByCategory(int categoryId)
         {
-            return await _productRepository.GetProductsByCategoryAsync(category);
+            return await _productRepository.GetProductsByCategoryAsync(categoryId);
         }
 
         public async Task<PagedProductDto> SearchProducts(string queryString, int? page, int? pageSize)

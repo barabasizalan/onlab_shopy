@@ -5,6 +5,8 @@ using System.Security.Claims;
 
 namespace WebApi.Controllers
 {
+    [Route("[controller]")]
+    [ApiController]
     public class OrderController : ControllerBase
     {
         private readonly IOrderService _orderService;

@@ -57,8 +57,8 @@ namespace WebApi.Controllers
         }
 
         [HttpGet]
-        [Route("name={queryString}")]
-        public async Task<ActionResult<PagedProductDto>> SearchProduct(string queryString, [FromQuery] int? page, [FromQuery] int? pageSize)
+        [Route("search")]
+        public async Task<ActionResult<PagedProductDto>> SearchProduct([FromQuery] string queryString, [FromQuery] int? page, [FromQuery] int? pageSize)
         {
             if (string.IsNullOrEmpty(queryString))
             {
@@ -76,12 +76,12 @@ namespace WebApi.Controllers
         }
 
         [HttpGet]
-        [Route("category={category}")]
-        public async Task<ActionResult<IEnumerable<Product>>> GetProductsByCategory([FromQuery] string category)
+        [Route("category/{categoryId}")]
+        public async Task<ActionResult<IEnumerable<Product>>> GetProductsByCategory(int categoryId)
         {
             try
             {
-                var products = await _productService.GetProductsByCategory(category);
+                var products = await _productService.GetProductsByCategory(categoryId);
                 return Ok(products);
             }
             catch (Exception ex)

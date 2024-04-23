@@ -20,6 +20,6 @@ namespace BLL.Entities
         [ForeignKey("Image")]
         public int ImageId { get; set; }
         public Image Image { get; set; }
-        public virtual Category Category { get; set; }
+        public Category Category { get; set; }
     }
 }

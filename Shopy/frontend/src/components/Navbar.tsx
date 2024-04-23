@@ -10,6 +10,7 @@ import { useSearchContext } from '../Contexts/SearchContext';
 import { useEffect, useState } from 'react';
 import { Category } from '../Models/Category';
 import { CartItem } from '../Models/CartItem';
+import API_URLS from '../apiConfig';
 
 function Navbar() {
   const { isLoggedIn, logout } = useAuth();
@@ -28,7 +29,7 @@ function Navbar() {
 
   const fetchCategories = async () => {
     try {
-      const response = await axios.get<Category[]>('https://localhost:44367/category/all');
+      const response = await axios.get<Category[]>(API_URLS.getCategories);
       setCategories(response.data);
     } catch (error) {
       console.error('Error fetching categories:', error);
@@ -37,7 +38,7 @@ function Navbar() {
 
   const fetchCartItems = async () => {
     try {
-      const response = await axios.get<CartItem[]>('https://localhost:44367/cart/all');
+      const response = await axios.get<CartItem[]>(API_URLS.getAllCartItems);
       setCartItems(response.data);
     } catch (error) {
       console.error('Error fetching cart items:', error);
@@ -64,9 +65,9 @@ function Navbar() {
 
   const handleLogout = async () => {
     try {
-      const response = await axios.post('https://localhost:44367/logout');
+      const successfulLogout = await logout();
 
-      if (response.status === 200) {
+      if (successfulLogout) {
         logout();
         toast({
           title: "Logout successful!",
