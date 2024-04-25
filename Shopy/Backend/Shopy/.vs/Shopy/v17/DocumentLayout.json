@@ -254,8 +254,12 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{0174dea2-fdbe-4ef1-8f99-c0beae78880f}"
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -279,8 +283,7 @@
               "RelativeToolTip": "WebApi\\Controllers\\OrderController.cs",
               "ViewState": "AQIAAAYAAAAAAAAAAAAAABQAAABcAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-17T07:01:37.359Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-17T07:01:37.359Z"
             },
             {
               "$type": "Document",
@@ -292,8 +295,7 @@
               "RelativeToolTip": "BLL\\Services\\IProductService.cs",
               "ViewState": "AQIAAAEAAAAAAAAAAAAiwA8AAAAYAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-16T16:13:01.235Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-16T16:13:01.235Z"
             },
             {
               "$type": "Document",
@@ -305,8 +307,7 @@
               "RelativeToolTip": "BLL\\Services\\ProductService.cs",
               "ViewState": "AQIAAGYAAAAAAAAAAAAjwHEAAAA3AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-16T16:13:07.624Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-16T16:13:07.624Z"
             },
             {
               "$type": "Document",
@@ -318,8 +319,7 @@
               "RelativeToolTip": "BLL\\Repositories\\IProductRepository.cs",
               "ViewState": "AQIAAAIAAAAAAAAAAAAiwBAAAAApAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-23T18:36:19.784Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-23T18:36:19.784Z"
             },
             {
               "$type": "Document",
@@ -331,8 +331,7 @@
               "RelativeToolTip": "DAL\\Repositories\\ProductRepository.cs",
               "ViewState": "AQIAAA0AAAAAAAAAAAAmwBkAAAA2AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-16T16:15:12.511Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-16T16:15:12.511Z"
             },
             {
               "$type": "Document",
