@@ -159,5 +159,24 @@ namespace BLL.Services
             await _productRepository.DeleteProductAsync(product);
 
         }
+
+        public async Task<ProductDto> GetProductsById(int productId)
+        {
+            var product = await _productRepository.GetProductByIdAsync(productId);
+            if(product == null)
+            {
+                throw new Exception("Product not found.");
+            }
+            return new ProductDto
+            {
+                Id = product.Id,
+                Name = product.Name,
+                Description = product.Description,
+                Price = product.Price,
+                Quantity = product.Quantity,
+                CategoryId = product.CategoryId,
+                ImageBase64 = Convert.ToBase64String(product.Image.ImageData)
+            };
+        }
     }
 }

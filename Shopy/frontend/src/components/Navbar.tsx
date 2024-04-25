@@ -1,16 +1,16 @@
-import { Image, Flex, Button, HStack, chakra, Menu, MenuButton, MenuList, MenuItem, Divider, Text, Box, useToast, Icon, Drawer, DrawerHeader, DrawerOverlay, DrawerBody, DrawerContent } from '@chakra-ui/react';
+import { Image, Flex, Button, HStack, chakra, Menu, MenuButton, MenuList, MenuItem, Divider, Text, Box, useToast, Icon } from '@chakra-ui/react';
 import { MdShoppingCart } from 'react-icons/md';
 import SearchBar from './SearchBar';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../Contexts/AuthContext';
 import '../Components.css';
 import { grey } from '@mui/material/colors';
-import axios from 'axios';
 import { useSearchContext } from '../Contexts/SearchContext';
 import { useEffect, useState } from 'react';
 import { Category } from '../Models/Category';
 import { CartItem } from '../Models/CartItem';
-import API_URLS from '../apiConfig';
+import CartDrawer from './CartDrawer';
+import { fetchCartItemsAsync, fetchCategoriesAsync } from '../service/apiService';
 
 function Navbar() {
   const { isLoggedIn, logout } = useAuth();
@@ -21,25 +21,25 @@ function Navbar() {
   const [cartDrawerOpen, setCartDrawerOpen] = useState(false);
 
   useEffect(() => {
-    fetchCategories();
+    fetchCategory();
     if(isLoggedIn) {
-      fetchCartItems();
+      fetchCart();
     }
-  }, []);
+  }, [categories, isLoggedIn]);
 
-  const fetchCategories = async () => {
+  const fetchCategory = async () => {
     try {
-      const response = await axios.get<Category[]>(API_URLS.getCategories);
-      setCategories(response.data);
+      const data = await fetchCategoriesAsync();
+      setCategories(data);
     } catch (error) {
       console.error('Error fetching categories:', error);
     }
   };
 
-  const fetchCartItems = async () => {
+  const fetchCart = async () => {
     try {
-      const response = await axios.get<CartItem[]>(API_URLS.getAllCartItems);
-      setCartItems(response.data);
+      const data = await fetchCartItemsAsync();
+      setCartItems(data);
     } catch (error) {
       console.error('Error fetching cart items:', error);
     }
@@ -103,6 +103,10 @@ function Navbar() {
     } else {
       setCartDrawerOpen(true);
     }
+  };
+
+  const toggleCartDrawer = () => {
+    setCartDrawerOpen(!cartDrawerOpen);
   };
 
   return (
@@ -184,22 +188,7 @@ function Navbar() {
         </Menu>
         <Button pr={10}  variant="ghost">Popular products</Button>
       </Flex>
-      <Drawer
-        isOpen={cartDrawerOpen}
-        placement="right"
-        onClose={() => setCartDrawerOpen(false)}
-      >
-        <DrawerOverlay />
-        <DrawerContent >
-          <DrawerHeader>Your Cart</DrawerHeader>
-          <DrawerBody >
-            {/* Display cart items here */}
-            {cartItems.map(item => (
-              <Box key={item.id}>Product id: {item.productId}, quantity: {item.quantity}</Box>
-            ))}
-          </DrawerBody>
-        </DrawerContent>
-      </Drawer>
+      <CartDrawer isOpen={cartDrawerOpen} onClose={toggleCartDrawer} cartItems={cartItems}/>
     </chakra.header>
   )
 }

@@ -1,6 +1,6 @@
 // AuthContext.tsx
 import React, { createContext, useContext, useState, ReactNode, useEffect } from 'react';
-import API_URLS from '../apiConfig';
+import API_URLS from '../service/apiConfig';
 import axios from 'axios';
 
 interface AuthContextType {

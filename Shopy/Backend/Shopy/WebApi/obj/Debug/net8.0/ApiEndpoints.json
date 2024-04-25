@@ -346,8 +346,8 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "paymentMethodId",
-        "Type": "System.Int32",
+        "Name": "createOrderDto",
+        "Type": "BLL.DTO.CreateOrderDto",
         "IsRequired": true
       }
     ],
@@ -364,6 +364,32 @@
     "ReturnTypes": [
       {
         "Type": "System.Collections.Generic.IEnumerable\u00601[[BLL.DTO.OrderDto, BLL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "WebApi.Controllers.ProductController",
+    "Method": "GetProductById",
+    "RelativePath": "Product/{productId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "productId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "BLL.DTO.ProductDto",
         "MediaTypes": [
           "text/plain",
           "application/json",

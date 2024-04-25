@@ -19,7 +19,7 @@ import { FaUserAlt, FaLock } from "react-icons/fa";
 import { Link as ReactRouterLink, useNavigate } from 'react-router-dom';
 import axios from "axios";
 import { useAuth } from "../Contexts/AuthContext";
-import API_URLS from "../apiConfig";
+import API_URLS from "../service/apiConfig";
 
 <ChakraLink as={ReactRouterLink} to='/home'>
   Home

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import { Product } from "../Models/Product";
 import { useSearchContext } from "../Contexts/SearchContext";
@@ -19,7 +19,7 @@ import {
 } from "@chakra-ui/react";
 import { grey } from "@mui/material/colors";
 import { useNavigate } from "react-router";
-import API_URLS from "../apiConfig";
+import API_URLS from "../service/apiConfig";
 
 function ProductSearchPage() {
   const [products, setProducts] = useState<Product[]>([]);
@@ -33,6 +33,7 @@ function ProductSearchPage() {
 
   const { query } = useSearchContext();
   const navigate = useNavigate();
+  const productListRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setPage(1);
@@ -49,6 +50,10 @@ function ProductSearchPage() {
         setProducts(response.data.products);
         setTotalResults(response.data.totalCount);
         setTotalPages(Math.ceil(response.data.totalCount / pageSize));
+        //scroll to top of the product list
+        if (productListRef.current) {
+          productListRef.current.scrollIntoView({ behavior: "smooth" });
+        }
       } catch (error) {
         console.error("Error fetching products:", error);
       }
@@ -74,8 +79,8 @@ function ProductSearchPage() {
   };
 
   const handleCardClick = (product: Product) => {
-    const productJson = encodeURIComponent(JSON.stringify(product));
-    navigate(`/product/${product.id}?product=${productJson}`);
+    const productIdJson = encodeURIComponent(JSON.stringify(product.id));
+    navigate(`/product/${productIdJson}`);
   };
 
   const handlePageSizeChange = (
@@ -85,14 +90,14 @@ function ProductSearchPage() {
   };
 
   const handleNextPage = () => {
-    if(page < totalPages) {
-        setPage(page + 1);
+    if (page < totalPages) {
+      setPage(page + 1);
     }
   };
 
   const handlePrevPage = () => {
     if (page > 1) {
-        setPage(page - 1);
+      setPage(page - 1);
     }
   };
 
@@ -134,7 +139,7 @@ function ProductSearchPage() {
             </SliderTrack>
             <SliderThumb boxSize={6} />
           </Slider>
-          
+
           <FormLabel>Results per page:</FormLabel>
           <Select value={pageSize} onChange={handlePageSizeChange}>
             <option value={10}>10</option>
@@ -157,21 +162,23 @@ function ProductSearchPage() {
               <option value="price-descending">Price Descending</option>
             </Select>
           </Flex>
-          <SimpleGrid columns={1} spacing={4}>
-            {products.map((product) => (
-              <Box key={product.id}>
-                <ProductCard
-                  product={product}
-                  onClick={() => handleCardClick(product)}
-                />
-              </Box>
-            ))}
-          </SimpleGrid>
+          <Box ref={productListRef}>
+            <SimpleGrid columns={1} spacing={4}>
+              {products.map((product) => (
+                <Box key={product.id}>
+                  <ProductCard
+                    product={product}
+                    onClick={() => handleCardClick(product)}
+                  />
+                </Box>
+              ))}
+            </SimpleGrid>
+          </Box>
           {totalResults > 0 && totalPages > 1 && (
             <Flex justify="center" mt={4}>
               {page > 1 && (
                 <Button disabled={page === 1} onClick={handlePrevPage}>
-                 Previous Page
+                  Previous Page
                 </Button>
               )}
               <Text m={2}>
@@ -186,7 +193,9 @@ function ProductSearchPage() {
           )}
           {totalResults > 0 && totalPages === 1 && (
             <Flex justify="center" mt={4}>
-              <Text>Page {page} of {totalPages}</Text>
+              <Text>
+                Page {page} of {totalPages}
+              </Text>
             </Flex>
           )}
         </Box>

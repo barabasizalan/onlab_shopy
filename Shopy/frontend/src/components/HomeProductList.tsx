@@ -12,8 +12,8 @@ const HomeProductList: React.FC<ProductListProps> = ({ products }) => {
   const navigate = useNavigate();
 
   const handleCardClick = (product: Product) => {
-    const productJson = encodeURIComponent(JSON.stringify(product));
-    navigate(`/product/${product.id}?product=${productJson}`);
+    const productIdJson = encodeURIComponent(JSON.stringify(product.id));
+    navigate(`/product/${productIdJson}`);
   }
 
   return (

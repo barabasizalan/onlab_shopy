@@ -21,7 +21,7 @@ import { Link as ChakraLink } from '@chakra-ui/react'
 
 import { MdOutlineAlternateEmail } from "react-icons/md";
 import axios from "axios";
-import API_URLS from "../apiConfig";
+import API_URLS from "../service/apiConfig";
 
 const CFaUserAlt = chakra(FaUserAlt);
 const CFaLock = chakra(FaLock);

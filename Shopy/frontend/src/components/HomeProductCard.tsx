@@ -10,8 +10,6 @@ interface CardProps {
 
 const HomeProductCard: React.FC<CardProps> = ({ imageBase64, name, price, onClick, margin: mx }) => {
 
-  const decodedImage = atob(imageBase64);
-
   return (
     <Box
       maxW="sm"
@@ -28,7 +26,7 @@ const HomeProductCard: React.FC<CardProps> = ({ imageBase64, name, price, onClic
       flexDirection="column"
     >
       <Box m="6" height="70%" borderRadius="lg" overflow="hidden" display="flex" justifyContent="center" alignItems="center"> 
-        <Image src={decodedImage} alt={name} objectFit="scale-down" objectPosition="center" height="100%" width="100%" />
+        <Image src={atob(imageBase64)} alt={name} objectFit="scale-down" objectPosition="center" height="100%" width="100%" />
       </Box>
       <Box p="6" height="30%">
         <Text color="gray.500" fontWeight="semibold" overflow="hidden" whiteSpace="nowrap" textOverflow="ellipsis">

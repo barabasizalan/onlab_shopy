@@ -1,4 +1,3 @@
-import axios from "axios";
 import Navbar from "../components/Navbar";
 import { useEffect, useRef, useState } from "react";
 import { Product } from "../Models/Product";
@@ -21,7 +20,11 @@ import {
   Input,
   Textarea,
 } from "@chakra-ui/react";
-import API_URLS from "../apiConfig";
+import {
+  deleteProductAsync,
+  fetchUserProductsAsync,
+  saveProductChangesAsync,
+} from "../service/apiService";
 
 function UsersProducts() {
   const [products, setProducts] = useState<Product[]>([]);
@@ -42,10 +45,8 @@ function UsersProducts() {
 
   const fetchProducts = async () => {
     try {
-      const response = await axios.get<Product[]>(
-        API_URLS.getUserProducts
-      );
-      setProducts(response.data);
+      const data = await fetchUserProductsAsync();
+      setProducts(data);
     } catch (error) {
       console.error("Error fetching products:", error);
     }
@@ -58,32 +59,26 @@ function UsersProducts() {
 
   const deleteProduct = async (productId: number) => {
     try {
-      const response = await axios.delete(
-        API_URLS.deleteProduct(productId)
+      await deleteProductAsync(productId);
+      setProducts((prevProducts) =>
+        prevProducts.filter((product) => product.id !== productId)
       );
-      if (response.status === 200) {
-        setProducts((prevProducts) =>
-          prevProducts.filter((product) => product.id !== productId)
-        );
-        toast({
-          title: "Product deleted successfully!",
-          status: "success",
-          duration: 3000,
-          isClosable: true,
-          position: "top",
-        });
-      } else {
-        console.error("Error deleting product:", response);
-        toast({
-          title: "Product deletion failed!",
-          status: "error",
-          duration: 3000,
-          isClosable: true,
-          position: "top",
-        });
-      }
+      toast({
+        title: "Product deleted successfully!",
+        status: "success",
+        duration: 3000,
+        isClosable: true,
+        position: "top",
+      });
     } catch (error) {
       console.error("Error deleting product:", error);
+      toast({
+        title: "Product deletion failed!",
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+        position: "top",
+      });
     }
   };
 
@@ -100,38 +95,29 @@ function UsersProducts() {
   const handleSaveChanges = async () => {
     if (editedProduct) {
       try {
-        const { id, categoryId, imageBase64, ...productFormDto } = editedProduct;
-        const response = await axios.put(
-          API_URLS.updateProduct(editedProduct.id),
-          productFormDto
-        );
-        if (response.status === 200) {
-          fetchProducts();
-          toast({
-            title: "Product updated successfully!",
-            status: "success",
-            duration: 3000,
-            isClosable: true,
-            position: "top",
-          });
-          setIsEditModalOpen(false);
-          setEditedProduct(null);
-        } else {
-          console.error("Error updating product:", response);
-          toast({
-            title: "Product update failed!",
-            status: "error",
-            duration: 3000,
-            isClosable: true,
-            position: "top",
-          });
-        }
+        await saveProductChangesAsync(editedProduct);
+        fetchProducts();
+        toast({
+          title: "Product updated successfully!",
+          status: "success",
+          duration: 3000,
+          isClosable: true,
+          position: "top",
+        });
+        setIsEditModalOpen(false);
+        setEditedProduct(null);
       } catch (error) {
         console.error("Error updating product:", error);
+        toast({
+          title: "Product update failed!",
+          status: "error",
+          duration: 3000,
+          isClosable: true,
+          position: "top",
+        });
       }
     }
   };
-  
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -154,12 +140,29 @@ function UsersProducts() {
       <Divider bg="black" h="1px" ml={24} mb={5} mr={24} />
       {products.map((product) => (
         <Center key={product.id}>
-          <Box w="80%" borderWidth="1px" borderRadius="lg" overflow="hidden" m="2" p="2" bg="gray.200">
+          <Box
+            w="80%"
+            borderWidth="1px"
+            borderRadius="lg"
+            overflow="hidden"
+            m="2"
+            p="2"
+            bg="gray.200"
+          >
             <Flex justify="space-between" align="center">
-              <Heading as="h2" size="md">{product.name}</Heading>
+              <Heading as="h2" size="md">
+                {product.name}
+              </Heading>
               <Flex>
-                <EditIcon cursor="pointer" mr="4" onClick={() => handleEdit(product)} />
-                <DeleteIcon cursor="pointer" onClick={() => handleDelete(product.id)} />
+                <EditIcon
+                  cursor="pointer"
+                  mr="4"
+                  onClick={() => handleEdit(product)}
+                />
+                <DeleteIcon
+                  cursor="pointer"
+                  onClick={() => handleDelete(product.id)}
+                />
               </Flex>
             </Flex>
             <Text>Price: ${product.price}</Text>
@@ -185,13 +188,19 @@ function UsersProducts() {
             </AlertDialogBody>
 
             <AlertDialogFooter>
-              <Button onClick={() => setIsDeleteDialogOpen(false)}>Cancel</Button>
-              <Button colorScheme="red" onClick={() => {
-                if (productIdToDelete !== null) {
-                  deleteProduct(productIdToDelete);
-                  setIsDeleteDialogOpen(false);
-                }
-              }} ml={3}>
+              <Button onClick={() => setIsDeleteDialogOpen(false)}>
+                Cancel
+              </Button>
+              <Button
+                colorScheme="red"
+                onClick={() => {
+                  if (productIdToDelete !== null) {
+                    deleteProduct(productIdToDelete);
+                    setIsDeleteDialogOpen(false);
+                  }
+                }}
+                ml={3}
+              >
                 Delete
               </Button>
             </AlertDialogFooter>

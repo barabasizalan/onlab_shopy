@@ -34,6 +34,20 @@ namespace WebApi.Controllers
         }
 
         [HttpGet]
+        [Route("{productId}")]
+        public async Task<ActionResult<ProductDto>> GetProductById(int productId)
+        {
+            try
+            {
+                var product = await _productService.GetProductsById(productId);
+                return Ok(product);
+            } catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
+        }
+
+        [HttpGet]
         [Route("user/all")]
         public async Task<ActionResult<IEnumerable<ProductDto>>> GetProductsByUserId()
         {

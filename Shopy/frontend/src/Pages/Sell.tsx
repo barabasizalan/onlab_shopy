@@ -15,7 +15,7 @@ import Navbar from "../components/Navbar";
 import { Category } from "../Models/Category";
 import axios from "axios";
 import { useNavigate } from "react-router";
-import API_URLS from "../apiConfig";
+import API_URLS from "../service/apiConfig";
 
 function Sell() {
   const [image, setImage] = useState<string>(

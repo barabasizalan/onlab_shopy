@@ -13,5 +13,6 @@ namespace BLL.Services
         Task DeleteProduct(int productId);
 
         Task UpdateProduct(int productId, ProductFormDto productFormDto, string userId);
+        Task<ProductDto> GetProductsById(int productId);
     }
 }

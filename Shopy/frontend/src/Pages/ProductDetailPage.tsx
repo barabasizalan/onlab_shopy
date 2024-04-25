@@ -1,29 +1,53 @@
 import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { Product } from "../Models/Product";
-import { Box, Button, Flex, Image, Text } from "@chakra-ui/react";
+import { Box, Button, Flex, Image, Text, useToast } from "@chakra-ui/react";
 import Navbar from "../components/Navbar";
+import { addToCartAsync, getProductById } from "../service/apiService";
 
 interface ProductDetailPageProps {}
 
 const ProductDetailPage: React.FC<ProductDetailPageProps> = () => {
-  const location = useLocation();
-  const [product, setProduct] = useState<Product | null>(null);
-
+  const { productId } = useParams<{ productId: string }>();
+  const [ product, setProduct] = useState<Product | null>(null);
+  const toast = useToast();
   
 
   useEffect(() => {
-    const searchParams = new URLSearchParams(location.search);
-    const productJson = searchParams.get("product");
-    if (productJson) {
-      const decodedProductJson = decodeURIComponent(productJson);
-      const parsedProduct = JSON.parse(decodedProductJson);
-      setProduct(parsedProduct);
-    }
-  }, [location.search]);
+    const fetchProduct = async () => {
+      try {
+        const data = await getProductById(Number(productId));
+        console.log('A termek:' + data);
+        setProduct(data);
+      } catch (error) {
+        console.error("Error fetching product:", error);
+      }
+    };
+    fetchProduct();
+  }, [productId]);
 
   if (!product) {
     return <div>Loading...</div>;
+  }
+
+  const addToCart = async () => {
+    try {
+      await addToCartAsync(product.id, product.quantity);
+      toast({
+        title: "Product added to cart!",
+        status: "success",
+        duration: 3000,
+        isClosable: true,
+      });
+    } catch(error) {
+      console.error("Error adding to cart:", error);
+      toast({
+        title: "Error adding to cart!",
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+      });
+    }
   }
 
   return (
@@ -50,7 +74,7 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = () => {
             <Text fontSize="lg" mb={4}>
               Description: {product.description}
             </Text>
-            <Button colorScheme="blue" size="lg">
+            <Button colorScheme="blue" size="lg" onClick={addToCart}>
               Add to Cart
             </Button>
           </Box>

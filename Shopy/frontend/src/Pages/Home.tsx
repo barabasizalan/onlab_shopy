@@ -4,7 +4,7 @@ import HomeProductList from '../components/HomeProductList';
 import { Product } from '../Models/Product';
 import { Welcome } from '../components/Welcome';
 import axios from 'axios';
-import API_URLS from '../apiConfig';
+import API_URLS from '../service/apiConfig';
 
 axios.defaults.withCredentials = true;
 
@@ -19,7 +19,6 @@ const Home: React.FC = () => {
     try {
       const response = await axios.get(API_URLS.getAllProducts(1, 8));
       setProducts(response.data.products);
-      console.log("!!!!:" + products[0].name + ' ' + products[0].price + ' ' + products[0].description + ' ' + products[0].quantity + ' ' + products[0].categoryId + ' ' + products[0].imageBase64 + ' ' + products[0].id)
     } catch (error) {
       console.error('Error fetching products:', error);
     }

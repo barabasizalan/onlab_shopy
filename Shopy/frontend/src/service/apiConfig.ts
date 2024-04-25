@@ -4,19 +4,14 @@ interface ApiEndpoints {
   login: string;
   logout: string;
   register: string;
-
   createAddress: string;
-
   getAllCartItems: string;
   addProductToCart: string;
   removeProductFromCart: (cartItemId: number) => string;
   updateCartItem: (cartItemId: number) => string;
-
   getCategories: string;
-
   createOrder: string;
   getUsersOrders: string;
-
   getAllProducts: (page?: number, pageSize?: number) => string;
   getUserProducts: string;
   publishProduct: string;
@@ -24,6 +19,7 @@ interface ApiEndpoints {
   updateProduct: (productId: number) => string;
   searchProducts: (query?: string, page?: number, pageSize?: number) => string;
   getProductsByCategoryId: (categoryId: number) => string;
+  getProdyctById: (productId: number) => string;
 }
 
 const API_URLS: ApiEndpoints = {
@@ -51,14 +47,15 @@ const API_URLS: ApiEndpoints = {
   deleteProduct: (productId) => `${BASE_URL}/Product/delete/${productId}`,
   updateProduct: (productId) => `${BASE_URL}/Product/update/${productId}`,
   searchProducts: (query, page, pageSize): string => {
-    if(query && !page && !pageSize) {
-        return `${BASE_URL}/Product/search?queryString=${query}`;
+    if (query && !page && !pageSize) {
+      return `${BASE_URL}/Product/search?queryString=${query}`;
     } else {
-        return `${BASE_URL}/Product/search?queryString=${query}&page=${page}&pageSize=${pageSize}`;
+      return `${BASE_URL}/Product/search?queryString=${query}&page=${page}&pageSize=${pageSize}`;
     }
   },
   getProductsByCategoryId: (categoryId) =>
     `${BASE_URL}/Product/category/${categoryId}`,
+  getProdyctById: (productId) => `${BASE_URL}/Product/${productId}`,
 };
 
 export default API_URLS;
