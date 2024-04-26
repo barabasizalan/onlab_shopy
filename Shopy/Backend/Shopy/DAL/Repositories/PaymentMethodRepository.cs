@@ -30,5 +30,10 @@ namespace DAL.Repositories
                 throw new Exception("Payment method not found.");
             }
         }
+
+        public async Task<IEnumerable<PaymentMethod>> GetAllPaymentMethodsAsync()
+        {
+            return await _context.PaymentMethods.ToListAsync();
+        }
     }
 }

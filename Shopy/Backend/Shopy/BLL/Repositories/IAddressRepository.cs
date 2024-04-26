@@ -10,5 +10,7 @@ namespace BLL.Repositories
     public interface IAddressRepository
     {
         Task AddAddressAsync(Address newAddress);
+        Task<Address> GetAddressByIdAsync(int? addressId);
+        Task UpdateAddressAsync(Address address);
     }
 }

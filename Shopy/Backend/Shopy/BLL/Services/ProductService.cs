@@ -145,6 +145,7 @@ namespace BLL.Services
             product.Description = productFormDto.Description;
             product.Price = productFormDto.Price;
             product.Quantity = productFormDto.Quantity;
+            product.ImageId = product.ImageId;
 
             await _productRepository.UpdateProductAsync(product);
         }

@@ -8,7 +8,7 @@ interface ApiEndpoints {
   getAllCartItems: string;
   addProductToCart: string;
   removeProductFromCart: (cartItemId: number) => string;
-  updateCartItem: (cartItemId: number) => string;
+  updateCartItem: (cartItemId: number, newQuantity: number) => string;
   getCategories: string;
   createOrder: string;
   getUsersOrders: string;
@@ -19,19 +19,22 @@ interface ApiEndpoints {
   updateProduct: (productId: number) => string;
   searchProducts: (query?: string, page?: number, pageSize?: number) => string;
   getProductsByCategoryId: (categoryId: number) => string;
-  getProdyctById: (productId: number) => string;
+  getProductById: (productId: number) => string;
+  getUserAddress: string;
+  getPaymentMethods: string;
+  updateUserAddress: string;
 }
 
 const API_URLS: ApiEndpoints = {
   login: `${BASE_URL}/login?useSessionCookies=true`,
   logout: `${BASE_URL}/logout`,
   register: `${BASE_URL}/account/register`,
-  createAddress: `${BASE_URL}/Address/create-address`,
+  createAddress: `${BASE_URL}/Address/create`,
   getAllCartItems: `${BASE_URL}/Cart/all`,
   addProductToCart: `${BASE_URL}/Cart/add`,
   removeProductFromCart: (cartItemId) =>
     `${BASE_URL}/Cart/delete/${cartItemId}`,
-  updateCartItem: (cartItemId) => `${BASE_URL}/Cart/update/${cartItemId}`,
+  updateCartItem: (cartItemId, newQuantity) => `${BASE_URL}/Cart/update/${cartItemId}?newQuantity=${newQuantity}`,
   getCategories: `${BASE_URL}/Category/all`,
   createOrder: `${BASE_URL}/Order/create-order`,
   getUsersOrders: `${BASE_URL}/Order/user/orders`,
@@ -55,7 +58,10 @@ const API_URLS: ApiEndpoints = {
   },
   getProductsByCategoryId: (categoryId) =>
     `${BASE_URL}/Product/category/${categoryId}`,
-  getProdyctById: (productId) => `${BASE_URL}/Product/${productId}`,
+  getProductById: (productId) => `${BASE_URL}/Product/${productId}`,
+  getUserAddress: `${BASE_URL}/Address/my`,
+  getPaymentMethods: `${BASE_URL}/PaymentMethod/all`,
+  updateUserAddress: `${BASE_URL}/Address/update`,
 };
 
 export default API_URLS;

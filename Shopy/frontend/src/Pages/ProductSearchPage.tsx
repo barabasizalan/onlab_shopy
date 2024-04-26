@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { Product } from "../Models/Product";
 import { useSearchContext } from "../Contexts/SearchContext";
@@ -33,7 +33,6 @@ function ProductSearchPage() {
 
   const { query } = useSearchContext();
   const navigate = useNavigate();
-  const productListRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setPage(1);
@@ -50,10 +49,6 @@ function ProductSearchPage() {
         setProducts(response.data.products);
         setTotalResults(response.data.totalCount);
         setTotalPages(Math.ceil(response.data.totalCount / pageSize));
-        //scroll to top of the product list
-        if (productListRef.current) {
-          productListRef.current.scrollIntoView({ behavior: "smooth" });
-        }
       } catch (error) {
         console.error("Error fetching products:", error);
       }
@@ -162,7 +157,7 @@ function ProductSearchPage() {
               <option value="price-descending">Price Descending</option>
             </Select>
           </Flex>
-          <Box ref={productListRef}>
+          <Box >
             <SimpleGrid columns={1} spacing={4}>
               {products.map((product) => (
                 <Box key={product.id}>

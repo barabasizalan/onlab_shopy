@@ -18,7 +18,7 @@ namespace WebApi.Controllers
 
         [HttpGet]
         [Route("all")]
-        public async Task<IActionResult> GetCartItems()
+        public async Task<ActionResult<CartItemDto[]>> GetCartItems()
         {
             try
             {
@@ -40,7 +40,7 @@ namespace WebApi.Controllers
 
         [HttpPost]
         [Route("add")]
-        public async Task<IActionResult> AddItemToCart([FromBody] AddToCartDto addToCartDto)
+        public async Task<ActionResult> AddItemToCart([FromBody] AddToCartDto addToCartDto)
         {
             try
             {
@@ -63,7 +63,7 @@ namespace WebApi.Controllers
 
         [HttpDelete]
         [Route("delete/{cartId}")]
-        public async Task<IActionResult> RemoveItemFromCart(int cartId)
+        public async Task<ActionResult> RemoveItemFromCart(int cartId)
         {
             try
             {
@@ -78,7 +78,7 @@ namespace WebApi.Controllers
 
         [HttpDelete]
         [Route("delete/all")]
-        public async Task<IActionResult> RemoveAllItemsFromCart()
+        public async Task<ActionResult> RemoveAllItemsFromCart()
         {
             try
             {
@@ -99,7 +99,7 @@ namespace WebApi.Controllers
 
         [HttpPut]
         [Route("update/{cartId}")]
-        public async Task<IActionResult> UpdateCartItemQuantity([FromQuery] int newQuantity, int cartId)
+        public async Task<ActionResult> UpdateCartItemQuantity([FromQuery] int newQuantity, int cartId)
         {
             try
             {

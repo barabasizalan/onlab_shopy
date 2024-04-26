@@ -46,5 +46,32 @@ namespace BLL.Services
             await _addressRepository.AddAddressAsync(newAddress);
             return newAddress;
         }
+
+        public async Task<Address> GetAddressByUserId(string userId)
+        {
+            var user = await _userRepository.GetUserByIdAsync(userId);
+            
+            if(user != null)
+            {
+                if (user.AddressId != null)
+                {
+                    return await _addressRepository.GetAddressByIdAsync(user.AddressId);
+                }
+            }
+            return null;
+        }
+
+        public async Task UpdateAddress(int id, AddressRequestDto addressRequestDto)
+        {
+            var address = await _addressRepository.GetAddressByIdAsync(id);
+            if(address != null)
+            {
+                address.Street = addressRequestDto.Street;
+                address.City = addressRequestDto.City;
+                address.ZipCode = addressRequestDto.ZipCode;
+                address.Country = addressRequestDto.Country;
+                await _addressRepository.UpdateAddressAsync(address);
+            }
+        }
     }
 }

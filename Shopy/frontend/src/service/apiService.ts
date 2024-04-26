@@ -3,6 +3,8 @@ import { CartItem } from "../Models/CartItem";
 import API_URLS from "./apiConfig";
 import { Category } from "../Models/Category";
 import { Product } from "../Models/Product";
+import { Address } from "../Models/Address";
+import { PaymentMethod } from "../Models/PaymentMethod";
 
 export const fetchCartItemsAsync = async ():Promise<CartItem[]> => {
     try {
@@ -85,10 +87,95 @@ export const addToCartAsync = async (productId: number, quantity: number): Promi
 
 export const getProductById = async (productId: number): Promise<Product> => {
     try {
-        const response = await axios.get(API_URLS.getProdyctById(productId));
+        const response = await axios.get(API_URLS.getProductById(productId));
         return response.data;
     } catch(error) {
         console.error('Error fetching product: ', error);
         throw error;
     }
-}
+};
+
+export const deleteCartItemAsync = async (cartItemId: number): Promise<void> => {
+    try {
+        const response = await axios.delete(API_URLS.removeProductFromCart(cartItemId));
+        if (response.status === 200) {
+            return;
+        } else {
+            throw new Error('Error deleting cart item');
+        }
+    } catch(error) {
+        console.error('Error deleting cart item: ', error);
+        throw error;
+    }
+};
+
+export const updateCartItemAsync = async (cartItemId: number, quantity: number): Promise<void> => {
+    try {
+        const response = await axios.put(API_URLS.updateCartItem(cartItemId, quantity));
+        if (response.status === 200) {
+            return;
+        } else {
+            throw new Error('Error updating cart item');
+        }
+    } catch(error) {
+        console.error('Error updating cart item: ', error);
+        throw error;
+    }
+};
+
+export const getUserAddress = async (): Promise<Address> => {
+    try {
+        const response = await axios.get(API_URLS.getUserAddress);
+        if(response.status === 404) {
+            throw new Error('No address found');
+        }
+        if(response.status === 200) {
+            return response.data;
+        } else {
+            throw new Error('Error fetching address');
+        }
+    } catch(error) {
+        console.error('Error fetching address: ', error);
+        throw error;
+    }
+};
+
+export const fetchPaymentMethodsAsync = async (): Promise<PaymentMethod[]> => {
+    try {
+        const response = await axios.get(API_URLS.getPaymentMethods);
+        return response.data;
+    } catch(error) {
+        console.error('Error fetching payment methods: ', error);
+        throw error;
+    }
+};
+
+export const createOrderAsync = async (paymentMethodId: number): Promise<boolean> => {
+    try {
+        const response = await axios.post(API_URLS.createOrder, {
+            paymentMethodId: paymentMethodId
+        });
+        if (response.status === 200) {
+            return true;
+        } else {
+            throw new Error('Error creating order');
+        }
+    } catch(error) {    
+        console.error('Error creating order: ', error);
+        throw error;
+    }
+};
+
+export const updateAddressAsync = async (address: Address): Promise<void> => {
+    try {
+        const response = await axios.put(API_URLS.updateUserAddress, address);
+        if (response.status === 200) {
+            return;
+        } else {
+            throw new Error('Error updating address');
+        }
+    } catch(error) {
+        console.error('Error updating address: ', error);
+        throw error;
+    }
+};

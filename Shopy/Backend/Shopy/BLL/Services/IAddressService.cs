@@ -12,5 +12,8 @@ namespace BLL.Services
     {
         Task AddAddressToUser(string userId, int addressId);
         Task<Address> CreateAddress(AddressRequestDto addressRequestDto);
+
+        Task<Address> GetAddressByUserId(string userId);
+        Task UpdateAddress(int id, AddressRequestDto addressRequestDto);
     }
 }

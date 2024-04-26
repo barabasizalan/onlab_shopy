@@ -1,46 +1,103 @@
-import { Box, Flex, IconButton, Image, Text } from "@chakra-ui/react";
-import { AiOutlineDelete, AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
+import {
+  Box,
+  Flex,
+  IconButton,
+  Image,
+  NumberDecrementStepper,
+  NumberIncrementStepper,
+  NumberInput,
+  NumberInputField,
+  NumberInputStepper,
+  Text,
+} from "@chakra-ui/react";
+import { AiOutlineDelete } from "react-icons/ai";
 import { CartItem } from "../Models/CartItem";
+import { useEffect, useState } from "react";
+import { Product } from "../Models/Product";
+import { deleteCartItemAsync, getProductById, updateCartItemAsync } from "../service/apiService";
 
-interface CartItemProps {
-    item: CartItem;
+interface CartItemCardProps {
+  item: CartItem;
 }
 
-const CartItemCard: React.FC<CartItemProps> = ({ item }) => {
-    const { name, price, quantity, imageBase64} = item;
+const CartItemCard: React.FC<CartItemCardProps> = ({ item }) => {
+  const [product, setProduct] = useState<Product | null>(null);
 
-    let decodedImage = '';
-    if (imageBase64 !== undefined) {
-        decodedImage = atob(imageBase64);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await getProductById(item.productId);
+        setProduct(response);
+      } catch (error) {
+        console.error("Error fetching product:", error);
+      }
+    };
+
+    fetchData();
+  }, [item.productId, item.quantity]);
+
+  const handleQuantityChange = async (value: number) => {
+    try {
+      await updateCartItemAsync(item.id, value);
+    } catch (error) {
+      console.error("Error updating cart item:", error);
     }
+  };
+  
 
-    const handleIncreaseQuantity = () => {
-        console.log('Increase quantity');
+  const handleDeleteItem = async () => {
+    try {
+      await deleteCartItemAsync(item.id);
+    } catch (error) {
+      console.error("Error deleting cart item:", error);
     }
+  };
 
-    const handleDecreaseQuantity = () => {
-        console.log('Decrease quantity');
-    }
-
-    const handleDeleteItem = () => {
-        console.log('Delete item');
-    }
-
-    return (
-        <Box border={'1px solid black'} p={4} mb={4} borderRadius="20px">
-            <Flex alignItems='center' justifyContent='space-between' mb={2}>
-                <Image src={decodedImage} alt={name} boxSize="60px" />
-                <Text>{name}</Text>
-                <Flex alignItems='center'>
-                    <IconButton aria-label="Decrease quantity" icon={<AiOutlineMinus />} onClick={handleDecreaseQuantity} mr={2} />
-                    <Text>{quantity}</Text>
-                    <IconButton aria-label="Increase quantity" icon={<AiOutlinePlus />} onClick={handleIncreaseQuantity} ml={2} />
-                    <Text>{price}</Text>
-                    <IconButton aria-label="Delete item" icon={<AiOutlineDelete />} onClick={handleDeleteItem} ml={2} />
-                </Flex>
-            </Flex>
-        </Box>
-    );
+  return (
+    <Box boxShadow="lg" p={4} mb={4} borderRadius="20px" bg="white" width='100%'>
+      <Flex alignItems="center" justifyContent="space-between" mb={2}>
+        <Image
+          src={atob(product?.imageBase64 || "")}
+          alt={product?.name || "error"}
+          boxSize="60px"
+        />
+        <Flex alignItems="flex-start" flexDirection="column">
+          <Text fontWeight="bold">
+            {product?.name || "Error loading the product"}
+          </Text>
+          <Flex alignItems="center">
+            <Text mr={2}>Quantity:</Text>
+            <NumberInput
+              defaultValue={item.quantity}
+              max={10}
+              min={1}
+              clampValueOnBlur={false}
+              width="80px"
+            >
+              <NumberInputField />
+              <NumberInputStepper>
+                <NumberIncrementStepper onClick={() => handleQuantityChange(item.quantity + 1)} />
+                <NumberDecrementStepper onClick={() => handleQuantityChange(item.quantity - 1)} />
+              </NumberInputStepper>
+            </NumberInput>
+          </Flex>
+        </Flex>
+        <Flex flexDirection="column" alignItems="center">
+          <Text fontWeight="bold" mb={2}>
+            Total price:
+          </Text>
+          <Text>{item.quantity * (product?.price || 0)} €</Text>
+        </Flex>
+        <IconButton
+          aria-label="Delete item"
+          icon={<AiOutlineDelete />}
+          onClick={handleDeleteItem}
+          mt={2}
+          color="red"
+        />
+      </Flex>
+    </Box>
+  );
 };
 
 export default CartItemCard;

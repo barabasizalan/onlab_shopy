@@ -10,5 +10,6 @@ namespace BLL.Repositories
     public interface IPaymentMethodRepository
     {
         Task<PaymentMethod> GetPaymentMethodByIdAsync(int id);
+        Task<IEnumerable<PaymentMethod>> GetAllPaymentMethodsAsync();
     }
 }

@@ -2,11 +2,6 @@
 using BLL.Repositories;
 using DAL.DbContext;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DAL.Repositories
 {
@@ -84,5 +79,7 @@ namespace DAL.Repositories
                 throw new Exception("Cart item not found.");
             }
         }
+
+        public async Task<Cart> GetCartItemAsync(string userId, int productId) => await _context.Carts.FirstOrDefaultAsync(c => c.UserId == userId && c.ProductId == productId);
     }
 }

@@ -1,6 +1,8 @@
 ﻿using BLL.Repositories;
 using BLL.Entities;
 using BLL.DTO;
+using System;
+using System.Threading.Tasks;
 
 namespace BLL.Services
 {
@@ -34,32 +36,50 @@ namespace BLL.Services
 
         public async Task AddToCart(string userId, AddToCartDto addToCartDto)
         {
-            // Retrieve the product
-            var product = await _productRepository.GetProductByIdAsync(addToCartDto.ProductId);
-            if (product == null)
+            var existingCartItem = await _cartRepository.GetCartItemAsync(userId, addToCartDto.ProductId);
+            if (existingCartItem != null)
             {
-                throw new Exception("Product not found.");
+                var newQuantity = existingCartItem.Quantity + addToCartDto.Quantity;
+                var product = await _productRepository.GetProductByIdAsync(addToCartDto.ProductId);
+                if (newQuantity > product.Quantity)
+                {
+                    throw new Exception("Not enough products in stock.");
+                }
+                if (newQuantity <= 0)
+                {
+                    throw new Exception("Quantity must be greater than zero.");
+                }
+                await _cartRepository.UpdateCartItemQuantityAsync(existingCartItem.Id, newQuantity);
             }
-
-            // Validate quantity
-            if (addToCartDto.Quantity <= 0)
+            else
             {
-                throw new Exception("Quantity must be greater than zero.");
+                // Retrieve the product
+                var product = await _productRepository.GetProductByIdAsync(addToCartDto.ProductId);
+                if (product == null)
+                {
+                    throw new Exception("Product not found.");
+                }
+
+                // Validate quantity
+                if (addToCartDto.Quantity <= 0)
+                {
+                    throw new Exception("Quantity must be greater than zero.");
+                }
+                if (addToCartDto.Quantity > product.Quantity)
+                {
+                    throw new Exception("Not enough products in stock.");
+                }
+
+                // Add to cart
+                var cart = new Cart
+                {
+                    UserId = userId,
+                    ProductId = addToCartDto.ProductId,
+                    Quantity = addToCartDto.Quantity
+                };
+
+                await _cartRepository.AddToCartAsync(cart);
             }
-            if (addToCartDto.Quantity > product.Quantity)
-            {
-                throw new Exception("Not enough products in stock.");
-            }
-
-            // Add to cart
-            var cart = new Cart
-            {
-                UserId = userId,
-                ProductId = addToCartDto.ProductId,
-                Quantity = addToCartDto.Quantity
-            };
-
-            await _cartRepository.AddToCartAsync(cart);
         }
 
         public async Task DeleteCartItem(int cartId)

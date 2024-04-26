@@ -25,7 +25,7 @@ function Navbar() {
     if(isLoggedIn) {
       fetchCart();
     }
-  }, [categories, isLoggedIn]);
+  }, [isLoggedIn]);
 
   const fetchCategory = async () => {
     try {
@@ -96,6 +96,14 @@ function Navbar() {
       toast({
         title: "You need to be logged in to view your cart!",
         status: "error",
+        duration: 3000,
+        isClosable: true,
+        position: "top"
+      });
+    } else if(cartItems.length === 0) {
+      toast({
+        title: "Your cart is empty!",
+        status: "info",
         duration: 3000,
         isClosable: true,
         position: "top"
