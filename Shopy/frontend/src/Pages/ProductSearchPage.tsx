@@ -3,7 +3,7 @@ import axios from "axios";
 import { Product } from "../Models/Product";
 import { useSearchContext } from "../Contexts/SearchContext";
 import Navbar from "../components/Navbar";
-import ProductCard from "../components/ProductCard";
+import ProductCard from "../components/Product/ProductCard";
 import {
   Box,
   Flex,

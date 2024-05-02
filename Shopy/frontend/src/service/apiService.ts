@@ -5,6 +5,7 @@ import { Category } from "../Models/Category";
 import { Product } from "../Models/Product";
 import { Address } from "../Models/Address";
 import { PaymentMethod } from "../Models/PaymentMethod";
+import { Order } from "../Models/Order";
 
 export const fetchCartItemsAsync = async ():Promise<CartItem[]> => {
     try {
@@ -204,6 +205,16 @@ export const fetchTotalPriceOfCart = async (): Promise<number> => {
         }
     } catch(error) {
         console.error('Error fetching total price of cart: ', error);
+        throw error;
+    }
+};
+
+export const fetchUsersOrdersAsync = async (): Promise<Order[]> => {
+    try {
+        const response = await axios.get<Order[]>(API_URLS.getUsersOrders);
+        return response.data;
+    } catch(error) {
+        console.error('Error fetching user orders: ', error);
         throw error;
     }
 };

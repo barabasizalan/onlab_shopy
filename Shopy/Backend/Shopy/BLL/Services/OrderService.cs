@@ -102,7 +102,7 @@ namespace BLL.Services
             {
                 Id = order.Id,
                 OrderDate = order.OrderDate,
-                StatusId = order.StatusId,
+                Status = order.Status,
                 OrderDetails = order.OrderDetails.Select(od => new OrderDetailDto
                 {
                     Id = od.Id,

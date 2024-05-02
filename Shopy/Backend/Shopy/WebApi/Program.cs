@@ -38,6 +38,7 @@ namespace WebApi
                 .AddUserManager<UserManager<User>>()
                 .AddEntityFrameworkStores<ShopyDbContext>();
 
+
             builder.Services.ConfigureApplicationCookie(options =>
             {
                 options.Cookie.HttpOnly = false;

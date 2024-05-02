@@ -27,7 +27,7 @@ namespace DAL.Repositories
 
         public async Task<IEnumerable<Order>> GetOrdersByUserIdAsync(string userId)
         {
-            return await _context.Orders.Where(o => o.UserId == userId).Include(o => o.OrderDetails).Include(o => o.PaymentMethod).ToListAsync();
+            return await _context.Orders.Where(o => o.UserId == userId).Include(s => s.Status).Include(o => o.OrderDetails).Include(o => o.PaymentMethod).ToListAsync();
         }
     }
 }

@@ -24,7 +24,7 @@ import {
   getUserAddress,
   updateAddressAsync,
 } from "../service/apiService";
-import CartItemCard from "../components/CartItemCard";
+import CartItemCard from "../components/Cart/CartItemCard";
 import { PaymentMethod } from "../Models/PaymentMethod";
 import { useNavigate } from "react-router";
 import Navbar from "../components/Navbar";

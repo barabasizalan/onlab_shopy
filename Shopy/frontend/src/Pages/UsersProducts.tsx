@@ -1,14 +1,10 @@
 import Navbar from "../components/Navbar";
 import { useEffect, useRef, useState } from "react";
 import { Product } from "../Models/Product";
-import { DeleteIcon, EditIcon } from "@chakra-ui/icons";
 import {
   Box,
-  Center,
   Divider,
-  Flex,
   Heading,
-  Text,
   useToast,
   AlertDialog,
   AlertDialogBody,
@@ -25,6 +21,7 @@ import {
   fetchUserProductsAsync,
   saveProductChangesAsync,
 } from "../service/apiService";
+import UserProductCard from "../components/Product/UserProductCard";
 
 function UsersProducts() {
   const [products, setProducts] = useState<Product[]>([]);
@@ -139,39 +136,13 @@ function UsersProducts() {
       </Heading>
       <Divider bg="black" h="1px" ml={24} mb={5} mr={24} />
       {products.map((product) => (
-        <Center key={product.id}>
-          <Box
-            w="80%"
-            borderWidth="1px"
-            borderRadius="lg"
-            overflow="hidden"
-            m="2"
-            p="2"
-            bg="gray.200"
-          >
-            <Flex justify="space-between" align="center">
-              <Heading as="h2" size="md">
-                {product.name}
-              </Heading>
-              <Flex>
-                <EditIcon
-                  cursor="pointer"
-                  mr="4"
-                  onClick={() => handleEdit(product)}
-                />
-                <DeleteIcon
-                  cursor="pointer"
-                  onClick={() => handleDelete(product.id)}
-                />
-              </Flex>
-            </Flex>
-            <Text>Price: ${product.price}</Text>
-            <Text>Quantity: {product.quantity}</Text>
-            <Text>Description: {product.description}</Text>
-          </Box>
-        </Center>
-      ))}
-
+        <UserProductCard
+          key={product.id}
+          product={product}
+          onEdit={handleEdit}
+          onDelete={handleDelete}
+        />
+        ))}
       <AlertDialog
         isOpen={isDeleteDialogOpen}
         leastDestructiveRef={leastDestructiveRef}

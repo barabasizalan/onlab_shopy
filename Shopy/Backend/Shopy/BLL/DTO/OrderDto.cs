@@ -6,7 +6,7 @@ namespace BLL.DTO
     {
         public int Id { get; set; }
         public DateTime OrderDate { get; set; }
-        public int StatusId { get; set; }
+        public Status Status{ get; set; }
         public List<OrderDetailDto> OrderDetails { get; set; }
         public PaymentMethodDto PaymentMethod { get; set; }
     }

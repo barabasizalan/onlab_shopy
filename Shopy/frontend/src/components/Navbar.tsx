@@ -8,7 +8,7 @@ import { grey } from '@mui/material/colors';
 import { useSearchContext } from '../Contexts/SearchContext';
 import { useEffect, useState } from 'react';
 import { Category } from '../Models/Category';
-import CartDrawer from './CartDrawer';
+import CartDrawer from './Cart/CartDrawer';
 import { fetchCategoriesAsync } from '../service/apiService';
 import { useCart } from '../Contexts/CartContext';
 
