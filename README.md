@@ -79,10 +79,13 @@
 
 - Ápr. 8. - Ápr. 21.
     - Kosár tervezése, elemeket lehessen beletenni
+    - Rendelés felület UI
+    - Payment Method + Address kiegészítés
 <hr>
 
 - Ápr. 22. - Máj. 5.
-    - todo
+    - Kosárnak külön Context és aszerint kommunikáljon, véglegesíteni a működést
+    - Rendelés megvalósítása
 <hr>
 
 - Máj. 6. - Máj 19. 
