@@ -10,10 +10,12 @@ namespace WebApi.Controllers
     public class CartController : ControllerBase
     {
         private readonly ICartService _cartService;
+        private readonly IProductService _productService;
 
-        public CartController(ICartService cartService)
+        public CartController(ICartService cartService, IProductService productService)
         {
             _cartService = cartService;
+            _productService = productService;
         }
 
         [HttpGet]
@@ -109,6 +111,58 @@ namespace WebApi.Controllers
                     return Ok("Cart item removed successfully!");
                 }
                 return Ok("Cart item quantity updated successfully!");
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
+        }
+
+        [HttpGet]
+        [Route("number-of-items")]
+        public async Task<ActionResult<int>> GetNumberOfCartItems()
+        {
+            try
+            {
+                var userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+                if (string.IsNullOrEmpty(userId))
+                {
+                    return Unauthorized("User is not authenticated.");
+                }
+
+                var numberOfItems = await _cartService.GetNumberOfCartItems(userId);
+                return Ok(numberOfItems);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
+        }
+
+        [HttpGet]
+        [Route("total-price")]
+        public async Task<ActionResult<decimal>> CalculateTotal()
+        {
+            try
+            {
+                var userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+                if (string.IsNullOrEmpty(userId))
+                {
+                    return Unauthorized("User is not authenticated.");
+                }
+
+                var cartItems = await _cartService.GetCartItems(userId);
+
+                decimal total = 0;
+
+                foreach (var item in cartItems)
+                {
+                    var product = await _productService.GetProductsById(item.ProductId);
+                    total += product.Price * item.Quantity;
+                }
+
+                return Ok(total);
+                
             }
             catch (Exception ex)
             {

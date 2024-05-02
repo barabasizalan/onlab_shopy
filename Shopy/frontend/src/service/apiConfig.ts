@@ -23,6 +23,8 @@ interface ApiEndpoints {
   getUserAddress: string;
   getPaymentMethods: string;
   updateUserAddress: string;
+  getNumberOfCartItems: string;
+  getTotalPriceOfCart: string;
 }
 
 const API_URLS: ApiEndpoints = {
@@ -62,6 +64,8 @@ const API_URLS: ApiEndpoints = {
   getUserAddress: `${BASE_URL}/Address/my`,
   getPaymentMethods: `${BASE_URL}/PaymentMethod/all`,
   updateUserAddress: `${BASE_URL}/Address/update`,
+  getNumberOfCartItems: `${BASE_URL}/Cart/number-of-items`,
+  getTotalPriceOfCart: `${BASE_URL}/Cart/total-price`,
 };
 
 export default API_URLS;

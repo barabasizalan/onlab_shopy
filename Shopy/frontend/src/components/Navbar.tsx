@@ -8,24 +8,21 @@ import { grey } from '@mui/material/colors';
 import { useSearchContext } from '../Contexts/SearchContext';
 import { useEffect, useState } from 'react';
 import { Category } from '../Models/Category';
-import { CartItem } from '../Models/CartItem';
 import CartDrawer from './CartDrawer';
-import { fetchCartItemsAsync, fetchCategoriesAsync } from '../service/apiService';
+import { fetchCategoriesAsync } from '../service/apiService';
+import { useCart } from '../Contexts/CartContext';
 
 function Navbar() {
   const { isLoggedIn, logout } = useAuth();
   const toast = useToast();
   const { query } = useSearchContext();
   const [categories, setCategories] = useState<Category[]>([]);
-  const [cartItems, setCartItems] = useState<CartItem[]>([]);
+  const { cartItemsTotalQuantity } = useCart();
   const [cartDrawerOpen, setCartDrawerOpen] = useState(false);
 
   useEffect(() => {
     fetchCategory();
-    if(isLoggedIn) {
-      fetchCart();
-    }
-  }, [isLoggedIn]);
+  }, []);
 
   const fetchCategory = async () => {
     try {
@@ -35,15 +32,6 @@ function Navbar() {
       console.error('Error fetching categories:', error);
     }
   };
-
-  const fetchCart = async () => {
-    try {
-      const data = await fetchCartItemsAsync();
-      setCartItems(data);
-    } catch (error) {
-      console.error('Error fetching cart items:', error);
-    }
-  }
 
   const handleImageClick = () => {
     window.location.href = '/';
@@ -100,7 +88,7 @@ function Navbar() {
         isClosable: true,
         position: "top"
       });
-    } else if(cartItems.length === 0) {
+    } else if(cartItemsTotalQuantity === 0) {
       toast({
         title: "Your cart is empty!",
         status: "info",
@@ -161,7 +149,7 @@ function Navbar() {
         <HStack paddingStart="10">
           <Button as="button" onClick={handleCartClick} variant="ghost">
             <Icon as={MdShoppingCart} boxSize={6} />
-            {isLoggedIn && cartItems.length > 0 && (
+            {isLoggedIn && cartItemsTotalQuantity > 0 && (
               <Box
                 bg="red"
                 w="20px"
@@ -171,7 +159,7 @@ function Navbar() {
                 top="-1px"
                 right="-1px"
                 color="white"
-              >{isLoggedIn && cartItems.length > 0 && <Text>{cartItems.length}</Text>}</Box>
+              >{isLoggedIn && cartItemsTotalQuantity > 0 && <Text>{cartItemsTotalQuantity}</Text>}</Box>
             )}
           </Button>
         </HStack>
@@ -196,7 +184,7 @@ function Navbar() {
         </Menu>
         <Button pr={10}  variant="ghost">Popular products</Button>
       </Flex>
-      <CartDrawer isOpen={cartDrawerOpen} onClose={toggleCartDrawer} cartItems={cartItems}/>
+      <CartDrawer isOpen={cartDrawerOpen} onClose={toggleCartDrawer}/>
     </chakra.header>
   )
 }

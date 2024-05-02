@@ -5,6 +5,7 @@ import { RouterProvider } from "react-router-dom";
 import { router } from "./Routes/Routes.tsx";
 import { AuthProvider } from "./Contexts/AuthContext.tsx";
 import { SearchContextProvider } from "./Contexts/SearchContext.tsx";
+import { CartProvider } from "./Contexts/CartContext.tsx";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -15,7 +16,9 @@ root.render(
     <ChakraProvider>
       <SearchContextProvider>
         <AuthProvider>
-          <RouterProvider router={router} />
+          <CartProvider>
+            <RouterProvider router={router} />
+          </CartProvider>
         </AuthProvider>
       </SearchContextProvider>
     </ChakraProvider>

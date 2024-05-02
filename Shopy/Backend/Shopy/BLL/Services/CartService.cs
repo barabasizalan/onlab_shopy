@@ -95,5 +95,9 @@ namespace BLL.Services
         {
             await _cartRepository.UpdateCartItemQuantityAsync(cartId, newQuantity);
         }
+        public async Task<int> GetNumberOfCartItems(string userId)
+        {
+            return await _cartRepository.GetNumberOfCartItemsAsync(userId);
+        }
     }
 }

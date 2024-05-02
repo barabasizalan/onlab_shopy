@@ -36,7 +36,7 @@ export const fetchUserProductsAsync = async ():Promise<Product[]> => {
     }
 };
 
-export const deleteProductAsync = async (productId: number):Promise<void> => {
+export const removeProductAsync = async (productId: number):Promise<void> => {
     try {
         const response = await axios.delete(API_URLS.deleteProduct(productId));
         if (response.status === 200) {
@@ -176,6 +176,34 @@ export const updateAddressAsync = async (address: Address): Promise<void> => {
         }
     } catch(error) {
         console.error('Error updating address: ', error);
+        throw error;
+    }
+};
+
+export const fetchNumberOfCartElements = async (): Promise<number> => {
+    try {
+        const response = await axios.get(API_URLS.getNumberOfCartItems);
+        if(response.status === 200 && Number(response.data) > 0) {
+            return Number(response.data);
+        } else {
+            return 0;
+        }
+    } catch(error) {
+        console.error('Error fetching number of cart items: ', error);
+        throw error;
+    }
+};
+
+export const fetchTotalPriceOfCart = async (): Promise<number> => {
+    try {
+        const response = await axios.get(API_URLS.getTotalPriceOfCart);
+        if(response.status === 200) {
+            return response.data;
+        } else {
+            throw new Error('Error fetching total price of cart');
+        }
+    } catch(error) {
+        console.error('Error fetching total price of cart: ', error);
         throw error;
     }
 };

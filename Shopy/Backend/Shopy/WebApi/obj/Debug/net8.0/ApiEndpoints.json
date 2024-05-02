@@ -131,6 +131,46 @@
   },
   {
     "ContainingType": "WebApi.Controllers.CartController",
+    "Method": "GetNumberOfCartItems",
+    "RelativePath": "Cart/number-of-items",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Int32",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "WebApi.Controllers.CartController",
+    "Method": "CalculateTotal",
+    "RelativePath": "Cart/total-price",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Decimal",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "WebApi.Controllers.CartController",
     "Method": "UpdateCartItemQuantity",
     "RelativePath": "Cart/update/{cartId}",
     "HttpMethod": "PUT",

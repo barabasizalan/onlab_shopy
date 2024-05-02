@@ -3,7 +3,8 @@ import { useParams } from "react-router-dom";
 import { Product } from "../Models/Product";
 import { Box, Button, Divider, Flex, Image, Select, Text, useToast } from "@chakra-ui/react";
 import Navbar from "../components/Navbar";
-import { addToCartAsync, getProductById } from "../service/apiService";
+import { getProductById } from "../service/apiService";
+import { useCart } from "../Contexts/CartContext";
 
 const ProductDetailPage: React.FC = () => {
   const { productId } = useParams<{ productId: string }>();
@@ -11,6 +12,7 @@ const ProductDetailPage: React.FC = () => {
   const [quantity, setQuantity] = useState<number>(1);
   
   const toast = useToast();
+  const {addToCart} = useCart();
   
 
   useEffect(() => {
@@ -35,16 +37,16 @@ const ProductDetailPage: React.FC = () => {
     setQuantity(value);
   }
 
-  const addToCart = async () => {
+  const handleAddToCart = async () => {
     try {
-      await addToCartAsync(product.id, quantity);
+      await addToCart(product.id, quantity);
       toast({
         title: "Product added to cart!",
         status: "success",
         duration: 3000,
         isClosable: true,
       });
-    } catch(error) {
+    } catch (error) {
       console.error("Error adding to cart:", error);
       toast({
         title: "Error adding to cart!",
@@ -53,7 +55,7 @@ const ProductDetailPage: React.FC = () => {
         isClosable: true,
       });
     }
-  }
+  };
 
   return (
     <>
@@ -99,7 +101,7 @@ const ProductDetailPage: React.FC = () => {
               <Text fontSize="lg" mb={4}>
                 {product.price} €
               </Text>
-              <Button colorScheme="blue" size="lg" onClick={addToCart}>
+              <Button colorScheme="blue" size="lg" onClick={handleAddToCart}>
                 Add to Cart
               </Button>
             </Flex>

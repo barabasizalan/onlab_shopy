@@ -9,28 +9,43 @@ import {
   DrawerOverlay,
   Text,
 } from "@chakra-ui/react";
-import { CartItem } from "../Models/CartItem";
 import CartItemCard from "./CartItemCard";
 import { useNavigate } from "react-router";
+import { useEffect, useState } from "react";
+import { fetchTotalPriceOfCart } from "../service/apiService";
+import { useCart } from "../Contexts/CartContext";
 
 interface CartDrawerProps {
   isOpen: boolean;
   onClose: () => void;
-  cartItems: CartItem[];
 }
 
 const CartDrawer: React.FC<CartDrawerProps> = ({
   isOpen,
   onClose,
-  cartItems,
 }) => {
   
-  const totalValue = 100.1;
+  const [totalPrice, setTotalPrice] = useState<number>(0);
   const navigate = useNavigate();
+
+  const { cartItems } = useCart();
 
   const handlePlaceOrder = () => {
     onClose();
     navigate('/checkout');
+  };
+
+  useEffect(() => {
+    fetchPrice();
+  }, [cartItems]);
+
+  const fetchPrice = async () => {
+    try {
+      const response = await fetchTotalPriceOfCart();
+      setTotalPrice(response);
+    } catch (error) {
+      console.error("Error fetching total price:", error);
+    }
   };
 
   return (
@@ -48,7 +63,7 @@ const CartDrawer: React.FC<CartDrawerProps> = ({
         </DrawerBody>
         <DrawerFooter borderTopWidth='1px' flexDirection='column' alignItems='flex-start'>
           <Text fontSize="lg" fontWeight="bold">
-            Total: {totalValue} €
+            Total: {totalPrice} €
           </Text>
           <Button
             colorScheme="blue"

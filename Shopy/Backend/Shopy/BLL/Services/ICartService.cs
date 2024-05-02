@@ -9,5 +9,6 @@ namespace BLL.Services
         Task DeleteCartItem(int cartId);
         Task DeleteAllCartItems(string userId);
         Task UpdateCartItemQuantity(int cartId, int newQuantity);
+        Task<int> GetNumberOfCartItems(string userId);
     }
 }

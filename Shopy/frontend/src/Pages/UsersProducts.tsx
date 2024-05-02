@@ -21,7 +21,7 @@ import {
   Textarea,
 } from "@chakra-ui/react";
 import {
-  deleteProductAsync,
+  removeProductAsync,
   fetchUserProductsAsync,
   saveProductChangesAsync,
 } from "../service/apiService";
@@ -59,7 +59,7 @@ function UsersProducts() {
 
   const deleteProduct = async (productId: number) => {
     try {
-      await deleteProductAsync(productId);
+      await removeProductAsync(productId);
       setProducts((prevProducts) =>
         prevProducts.filter((product) => product.id !== productId)
       );

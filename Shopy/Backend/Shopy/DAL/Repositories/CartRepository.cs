@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DAL.Repositories
 {
-     public class CartRepository : ICartRepository
+    public class CartRepository : ICartRepository
      {
         private readonly ShopyDbContext _context;
 
@@ -81,5 +81,11 @@ namespace DAL.Repositories
         }
 
         public async Task<Cart> GetCartItemAsync(string userId, int productId) => await _context.Carts.FirstOrDefaultAsync(c => c.UserId == userId && c.ProductId == productId);
+
+        public async Task<int> GetNumberOfCartItemsAsync(string userId)
+        {
+            var cartItems = await _context.Carts.Where(c => c.UserId == userId).ToListAsync();
+            return cartItems.Sum(c => c.Quantity);
+        }
     }
 }
