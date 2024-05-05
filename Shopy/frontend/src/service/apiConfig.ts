@@ -18,7 +18,7 @@ interface ApiEndpoints {
   deleteProduct: (productId: number) => string;
   updateProduct: (productId: number) => string;
   searchProducts: (query?: string, page?: number, pageSize?: number) => string;
-  getProductsByCategoryId: (categoryId: number) => string;
+  getProductsByCategoryId: (categoryId: number, page: number, pageSize: number) => string;
   getProductById: (productId: number) => string;
   getUserAddress: string;
   getPaymentMethods: string;
@@ -58,8 +58,8 @@ const API_URLS: ApiEndpoints = {
       return `${BASE_URL}/Product/search?queryString=${query}&page=${page}&pageSize=${pageSize}`;
     }
   },
-  getProductsByCategoryId: (categoryId) =>
-    `${BASE_URL}/Product/category/${categoryId}`,
+  getProductsByCategoryId: (categoryId, page, pageSize) =>
+    `${BASE_URL}/Product/category/${categoryId}?page=${page}&pageSize=${pageSize}`,
   getProductById: (productId) => `${BASE_URL}/Product/${productId}`,
   getUserAddress: `${BASE_URL}/Address/my`,
   getPaymentMethods: `${BASE_URL}/PaymentMethod/all`,

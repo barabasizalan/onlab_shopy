@@ -218,3 +218,13 @@ export const fetchUsersOrdersAsync = async (): Promise<Order[]> => {
         throw error;
     }
 };
+
+export const fetchProductsByCategoryAsync = async (categoryId: number, page: number, pageSize: number): Promise<Product[]> => {
+    try {
+        const response = await axios.get<Product[]>(API_URLS.getProductsByCategoryId(categoryId, page, pageSize));
+        return response.data;
+    } catch(error) {
+        console.error('Error fetching products by category: ', error);
+        throw error;
+    }
+}

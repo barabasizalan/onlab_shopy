@@ -12,7 +12,7 @@ interface SearchBarProps {
 const SearchBar: React.FC<SearchBarProps> = ({ initialQuery = '', onSearch }) => {
   const [query, setQuery] = useState(initialQuery);
   const navigate = useNavigate();
-  const { setQuery: setSearchContextQuery } = useSearchContext();
+  const { setQuery: setSearchContextQuery, setSelectedCategory } = useSearchContext();
 
   useEffect(() => {
     setQuery(initialQuery);
@@ -33,6 +33,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ initialQuery = '', onSearch }) =>
   const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'Enter') {
       handleSearch();
+      setSelectedCategory(null);
     }
   };
 

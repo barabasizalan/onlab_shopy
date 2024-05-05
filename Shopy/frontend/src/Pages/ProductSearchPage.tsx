@@ -30,32 +30,39 @@ function ProductSearchPage() {
   const [page, setPage] = useState<number>(1);
   const [pageSize, setPageSize] = useState<number>(10);
   const [totalPages, setTotalPages] = useState<number>(0);
+  const [categoryTitle, setCategoryTitle] = useState<string>("");
 
-  const { query } = useSearchContext();
+  const { query, selectedCategory } = useSearchContext();
   const navigate = useNavigate();
 
   useEffect(() => {
     setPage(1);
-  }, [pageSize]);
+  }, [pageSize, selectedCategory]);
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
         let url = API_URLS.getAllProducts(page, pageSize);
+        let title = "All available products";
         if (query) {
           url = API_URLS.searchProducts(query, page, pageSize);
+          title = `Search results for "${query}"`;
+        } else if (selectedCategory) {
+          url = API_URLS.getProductsByCategoryId(selectedCategory.id, page, pageSize);
+          title = `Every product for "${selectedCategory.name}"`;
         }
         const response = await axios.get<any>(url);
         setProducts(response.data.products);
         setTotalResults(response.data.totalCount);
         setTotalPages(Math.ceil(response.data.totalCount / pageSize));
+        setCategoryTitle(title);
       } catch (error) {
         console.error("Error fetching products:", error);
       }
     };
 
     fetchProducts();
-  }, [query, page, pageSize]);
+  }, [query, page, pageSize, selectedCategory]);
 
   const handleMinPriceChange = (value: number) => {
     if (value < maxPrice) {
@@ -146,9 +153,7 @@ function ProductSearchPage() {
         <Box flex="1" p={4}>
           <Flex justify="space-between" mb={4}>
             <Text fontSize="lg" fontWeight="bold">
-              {query
-                ? `${totalResults} results found for "${query}"`
-                : "All available products"}
+              {categoryTitle}
             </Text>
             <Select value={sortOption} onChange={handleSortChange} w="auto">
               <option value="alphabeticalAsc">Alphabetical(A-Z)</option>

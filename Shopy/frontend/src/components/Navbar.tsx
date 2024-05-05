@@ -1,7 +1,7 @@
 import { Image, Flex, Button, HStack, chakra, Menu, MenuButton, MenuList, MenuItem, Divider, Text, Box, useToast, Icon } from '@chakra-ui/react';
 import { MdShoppingCart } from 'react-icons/md';
 import SearchBar from './SearchBar';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../Contexts/AuthContext';
 import '../Components.css';
 import { grey } from '@mui/material/colors';
@@ -15,10 +15,11 @@ import { useCart } from '../Contexts/CartContext';
 function Navbar() {
   const { isLoggedIn, logout } = useAuth();
   const toast = useToast();
-  const { query } = useSearchContext();
+  const { query, setQuery, setSelectedCategory } = useSearchContext();
   const [categories, setCategories] = useState<Category[]>([]);
   const { cartItemsTotalQuantity } = useCart();
   const [cartDrawerOpen, setCartDrawerOpen] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchCategory();
@@ -34,7 +35,7 @@ function Navbar() {
   };
 
   const handleImageClick = () => {
-    window.location.href = '/';
+    navigate('/');
   };
 
   const handleSellClick = () => {
@@ -103,6 +104,12 @@ function Navbar() {
 
   const toggleCartDrawer = () => {
     setCartDrawerOpen(!cartDrawerOpen);
+  };
+
+  const handleCategorySelection = (category: Category) => {
+    setSelectedCategory(category);
+    setQuery('');
+    navigate('/search');
   };
 
   return (
@@ -177,7 +184,7 @@ function Navbar() {
           <MenuList>
             {categories.map((category) => {
               return (
-                <MenuItem key={category.id}>{category.name}</MenuItem>
+                <MenuItem key={category.id} onClick={() => handleCategorySelection(category)}>{category.name}</MenuItem>
               )
             })}
           </MenuList>

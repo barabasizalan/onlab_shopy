@@ -283,8 +283,7 @@
               "ViewState": "AQIAAFAAAAAAAAAAAADwv2EAAABlAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-16T18:20:46.683Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
@@ -320,8 +319,7 @@
               "RelativeToolTip": "BLL\\Services\\IProductService.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAcAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-16T16:13:01.235Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-16T16:13:01.235Z"
             },
             {
               "$type": "Document",
@@ -346,8 +344,7 @@
               "RelativeToolTip": "BLL\\Repositories\\IProductRepository.cs",
               "ViewState": "AQIAAAMAAAAAAAAAAAD4vwwAAAAuAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-23T18:36:19.784Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-23T18:36:19.784Z"
             },
             {
               "$type": "Document",
@@ -359,8 +356,7 @@
               "RelativeToolTip": "DAL\\Repositories\\ProductRepository.cs",
               "ViewState": "AQIAABoAAAAAAAAAAAD4vyUAAABpAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-16T16:15:12.511Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-16T16:15:12.511Z"
             },
             {
               "$type": "Document",
@@ -384,8 +380,7 @@
               "RelativeToolTip": "BLL\\Services\\OrderService.cs",
               "ViewState": "AQIAAF8AAAAAAAAAAAAiwGgAAAAmAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-16T16:13:01.888Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-16T16:13:01.888Z"
             },
             {
               "$type": "Document",
