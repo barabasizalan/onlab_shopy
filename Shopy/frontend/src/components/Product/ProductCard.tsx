@@ -4,9 +4,10 @@ import { Product } from "../../Models/Product";
 interface ProductCardProps {
     product: Product;
     onClick?: () => void;
+    order?: boolean;
 }
 
-const ProductCard: React.FC<ProductCardProps> = ({ product, onClick }) => {
+const ProductCard: React.FC<ProductCardProps> = ({ product, onClick, order }) => {
 
     return (
         <Box
@@ -26,9 +27,11 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onClick }) => {
             <Text mt={2} fontSize="lg" fontWeight="bold" whiteSpace="nowrap">
                 {product.name}
             </Text>
-            <Text fontSize="md" color="gray.500">
+            { !order &&
+              <Text fontSize="md" color="gray.500">
                 Available Quantity: {product.quantity}
-            </Text>
+              </Text>
+            }
         </VStack>
         <Divider />
         <Text mt={2} fontSize="lg" fontWeight="bold">

@@ -98,24 +98,49 @@ namespace BLL.Services
                 throw new Exception("Payment method not found.");
             }
 
+            var orderDetailsDto = new List<OrderDetailDto>();
+
+            foreach (var orderDetail in order.OrderDetails)
+            {
+                var product = _productRepository.GetProductByIdAsync(orderDetail.ProductId).Result;
+
+                if(product == null)
+                {
+                    throw new Exception("Product not found.");
+                }
+
+                var orderDetailDto = new OrderDetailDto
+                {
+                    Id = orderDetail.Id,
+                    OrderId = orderDetail.OrderId,
+                    Product = new ProductDto
+                    {
+                        Id = product.Id,
+                        Name = product.Name,
+                        Description = product.Description,
+                        Price = product.Price,
+                        Quantity = product.Quantity,
+                        CategoryId = product.CategoryId,
+                        ImageBase64 = Convert.ToBase64String(product.Image.ImageData)
+                    },
+                    Quantity = orderDetail.Quantity,
+                    PurchasePrice = orderDetail.PurchasePrice
+                };
+
+                orderDetailsDto.Add(orderDetailDto);
+            }
+
             return new OrderDto
             {
                 Id = order.Id,
                 OrderDate = order.OrderDate,
                 Status = order.Status,
-                OrderDetails = order.OrderDetails.Select(od => new OrderDetailDto
-                {
-                    Id = od.Id,
-                    OrderId = od.OrderId,
-                    ProductId = od.ProductId,
-                    Quantity = od.Quantity,
-                    PurchasePrice = od.PurchasePrice
-                }).ToList(),
                 PaymentMethod = new PaymentMethodDto
                 {
                     Id = paymentMethod.Id,
                     Method = paymentMethod.Method
-                }
+                },
+                OrderDetails = orderDetailsDto
             };
         }
 

@@ -1,6 +1,7 @@
-import { Badge, Box, Flex, ListItem, Text, UnorderedList } from "@chakra-ui/react";
+import { Badge, Box, Flex, Text, UnorderedList } from "@chakra-ui/react";
 import { Order } from "../../Models/Order";
 import { grey } from "@mui/material/colors";
+import ProductCard from "../Product/ProductCard";
 
 interface OrderCardProps {
     order: Order;
@@ -35,10 +36,7 @@ const OrderCard: React.FC<OrderCardProps> = ({ order }) => {
         </Text>
         <UnorderedList>
         {order.orderDetails.map((detail, index) => (
-          <ListItem key={index}>
-            Product ID: {detail.productId}, Quantity: {detail.quantity}, Price:{" "}
-            {detail.purchasePrice}
-          </ListItem>
+          <ProductCard key={index} product={detail.product} order={true}/>
         ))}
       </UnorderedList>
       </Box>

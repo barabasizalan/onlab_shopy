@@ -21,9 +21,7 @@ const HomeProductList: React.FC<ProductListProps> = ({ products }) => {
       {products.map(product => (
         <Box key={product.id}>
           <HomeProductCard
-            imageBase64={product.imageBase64}
-            name={product.name}
-            price={product.price}
+            product={product}
             onClick={() => handleCardClick(product)}
             margin={2}
           />

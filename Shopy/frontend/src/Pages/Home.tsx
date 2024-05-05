@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { Box } from '@chakra-ui/react';
 import HomeProductList from '../components/Home/HomeProductList';
 import { Product } from '../Models/Product';
-import { Welcome } from '../components/Welcome';
 import axios from 'axios';
 import API_URLS from '../service/apiConfig';
+import Welcome from '../components/Home/Welcome';
 
 axios.defaults.withCredentials = true;
 
