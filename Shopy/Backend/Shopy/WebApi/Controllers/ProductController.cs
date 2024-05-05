@@ -91,11 +91,11 @@ namespace WebApi.Controllers
 
         [HttpGet]
         [Route("category/{categoryId}")]
-        public async Task<ActionResult<IEnumerable<Product>>> GetProductsByCategory(int categoryId)
+        public async Task<ActionResult<PagedProductDto>> GetProductsByCategory(int categoryId, int? page, int? pageSize)
         {
             try
             {
-                var products = await _productService.GetProductsByCategory(categoryId);
+                var products = await _productService.GetProductsByCategory(categoryId, page, pageSize);
                 return Ok(products);
             }
             catch (Exception ex)

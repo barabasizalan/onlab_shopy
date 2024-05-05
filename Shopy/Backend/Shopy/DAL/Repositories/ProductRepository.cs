@@ -35,7 +35,7 @@ namespace DAL.Repositories
 
         public async Task<IEnumerable<Product>> GetProductsByCategoryAsync(int categoryId)
         {
-            return await _context.Products.Where(p => p.Category.Id == categoryId).ToListAsync();
+            return await _context.Products.Where(p => p.Category.Id == categoryId).Include(p => p.Image).ToListAsync();
         }
 
         public async Task<IEnumerable<Product>> GetProductsByUserIdAsync(string userId)

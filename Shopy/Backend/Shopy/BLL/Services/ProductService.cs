@@ -52,9 +52,39 @@ namespace BLL.Services
             };
         }
 
-        public async Task<IEnumerable<Product>> GetProductsByCategory(int categoryId)
+        public async Task<PagedProductDto> GetProductsByCategory(int categoryId, int? page, int? pageSize)
         {
-            return await _productRepository.GetProductsByCategoryAsync(categoryId);
+            var products = await _productRepository.GetProductsByCategoryAsync(categoryId);
+
+            var totalCount = products.Count();
+
+            var productDtos = new List<ProductDto>();
+
+            if (page.HasValue && pageSize.HasValue)
+            {
+                products = products.Skip((page.Value - 1) * pageSize.Value).Take(pageSize.Value);
+            }
+
+            foreach (var product in products)
+            {
+                productDtos.Add(new ProductDto
+                {
+                    Id = product.Id,
+                    Name = product.Name,
+                    Description = product.Description,
+                    Price = product.Price,
+                    Quantity = product.Quantity,
+                    CategoryId = product.CategoryId,
+                    ImageBase64 = Convert.ToBase64String(product.Image.ImageData)
+                });
+
+            }
+
+            return new PagedProductDto
+            {
+                Products = productDtos,
+                TotalCount = totalCount
+            };
         }
 
         public async Task<PagedProductDto> SearchProducts(string queryString, int? page, int? pageSize)

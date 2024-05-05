@@ -548,11 +548,21 @@
         "Name": "categoryId",
         "Type": "System.Int32",
         "IsRequired": true
+      },
+      {
+        "Name": "page",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "pageSize",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[BLL.Entities.Product, BLL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "BLL.DTO.PagedProductDto",
         "MediaTypes": [
           "text/plain",
           "application/json",
