@@ -9,10 +9,10 @@ namespace BLL.Repositories
 {
     public interface IProductRepository
     {
-        Task<IEnumerable<Product>> GetAllProductsAsync();
-        Task<IEnumerable<Product>> GetProductsByCategoryAsync(int categoryId);
+        Task<IEnumerable<Product>> GetAllProductsAsync(string sortOption);
+        Task<IEnumerable<Product>> GetProductsByCategoryAsync(int categoryId, string sortOption);
         Task<IEnumerable<Product>> GetProductsByUserIdAsync(string userId);
-        Task<IEnumerable<Product>> SearchProductsAsync(string queryString);
+        Task<IEnumerable<Product>> SearchProductsAsync(string queryString, string sortOption);
         Task AddProductAsync(Product product);
         Task<Product> GetProductByIdAsync(int id);
         Task UpdateProductAsync(Product product);

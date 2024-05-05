@@ -25,7 +25,7 @@ function ProductSearchPage() {
   const [products, setProducts] = useState<Product[]>([]);
   const [minPrice, setMinPrice] = useState<number>(0);
   const [maxPrice, setMaxPrice] = useState<number>(10000);
-  const [sortOption, setSortOption] = useState<string>("");
+  const [sortOption, setSortOption] = useState<string>("nameAsc");
   const [totalResults, setTotalResults] = useState<number>(0);
   const [page, setPage] = useState<number>(1);
   const [pageSize, setPageSize] = useState<number>(10);
@@ -40,29 +40,29 @@ function ProductSearchPage() {
   }, [pageSize, selectedCategory]);
 
   useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        let url = API_URLS.getAllProducts(page, pageSize);
-        let title = "All available products";
-        if (query) {
-          url = API_URLS.searchProducts(query, page, pageSize);
-          title = `Search results for "${query}"`;
-        } else if (selectedCategory) {
-          url = API_URLS.getProductsByCategoryId(selectedCategory.id, page, pageSize);
-          title = `Every product for "${selectedCategory.name}"`;
-        }
-        const response = await axios.get<any>(url);
-        setProducts(response.data.products);
-        setTotalResults(response.data.totalCount);
-        setTotalPages(Math.ceil(response.data.totalCount / pageSize));
-        setCategoryTitle(title);
-      } catch (error) {
-        console.error("Error fetching products:", error);
-      }
-    };
-
     fetchProducts();
-  }, [query, page, pageSize, selectedCategory]);
+  }, [query, page, pageSize, selectedCategory, sortOption]);
+
+  const fetchProducts = async () => {
+    try {
+      let url = API_URLS.getAllProducts(sortOption, page, pageSize);
+      let title = "All available products";
+      if (query) {
+        url = API_URLS.searchProducts(sortOption, query, page, pageSize, );
+        title = `Search results for "${query}"`;
+      } else if (selectedCategory) {
+        url = API_URLS.getProductsByCategoryId(selectedCategory.id, sortOption, page, pageSize);
+        title = `Every product for "${selectedCategory.name}"`;
+      }
+      const response = await axios.get<any>(url);
+      setProducts(response.data.products);
+      setTotalResults(response.data.totalCount);
+      setTotalPages(Math.ceil(response.data.totalCount / pageSize));
+      setCategoryTitle(title);
+    } catch (error) {
+      console.error("Error fetching products:", error);
+    }
+  };
 
   const handleMinPriceChange = (value: number) => {
     if (value < maxPrice) {
@@ -156,10 +156,10 @@ function ProductSearchPage() {
               {categoryTitle}
             </Text>
             <Select value={sortOption} onChange={handleSortChange} w="auto">
-              <option value="alphabeticalAsc">Alphabetical(A-Z)</option>
-              <option value="alphabeticalDesc">Alphabetical(Z-A)</option>
-              <option value="price-ascending">Price Ascending</option>
-              <option value="price-descending">Price Descending</option>
+              <option value="nameAsc">Alphabetical(A-Z)</option>
+              <option value="nameDesc">Alphabetical(Z-A)</option>
+              <option value="priceAsc">Price Ascending</option>
+              <option value="priceDesc">Price Descending</option>
             </Select>
           </Flex>
           <Box >

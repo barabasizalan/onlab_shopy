@@ -18,9 +18,21 @@ namespace DAL.Repositories
         {
             _context = context;
         }
-        public async Task<IEnumerable<Product>> GetAllProductsAsync()
+        public async Task<IEnumerable<Product>> GetAllProductsAsync(string sortOption)
         {
-            return await _context.Products.Include(p => p.Image).ToListAsync();
+            switch(sortOption)
+            {
+                case "priceAsc":
+                    return await _context.Products.OrderBy(p => p.Price).Include(p => p.Image).ToListAsync();
+                case "priceDesc":
+                    return await _context.Products.OrderByDescending(p => p.Price).Include(p => p.Image).ToListAsync();
+                case "nameAsc":
+                    return await _context.Products.OrderBy(p => p.Name).Include(p => p.Image).ToListAsync();
+                case "nameDesc":
+                    return await _context.Products.OrderByDescending(p => p.Name).Include(p => p.Image).ToListAsync();
+                default:
+                    return await _context.Products.Include(p => p.Image).ToListAsync();
+            }
         }
 
         public async Task<Product> GetProductByIdAsync(int id)
@@ -33,18 +45,42 @@ namespace DAL.Repositories
             return product;
         }
 
-        public async Task<IEnumerable<Product>> GetProductsByCategoryAsync(int categoryId)
+        public async Task<IEnumerable<Product>> GetProductsByCategoryAsync(int categoryId, string sortOption)
         {
-            return await _context.Products.Where(p => p.Category.Id == categoryId).Include(p => p.Image).ToListAsync();
+            switch (sortOption)
+            {
+                case "priceAsc":
+                    return await _context.Products.Where(p => p.Category.Id == categoryId).OrderBy(p => p.Price).Include(p => p.Image).ToListAsync();
+                case "priceDesc":
+                    return await _context.Products.Where(p => p.Category.Id == categoryId).OrderByDescending(p => p.Price).Include(p => p.Image).ToListAsync();
+                case "nameAsc":
+                    return await _context.Products.Where(p => p.Category.Id == categoryId).OrderBy(p => p.Name).Include(p => p.Image).ToListAsync();
+                case "nameDesc":
+                    return await _context.Products.Where(p => p.Category.Id == categoryId).OrderByDescending(p => p.Name).Include(p => p.Image).ToListAsync();
+                default:
+                    return await _context.Products.Where(p => p.Category.Id == categoryId).Include(p => p.Image).ToListAsync();
+            }
         }
 
         public async Task<IEnumerable<Product>> GetProductsByUserIdAsync(string userId)
         {
             return await _context.Products.Where(p => p.UserId == userId).Include(p => p.Image).ToListAsync();
         }
-        public async Task<IEnumerable<Product>> SearchProductsAsync(string queryString)
+        public async Task<IEnumerable<Product>> SearchProductsAsync(string queryString, string sortOption)
         {
-            return await _context.Products.Where(p => p.Name.Contains(queryString)).Include(p => p.Image).ToListAsync();
+            switch(sortOption)
+            {
+                case "priceAsc":
+                    return await _context.Products.Where(p => p.Name.Contains(queryString)).OrderBy(p => p.Price).Include(p => p.Image).ToListAsync();
+                case "priceDesc":
+                    return await _context.Products.Where(p => p.Name.Contains(queryString)).OrderByDescending(p => p.Price).Include(p => p.Image).ToListAsync();
+                case "nameAsc":
+                    return await _context.Products.Where(p => p.Name.Contains(queryString)).OrderBy(p => p.Name).Include(p => p.Image).ToListAsync();
+                case "nameDesc":
+                    return await _context.Products.Where(p => p.Name.Contains(queryString)).OrderByDescending(p => p.Name).Include(p => p.Image).ToListAsync();
+                default:
+                    return await _context.Products.Where(p => p.Name.Contains(queryString)).Include(p => p.Image).ToListAsync();
+            }
         }
 
         public async Task AddProductAsync(Product product)

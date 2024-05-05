@@ -19,11 +19,11 @@ namespace WebApi.Controllers
 
         [HttpGet]
         [Route("all")]
-        public async Task<ActionResult<PagedProductDto>> GetProducts([FromQuery] int? page, [FromQuery] int? pageSize)
+        public async Task<ActionResult<PagedProductDto>> GetProducts([FromQuery] int? page, [FromQuery] int? pageSize, [FromQuery] string? sortOption)
         {
             try
             {
-                var products = await _productService.GetProducts(page, pageSize);
+                var products = await _productService.GetProducts(page, pageSize, sortOption);
                 return Ok(products);
             }
             catch (Exception ex)
@@ -72,7 +72,7 @@ namespace WebApi.Controllers
 
         [HttpGet]
         [Route("search")]
-        public async Task<ActionResult<PagedProductDto>> SearchProduct([FromQuery] string queryString, [FromQuery] int? page, [FromQuery] int? pageSize)
+        public async Task<ActionResult<PagedProductDto>> SearchProduct([FromQuery] string queryString, [FromQuery] int? page, [FromQuery] int? pageSize, [FromQuery] string? sortOption)
         {
             if (string.IsNullOrEmpty(queryString))
             {
@@ -80,7 +80,7 @@ namespace WebApi.Controllers
             }
             try
             {
-                var products = await _productService.SearchProducts(queryString, page, pageSize);
+                var products = await _productService.SearchProducts(queryString, page, pageSize, sortOption);
                 return Ok(products);
             }
             catch (Exception ex)
@@ -91,11 +91,11 @@ namespace WebApi.Controllers
 
         [HttpGet]
         [Route("category/{categoryId}")]
-        public async Task<ActionResult<PagedProductDto>> GetProductsByCategory(int categoryId, int? page, int? pageSize)
+        public async Task<ActionResult<PagedProductDto>> GetProductsByCategory(int categoryId, int? page, int? pageSize, string? sortOption)
         {
             try
             {
-                var products = await _productService.GetProductsByCategory(categoryId, page, pageSize);
+                var products = await _productService.GetProductsByCategory(categoryId, page, pageSize, sortOption);
                 return Ok(products);
             }
             catch (Exception ex)

@@ -12,13 +12,13 @@ interface ApiEndpoints {
   getCategories: string;
   createOrder: string;
   getUsersOrders: string;
-  getAllProducts: (page?: number, pageSize?: number) => string;
+  getAllProducts: (sortOption: string, page?: number, pageSize?: number) => string;
   getUserProducts: string;
   publishProduct: string;
   deleteProduct: (productId: number) => string;
   updateProduct: (productId: number) => string;
-  searchProducts: (query?: string, page?: number, pageSize?: number) => string;
-  getProductsByCategoryId: (categoryId: number, page: number, pageSize: number) => string;
+  searchProducts: (sortOption: string, query?: string, page?: number, pageSize?: number) => string;
+  getProductsByCategoryId: (categoryId: number, sortOption: string, page: number, pageSize: number) => string;
   getProductById: (productId: number) => string;
   getUserAddress: string;
   getPaymentMethods: string;
@@ -40,9 +40,9 @@ const API_URLS: ApiEndpoints = {
   getCategories: `${BASE_URL}/Category/all`,
   createOrder: `${BASE_URL}/Order/create-order`,
   getUsersOrders: `${BASE_URL}/Order/user/orders`,
-  getAllProducts: (page?: number, pageSize?: number): string => {
+  getAllProducts: (sortOption, page?, pageSize?): string => {
     if (page !== undefined && pageSize !== undefined) {
-      return `${BASE_URL}/Product/all?page=${page}&pageSize=${pageSize}`;
+      return `${BASE_URL}/Product/all?page=${page}&pageSize=${pageSize}&sortOption=${sortOption}`;
     } else {
       return `${BASE_URL}/Product/all`;
     }
@@ -51,15 +51,15 @@ const API_URLS: ApiEndpoints = {
   publishProduct: `${BASE_URL}/Product/publish`,
   deleteProduct: (productId) => `${BASE_URL}/Product/delete/${productId}`,
   updateProduct: (productId) => `${BASE_URL}/Product/update/${productId}`,
-  searchProducts: (query, page, pageSize): string => {
+  searchProducts: (sortOption, query, page, pageSize): string => {
     if (query && !page && !pageSize) {
-      return `${BASE_URL}/Product/search?queryString=${query}`;
+      return `${BASE_URL}/Product/search?queryString=${query}&sortOption=${sortOption}`;
     } else {
-      return `${BASE_URL}/Product/search?queryString=${query}&page=${page}&pageSize=${pageSize}`;
+      return `${BASE_URL}/Product/search?queryString=${query}&page=${page}&pageSize=${pageSize}&sortOption=${sortOption}`;
     }
   },
-  getProductsByCategoryId: (categoryId, page, pageSize) =>
-    `${BASE_URL}/Product/category/${categoryId}?page=${page}&pageSize=${pageSize}`,
+  getProductsByCategoryId: (categoryId, sortOption, page, pageSize) =>
+    `${BASE_URL}/Product/category/${categoryId}?page=${page}&pageSize=${pageSize}&sortOption=${sortOption}`,
   getProductById: (productId) => `${BASE_URL}/Product/${productId}`,
   getUserAddress: `${BASE_URL}/Address/my`,
   getPaymentMethods: `${BASE_URL}/PaymentMethod/all`,

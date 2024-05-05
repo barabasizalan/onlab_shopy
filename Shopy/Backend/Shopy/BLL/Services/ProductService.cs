@@ -18,9 +18,9 @@ namespace BLL.Services
             _imageService = imageService;
         }
 
-        public async Task<PagedProductDto> GetProducts( int? page, int? pageSize)
+        public async Task<PagedProductDto> GetProducts( int? page, int? pageSize, string sortOption)
         {
-            var products = await _productRepository.GetAllProductsAsync();
+            var products = await _productRepository.GetAllProductsAsync(sortOption);
             var totalCount = products.Count();
 
             var productDtos = new List<ProductDto>();
@@ -52,9 +52,9 @@ namespace BLL.Services
             };
         }
 
-        public async Task<PagedProductDto> GetProductsByCategory(int categoryId, int? page, int? pageSize)
+        public async Task<PagedProductDto> GetProductsByCategory(int categoryId, int? page, int? pageSize, string sortOption)
         {
-            var products = await _productRepository.GetProductsByCategoryAsync(categoryId);
+            var products = await _productRepository.GetProductsByCategoryAsync(categoryId, sortOption);
 
             var totalCount = products.Count();
 
@@ -87,9 +87,9 @@ namespace BLL.Services
             };
         }
 
-        public async Task<PagedProductDto> SearchProducts(string queryString, int? page, int? pageSize)
+        public async Task<PagedProductDto> SearchProducts(string queryString, int? page, int? pageSize, string sortOption)
         {
-            var products = await _productRepository.SearchProductsAsync(queryString);
+            var products = await _productRepository.SearchProductsAsync(queryString, sortOption);
             var totalCount = products.Count();
 
             var productDtos = new List<ProductDto>();
