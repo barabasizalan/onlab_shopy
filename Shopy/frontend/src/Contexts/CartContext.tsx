@@ -8,6 +8,7 @@ interface CartContextType {
     removeFromCart: (id: number) => Promise<void>;
     cartItemsTotalQuantity: number;
     quantityChange: (id: number, value: number) => Promise<void>;
+    clearCart: () => void;
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
@@ -75,13 +76,19 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }: CartProv
         } catch(error) {
             console.error('Error changing quantity:', error);
         }
-    }
+    };
+
+    const clearCart = () => {
+        setCartItems([]);
+    };
+
     const contextValue: CartContextType = {
         cartItems,
         addToCart,
         removeFromCart,
         cartItemsTotalQuantity,
-        quantityChange
+        quantityChange,
+        clearCart
     };
 
     return (

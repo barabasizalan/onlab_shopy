@@ -238,3 +238,17 @@ export const getRoleAsync = async (email: string): Promise<string> => {
         throw error;
     }
 };
+
+export const createAddressAsync = async (address: Address): Promise<void> => {
+    try {
+        const response = await axios.post(API_URLS.createAddress, address);
+        if (response.status === 200) {
+            return;
+        } else {
+            throw new Error('Error creating address');
+        }
+    } catch(error) {
+        console.error('Error creating address: ', error);
+        throw error;
+    }
+};

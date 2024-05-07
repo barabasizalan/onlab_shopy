@@ -1,4 +1,4 @@
-import { Box, Flex, Image, Text, chakra, useToast } from '@chakra-ui/react';
+import { Box, Image, Text, chakra, useToast } from '@chakra-ui/react';
 import { useCart } from '../../Contexts/CartContext';
 import { Product } from '../../Models/Product';
 
@@ -15,7 +15,7 @@ const HomeProductCard: React.FC<CardProps> = ({ product, onClick, margin: mx }) 
 
   const handleAddToCart = async () => {
     try {
-      if(product.quantity > 1) {
+      if(product.quantity >= 1) {
         await addToCart(product.id, 1);
         toast({
           title: "Product added to cart!",
@@ -58,32 +58,22 @@ const HomeProductCard: React.FC<CardProps> = ({ product, onClick, margin: mx }) 
         <Text color="gray.500" fontWeight="semibold" overflow="hidden" whiteSpace="nowrap" textOverflow="ellipsis">
           {product.name}
         </Text>
-        <Flex
-          alignItems="center"
-          justifyContent="space-between"
-          px={4}
-          py={2}
-          roundedBottom="lg">
-          <chakra.h1 color="black" fontWeight="semibold" fontSize="lg">
-            {product.price} €
-          </chakra.h1>
-          <chakra.button
-            px={2}
-            py={1}
-            bg="black"
-            fontSize="xs"
-            color="white"
-            rounded="lg"
-            textTransform="uppercase"
-            _hover={{
-              bg: "gray.700",
-            }}
-            onClick={() => handleAddToCart()}
-            >
-              Add to cart
-            </chakra.button>
-        </Flex>
+        <chakra.h1 color="black" fontWeight="semibold" fontSize="lg">
+          {product.price} €
+        </chakra.h1>
       </Box>
+      <chakra.button
+            bg="grey"
+            color="white"
+            textTransform="uppercase"
+            _hover={{ bg: "gray.700" }}
+            onClick={handleAddToCart}
+            width="100%" // Button width spans the whole card
+            py="2"
+            cursor="pointer"
+          >
+            Add to cart
+          </chakra.button>
     </Box>
   );
 };

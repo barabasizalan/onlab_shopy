@@ -18,6 +18,7 @@ import {
 import { useEffect, useState } from "react";
 import { Address } from "../Models/Address";
 import {
+  createAddressAsync,
   createOrderAsync,
   fetchPaymentMethodsAsync,
   fetchTotalPriceOfCart,
@@ -45,6 +46,7 @@ const Checkout: React.FC = () => {
 
   const toast = useToast();
   const navigate = useNavigate();
+  const { clearCart } = useCart();
 
   useEffect(() => {
     fetchAddress();
@@ -57,14 +59,50 @@ const Checkout: React.FC = () => {
 
   const handleAddress = async () => {
     const newAddress: Address = {
-      ...address,
       country: country,
       city: city,
       street: street,
       zipCode: zipCode,
     };
-    await updateAddressAsync(newAddress);
-    setAddress(newAddress);
+    if(address == null) {
+      try {
+        await createAddressAsync(newAddress);
+        setAddress(newAddress);
+        toast({
+          title: "Address created successfully",
+          status: "success",
+          duration: 3000,
+          isClosable: true,
+        });
+      } catch (error) {
+        console.error("Error creating address:", error);
+        toast({
+          title: "Error creating address",
+          status: "error",
+          duration: 3000,
+          isClosable: true,
+        });
+      }
+    } else {
+      try {
+        await updateAddressAsync(newAddress);
+        setAddress(newAddress);
+        toast({
+          title: "Address updated successfully",
+          status: "success",
+          duration: 3000,
+          isClosable: true,
+        });
+      } catch (error) {
+        console.error("Error updating address:", error);
+        toast({
+          title: "Error updating address",
+          status: "error",
+          duration: 3000,
+          isClosable: true,
+        });
+      }
+    }
   };
 
   const fetchAddress = async () => {
@@ -89,6 +127,8 @@ const Checkout: React.FC = () => {
         duration: 3000,
         isClosable: true,
       });
+      clearCart();
+      navigate("/");
     } else {
       toast({
         title: "Error placing order",
@@ -97,7 +137,7 @@ const Checkout: React.FC = () => {
         isClosable: true,
       });
     }
-    navigate("/");
+    
   };
 
   const fetchPrice = async () => {

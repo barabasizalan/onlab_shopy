@@ -1,4 +1,4 @@
-import {  Box, Divider, HStack, Image, Text, VStack } from "@chakra-ui/react";
+import {  Box, HStack, Image, Text, VStack } from "@chakra-ui/react";
 import { Product } from "../../Models/Product";
 
 interface ProductCardProps {
@@ -33,8 +33,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onClick, order }) =>
               </Text>
             }
         </VStack>
-        <Divider />
-        <Text mt={2} fontSize="lg" fontWeight="bold">
+        <Text mt={2} fontSize="lg" fontWeight="bold" marginLeft='auto'>
           {product.price}€
         </Text>
         </HStack>
