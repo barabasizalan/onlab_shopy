@@ -29,5 +29,18 @@ namespace WebApi.Controllers
             }
         }
 
+        [HttpGet("role")]
+        public async Task<IActionResult> GetUserRole([FromQuery] string email)
+        {
+            var userRole = await _authService.GetUserRoleAsync(email);
+            if (userRole != null)
+            {
+                return Ok(new { Role = userRole });
+            }
+            else
+            {
+                return BadRequest(new { Message = "User not found." });
+            }
+        }
     }
 }

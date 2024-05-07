@@ -17,7 +17,7 @@ const Home: React.FC = () => {
 
   const fetchProducts = async () => {
     try {
-      const response = await axios.get(API_URLS.getAllProducts(1, 8));
+      const response = await axios.get(API_URLS.getAllProducts("NameAsc", 1, 8));
       setProducts(response.data.products);
     } catch (error) {
       console.error('Error fetching products:', error);

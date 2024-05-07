@@ -11,7 +11,7 @@ namespace WebApi
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
 
@@ -24,7 +24,10 @@ namespace WebApi
             builder.Services.AddDbContext<ShopyDbContext>(options => options.UseSqlServer(
                 builder.Configuration.GetConnectionString("ShopyConnection")));
 
-            builder.Services.AddAuthorization();
+            builder.Services.AddAuthorization(options =>
+            {
+                options.AddPolicy("AdminOnly", policy => policy.RequireRole("Admin"));
+            });
             builder.Services.AddIdentityApiEndpoints<User>(options =>
             {
                 options.Password.RequiredLength = 6;
@@ -102,6 +105,42 @@ namespace WebApi
             app.UseAuthorization();
 
             app.MapControllers();
+
+            using(var scope = app.Services.CreateScope())
+            {
+                var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+                var roles = new [] { "Admin", "User" };
+
+                foreach (var role in roles)
+                {
+                    if (!await roleManager.RoleExistsAsync(role))
+                    {
+                        await roleManager.CreateAsync(new IdentityRole(role));
+                    }
+                }
+            }
+
+            using (var scope = app.Services.CreateScope())
+            {
+                var userManager = scope.ServiceProvider.GetRequiredService<UserManager<User>>();
+
+                string email = "admin@admin.com";
+                string password = "Admin123!";
+
+                if (await userManager.FindByEmailAsync(email) == null)
+                {
+                    var user = new User
+                    {
+                        Email = email,
+                        UserName = email,
+                        EmailConfirmed = true
+                    };
+
+                    await userManager.CreateAsync(user, password);
+                    await userManager.AddToRoleAsync(user, "Admin"); 
+                }
+            }
+
             app.Run();
         }
     }

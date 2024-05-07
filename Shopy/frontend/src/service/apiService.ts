@@ -227,4 +227,14 @@ export const fetchProductsByCategoryAsync = async (categoryId: number, sortOptio
         console.error('Error fetching products by category: ', error);
         throw error;
     }
-}
+};
+
+export const getRoleAsync = async (email: string): Promise<string> => {
+    try {
+        const response = await axios.get(API_URLS.getUserRole(email));
+        return response.data;
+    } catch(error) {
+        console.error('Error fetching user role: ', error);
+        throw error;
+    }
+};

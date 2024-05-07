@@ -25,6 +25,7 @@ interface ApiEndpoints {
   updateUserAddress: string;
   getNumberOfCartItems: string;
   getTotalPriceOfCart: string;
+  getUserRole: (email: string) => string;
 }
 
 const API_URLS: ApiEndpoints = {
@@ -66,6 +67,7 @@ const API_URLS: ApiEndpoints = {
   updateUserAddress: `${BASE_URL}/Address/update`,
   getNumberOfCartItems: `${BASE_URL}/Cart/number-of-items`,
   getTotalPriceOfCart: `${BASE_URL}/Cart/total-price`,
+  getUserRole: (email) => `${BASE_URL}/Account/role?email=${email}`,
 };
 
 export default API_URLS;

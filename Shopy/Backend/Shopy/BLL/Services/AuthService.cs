@@ -54,5 +54,19 @@ namespace BLL.Services
 
             return result.Succeeded ? "Registration successful." : "Registration failed.";
         }
+
+        public async Task<string> GetUserRoleAsync(string email)
+        {
+            var user = await _userManager.FindByEmailAsync(email);
+            if(user != null)
+            {
+                var role = await _userManager.GetRolesAsync(user);
+                if (role.Any())
+                {
+                    return role.First();
+                }
+            }
+            return null;
+        }
     }
 }

@@ -16,6 +16,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "WebApi.Controllers.AccountController",
+    "Method": "GetUserRole",
+    "RelativePath": "account/role",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "email",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "WebApi.Controllers.AddressController",
     "Method": "CreateAddress",
     "RelativePath": "Address/create",
@@ -307,7 +323,7 @@
   },
   {
     "ContainingType": "WebApi.Program\u002B\u003C\u003Ec",
-    "Method": "\u003CMain\u003Eb__0_5",
+    "Method": "\u003CMain\u003Eb__0_6",
     "RelativePath": "logout",
     "HttpMethod": "POST",
     "IsController": false,

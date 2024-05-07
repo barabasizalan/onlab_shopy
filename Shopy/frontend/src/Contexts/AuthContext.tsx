@@ -1,13 +1,12 @@
-// AuthContext.tsx
 import React, { createContext, useContext, useState, ReactNode, useEffect } from 'react';
 import API_URLS from '../service/apiConfig';
 import axios from 'axios';
 
 interface AuthContextType {
   isLoggedIn: boolean;
-  login: () => void;
+  isAdmin: boolean;
+  login: (email: string, password: string) => Promise<void>;
   logout: () => Promise<boolean>;
-  setUserId: (userId: string | null) => void;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -26,6 +25,10 @@ interface AuthProviderProps {
 
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(() => {
+    const isAdminFromStorage = localStorage.getItem('isAdmin');
+    return isAdminFromStorage ? JSON.parse(isAdminFromStorage) : false;
+  });
 
   useEffect(() => {
     const cookieExists = document.cookie.split(';').some(cookie => {
@@ -34,12 +37,30 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     });
     if (cookieExists) {
       setIsLoggedIn(true);
-      
     }
   }, []);
 
-  const login = () => {
-    setIsLoggedIn(true);
+  const login = async (email: string, password: string): Promise<void> => {
+    try {
+      await axios.post(API_URLS.login, {
+        email: email,
+        password: password,
+        twoFactorCode: "",
+        twoFactorRecoveryCode: ""
+      });
+      setIsLoggedIn(true);
+      const role = await axios.get(API_URLS.getUserRole(encodeURIComponent(email)));
+      if (String(role.data.role) === "Admin") {
+        setIsAdmin(true);
+        localStorage.setItem('isAdmin', 'true');
+      } else {
+        setIsAdmin(false);
+        localStorage.setItem('isAdmin', 'false');
+      }
+
+    } catch (error) {
+      throw new Error('Invalid email or password');
+    }
   };
 
   const logout = async (): Promise<boolean> => {
@@ -47,6 +68,8 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       const response = await axios.post(API_URLS.logout);
       if (response.status === 200) {
         setIsLoggedIn(false);
+        setIsAdmin(false);
+        localStorage.removeItem('isAdmin');
         return true;
       }
       console.error('Error logging out:', response);
@@ -55,15 +78,15 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       console.error('Error logging out:', error);
       return false;
     }
-    
+
   };
 
-  const updateUserId = (id: string | null) => {
-    console.log("User's id: " + id);
+  const contextValue = {
+    isLoggedIn, isAdmin, login, logout
   };
 
   return (
-    <AuthContext.Provider value={{ isLoggedIn, login, logout, setUserId: updateUserId }}>
+    <AuthContext.Provider value={contextValue}>
       {children}
     </AuthContext.Provider>
   );

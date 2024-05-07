@@ -12,7 +12,7 @@ const ProductDetailPage: React.FC = () => {
   const [quantity, setQuantity] = useState<number>(1);
   
   const toast = useToast();
-  const {addToCart} = useCart();
+  const { addToCart } = useCart();
   
 
   useEffect(() => {

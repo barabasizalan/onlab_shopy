@@ -17,9 +17,7 @@ import {
 } from "@chakra-ui/react";
 import { FaUserAlt, FaLock } from "react-icons/fa";
 import { Link as ReactRouterLink, useNavigate } from 'react-router-dom';
-import axios from "axios";
 import { useAuth } from "../Contexts/AuthContext";
-import API_URLS from "../service/apiConfig";
 
 <ChakraLink as={ReactRouterLink} to='/home'>
   Home
@@ -32,9 +30,9 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const {login, setUserId} = useAuth();
-  const navigate = useNavigate();
+  const { login } = useAuth();
   const toast = useToast();
+  const navigate = useNavigate();
 
   const handleShowClick = () => setShowPassword(!showPassword);
 
@@ -42,21 +40,8 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post(API_URLS.login, {
-        email: email,
-        password: password,
-        twoFactorCode: "",
-        twoFactorRecoveryCode: ""
-      });
-      
-      setUserId(response.data.userId);
-      
-      console.log(response.data);
-      
-      login();
-
+      await login(email, password);
       navigate('/');
-
       toast({
         title: "Login successful. Welcome " + email + "!",
         status: "success",
@@ -64,7 +49,6 @@ const Login = () => {
         isClosable: true,
         position: "top"
       })
-
     } catch (error) {
       console.error('Login failed: ', error);
       setEmail('');
