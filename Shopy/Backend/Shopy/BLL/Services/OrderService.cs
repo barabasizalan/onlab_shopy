@@ -84,6 +84,16 @@ namespace BLL.Services
             // Clear the cart
             await _cartRepository.DeleteAllFromCartAsync(userId);
 
+            //Delete the products with quantity 0
+            var products = await _productRepository.GetAllProductsAsync("none");
+            foreach (var product in products)
+            {
+                if (product.Quantity == 0)
+                {
+                    await _productRepository.DeleteProductAsync(product);
+                }
+            }
+
             var orderDto = MapOrderToDto(order);
 
             return orderDto;
