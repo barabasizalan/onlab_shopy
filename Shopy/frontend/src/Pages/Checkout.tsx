@@ -1,5 +1,3 @@
-//Desc: Checkout page for the user to review their order before placing it.
-
 import {
   Container,
   Heading,
@@ -64,7 +62,7 @@ const Checkout: React.FC = () => {
       street: street,
       zipCode: zipCode,
     };
-    if(address == null) {
+    if (address == null) {
       try {
         await createAddressAsync(newAddress);
         setAddress(newAddress);
@@ -137,7 +135,6 @@ const Checkout: React.FC = () => {
         isClosable: true,
       });
     }
-    
   };
 
   const fetchPrice = async () => {

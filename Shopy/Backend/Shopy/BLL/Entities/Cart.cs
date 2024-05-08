@@ -19,5 +19,8 @@ namespace BLL.Entities
 
         public virtual Product Product { get; set; }
 
+        [ForeignKey("SharedCart")]
+        public int? SharedCartId { get; set; }
+        public virtual SharedCart SharedCart { get; set; }
     }
 }

@@ -27,6 +27,7 @@ namespace WebApi
             builder.Services.AddAuthorization(options =>
             {
                 options.AddPolicy("AdminOnly", policy => policy.RequireRole("Admin"));
+                options.AddPolicy("User", policy => policy.RequireRole("User"));
             });
             builder.Services.AddIdentityApiEndpoints<User>(options =>
             {

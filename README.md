@@ -15,18 +15,18 @@
 
 ### Funkciólista
 - Must have 
-    - Bejelentkezés, regisztrálás, authentikáció
-    - Termékek megjelenítése -> részletes nézet
-    - Termék publikálása
-    - Termék kosárba tétele
-    - Profil szerkesztése
-    - Keresés termékek nevei között
-    - Külön kategóriaként megtekinteni a termékeket
+    - Bejelentkezés, regisztrálás, authentikáció (kész)
+    - Termékek megjelenítése -> részletes nézet (kész)
+    - Termék publikálása (kész)
+    - Termék kosárba tétele (kész)
+    - Profil szerkesztése (todo)
+    - Keresés termékek nevei között (kész)
+    - Külön kategóriaként megtekinteni a termékeket (kész)
 - Should have
-    - Publikált termék törlése
-    - Admin role, felhasználók kezelése(ha pl. valaki nem megfelelő tartalmat tesz közzé)
-    - Termékekhez több részlet amire lehet szűrni
-    - Megosztott kosár
+    - Publikált termék törlése (kész)
+    - Admin role, felhasználók kezelése(ha pl. valaki nem megfelelő tartalmat tesz közzé) (ongoing)
+    - Termékekhez több részlet amire lehet szűrni (ongoing)
+    - Megosztott kosár (todo)
 - Nice to have
     - Publikáláskor több kép közzététele(adatbázis módosítással jár)
     - Termékek kedvelése
@@ -86,10 +86,21 @@
 - Ápr. 22. - Máj. 5.
     - Kosárnak külön Context és aszerint kommunikáljon, véglegesíteni a működést
     - Rendelés megvalósítása
+    - Leadott rendelés részleteinek megtekintése
+    - Szállítási cím létrehozása, módosítása rendeléskor
+    - Bug fixek
 <hr>
 
 - Máj. 6. - Máj 19. 
-    - todo
+    - Admin role bevezetése(hozzátartozó oldal elkészítése, most hardkodolva maga az admin, de hogyan legyen másképp?)
+        - Felhasználók letiltása
+        - Termékek törlése
+        - Rendelések felülvizsgálata
+    - User role kezdetleges beállítás?
+    - Közös kosár
+        - Ötlet: SharedCart tábla(Id, Code, CreatedByUserId, CreatedAt), egy-több kapcsolat a Cart osztállyal. A <i>Code</i> automatikusan
+        lenne generálva, akkor amikor valaki létre akarna hozni egy közös kosarat, és ezzel a kóddal majd be lehet lépni a közös kosárba.
+        A Cart osztályt módosítanám, és felvennék egy SharedCartId mezőt.
 <hr>
 
 - Máj. 20. - Máj.24

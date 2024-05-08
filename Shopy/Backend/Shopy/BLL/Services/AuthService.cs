@@ -51,7 +51,7 @@ namespace BLL.Services
             };
 
             var result = await _userManager.CreateAsync(user, registerRequest.Password);
-            var roleResult = await _userManager.AddToRoleAsync(user, "User");
+            await _userManager.AddToRoleAsync(user, "User");
 
             return result.Succeeded ? "Registration successful." : "Registration failed.";
         }
@@ -67,6 +67,7 @@ namespace BLL.Services
                     return role.First();
                 }
             }
+
             return null;
         }
     }

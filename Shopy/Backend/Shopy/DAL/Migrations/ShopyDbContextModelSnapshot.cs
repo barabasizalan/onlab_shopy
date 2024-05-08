@@ -65,6 +65,9 @@ namespace DAL.Migrations
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
 
+                    b.Property<int?>("SharedCartId")
+                        .HasColumnType("int");
+
                     b.Property<string>("UserId")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -72,6 +75,8 @@ namespace DAL.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("ProductId");
+
+                    b.HasIndex("SharedCartId");
 
                     b.ToTable("Cart");
                 });
@@ -235,6 +240,32 @@ namespace DAL.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Products");
+                });
+
+            modelBuilder.Entity("BLL.Entities.SharedCart", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("nvarchar(max)")
+                        .HasDefaultValueSql("NEWID()");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedByUserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("SharedCart");
                 });
 
             modelBuilder.Entity("BLL.Entities.Status", b =>
@@ -465,7 +496,13 @@ namespace DAL.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("BLL.Entities.SharedCart", "SharedCart")
+                        .WithMany("Carts")
+                        .HasForeignKey("SharedCartId");
+
                     b.Navigation("Product");
+
+                    b.Navigation("SharedCart");
                 });
 
             modelBuilder.Entity("BLL.Entities.Order", b =>
@@ -598,6 +635,11 @@ namespace DAL.Migrations
             modelBuilder.Entity("BLL.Entities.Order", b =>
                 {
                     b.Navigation("OrderDetails");
+                });
+
+            modelBuilder.Entity("BLL.Entities.SharedCart", b =>
+                {
+                    b.Navigation("Carts");
                 });
 
             modelBuilder.Entity("BLL.Entities.User", b =>

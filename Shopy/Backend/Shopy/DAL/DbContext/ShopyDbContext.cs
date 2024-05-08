@@ -17,6 +17,7 @@ namespace DAL.DbContext
         public DbSet<Status> Statuses { get; set; }
         public DbSet<PaymentMethod> PaymentMethods { get; set; }
         public DbSet<Address> Addresses { get; set; }
+        public DbSet<SharedCart> SharedCarts { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -53,6 +54,10 @@ namespace DAL.DbContext
             modelBuilder.Entity<Product>()
                 .Property(p => p.UserId)
                 .IsRequired(false);
+
+            modelBuilder.Entity<SharedCart>()
+                .Property(sc => sc.Code)
+                .HasDefaultValueSql("NEWID()");
         }
     }
 }
