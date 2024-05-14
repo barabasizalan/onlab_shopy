@@ -114,6 +114,68 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "WebApi.Controllers.CartController",
+    "Method": "JoinCart",
+    "RelativePath": "Cart/join/{code}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "code",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApi.Controllers.CartController",
+    "Method": "GetJoinedCarts",
+    "RelativePath": "Cart/joinedCarts",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "BLL.DTO.CartDto[]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "WebApi.Controllers.CartController",
+    "Method": "GetNumberOfProductsInCart",
+    "RelativePath": "Cart/numberOfProducts/{cartId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "cartId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Int32",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "WebApi.Controllers.CartItemController",
     "Method": "AddItemToCart",
     "RelativePath": "CartItem/add",
@@ -140,6 +202,22 @@
       {
         "Name": "cartItemId",
         "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApi.Controllers.CartItemController",
+    "Method": "UpdateQuantity",
+    "RelativePath": "CartItem/updateQuantity",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "updateQuantityDto",
+        "Type": "BLL.DTO.UpdateQuantityDto",
         "IsRequired": true
       }
     ],

@@ -11,5 +11,6 @@ namespace BLL.DTO
         public int Id { get; set; }
         public List<CartItemDto> CartItems { get; set; }
         public string Code { get; set; }
+        public bool IsOwner { get; set; }
     }
 }

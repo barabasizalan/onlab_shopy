@@ -13,10 +13,12 @@ namespace BLL.Services
     {
         private readonly ICartItemRepository _cartItemRepository;
         private readonly IProductRepository _productRepository;
-        public CartItemService(ICartItemRepository cartItemRepository, IProductRepository productRepository)
+        private readonly ICartRepository _cartRepository;
+        public CartItemService(ICartItemRepository cartItemRepository, IProductRepository productRepository, ICartRepository cartRepository)
         {
             _cartItemRepository = cartItemRepository;
             _productRepository = productRepository;
+            _cartRepository = cartRepository;
         }
 
         public async Task AddProductToCart(AddItemToCartDto addItemToCartDto)
@@ -63,6 +65,18 @@ namespace BLL.Services
         public async Task RemoveProductFromCart(int cartItemId)
         {
             await _cartItemRepository.RemoveCartItemAsync(cartItemId);
+        }
+        
+        //update the quantity of a cart item in the cart
+        public async Task UpdateCartItemQuantity(UpdateQuantityDto updateQuantityDto)
+        {
+            var cart = await _cartRepository.GetCartByIdAsync(updateQuantityDto.CartId);
+            if (cart == null)
+            {
+                throw new Exception("Cart not found.");
+            }
+
+            await _cartItemRepository.UpdateCartItemAsync(updateQuantityDto.CartItemId, updateQuantityDto.NewQuantity);
         }
     }
 }

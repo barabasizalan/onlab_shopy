@@ -12,6 +12,16 @@ VALUES
     ('Beauty care'),
     ('Books');
 
+INSERT INTO PaymentMethods (Method)
+VALUES 
+    ('Credit Card'),
+    ('Apple pay'),
+    ('Google pay'),
+    ('PayPal'),
+    ('Bank Transfer'),
+    ('Bitcoin'),
+    ('Cash on Delivery');
+
     -- Inserting products for the 'Fashion' category
 INSERT INTO Product (Name, Description, Price, Quantity, CategoryId, Vat, UserId, ImageUrl)
 VALUES 

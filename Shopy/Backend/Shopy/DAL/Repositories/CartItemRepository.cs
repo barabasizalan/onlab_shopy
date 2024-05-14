@@ -54,16 +54,19 @@ namespace DAL.Repositories
                     {
                         throw new Exception("Not enough products in stock.");
                     }
-                    if(newQuantity <= 0)
-                    {
-                        throw new Exception("Quantity must be greater than zero.");
-                    }
                 } else
                 {
                     throw new Exception("Product not found.");
                 }
 
-                cartItem.Quantity = newQuantity;
+                if (newQuantity == 0)
+                {
+                    _context.CartItems.Remove(cartItem);
+                } else
+                {
+                    cartItem.Quantity = newQuantity;
+                }
+                
                 await _context.SaveChangesAsync();
             }
             else

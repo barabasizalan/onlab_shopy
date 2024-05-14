@@ -28,7 +28,7 @@ namespace WebApi.Controllers
                     return Unauthorized("User is not authenticated.");
                 }
 
-                var carts = await _cartService.GetCarts(userId);
+                var carts = await _cartService.GetOwnedCarts(userId);
                 return Ok(carts);
             }
             catch (Exception ex)
@@ -57,6 +57,86 @@ namespace WebApi.Controllers
                 return StatusCode(500, $"Internal server error: {ex.Message}");
             }
         }
+
+        [HttpGet]
+        [Route("numberOfProducts/{cartId}")]
+        public async Task<ActionResult<int>> GetNumberOfProductsInCart(int cartId)
+        {
+            try
+            {
+                var userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+                if (string.IsNullOrEmpty(userId))
+                {
+                    return Unauthorized("User is not authenticated.");
+                }
+
+                var cart = await _cartService.GetCartById(cartId);
+                if (cart == null)
+                {
+                    return Ok(0);
+                }
+
+                var quantity = cart.CartItems.Sum(c => c.Quantity);
+                return Ok(quantity);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
+        }
+
+        [HttpPost]
+        [Route("join/{code}")]
+        public async Task<ActionResult> JoinCart(string code)
+        {
+            try
+            {
+                var userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+                if (string.IsNullOrEmpty(userId))
+                {
+                    return Unauthorized("User is not authenticated.");
+                }
+
+                var cart = await _cartService.GetCartByCode(code.ToUpper());
+                if (cart == null)
+                {
+                    return NotFound("Cart not found.");
+                }
+
+                var succesfulJoin = await _cartService.JoinCart(userId, cart.Id);
+                if(!succesfulJoin)
+                {
+                    return BadRequest("Cart already joined.");
+                }
+                return Ok("Cart joined successfully!");
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
+        }
+
+        [HttpGet]
+        [Route("joinedCarts")]
+        public async Task<ActionResult<CartDto[]>> GetJoinedCarts()
+        {
+            try
+            {
+                var userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+                if (string.IsNullOrEmpty(userId))
+                {
+                    return Unauthorized("User is not authenticated.");
+                }
+
+                var carts = await _cartService.GetJoinedCarts(userId);
+                return Ok(carts);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
+        }
+
 
     }
 }

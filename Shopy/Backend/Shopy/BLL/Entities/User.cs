@@ -9,7 +9,7 @@ namespace BLL.Entities
 
         public int? AddressId { get; set; }
         public virtual Address Address { get; set; }
-        public virtual ICollection<Cart> Carts { get; set; }
+        public virtual ICollection<Cart> Carts { get; set; } = new List<Cart>();
 
     }
 }

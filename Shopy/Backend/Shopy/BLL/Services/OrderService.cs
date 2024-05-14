@@ -93,7 +93,7 @@ namespace BLL.Services
             //var products = await _productRepository.GetAllProductsAsync("none");
             //foreach (var product in products)
             //{
-            //    if (product.Quantity == 0)
+            //    if (product.NewQuantity == 0)
             //    {
             //        await _productRepository.DeleteProductAsync(product);
             //    }

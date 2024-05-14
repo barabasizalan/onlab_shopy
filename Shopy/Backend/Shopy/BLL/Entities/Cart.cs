@@ -16,10 +16,9 @@ namespace BLL.Entities
         public int Id { get; set; }
         [Required]
         public string Code { get; set; }
-
         public string OwnerUserId { get; set; }
         public DateTime CreatedAt { get; set; }
         public virtual ICollection<CartItem> CartItems { get; set; }
-        public virtual ICollection<User> Members { get; set; }
+        public virtual ICollection<User> Members { get; set; } = new List<User>();
     }
 }

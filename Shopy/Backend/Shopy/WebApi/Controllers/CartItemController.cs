@@ -67,5 +67,23 @@ namespace WebApi.Controllers
                 return StatusCode(500, $"Internal server error: {ex.Message}");
             }
         }
+
+        [HttpPut]
+        [Route("updateQuantity")]
+        public async Task<ActionResult> UpdateQuantity([FromBody] UpdateQuantityDto updateQuantityDto)
+        {
+            try
+            {
+                await _cartItemService.UpdateCartItemQuantity(updateQuantityDto);
+                if(updateQuantityDto.NewQuantity == 0)
+                {
+                    return Ok("Product removed from cart successfully!");
+                }
+                return Ok("Quantity updated successfully!");
+            } catch(Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
+        }
     }
 }

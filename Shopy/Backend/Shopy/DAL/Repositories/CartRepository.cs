@@ -35,7 +35,7 @@ namespace DAL.Repositories
             throw new NotImplementedException();
         }
 
-        public async Task<IEnumerable<Cart>> GetCartsAsync(string userId)
+        public async Task<IEnumerable<Cart>> GetOwnedCartsAsync(string userId)
         {
             var carts =  await _context.Carts.Where(c => c.OwnerUserId == userId).Include(c => c.CartItems).ToListAsync();
             if (carts == null)
@@ -53,7 +53,7 @@ namespace DAL.Repositories
 
         public async Task<Cart> GetCartByIdAsync(int cartId)
         {
-            var cart = await _context.Carts.Include(c => c.CartItems).FirstOrDefaultAsync(c => c.Id == cartId);
+            var cart = await _context.Carts.Include(c => c.CartItems).Include(c => c.Members).FirstOrDefaultAsync(c => c.Id == cartId);
             if (cart == null)
             {
                 return null;
@@ -77,6 +77,22 @@ namespace DAL.Repositories
             {
                 throw new Exception("Cart is empty.");
             }
+        }
+
+        public async Task<Cart> GetCartByCodeAsync(string code)
+        {
+            var cart = await _context.Carts.FirstOrDefaultAsync(c => c.Code == code);
+            if (cart == null)
+            {
+                return null;
+            }
+            return cart;
+        }
+
+        public async Task UpdateCartAsync(Cart cart)
+        {
+            _context.Carts.Update(cart);
+            await _context.SaveChangesAsync();
         }
     }
 }

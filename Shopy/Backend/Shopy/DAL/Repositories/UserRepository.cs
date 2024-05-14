@@ -7,6 +7,7 @@ using BLL.Entities;
 using BLL.Repositories;
 using DAL.DbContext;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
 namespace DAL.Repositories
 {
@@ -23,7 +24,7 @@ namespace DAL.Repositories
 
         public async Task<User> GetUserByIdAsync(string userId)
         {
-            var user = await _userManager.FindByIdAsync(userId);
+            var user = await _userManager.Users.Include(u => u.Carts).FirstOrDefaultAsync(u => u.Id == userId);
             if(user != null)
             {
                 return user;

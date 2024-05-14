@@ -11,5 +11,6 @@ namespace BLL.Services
     {
         Task AddProductToCart(AddItemToCartDto addItemToCartDto);
         Task RemoveProductFromCart(int cartItemId);
+        Task UpdateCartItemQuantity(UpdateQuantityDto updateQuantityDto);
     }
 }

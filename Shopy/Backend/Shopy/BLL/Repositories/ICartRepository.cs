@@ -10,9 +10,11 @@ namespace BLL.Repositories
 {
     public interface ICartRepository
     {
-        Task<IEnumerable<Cart>> GetCartsAsync(string userId);
+        Task<IEnumerable<Cart>> GetOwnedCartsAsync(string userId);
         Task CreateCartAsync(Cart cart);
         Task<Cart> GetCartByIdAsync(int cartId);
         Task DeleteCartItemsFromCartAsync(string userId);
+        Task<Cart> GetCartByCodeAsync(string code);
+        Task UpdateCartAsync(Cart cart);
     }
 }
