@@ -26,6 +26,18 @@ interface ApiEndpoints {
   getNumberOfCartItems: string;
   getTotalPriceOfCart: string;
   getUserRole: (email: string) => string;
+
+  //cart endpoints
+  getAllOwnedCarts: string;
+  createCart: string;
+  getTotalQuantityOfCart: (cartId: number) => string;
+  joinCart: (code: string) => string;
+  getAllJoinedCarts: string;
+
+  //cartItem endpoints
+  addCartItemToCard: string;
+  deleteCartItem: (cartItemId: number) => string;
+  updateCartItemQuantity: string;
 }
 
 const API_URLS: ApiEndpoints = {
@@ -68,6 +80,18 @@ const API_URLS: ApiEndpoints = {
   getNumberOfCartItems: `${BASE_URL}/Cart/number-of-items`,
   getTotalPriceOfCart: `${BASE_URL}/Cart/total-price`,
   getUserRole: (email) => `${BASE_URL}/Account/role?email=${email}`,
+
+  //cart endpoints
+  getAllOwnedCarts: `${BASE_URL}/Cart/owned/all`,
+  createCart: `${BASE_URL}/Cart/create`,
+  getTotalQuantityOfCart: (cartId) => `${BASE_URL}/Cart/total-quantity/${cartId}`,
+  joinCart: (code) => `${BASE_URL}/Cart/join/${code}`,
+  getAllJoinedCarts: `${BASE_URL}/Cart/joined/all`,
+
+  //cartItem endpoints
+  addCartItemToCard: `${BASE_URL}/CartItem/add`,
+  deleteCartItem: (cartItemId) => `${BASE_URL}/CartItem/delete/${cartItemId}`,
+  updateCartItemQuantity: `${BASE_URL}/CartItem/update-quantity`,
 };
 
 export default API_URLS;

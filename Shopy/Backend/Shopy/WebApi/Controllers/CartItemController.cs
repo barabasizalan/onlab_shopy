@@ -69,7 +69,7 @@ namespace WebApi.Controllers
         }
 
         [HttpPut]
-        [Route("updateQuantity")]
+        [Route("update-quantity")]
         public async Task<ActionResult> UpdateQuantity([FromBody] UpdateQuantityDto updateQuantityDto)
         {
             try

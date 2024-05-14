@@ -85,26 +85,6 @@
   },
   {
     "ContainingType": "WebApi.Controllers.CartController",
-    "Method": "GetCarts",
-    "RelativePath": "Cart/all",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": [
-      {
-        "Type": "BLL.DTO.CartDto[]",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "WebApi.Controllers.CartController",
     "Method": "CreateNewCart",
     "RelativePath": "Cart/create",
     "HttpMethod": "POST",
@@ -132,7 +112,27 @@
   {
     "ContainingType": "WebApi.Controllers.CartController",
     "Method": "GetJoinedCarts",
-    "RelativePath": "Cart/joinedCarts",
+    "RelativePath": "Cart/joined/all",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "BLL.DTO.CartDto[]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "WebApi.Controllers.CartController",
+    "Method": "GetCarts",
+    "RelativePath": "Cart/owned/all",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -152,7 +152,7 @@
   {
     "ContainingType": "WebApi.Controllers.CartController",
     "Method": "GetNumberOfProductsInCart",
-    "RelativePath": "Cart/numberOfProducts/{cartId}",
+    "RelativePath": "Cart/total-quantity/{cartId}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -210,7 +210,7 @@
   {
     "ContainingType": "WebApi.Controllers.CartItemController",
     "Method": "UpdateQuantity",
-    "RelativePath": "CartItem/updateQuantity",
+    "RelativePath": "CartItem/update-quantity",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,

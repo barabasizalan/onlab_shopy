@@ -17,7 +17,7 @@ namespace WebApi.Controllers
         }
 
         [HttpGet]
-        [Route("all")]
+        [Route("owned/all")]
         public async Task<ActionResult<CartDto[]>> GetCarts()
         {
             try
@@ -59,7 +59,7 @@ namespace WebApi.Controllers
         }
 
         [HttpGet]
-        [Route("numberOfProducts/{cartId}")]
+        [Route("total-quantity/{cartId}")]
         public async Task<ActionResult<int>> GetNumberOfProductsInCart(int cartId)
         {
             try
@@ -117,7 +117,7 @@ namespace WebApi.Controllers
         }
 
         [HttpGet]
-        [Route("joinedCarts")]
+        [Route("joined/all")]
         public async Task<ActionResult<CartDto[]>> GetJoinedCarts()
         {
             try

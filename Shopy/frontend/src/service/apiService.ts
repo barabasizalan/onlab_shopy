@@ -6,6 +6,9 @@ import { Product } from "../Models/Product";
 import { Address } from "../Models/Address";
 import { PaymentMethod } from "../Models/PaymentMethod";
 import { Order } from "../Models/Order";
+import { Cart } from "../Models/Cart";
+import { AddCartItemDto } from "../dtos/AddCartItemDto";
+import { CartItemUpdateDto } from "../dtos/CartItemUpdateDto";
 
 export const fetchCartItemsAsync = async ():Promise<CartItem[]> => {
     try {
@@ -252,3 +255,111 @@ export const createAddressAsync = async (address: Address): Promise<void> => {
         throw error;
     }
 };
+
+// Cart endpoints
+export const getAllOwnedCartsAsync = async (): Promise<Cart[]> => {
+    try {
+        const response = await axios.get<Cart[]>(API_URLS.getAllOwnedCarts);
+        if(response.status === 200) {
+            return response.data;
+        } else {
+            throw new Error('Error fetching owned carts');
+        }
+    } catch(error) {
+        throw error;
+    }
+};
+
+export const createCartAsync = async (): Promise<void> => {
+    try {
+        const response = await axios.post(API_URLS.createCart);
+        if(response.status === 200) {
+            return;
+        } else {
+            throw new Error('Error creating cart');
+        }
+    } catch(error) {
+        throw error;
+    }
+};
+
+export const getTotalQuantityOfCartAsync = async (cartId: number): Promise<number> => {
+    try {
+        const response = await axios.get(API_URLS.getTotalQuantityOfCart(cartId));
+        if(response.status === 200) {
+            return response.data;
+        } else {
+            throw new Error('Error fetching total quantity of cart');
+        }
+    } catch(error) {
+        throw error;
+    }
+};
+
+export const joinCartAsync = async (code: string): Promise<void> => {
+    try {
+        const response = await axios.post(API_URLS.joinCart(code));
+        if(response.status === 200) {
+            return;
+        } else {
+            throw new Error('Error joining cart');
+        }
+    } catch(error) {
+        throw error;
+    }
+};
+
+export const getAllJoinedCartsAsync = async (): Promise<Cart[]> => {
+    try {
+        const response = await axios.get<Cart[]>(API_URLS.getAllJoinedCarts);
+        if(response.status === 200) {
+            return response.data;
+        } else {
+            throw new Error('Error fetching joined carts');
+        }
+    } catch(error) {
+        throw error;
+    }
+};
+
+// CartItem endpoints
+export const addCartItemToCartAsync = async (addCartItemDto: AddCartItemDto): Promise<void> => {
+    try {
+        const response = await axios.post(API_URLS.addCartItemToCard, addCartItemDto);
+        if(response.status === 200) {
+            return;
+        } else {
+            throw new Error('Error adding cart item');
+        }
+    } catch(error) {
+        throw error;
+    }
+};
+
+// export const deleteCartItemAsync = async (cartItemId: number): Promise<void> => {
+//     try {
+//         const response = await axios.delete(API_URLS.deleteCartItem(cartItemId));
+//         if(response.status === 200) {
+//             return;
+//         } else {
+//             throw new Error('Error deleting cart item');
+//         }
+//     } catch(error) {
+//         throw error;
+//     }
+// };
+
+export const updateCartItemQuantityAsync = async (cartItemUpdateDto: CartItemUpdateDto): Promise<void> => {
+    try {
+        const response = await axios.put(API_URLS.updateCartItemQuantity, cartItemUpdateDto);
+        if(response.status === 200) {
+            return;
+        } else {
+            throw new Error('Error updating cart item quantity');
+        }
+    } catch(error) {
+        throw error;
+    }
+};
+
+
