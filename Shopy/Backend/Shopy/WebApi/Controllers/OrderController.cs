@@ -18,7 +18,7 @@ namespace WebApi.Controllers
 
         [HttpPost]
         [Route("create-order")]
-        public async Task<IActionResult> CreateOrder([FromBody]CreateOrderDto createOrderDto)
+        public async Task<ActionResult> CreateOrder([FromBody]CreateOrderDto createOrderDto)
         {
             try
             {

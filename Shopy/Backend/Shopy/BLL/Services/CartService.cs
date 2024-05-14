@@ -12,13 +12,11 @@ namespace BLL.Services
     {
         private readonly ICartRepository _cartRepository;
         private readonly ICartItemRepository _cartItemRepository;
-        private readonly IProductRepository _productRepository;
 
-        public CartService(ICartRepository cartRepository, ICartItemRepository cartItemRepository, IProductRepository productRepository)
+        public CartService(ICartRepository cartRepository, ICartItemRepository cartItemRepository)
         {
             _cartRepository = cartRepository;
             _cartItemRepository = cartItemRepository;
-            _productRepository = productRepository;
         }
 
         public async Task<IEnumerable<CartDto>> GetCarts(string userId)

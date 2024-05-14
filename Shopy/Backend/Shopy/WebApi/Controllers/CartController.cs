@@ -20,14 +20,43 @@ namespace WebApi.Controllers
         [Route("all")]
         public async Task<ActionResult<CartDto[]>> GetCarts()
         {
-            var userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-            if (string.IsNullOrEmpty(userId))
+            try
             {
-                return Unauthorized("User is not authenticated.");
-            }
+                var userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+                if (string.IsNullOrEmpty(userId))
+                {
+                    return Unauthorized("User is not authenticated.");
+                }
 
-            var carts = await _cartService.GetCarts(userId);
-            return Ok(carts);
+                var carts = await _cartService.GetCarts(userId);
+                return Ok(carts);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
         }
+
+        [HttpPost]
+        [Route("create")]
+        public async Task<ActionResult> CreateNewCart()
+        {
+            try
+            {
+                var userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+                if (string.IsNullOrEmpty(userId))
+                {
+                    return Unauthorized("User is not authenticated.");
+                }
+
+                await _cartService.CreateCart(userId);
+                return Ok("Cart created successfully!");
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
+        }
+
     }
 }

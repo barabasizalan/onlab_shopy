@@ -104,6 +104,16 @@
     ]
   },
   {
+    "ContainingType": "WebApi.Controllers.CartController",
+    "Method": "CreateNewCart",
+    "RelativePath": "Cart/create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "WebApi.Controllers.CartItemController",
     "Method": "AddItemToCart",
     "RelativePath": "CartItem/add",
