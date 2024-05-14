@@ -3,101 +3,76 @@ using BLL.Entities;
 using BLL.DTO;
 using System;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http.HttpResults;
+using BLL.Utils;
 
 namespace BLL.Services
 {
     public class CartService : ICartService
     {
         private readonly ICartRepository _cartRepository;
+        private readonly ICartItemRepository _cartItemRepository;
         private readonly IProductRepository _productRepository;
-        
-        public CartService(ICartRepository cartRepository, IProductRepository productRepository)
+
+        public CartService(ICartRepository cartRepository, ICartItemRepository cartItemRepository, IProductRepository productRepository)
         {
             _cartRepository = cartRepository;
+            _cartItemRepository = cartItemRepository;
             _productRepository = productRepository;
         }
 
-        public async Task<IEnumerable<CartItemDto>> GetCartItems(string userId)
-        { 
-            var cartItems = await _cartRepository.GetAllCartItemsAsync(userId);
-            var cartDtos = new List<CartItemDto>();
+        public async Task<IEnumerable<CartDto>> GetCarts(string userId)
+        {
+            var carts = await _cartRepository.GetCartsAsync(userId);
 
-            foreach (var cart in cartItems)
+            var cartDtos = new List<CartDto>();
+
+            foreach (var cart in carts)
             {
-                cartDtos.Add(new CartItemDto
+                var cartItems = await _cartItemRepository.GetCartItemsAsync(cart.Id);
+                var cartItemDtos = new List<CartItemDto>();
+                foreach (var cartItem in cartItems)
+
+                {
+                    cartItemDtos.Add(new CartItemDto
+                    {
+                        Id = cartItem.Id,
+                        ProductId = cartItem.ProductId,
+                        Quantity = cartItem.Quantity
+                    });
+                }
+                cartDtos.Add(new CartDto
                 {
                     Id = cart.Id,
-                    ProductId = cart.ProductId,
-                    Quantity = cart.Quantity
+                    CartItems = cartItemDtos,
+                    Code = cart.Code,
                 });
             }
             return cartDtos;
         }
 
-        public async Task AddToCart(string userId, AddToCartDto addToCartDto)
+        public async Task<Cart> GetCartByUserId(string userId)
         {
-            var existingCartItem = await _cartRepository.GetCartItemAsync(userId, addToCartDto.ProductId);
-            if (existingCartItem != null)
+            var carts = await _cartRepository.GetCartsAsync(userId);
+            if (carts.Count() == 0)
             {
-                var newQuantity = existingCartItem.Quantity + addToCartDto.Quantity;
-                var product = await _productRepository.GetProductByIdAsync(addToCartDto.ProductId);
-                if (newQuantity > product.Quantity)
-                {
-                    throw new Exception("Not enough products in stock.");
-                }
-                if (newQuantity <= 0)
-                {
-                    throw new Exception("Quantity must be greater than zero.");
-                }
-                await _cartRepository.UpdateCartItemQuantityAsync(existingCartItem.Id, newQuantity);
+                return null;
             }
-            else
+            return carts.First();
+        }
+
+        //create a cart for a user
+        public async Task CreateCart(string userId)
+        {
+            string uniqueCode = RandomCodeGenerator.GenerateCode(6);
+            var cart = new Cart
             {
-                // Retrieve the product
-                var product = await _productRepository.GetProductByIdAsync(addToCartDto.ProductId);
-                if (product == null)
-                {
-                    throw new Exception("Product not found.");
-                }
-
-                // Validate quantity
-                if (addToCartDto.Quantity <= 0)
-                {
-                    throw new Exception("Quantity must be greater than zero.");
-                }
-                if (addToCartDto.Quantity > product.Quantity)
-                {
-                    throw new Exception("Not enough products in stock.");
-                }
-
-                // Add to cart
-                var cart = new Cart
-                {
-                    UserId = userId,
-                    ProductId = addToCartDto.ProductId,
-                    Quantity = addToCartDto.Quantity
-                };
-
-                await _cartRepository.AddToCartAsync(cart);
-            }
-        }
-
-        public async Task DeleteCartItem(int cartId)
-        {
-            await _cartRepository.DeleteFromCartAsync(cartId);
-        }
-
-        public async Task DeleteAllCartItems(string userId)
-        {
-            await _cartRepository.DeleteAllFromCartAsync(userId);
-        }
-        public async Task UpdateCartItemQuantity(int cartId, int newQuantity)
-        {
-            await _cartRepository.UpdateCartItemQuantityAsync(cartId, newQuantity);
-        }
-        public async Task<int> GetNumberOfCartItems(string userId)
-        {
-            return await _cartRepository.GetNumberOfCartItemsAsync(userId);
+                Code = uniqueCode,
+                OwnerUserId = userId,
+                CreatedAt = DateTime.Now,
+                CartItems = new List<CartItem>()
+            };
+            await _cartRepository.CreateCartAsync(cart);
         }
     }
 }

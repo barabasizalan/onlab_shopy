@@ -1,26 +1,25 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace BLL.Entities
 {
-    [Table("Cart")]
+    [Table("Carts")]
     public class Cart
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
+        [Required]
+        public string Code { get; set; }
 
-        [ForeignKey("User")]
-        public string UserId { get; set; }
-
-        [ForeignKey("Product")]
-        public int ProductId { get; set; }
-        public int Quantity { get; set; }
-
-        public virtual Product Product { get; set; }
-
-        [ForeignKey("SharedCart")]
-        public int? SharedCartId { get; set; }
-        public virtual SharedCart SharedCart { get; set; }
+        public string OwnerUserId { get; set; }
+        public DateTime CreatedAt { get; set; }
+        public virtual ICollection<CartItem> CartItems { get; set; }
+        public virtual ICollection<User> Members { get; set; }
     }
 }

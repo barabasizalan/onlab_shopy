@@ -1,4 +1,5 @@
-﻿using BLL.Entities;
+﻿using BLL.DTO;
+using BLL.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,12 +10,15 @@ namespace BLL.Repositories
 {
     public interface ICartRepository
     {
-        Task<IEnumerable<Cart>> GetAllCartItemsAsync(string userId);
-        Task AddToCartAsync(Cart cart);
+        Task<IEnumerable<CartItem>> GetAllCartItemsAsync(string userId);
+        Task AddToCartAsync(CartItem cart);
         Task DeleteFromCartAsync(int cartId);
-        Task DeleteAllFromCartAsync(string userId);
         Task UpdateCartItemQuantityAsync(int cartId, int newQuantity);
-        Task<Cart> GetCartItemAsync(string userId, int productId);
+        Task<CartItem> GetCartItemAsync(string userId, int productId);
         Task<int> GetNumberOfCartItemsAsync(string userId);
+        Task<IEnumerable<Cart>> GetCartsAsync(string userId);
+        Task CreateCartAsync(Cart cart);
+        Task<Cart> GetCartByIdAsync(int cartId);
+        Task DeleteCartItemsFromCartAsync(string userId);
     }
 }

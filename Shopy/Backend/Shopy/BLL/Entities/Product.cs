@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BLL.Entities
 {
+    [Table("Products")]
     public class Product
     {
         [Key]

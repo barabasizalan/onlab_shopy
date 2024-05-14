@@ -85,23 +85,7 @@
   },
   {
     "ContainingType": "WebApi.Controllers.CartController",
-    "Method": "AddItemToCart",
-    "RelativePath": "Cart/add",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "addToCartDto",
-        "Type": "BLL.DTO.AddToCartDto",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "WebApi.Controllers.CartController",
-    "Method": "GetCartItems",
+    "Method": "GetCarts",
     "RelativePath": "Cart/all",
     "HttpMethod": "GET",
     "IsController": true,
@@ -109,7 +93,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "BLL.DTO.CartItemDto[]",
+        "Type": "BLL.DTO.CartDto[]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -120,86 +104,31 @@
     ]
   },
   {
-    "ContainingType": "WebApi.Controllers.CartController",
-    "Method": "RemoveItemFromCart",
-    "RelativePath": "Cart/delete/{cartId}",
-    "HttpMethod": "DELETE",
+    "ContainingType": "WebApi.Controllers.CartItemController",
+    "Method": "AddItemToCart",
+    "RelativePath": "CartItem/add",
+    "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "cartId",
-        "Type": "System.Int32",
+        "Name": "addItemToCartDto",
+        "Type": "BLL.DTO.AddItemToCartDto",
         "IsRequired": true
       }
     ],
     "ReturnTypes": []
   },
   {
-    "ContainingType": "WebApi.Controllers.CartController",
-    "Method": "RemoveAllItemsFromCart",
-    "RelativePath": "Cart/delete/all",
+    "ContainingType": "WebApi.Controllers.CartItemController",
+    "Method": "RemoveItemFromCart",
+    "RelativePath": "CartItem/delete/{cartItemId}",
     "HttpMethod": "DELETE",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "WebApi.Controllers.CartController",
-    "Method": "GetNumberOfCartItems",
-    "RelativePath": "Cart/number-of-items",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": [
-      {
-        "Type": "System.Int32",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "WebApi.Controllers.CartController",
-    "Method": "CalculateTotal",
-    "RelativePath": "Cart/total-price",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": [
-      {
-        "Type": "System.Decimal",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "WebApi.Controllers.CartController",
-    "Method": "UpdateCartItemQuantity",
-    "RelativePath": "Cart/update/{cartId}",
-    "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "newQuantity",
-        "Type": "System.Int32",
-        "IsRequired": false
-      },
-      {
-        "Name": "cartId",
+        "Name": "cartItemId",
         "Type": "System.Int32",
         "IsRequired": true
       }

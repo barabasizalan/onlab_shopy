@@ -9,5 +9,6 @@ namespace BLL.DTO
     public class CreateOrderDto
     {
         public int PaymentMethodId { get; set; }
+        public int CartId { get; set; }
     }
 }

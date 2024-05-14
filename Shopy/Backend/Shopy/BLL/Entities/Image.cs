@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace BLL.Entities
 {
+    [Table("Images")]
     public class Image
     {
         [Key]

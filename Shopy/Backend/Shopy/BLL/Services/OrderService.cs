@@ -21,23 +21,28 @@ namespace BLL.Services
             _paymentMethodRepository = paymentMethodRepository;
         }
 
-        public async Task<OrderDto> CreateOrder(string userId, int paymentMethodId)
+        //todo: based on the cartId, delete the cart after placing the order
+        public async Task<OrderDto> CreateOrder(string userId, CreateOrderDto createOrderDto)
         {
-            var cartItems = await _cartRepository.GetAllCartItemsAsync(userId);
-            if (cartItems == null)
+            var cart = await _cartRepository.GetCartByIdAsync(createOrderDto.CartId);
+            if (cart == null)
+            {
+                throw new Exception("Cart not found.");
+            }
+
+            if(cart.CartItems.Count == 0)
             {
                 throw new Exception("Cart is empty.");
             }
 
-            // Check if there are enough products in stock
-            foreach (var cartItem in cartItems)
+            foreach(var cartItem in cart.CartItems)
             {
                 var product = await _productRepository.GetProductByIdAsync(cartItem.ProductId);
-                if (product == null)
+                if(product == null)
                 {
                     throw new Exception("Product not found.");
                 }
-                if (cartItem.Quantity > product.Quantity)
+                if(cartItem.Quantity > product.Quantity)
                 {
                     throw new Exception("Not enough products in stock.");
                 }
@@ -49,7 +54,7 @@ namespace BLL.Services
                 OrderDate = DateTime.Now,
                 StatusId = 0,
                 OrderDetails = new List<OrderDetail>(),
-                PaymentMethodId = paymentMethodId
+                PaymentMethodId = createOrderDto.PaymentMethodId
             };
 
             Status status = await _statusRepository.GetStatusByNameAsync("Ordered");
@@ -62,7 +67,7 @@ namespace BLL.Services
                 throw new Exception("Status not found.");
             }
 
-            foreach (var cartItem in cartItems)
+            foreach (var cartItem in cart.CartItems)
             {
                 var orderDetail = new OrderDetail
                 {
@@ -82,17 +87,17 @@ namespace BLL.Services
             await _orderRepository.AddOrderAsync(order);
 
             // Clear the cart
-            await _cartRepository.DeleteAllFromCartAsync(userId);
+            await _cartRepository.DeleteCartItemsFromCartAsync(userId);
 
             //Delete the products with quantity 0
-            var products = await _productRepository.GetAllProductsAsync("none");
-            foreach (var product in products)
-            {
-                if (product.Quantity == 0)
-                {
-                    await _productRepository.DeleteProductAsync(product);
-                }
-            }
+            //var products = await _productRepository.GetAllProductsAsync("none");
+            //foreach (var product in products)
+            //{
+            //    if (product.Quantity == 0)
+            //    {
+            //        await _productRepository.DeleteProductAsync(product);
+            //    }
+            //}
 
             var orderDto = MapOrderToDto(order);
 
@@ -168,10 +173,6 @@ namespace BLL.Services
             {
                 var orderDto = MapOrderToDto(order);
                 orderDtos.Add(orderDto);
-            }
-            foreach (var order in orderDtos)
-            {
-                await Console.Out.WriteLineAsync(order.ToString());
             }
 
             return orderDtos;

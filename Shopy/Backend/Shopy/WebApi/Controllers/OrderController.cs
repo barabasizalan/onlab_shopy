@@ -28,7 +28,7 @@ namespace WebApi.Controllers
                     return Unauthorized("User is not authenticated.");
                 }
 
-                var order = await _orderService.CreateOrder(userId, createOrderDto.PaymentMethodId);
+                var order = await _orderService.CreateOrder(userId, createOrderDto);
 
                 return Ok(order);
 

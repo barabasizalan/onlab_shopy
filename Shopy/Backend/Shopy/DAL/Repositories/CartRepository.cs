@@ -14,43 +14,34 @@ namespace DAL.Repositories
             _context = context;
         }
 
-        public async Task<IEnumerable<Cart>> GetAllCartItemsAsync(string userId)
+        public async Task<IEnumerable<CartItem>> GetAllCartItemsAsync(string userId)
         {
-            return await _context.Carts.Include(c => c.Product).Where(c => c.UserId == userId).ToListAsync();
+            return await _context.CartItems.Include(c => c.Product).ToListAsync();
         }
 
-        public async Task AddToCartAsync(Cart cart)
+        public async Task AddToCartAsync(CartItem cart)
         {
-            _context.Carts.Add(cart);
+            _context.CartItems.Add(cart);
             await _context.SaveChangesAsync();
         }
 
         public async Task DeleteFromCartAsync(int cartId)
         {
-            var cart = await _context.Carts.FindAsync(cartId);
+            var cart = await _context.CartItems.FindAsync(cartId);
             if (cart != null)
             {
-                _context.Carts.Remove(cart);
+                _context.CartItems.Remove(cart);
                 await _context.SaveChangesAsync();
             }
-        }
-
-        public async Task DeleteAllFromCartAsync(string userId)
-        {
-            var cartItems = await _context.Carts.Where(c => c.UserId == userId).ToListAsync();
-            if (cartItems != null)
+            else
             {
-                _context.Carts.RemoveRange(cartItems);
-                await _context.SaveChangesAsync();
-            } else
-            {
-                throw new Exception("Cart is empty.");
+                throw new Exception("Cart item not found.");
             }
         }
 
         public async Task UpdateCartItemQuantityAsync(int cartId, int newQuantity)
         {
-            var cart = await _context.Carts.FindAsync(cartId);
+            var cart = await _context.CartItems.FindAsync(cartId);
             if (cart != null)
             {
                 var product = await _context.Products.FindAsync(cart.ProductId);
@@ -67,7 +58,7 @@ namespace DAL.Repositories
 
                 if (newQuantity == 0)
                 {
-                    _context.Carts.Remove(cart);
+                    _context.CartItems.Remove(cart);
                 }
                 else
                 {
@@ -80,12 +71,82 @@ namespace DAL.Repositories
             }
         }
 
-        public async Task<Cart> GetCartItemAsync(string userId, int productId) => await _context.Carts.FirstOrDefaultAsync(c => c.UserId == userId && c.ProductId == productId);
+        // public async Task<CartItem> GetCartItemAsync(string userId, int productId) => await _context.CartItems.FirstOrDefaultAsync(c => c.UserId == userId && c.ProductId == productId);
 
         public async Task<int> GetNumberOfCartItemsAsync(string userId)
         {
-            var cartItems = await _context.Carts.Where(c => c.UserId == userId).ToListAsync();
+            var cartItems = await _context.CartItems.ToListAsync();
             return cartItems.Sum(c => c.Quantity);
+        }
+
+        public async Task<IEnumerable<Cart>> GetAllCartsForUserAsync(string userId)
+        {
+            return await _context.Carts.Include(c => c.Members).Where(c => c.Members.Any(u => u.Id == userId)).ToListAsync();
+        }
+
+        public async Task AddUserToCartAsync(string userId, string cartCode)
+        {
+            var cart = await _context.Carts.FirstOrDefaultAsync(c => c.Code == cartCode);
+            if (cart == null)
+            {
+                throw new Exception("Cart not found.");
+            }
+            var user = await _context.Users.FindAsync(userId);
+            if (user == null)
+            {
+                throw new Exception("User not found.");
+            }
+            cart.Members.Add(user);
+            await _context.SaveChangesAsync();
+        }
+
+        public Task<CartItem> GetCartItemAsync(string userId, int productId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<IEnumerable<Cart>> GetCartsAsync(string userId)
+        {
+            var carts =  await _context.Carts.Where(c => c.OwnerUserId == userId).Include(c => c.CartItems).ToListAsync();
+            if (carts == null)
+            {
+                return new List<Cart>();
+            }
+            return carts;
+        }
+
+        public async Task CreateCartAsync(Cart cart)
+        {
+            _ = _context.Carts.AddAsync(cart);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task<Cart> GetCartByIdAsync(int cartId)
+        {
+            var cart = await _context.Carts.Include(c => c.CartItems).FirstOrDefaultAsync(c => c.Id == cartId);
+            if (cart == null)
+            {
+                return null;
+            }
+            return cart;
+        }
+
+        public async Task DeleteCartItemsFromCartAsync(string userId)
+        {
+            var cart = await _context.Carts.FirstOrDefaultAsync(c => c.OwnerUserId == userId);
+            if(cart == null)
+            {
+                throw new Exception("Cart not found.");
+            }
+            if (cart.CartItems != null)
+            {
+                cart.CartItems.Clear();
+                await _context.SaveChangesAsync();
+            }
+            else
+            {
+                throw new Exception("Cart is empty.");
+            }
         }
     }
 }

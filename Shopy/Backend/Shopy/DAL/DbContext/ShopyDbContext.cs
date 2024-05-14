@@ -9,7 +9,7 @@ namespace DAL.DbContext
         public ShopyDbContext(DbContextOptions<ShopyDbContext> options) : base(options) { }
 
         public DbSet<Product> Products { get; set; }
-        public DbSet<Cart> Carts { get; set; }
+        public DbSet<CartItem> CartItems { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderDetail> OrderDetails { get; set; }
@@ -17,7 +17,7 @@ namespace DAL.DbContext
         public DbSet<Status> Statuses { get; set; }
         public DbSet<PaymentMethod> PaymentMethods { get; set; }
         public DbSet<Address> Addresses { get; set; }
-        public DbSet<SharedCart> SharedCarts { get; set; }
+        public DbSet<Cart> Carts { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -55,9 +55,24 @@ namespace DAL.DbContext
                 .Property(p => p.UserId)
                 .IsRequired(false);
 
-            modelBuilder.Entity<SharedCart>()
-                .Property(sc => sc.Code)
-                .HasDefaultValueSql("NEWID()");
+            modelBuilder.Entity<Cart>()
+                .HasMany(c => c.CartItems)
+                .WithOne(ci => ci.Cart)
+                .HasForeignKey(ci => ci.CartId);
+
+            modelBuilder.Entity<Cart>()
+                .HasMany(c => c.Members)
+                .WithMany(u => u.Carts)
+                .UsingEntity<Dictionary<string, object>>(
+                    "CartUser",
+                    j => j.HasOne<User>().WithMany().HasForeignKey("UserId"),
+                    j => j.HasOne<Cart>().WithMany().HasForeignKey("CartId"),
+                    j =>
+                    {
+                        j.HasKey("UserId", "CartId");
+                        j.ToTable("CartUser");
+                    });
+
         }
     }
 }

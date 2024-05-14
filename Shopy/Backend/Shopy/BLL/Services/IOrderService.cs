@@ -4,7 +4,7 @@ namespace BLL.Services
 {
     public interface IOrderService
     {
-        Task<OrderDto> CreateOrder(string userId, int paymentMethodId);
+        Task<OrderDto> CreateOrder(string userId, CreateOrderDto createOrderDto);
         Task<IEnumerable<OrderDto>> GetOrdersByUserId(string userId);
     }
 }

@@ -98,9 +98,6 @@
         - Rendelések felülvizsgálata
     - User role kezdetleges beállítás?
     - Közös kosár
-        - Ötlet: SharedCart tábla(Id, Code, CreatedByUserId, CreatedAt), egy-több kapcsolat a Cart osztállyal. A <i>Code</i> automatikusan
-        lenne generálva, akkor amikor valaki létre akarna hozni egy közös kosarat, és ezzel a kóddal majd be lehet lépni a közös kosárba.
-        A Cart osztályt módosítanám, és felvennék egy SharedCartId mezőt.
 <hr>
 
 - Máj. 20. - Máj.24

@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace BLL.Entities
 {
+    [Table("PaymentMethods")]
     public class PaymentMethod
     {
         [Key]
