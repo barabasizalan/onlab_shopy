@@ -21,6 +21,8 @@ namespace BLL.Entities
         [ForeignKey("Image")]
         public int ImageId { get; set; }
         public Image Image { get; set; }
+
+        public bool IsBlocked { get; set; } = false;
         public Category Category { get; set; }
     }
 }

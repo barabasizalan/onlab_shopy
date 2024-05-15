@@ -199,11 +199,6 @@
         "Name": "addItemToCartDto",
         "Type": "BLL.DTO.AddItemToCartDto",
         "IsRequired": true
-      },
-      {
-        "Name": "name",
-        "Type": "System.String",
-        "IsRequired": false
       }
     ],
     "ReturnTypes": []

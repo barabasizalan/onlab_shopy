@@ -11,6 +11,6 @@ export interface CartItemUpdateDto {
 };
 
 export interface CreateOrderDto {
-    PaymentMethodId: number;
-    CartId: number;
+    paymentMethodId: number;
+    cartId: number;
 }

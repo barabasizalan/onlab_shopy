@@ -6,7 +6,7 @@ import { Address } from "../Models/Address";
 import { PaymentMethod } from "../Models/PaymentMethod";
 import { Order } from "../Models/Order";
 import { Cart } from "../Models/Cart";
-import { AddCartItemDto, CartItemUpdateDto } from "../dtos/dtos";
+import { AddCartItemDto, CartItemUpdateDto, CreateOrderDto } from "../dtos/dtos";
 
 export const fetchCategoriesAsync = async ():Promise<Category[]> => {
     try {
@@ -97,11 +97,10 @@ export const fetchPaymentMethodsAsync = async (): Promise<PaymentMethod[]> => {
     }
 };
 
-export const createOrderAsync = async (paymentMethodId: number): Promise<boolean> => {
+export const createOrderAsync = async (createOrderDto: CreateOrderDto): Promise<boolean> => {
     try {
-        const response = await axios.post(API_URLS.createOrder, {
-            paymentMethodId: paymentMethodId
-        });
+        console.log("createOrderDto: " + createOrderDto.cartId + " " + createOrderDto.paymentMethodId);
+        const response = await axios.post(API_URLS.createOrder, createOrderDto);
         if (response.status === 200) {
             return true;
         } else {

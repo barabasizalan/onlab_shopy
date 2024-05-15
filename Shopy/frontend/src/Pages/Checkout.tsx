@@ -27,6 +27,7 @@ import { PaymentMethod } from "../Models/PaymentMethod";
 import { useNavigate } from "react-router";
 import Navbar from "../components/Navbar";
 import { useCart } from "../Contexts/CartContext";
+import { CreateOrderDto } from "../dtos/dtos";
 
 const Checkout: React.FC = () => {
   const [address, setAddress] = useState<Address | null>(null);
@@ -108,8 +109,12 @@ const Checkout: React.FC = () => {
     setPaymentMethods(data);
   };
 
-  const placeOrder = async (paymentMethodId: number) => {
-    const data = await createOrderAsync(paymentMethodId);
+  const placeOrder = async () => {
+    const createOrderDto: CreateOrderDto = {
+      paymentMethodId: selectedPaymentMethod,
+      cartId: selectedCart?.id ?? 0
+    };
+    const data = await createOrderAsync(createOrderDto);
     if (data) {
       toast({
         title: "Order placed successfully",
@@ -219,7 +224,7 @@ const Checkout: React.FC = () => {
           size="lg"
           mt={8}
           width="100%"
-          onClick={() => placeOrder(selectedPaymentMethod)}
+          onClick={() => placeOrder()}
         >
           Place Order
         </Button>

@@ -24,7 +24,7 @@ namespace WebApi.Controllers
         //if the cart is not the users, check if he is a member of the cart and add the item to the cart
         [HttpPost]
         [Route("add")]
-        public async Task<ActionResult> AddItemToCart([FromBody] AddItemToCartDto addItemToCartDto, string name)
+        public async Task<ActionResult> AddItemToCart([FromBody] AddItemToCartDto addItemToCartDto)
         {
             try
             {
@@ -35,6 +35,7 @@ namespace WebApi.Controllers
                 }
 
                 var cart = await _cartService.GetCartByUserId(userId);
+                var name = "Default Cart";
                 if (cart == null)
                 {
                     await _cartService.CreateCart(userId, name);

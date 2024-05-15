@@ -1,6 +1,7 @@
 ﻿using BLL.Entities;
 using BLL.Repositories;
 using DAL.DbContext;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -42,6 +43,7 @@ namespace DAL.Repositories
             {
                 throw new ArgumentException($"Product with ID {id} not found");
             }
+            Console.WriteLine(product);
             return product;
         }
 
