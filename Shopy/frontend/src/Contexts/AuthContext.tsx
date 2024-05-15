@@ -5,7 +5,7 @@ import axios from 'axios';
 interface AuthContextType {
   isLoggedIn: boolean;
   isAdmin: boolean;
-  login: (email: string, password: string) => Promise<void>;
+  login: (email: string, password: string) => Promise<boolean>;
   logout: () => Promise<boolean>;
 }
 
@@ -40,24 +40,29 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     }
   }, []);
 
-  const login = async (email: string, password: string): Promise<void> => {
+  const login = async (email: string, password: string): Promise<boolean> => {
     try {
-      await axios.post(API_URLS.login, {
+      const response = await axios.post(API_URLS.login, {
         email: email,
         password: password,
         twoFactorCode: "",
         twoFactorRecoveryCode: ""
       });
-      setIsLoggedIn(true);
-      const role = await axios.get(API_URLS.getUserRole(encodeURIComponent(email)));
-      if (String(role.data.role) === "Admin") {
-        setIsAdmin(true);
-        localStorage.setItem('isAdmin', 'true');
+      if (response.status === 200) {
+        const role = await axios.get(API_URLS.getUserRole(encodeURIComponent(email)));
+        if (String(role.data.role) === "Admin") {
+          setIsAdmin(true);
+          localStorage.setItem('isAdmin', 'true');
+        } else {
+          setIsAdmin(false);
+          localStorage.setItem('isAdmin', 'false');
+        }
+        setIsLoggedIn(true);
+        return true;
       } else {
-        setIsAdmin(false);
-        localStorage.setItem('isAdmin', 'false');
+        console.error('Error logging in:', response);
+        return false;
       }
-
     } catch (error) {
       throw new Error('Invalid email or password');
     }

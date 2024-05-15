@@ -1,14 +1,17 @@
 import { ReactNode, createContext, useContext, useEffect, useState } from "react";
-import { addToCartAsync, deleteCartItemAsync, fetchCartItemsAsync, updateCartItemAsync } from "../service/apiService";
-import { CartItem } from "../Models/CartItem";
+import { addCartItemToCartAsync, createCartAsync, deleteCartItemAsync, getAllCartsAsync, joinCartAsync, updateCartItemAsync } from "../service/apiService";
+import { Cart } from "../Models/Cart";
+import { AddCartItemDto } from "../dtos/dtos";
 
 interface CartContextType {
-    cartItems: CartItem[];
-    addToCart: (productId: number, quantity: number) => Promise<void>;
+    allCarts: Cart[];
+    selectedCart: Cart | null;
+    addToCart: (cartItemDto: AddCartItemDto) => Promise<void>;
     removeFromCart: (id: number) => Promise<void>;
-    cartItemsTotalQuantity: number;
     quantityChange: (id: number, value: number) => Promise<void>;
-    clearCart: () => void;
+    createNewCart: () => Promise<void>;
+    joinCart: (code: string) => Promise<void>;
+    setSelectedCart: (cart: Cart) => void;
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
@@ -26,35 +29,48 @@ interface CartProviderProps {
   }
 
 export const CartProvider: React.FC<CartProviderProps> = ({ children }: CartProviderProps) => {
-    const [cartItems, setCartItems] = useState<CartItem[]>([]);
-    const [cartItemsTotalQuantity, setCartItemsTotalQuantity] = useState<number>(0);
+    const [allCarts, setAllCarts] = useState<Cart[]>([]);
+    const [selectedCart, setSelectedCart] = useState<Cart | null>(null); // Initialize selectedCart
+
 
     useEffect(() => {
-        fetchCartItems();
+        fetchAllCarts();
+        setSelectedCart(allCarts[0]);
     }, []);
 
-    useEffect(() => {
-        const calculateTotalQuantity = () => {
-            const totalQuantity = cartItems.reduce((acc, item) => acc + item.quantity, 0);
-            setCartItemsTotalQuantity(totalQuantity);
-        };
+    //TODO: calculate total price of cart
 
-        calculateTotalQuantity();
-    }, [cartItems]);
-
-    const fetchCartItems = async () => {
+    const createNewCart = async () => {
         try {
-            const data = await fetchCartItemsAsync();
-            setCartItems(data);
+            await createCartAsync();
+            await fetchAllCarts();
         } catch(error) {
-            console.error('Error fetching cart items:', error);
+            console.error('Error creating new cart:', error);
         }
     };
 
-    const addToCart = async (productId: number, quantity: number) => {
+    const joinCart = async (code: string) => {
         try {
-            await addToCartAsync(productId, quantity);
-            await fetchCartItems();
+            await joinCartAsync(code);
+            await fetchAllCarts();
+        } catch(error) {
+            console.error('Error joining cart:', error);
+        }
+    };
+
+    const fetchAllCarts = async () => {
+        try {
+            const data = await getAllCartsAsync();
+            setAllCarts(data);
+        } catch(error) {
+            console.error('Error fetching all carts:', error);
+        }
+    };
+
+    const addToCart = async (cartItemDto: AddCartItemDto) => {
+        try {
+            await addCartItemToCartAsync(cartItemDto);
+            await fetchAllCarts();
         } catch(error) {
             console.error('Error adding item to cart:', error);
         }
@@ -63,7 +79,7 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }: CartProv
     const removeFromCart = async (id: number) => {
         try {
             await deleteCartItemAsync(id);
-            await fetchCartItems();
+            await fetchAllCarts();
         } catch(error) {
             console.error('Error removing item from cart:', error);
         }
@@ -72,23 +88,21 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }: CartProv
     const quantityChange = async (id: number, value: number) => {
         try {
             await updateCartItemAsync(id, value);
-            await fetchCartItems();
+            await fetchAllCarts();
         } catch(error) {
             console.error('Error changing quantity:', error);
         }
     };
 
-    const clearCart = () => {
-        setCartItems([]);
-    };
-
     const contextValue: CartContextType = {
-        cartItems,
+        allCarts,
+        selectedCart,
         addToCart,
         removeFromCart,
-        cartItemsTotalQuantity,
         quantityChange,
-        clearCart
+        createNewCart,
+        joinCart,
+        setSelectedCart
     };
 
     return (

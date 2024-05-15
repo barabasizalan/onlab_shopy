@@ -10,6 +10,6 @@ namespace BLL.Services
     public interface IAuthService
     {
         Task<string> RegisterAsync(RegisterRequestDto registerRequestDto);
-        Task<string> GetUserRoleAsync(string email);
+        Task<string> GetUserRoleAsync(string username);
     }
 }

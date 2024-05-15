@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router';
 
 const Footer = () => {
 
-  const {isAdmin} = useAuth();
+  const {isAdmin, isLoggedIn} = useAuth();
   const navigate = useNavigate();
 
   const handleAdminClick = () => {
@@ -15,7 +15,7 @@ const Footer = () => {
   return (
     <Box as="footer" bg={grey[300]} p={6} color="white" bottom="0" left="0" right="0">
       <Text textAlign="center" fontSize="lg" color="black">© 2024 My Awesome Website. All rights reserved.</Text>
-      { isAdmin &&
+      { isAdmin && isLoggedIn &&
         <Center>
           <Button colorScheme="black" onClick={handleAdminClick}>Admin</Button>
         </Center>

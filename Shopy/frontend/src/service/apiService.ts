@@ -7,8 +7,7 @@ import { Address } from "../Models/Address";
 import { PaymentMethod } from "../Models/PaymentMethod";
 import { Order } from "../Models/Order";
 import { Cart } from "../Models/Cart";
-import { AddCartItemDto } from "../dtos/AddCartItemDto";
-import { CartItemUpdateDto } from "../dtos/CartItemUpdateDto";
+import { AddCartItemDto, CartItemUpdateDto } from "../dtos/dtos";
 
 export const fetchCartItemsAsync = async ():Promise<CartItem[]> => {
     try {
@@ -322,6 +321,19 @@ export const getAllJoinedCartsAsync = async (): Promise<Cart[]> => {
     }
 };
 
+export const getAllCartsAsync = async (): Promise<Cart[]> => {
+    try {
+        const response = await axios.get<Cart[]>(API_URLS.getAllCarts);
+        if(response.status === 200) {
+            return response.data;
+        } else {
+            throw new Error('Error fetching all carts');
+        }
+    } catch(error) {
+        throw error;
+    }
+};
+
 // CartItem endpoints
 export const addCartItemToCartAsync = async (addCartItemDto: AddCartItemDto): Promise<void> => {
     try {
@@ -347,6 +359,7 @@ export const addCartItemToCartAsync = async (addCartItemDto: AddCartItemDto): Pr
 //     } catch(error) {
 //         throw error;
 //     }
+
 // };
 
 export const updateCartItemQuantityAsync = async (cartItemUpdateDto: CartItemUpdateDto): Promise<void> => {

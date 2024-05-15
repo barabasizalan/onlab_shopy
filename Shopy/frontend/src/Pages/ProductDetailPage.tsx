@@ -5,12 +5,12 @@ import { Box, Button, Divider, Flex, Image, Select, Text, useToast } from "@chak
 import Navbar from "../components/Navbar";
 import { getProductById } from "../service/apiService";
 import { useCart } from "../Contexts/CartContext";
+import { AddCartItemDto } from "../dtos/dtos";
 
 const ProductDetailPage: React.FC = () => {
   const { productId } = useParams<{ productId: string }>();
   const [ product, setProduct] = useState<Product | null>(null);
   const [quantity, setQuantity] = useState<number>(1);
-  
   const toast = useToast();
   const { addToCart } = useCart();
   
@@ -39,7 +39,12 @@ const ProductDetailPage: React.FC = () => {
 
   const handleAddToCart = async () => {
     try {
-      await addToCart(product.id, quantity);
+      const addToCartDto: AddCartItemDto = {
+        productId: product.id,
+        quantity: quantity,
+        cartId: 1,
+      };
+      await addToCart(addToCartDto);
       toast({
         title: "Product added to cart!",
         status: "success",

@@ -28,7 +28,7 @@ const CFaLock = chakra(FaLock);
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const { login } = useAuth();
   const toast = useToast();
@@ -40,10 +40,13 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      await login(email, password);
+      const response = await login(username, password);
+      if (!response) {
+        throw new Error('Login failed');
+      }
       navigate('/');
       toast({
-        title: "Login successful. Welcome " + email + "!",
+        title: "Login successful. Welcome " + username + "!",
         status: "success",
         duration: 3000,
         isClosable: true,
@@ -51,11 +54,11 @@ const Login = () => {
       })
     } catch (error) {
       console.error('Login failed: ', error);
-      setEmail('');
+      setUsername('');
       setPassword('');
       toast({
         title: "Login failed",
-        description: "Invalid email or password. Please try again.",
+        description: "Invalid username or password. Please try again.",
         status: "error",
         duration: 3000,
         isClosable: true,
@@ -95,11 +98,11 @@ const Login = () => {
                     children={<CFaUserAlt color="gray.300" />}
                   />
                   <Input
-                    name="loginemail"
+                    name="loginusername"
                     type="text"
-                    placeholder="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="username"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
                     autoComplete="off"
                   />
                 </InputGroup>

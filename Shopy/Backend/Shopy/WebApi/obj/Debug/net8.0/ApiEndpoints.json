@@ -24,7 +24,7 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "email",
+        "Name": "username",
         "Type": "System.String",
         "IsRequired": false
       }
@@ -113,6 +113,26 @@
     "ContainingType": "WebApi.Controllers.CartController",
     "Method": "GetJoinedCarts",
     "RelativePath": "Cart/joined/all",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "BLL.DTO.CartDto[]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "WebApi.Controllers.CartController",
+    "Method": "GetAllCarts",
+    "RelativePath": "Cart/owned-joined/all",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,

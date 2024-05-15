@@ -18,28 +18,40 @@ namespace WebApi.Controllers
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] RegisterRequestDto registerRequest)
         {
-            var resultMessage = await _authService.RegisterAsync(registerRequest);
-            if (resultMessage == "Registration successful.")
+            try
             {
-                return Ok(new { Message = resultMessage });
-            }
-            else
+                var resultMessage = await _authService.RegisterAsync(registerRequest);
+                if (resultMessage == "Registration successful.")
+                {
+                    return Ok(new { Message = resultMessage });
+                }
+                else
+                {
+                    return BadRequest(new { Message = resultMessage });
+                }
+            } catch (Exception ex)
             {
-                return BadRequest(new { Message = resultMessage });
+                return StatusCode(500, $"Internal server error: {ex.Message}");
             }
         }
 
         [HttpGet("role")]
-        public async Task<IActionResult> GetUserRole([FromQuery] string email)
+        public async Task<IActionResult> GetUserRole([FromQuery] string username)
         {
-            var userRole = await _authService.GetUserRoleAsync(email);
-            if (userRole != null)
+            try
             {
-                return Ok(new { Role = userRole });
-            }
-            else
+                var userRole = await _authService.GetUserRoleAsync(username);
+                if (userRole != null)
+                {
+                    return Ok(new { Role = userRole });
+                }
+                else
+                {
+                    return BadRequest(new { Message = "User not found." });
+                }
+            } catch (Exception ex)
             {
-                return BadRequest(new { Message = "User not found." });
+                return StatusCode(500, $"Internal server error: {ex.Message}");
             }
         }
     }

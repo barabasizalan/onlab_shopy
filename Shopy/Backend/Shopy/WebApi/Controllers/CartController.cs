@@ -37,6 +37,29 @@ namespace WebApi.Controllers
             }
         }
 
+        [HttpGet]
+        [Route("owned-joined/all")]
+        public async Task<ActionResult<CartDto[]>> GetAllCarts()
+        {
+            try
+            {
+                var userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+                if (string.IsNullOrEmpty(userId))
+                {
+                    return Unauthorized("User is not authenticated.");
+                }
+                var ownedCarts = await _cartService.GetOwnedCarts(userId);
+                var joinedCarts = await _cartService.GetJoinedCarts(userId);
+                var allCarts = ownedCarts.Concat(joinedCarts).ToArray();
+                return Ok(allCarts);
+                
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
+        }
+
         [HttpPost]
         [Route("create")]
         public async Task<ActionResult> CreateNewCart()

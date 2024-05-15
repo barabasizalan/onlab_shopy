@@ -5,8 +5,6 @@ interface ApiEndpoints {
   logout: string;
   register: string;
   createAddress: string;
-  getAllCartItems: string;
-  addProductToCart: string;
   removeProductFromCart: (cartItemId: number) => string;
   updateCartItem: (cartItemId: number, newQuantity: number) => string;
   getCategories: string;
@@ -33,6 +31,7 @@ interface ApiEndpoints {
   getTotalQuantityOfCart: (cartId: number) => string;
   joinCart: (code: string) => string;
   getAllJoinedCarts: string;
+  getAllCarts: string;
 
   //cartItem endpoints
   addCartItemToCard: string;
@@ -45,8 +44,6 @@ const API_URLS: ApiEndpoints = {
   logout: `${BASE_URL}/logout`,
   register: `${BASE_URL}/account/register`,
   createAddress: `${BASE_URL}/Address/create`,
-  getAllCartItems: `${BASE_URL}/Cart/all`,
-  addProductToCart: `${BASE_URL}/Cart/add`,
   removeProductFromCart: (cartItemId) =>
     `${BASE_URL}/Cart/delete/${cartItemId}`,
   updateCartItem: (cartItemId, newQuantity) => `${BASE_URL}/Cart/update/${cartItemId}?newQuantity=${newQuantity}`,
@@ -79,7 +76,7 @@ const API_URLS: ApiEndpoints = {
   updateUserAddress: `${BASE_URL}/Address/update`,
   getNumberOfCartItems: `${BASE_URL}/Cart/number-of-items`,
   getTotalPriceOfCart: `${BASE_URL}/Cart/total-price`,
-  getUserRole: (email) => `${BASE_URL}/Account/role?email=${email}`,
+  getUserRole: (email) => `${BASE_URL}/Account/role?username=${email}`,
 
   //cart endpoints
   getAllOwnedCarts: `${BASE_URL}/Cart/owned/all`,
@@ -87,6 +84,7 @@ const API_URLS: ApiEndpoints = {
   getTotalQuantityOfCart: (cartId) => `${BASE_URL}/Cart/total-quantity/${cartId}`,
   joinCart: (code) => `${BASE_URL}/Cart/join/${code}`,
   getAllJoinedCarts: `${BASE_URL}/Cart/joined/all`,
+  getAllCarts: `${BASE_URL}/Cart/owned-joined/all`,
 
   //cartItem endpoints
   addCartItemToCard: `${BASE_URL}/CartItem/add`,

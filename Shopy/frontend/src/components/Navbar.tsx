@@ -65,6 +65,7 @@ function Navbar() {
           isClosable: true,
           position: "top"
         });
+        navigate('/');
       } else {
         console.error('Logout failed!');
         toast({
@@ -89,15 +90,7 @@ function Navbar() {
         isClosable: true,
         position: "top"
       });
-    } else if(cartItemsTotalQuantity === 0) {
-      toast({
-        title: "Your cart is empty!",
-        status: "info",
-        duration: 3000,
-        isClosable: true,
-        position: "top"
-      });
-    } else {
+     } else {
       setCartDrawerOpen(true);
     }
   };

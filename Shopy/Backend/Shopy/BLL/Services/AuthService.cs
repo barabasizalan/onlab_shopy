@@ -56,9 +56,9 @@ namespace BLL.Services
             return result.Succeeded ? "Registration successful." : "Registration failed.";
         }
 
-        public async Task<string> GetUserRoleAsync(string email)
+        public async Task<string> GetUserRoleAsync(string username)
         {
-            var user = await _userManager.FindByEmailAsync(email);
+            var user = await _userManager.FindByNameAsync(username);
             if(user != null)
             {
                 var role = await _userManager.GetRolesAsync(user);
