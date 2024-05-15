@@ -91,8 +91,14 @@ namespace DAL.Repositories
 
         public async Task UpdateCartAsync(Cart cart)
         {
-            _context.Carts.Update(cart);
+            _ = _context.Carts.Update(cart);
             await _context.SaveChangesAsync();
+        }
+
+        public Task DeleteCartAsync(Cart cart)
+        {
+            _ = _context.Carts.Remove(cart);
+            return _context.SaveChangesAsync();
         }
     }
 }

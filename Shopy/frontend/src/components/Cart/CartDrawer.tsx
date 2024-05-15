@@ -22,16 +22,14 @@ import {
   ModalFooter,
   ModalHeader,
   ModalOverlay,
-  Select,
+  Tag,
   Text,
 } from '@chakra-ui/react';
 import CartItemCard from './CartItemCard';
 import { useNavigate } from 'react-router';
 import {  useEffect, useState } from 'react';
-import { fetchTotalPriceOfCart } from '../../service/apiService';
 import { useCart } from '../../Contexts/CartContext';
-import { AddIcon, HamburgerIcon, LinkIcon } from '@chakra-ui/icons';
-import { Cart } from '../../Models/Cart';
+import { AddIcon, ChevronDownIcon, HamburgerIcon, LinkIcon } from '@chakra-ui/icons';
 import { CartItem } from '../../Models/CartItem';
 
 interface CartDrawerProps {
@@ -43,15 +41,16 @@ const CartDrawer: React.FC<CartDrawerProps> = ({
   isOpen,
   onClose,
 }) => {
-  
-  const [totalPrice, setTotalPrice] = useState<number>(0);
   const [isJoinCartModalOpen, setIsJoinCartModalOpen] = useState<boolean>(false);
   const [cartCode, setCartCode] = useState<string>('');
-  const [selectedCart, setSelectedCart] = useState<Cart | null>(null);
+
+  const [isCreatingCartModalOpen, setIsCreatingCartModalOpen] = useState<boolean>(false);
+  const [cartName, setCartName] = useState<string>('');
+
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
 
   const navigate = useNavigate();
-  const { allCarts, createNewCart, joinCart } =useCart();
+  const { allCarts, createNewCart, joinCart, selectedCart, setSelectedCart, totalPrice } =useCart();
 
   const handlePlaceOrder = () => {
     onClose();
@@ -59,35 +58,8 @@ const CartDrawer: React.FC<CartDrawerProps> = ({
   };
 
   useEffect(() => {
-    fetchPrice();
-  }, []);
-
-  useEffect(() => {
-    if (allCarts.length > 0) {
-      setSelectedCart(allCarts[0]);
-    }
-  }, [allCarts]);
-
-  useEffect(() => {
     setCartItems(selectedCart?.cartItems ?? []);
   }, [selectedCart]);
-
-  const fetchPrice = async () => {
-    try {
-      const response = await fetchTotalPriceOfCart();
-      setTotalPrice(response);
-    } catch (error) {
-      console.error('Error fetching total price:', error);
-    }
-  };
-
-  const handleNewCartClick = async () => {
-    try {
-      createNewCart();
-    } catch (error) {
-      console.error('Error creating new cart:', error);
-    }
-  };
 
   const handleJoinCartClick = async (code: string) => {
     try {
@@ -99,10 +71,14 @@ const CartDrawer: React.FC<CartDrawerProps> = ({
     }
   };
 
-  const handleCartSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const selectedCartId = parseInt(e.target.value);
-    const cart = allCarts.find((cart) => cart.id === selectedCartId) ?? null;
-    setSelectedCart(cart);
+  const handleCreateNewCart = async (name: string) => {
+    try {
+      createNewCart(name);
+      setCartName('');
+      setIsCreatingCartModalOpen(false);
+    } catch (error) {
+      console.error('Error creating new cart:', error);
+    }
   };
 
   return (
@@ -111,17 +87,19 @@ const CartDrawer: React.FC<CartDrawerProps> = ({
       <DrawerContent>
       <DrawerCloseButton mt={3}/>
         <DrawerHeader >
-          <HStack spacing={4}>
+          <HStack spacing={8}>
             <Menu>
               <MenuButton
                 as={IconButton}
-                aria-label='Cart actions'
+                aria-label={'Cart actions'}
                 icon={<HamburgerIcon />}
                 variant='outline'
                 mr={8}
               />
               <MenuList>
-                <MenuItem icon={<AddIcon />} onClick={() => handleNewCartClick()}>
+                <Text m={3}>Cart actions</Text>
+                <Divider mb={2}/>
+                <MenuItem icon={<AddIcon />} onClick={() => setIsCreatingCartModalOpen(true)}>
                   New Cart
                 </MenuItem>
                 <MenuItem icon={<LinkIcon />} onClick={() => setIsJoinCartModalOpen(true)}>
@@ -129,17 +107,27 @@ const CartDrawer: React.FC<CartDrawerProps> = ({
                 </MenuItem>
               </MenuList>
             </Menu>
-            <Select mr={10} value={selectedCart?.id} onChange={handleCartSelectChange}>
-              {allCarts.map((cart) => (
-                <option key={cart.id} value={cart.id}>
-                  {cart.code}
-                </option>
-              ))}
-            </Select>
+            <Menu>
+              <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
+                Select Cart
+              </MenuButton>
+              <MenuList>
+                {allCarts.map((cart) => (
+                  <MenuItem key={cart.id} onClick={() => setSelectedCart(cart)}>
+                    <Text>{cart.name}</Text>
+                    {selectedCart?.isOwner && 
+                      <Tag ml='auto' colorScheme='blue'>Owner</Tag>
+                    }
+                  </MenuItem>
+                ))}
+              </MenuList>
+            </Menu>
           </HStack>
         </DrawerHeader>
         <Divider />
         <DrawerBody>
+          <Text fontWeight='bold' fontSize='xl'>Selected cart: {selectedCart?.name ?? 'Please select a cart'}</Text>
+          <Divider my={4} />
           {
             cartItems.length !== 0 ? (
             cartItems.map((item) => (
@@ -178,6 +166,24 @@ const CartDrawer: React.FC<CartDrawerProps> = ({
                 Join
               </Button>
               <Button variant='ghost' onClick={() => setIsJoinCartModalOpen(false)}>
+                Cancel
+              </Button>
+            </ModalFooter>
+          </ModalContent>
+      </Modal>
+      <Modal isOpen={isCreatingCartModalOpen} onClose={() => setIsCreatingCartModalOpen(false)}>
+          <ModalOverlay />
+          <ModalContent>
+            <ModalHeader>Name your cart</ModalHeader>
+            <ModalCloseButton />
+            <ModalBody>
+              <Input placeholder='Enter name' value={cartName} onChange={(e) => setCartName(e.target.value)} />
+            </ModalBody>
+            <ModalFooter>
+              <Button colorScheme='blue' mr='auto' onClick={() => handleCreateNewCart(cartName)}>
+                Create
+              </Button>
+              <Button variant='ghost' onClick={() => setIsCreatingCartModalOpen(false)}>
                 Cancel
               </Button>
             </ModalFooter>

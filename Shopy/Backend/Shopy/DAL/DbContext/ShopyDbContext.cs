@@ -61,6 +61,10 @@ namespace DAL.DbContext
                 .HasForeignKey(ci => ci.CartId);
 
             modelBuilder.Entity<Cart>()
+                .Property(c => c.Name)
+                .HasMaxLength(50);
+
+            modelBuilder.Entity<Cart>()
                 .HasMany(c => c.Members)
                 .WithMany(u => u.Carts)
                 .UsingEntity<Dictionary<string, object>>(

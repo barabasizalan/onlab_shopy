@@ -16,5 +16,6 @@ namespace BLL.Repositories
         Task DeleteCartItemsFromCartAsync(string userId);
         Task<Cart> GetCartByCodeAsync(string code);
         Task UpdateCartAsync(Cart cart);
+        Task DeleteCartAsync(Cart cart);
     }
 }

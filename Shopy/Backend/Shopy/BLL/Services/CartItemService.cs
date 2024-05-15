@@ -62,6 +62,11 @@ namespace BLL.Services
             }
         }
 
+        public async Task<CartItem> GetCartItemById(int id)
+        {
+            return await _cartItemRepository.GetCartItemByIdAsync(id);
+        }
+
         public async Task RemoveProductFromCart(int cartItemId)
         {
             await _cartItemRepository.RemoveCartItemAsync(cartItemId);

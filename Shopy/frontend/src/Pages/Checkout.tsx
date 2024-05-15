@@ -19,7 +19,6 @@ import {
   createAddressAsync,
   createOrderAsync,
   fetchPaymentMethodsAsync,
-  fetchTotalPriceOfCart,
   getUserAddress,
   updateAddressAsync,
 } from "../service/apiService";
@@ -31,7 +30,6 @@ import { useCart } from "../Contexts/CartContext";
 
 const Checkout: React.FC = () => {
   const [address, setAddress] = useState<Address | null>(null);
-  const { cartItems } = useCart();
   const [paymentMethods, setPaymentMethods] = useState<PaymentMethod[]>();
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState<number>(1);
 
@@ -40,20 +38,14 @@ const Checkout: React.FC = () => {
   const [street, setStreet] = useState<string>("");
   const [zipCode, setZipCode] = useState<string>("");
 
-  const [totalPrice, setTotalPrice] = useState<number>(0);
-
   const toast = useToast();
   const navigate = useNavigate();
-  const { clearCart } = useCart();
+  const { totalPrice, selectedCart } = useCart();
 
   useEffect(() => {
     fetchAddress();
     fetchPaymentMethods();
   }, []);
-
-  useEffect(() => {
-    fetchPrice();
-  }, [cartItems]);
 
   const handleAddress = async () => {
     const newAddress: Address = {
@@ -125,7 +117,6 @@ const Checkout: React.FC = () => {
         duration: 3000,
         isClosable: true,
       });
-      clearCart();
       navigate("/");
     } else {
       toast({
@@ -134,15 +125,6 @@ const Checkout: React.FC = () => {
         duration: 3000,
         isClosable: true,
       });
-    }
-  };
-
-  const fetchPrice = async () => {
-    try {
-      const response = await fetchTotalPriceOfCart();
-      setTotalPrice(response);
-    } catch (error) {
-      console.error("Error fetching total price:", error);
     }
   };
 
@@ -206,7 +188,7 @@ const Checkout: React.FC = () => {
           Order summary
         </Heading>
         <VStack spacing={4}>
-          {cartItems?.map((item) => (
+          {selectedCart?.cartItems?.map((item) => (
             <CartItemCard key={item.id} item={item} />
           ))}
         </VStack>

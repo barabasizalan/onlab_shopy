@@ -86,5 +86,11 @@ namespace DAL.Repositories
             _context.CartItems.Remove(cartItem);
             await _context.SaveChangesAsync();
         }
+
+        public Task<CartItem> GetCartItemByIdAsync(int id)
+        {
+            var result = _context.CartItems.Include(c => c.Product).FirstOrDefaultAsync(x => x.Id == id);
+            return result;
+        }
     }
 }

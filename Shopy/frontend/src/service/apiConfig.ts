@@ -1,15 +1,17 @@
 const BASE_URL = "https://localhost:44367";
 
 interface ApiEndpoints {
+  //account endpoints
   login: string;
   logout: string;
   register: string;
-  createAddress: string;
-  removeProductFromCart: (cartItemId: number) => string;
-  updateCartItem: (cartItemId: number, newQuantity: number) => string;
-  getCategories: string;
+  getUserRole: (email: string) => string;
+
+  //order endpoints
   createOrder: string;
   getUsersOrders: string;
+
+  //product endpoints
   getAllProducts: (sortOption: string, page?: number, pageSize?: number) => string;
   getUserProducts: string;
   publishProduct: string;
@@ -18,12 +20,14 @@ interface ApiEndpoints {
   searchProducts: (sortOption: string, query?: string, page?: number, pageSize?: number) => string;
   getProductsByCategoryId: (categoryId: number, sortOption: string, page: number, pageSize: number) => string;
   getProductById: (productId: number) => string;
-  getUserAddress: string;
-  getPaymentMethods: string;
+
+  //address endpoints
+  createAddress: string;
   updateUserAddress: string;
-  getNumberOfCartItems: string;
-  getTotalPriceOfCart: string;
-  getUserRole: (email: string) => string;
+  getUserAddress: string;
+
+  getCategories: string;
+  getPaymentMethods: string;
 
   //cart endpoints
   getAllOwnedCarts: string;
@@ -32,6 +36,7 @@ interface ApiEndpoints {
   joinCart: (code: string) => string;
   getAllJoinedCarts: string;
   getAllCarts: string;
+  getTotalPriceOfCart: (cartId: number) => string;
 
   //cartItem endpoints
   addCartItemToCard: string;
@@ -44,9 +49,6 @@ const API_URLS: ApiEndpoints = {
   logout: `${BASE_URL}/logout`,
   register: `${BASE_URL}/account/register`,
   createAddress: `${BASE_URL}/Address/create`,
-  removeProductFromCart: (cartItemId) =>
-    `${BASE_URL}/Cart/delete/${cartItemId}`,
-  updateCartItem: (cartItemId, newQuantity) => `${BASE_URL}/Cart/update/${cartItemId}?newQuantity=${newQuantity}`,
   getCategories: `${BASE_URL}/Category/all`,
   createOrder: `${BASE_URL}/Order/create-order`,
   getUsersOrders: `${BASE_URL}/Order/user/orders`,
@@ -74,8 +76,6 @@ const API_URLS: ApiEndpoints = {
   getUserAddress: `${BASE_URL}/Address/my`,
   getPaymentMethods: `${BASE_URL}/PaymentMethod/all`,
   updateUserAddress: `${BASE_URL}/Address/update`,
-  getNumberOfCartItems: `${BASE_URL}/Cart/number-of-items`,
-  getTotalPriceOfCart: `${BASE_URL}/Cart/total-price`,
   getUserRole: (email) => `${BASE_URL}/Account/role?username=${email}`,
 
   //cart endpoints
@@ -85,6 +85,7 @@ const API_URLS: ApiEndpoints = {
   joinCart: (code) => `${BASE_URL}/Cart/join/${code}`,
   getAllJoinedCarts: `${BASE_URL}/Cart/joined/all`,
   getAllCarts: `${BASE_URL}/Cart/owned-joined/all`,
+  getTotalPriceOfCart: (cartId) => `${BASE_URL}/Cart/total-price?cartId=${cartId}`,
 
   //cartItem endpoints
   addCartItemToCard: `${BASE_URL}/CartItem/add`,

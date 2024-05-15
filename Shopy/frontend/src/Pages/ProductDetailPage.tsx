@@ -12,7 +12,7 @@ const ProductDetailPage: React.FC = () => {
   const [ product, setProduct] = useState<Product | null>(null);
   const [quantity, setQuantity] = useState<number>(1);
   const toast = useToast();
-  const { addToCart } = useCart();
+  const { addToCart, selectedCart } = useCart();
   
 
   useEffect(() => {
@@ -42,7 +42,7 @@ const ProductDetailPage: React.FC = () => {
       const addToCartDto: AddCartItemDto = {
         productId: product.id,
         quantity: quantity,
-        cartId: 1,
+        cartId: selectedCart?.id ?? 0,
       };
       await addToCart(addToCartDto);
       toast({

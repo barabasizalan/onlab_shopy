@@ -17,7 +17,7 @@ function Navbar() {
   const toast = useToast();
   const { query, setQuery, setSelectedCategory } = useSearchContext();
   const [categories, setCategories] = useState<Category[]>([]);
-  const { cartItemsTotalQuantity } = useCart();
+  const { cartTotalQuantity } = useCart();
   const [cartDrawerOpen, setCartDrawerOpen] = useState(false);
   const navigate = useNavigate();
 
@@ -149,7 +149,7 @@ function Navbar() {
         <HStack paddingStart="10">
           <Button as="button" onClick={handleCartClick} variant="ghost">
             <Icon as={MdShoppingCart} boxSize={6} />
-            {isLoggedIn && cartItemsTotalQuantity > 0 && (
+            {isLoggedIn && cartTotalQuantity > 0 && (
               <Box
                 bg="red"
                 w="20px"
@@ -159,7 +159,7 @@ function Navbar() {
                 top="-1px"
                 right="-1px"
                 color="white"
-              >{isLoggedIn && cartItemsTotalQuantity > 0 && <Text>{cartItemsTotalQuantity}</Text>}</Box>
+              >{isLoggedIn && cartTotalQuantity > 0 && <Text>{cartTotalQuantity}</Text>}</Box>
             )}
           </Button>
         </HStack>

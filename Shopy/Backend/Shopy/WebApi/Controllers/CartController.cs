@@ -10,31 +10,12 @@ namespace WebApi.Controllers
     public class CartController : ControllerBase
     {
         private readonly ICartService _cartService;
+        private readonly ICartItemService _cartItemService;
         
-        public CartController(ICartService cartService)
+        public CartController(ICartService cartService, ICartItemService cartItemService)
         {
             _cartService = cartService;
-        }
-
-        [HttpGet]
-        [Route("owned/all")]
-        public async Task<ActionResult<CartDto[]>> GetCarts()
-        {
-            try
-            {
-                var userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-                if (string.IsNullOrEmpty(userId))
-                {
-                    return Unauthorized("User is not authenticated.");
-                }
-
-                var carts = await _cartService.GetOwnedCarts(userId);
-                return Ok(carts);
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, $"Internal server error: {ex.Message}");
-            }
+            _cartItemService = cartItemService;
         }
 
         [HttpGet]
@@ -62,7 +43,7 @@ namespace WebApi.Controllers
 
         [HttpPost]
         [Route("create")]
-        public async Task<ActionResult> CreateNewCart()
+        public async Task<ActionResult> CreateNewCart([FromBody] string name)
         {
             try
             {
@@ -72,7 +53,7 @@ namespace WebApi.Controllers
                     return Unauthorized("User is not authenticated.");
                 }
 
-                await _cartService.CreateCart(userId);
+                await _cartService.CreateCart(userId, name);
                 return Ok("Cart created successfully!");
             }
             catch (Exception ex)
@@ -140,8 +121,8 @@ namespace WebApi.Controllers
         }
 
         [HttpGet]
-        [Route("joined/all")]
-        public async Task<ActionResult<CartDto[]>> GetJoinedCarts()
+        [Route("total-price")]
+        public async Task<ActionResult<decimal>> GetTotalPrice(int cartId)
         {
             try
             {
@@ -151,15 +132,26 @@ namespace WebApi.Controllers
                     return Unauthorized("User is not authenticated.");
                 }
 
-                var carts = await _cartService.GetJoinedCarts(userId);
-                return Ok(carts);
+                var cart = await _cartService.GetCartById(cartId);
+                if (cart == null)
+                {
+                    return Ok(0);
+                }
+
+                decimal totalPrice = 0;
+                foreach (var cartItem in cart.CartItems)
+                {
+                    var item = await _cartItemService.GetCartItemById(cartItem.Id);
+                    totalPrice += item.Product.Price * item.Quantity;
+                }
+                return Ok(totalPrice);
+
             }
             catch (Exception ex)
             {
                 return StatusCode(500, $"Internal server error: {ex.Message}");
             }
         }
-
 
     }
 }

@@ -90,7 +90,13 @@
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
+    "Parameters": [
+      {
+        "Name": "name",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   },
   {
@@ -108,26 +114,6 @@
       }
     ],
     "ReturnTypes": []
-  },
-  {
-    "ContainingType": "WebApi.Controllers.CartController",
-    "Method": "GetJoinedCarts",
-    "RelativePath": "Cart/joined/all",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": [
-      {
-        "Type": "BLL.DTO.CartDto[]",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
   },
   {
     "ContainingType": "WebApi.Controllers.CartController",
@@ -151,15 +137,21 @@
   },
   {
     "ContainingType": "WebApi.Controllers.CartController",
-    "Method": "GetCarts",
-    "RelativePath": "Cart/owned/all",
+    "Method": "GetTotalPrice",
+    "RelativePath": "Cart/total-price",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
+    "Parameters": [
+      {
+        "Name": "cartId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
     "ReturnTypes": [
       {
-        "Type": "BLL.DTO.CartDto[]",
+        "Type": "System.Decimal",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -207,6 +199,11 @@
         "Name": "addItemToCartDto",
         "Type": "BLL.DTO.AddItemToCartDto",
         "IsRequired": true
+      },
+      {
+        "Name": "name",
+        "Type": "System.String",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []

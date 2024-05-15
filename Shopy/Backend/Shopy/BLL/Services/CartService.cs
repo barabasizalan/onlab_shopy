@@ -46,6 +46,7 @@ namespace BLL.Services
                     Id = cart.Id,
                     CartItems = cartItemDtos,
                     Code = cart.Code,
+                    Name = cart.Name,
                     IsOwner = cart.OwnerUserId == userId
                 });
             }
@@ -63,7 +64,7 @@ namespace BLL.Services
         }
 
         //create a cart for a user
-        public async Task CreateCart(string userId)
+        public async Task CreateCart(string userId, string name)
         {
             string uniqueCode = RandomCodeGenerator.GenerateCode(6);
             var cart = new Cart
@@ -71,7 +72,8 @@ namespace BLL.Services
                 Code = uniqueCode,
                 OwnerUserId = userId,
                 CreatedAt = DateTime.Now,
-                CartItems = new List<CartItem>()
+                CartItems = new List<CartItem>(),
+                Name = name
             };
             await _cartRepository.CreateCartAsync(cart);
         }
@@ -142,6 +144,7 @@ namespace BLL.Services
                     Id = cart.Id,
                     CartItems = cartItemDtos,
                     Code = cart.Code,
+                    Name = cart.Name,
                     IsOwner = cart.OwnerUserId == userId
                 });
             }

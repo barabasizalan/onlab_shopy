@@ -1,5 +1,5 @@
 import { ReactNode, createContext, useContext, useEffect, useState } from "react";
-import { addCartItemToCartAsync, createCartAsync, deleteCartItemAsync, getAllCartsAsync, joinCartAsync, updateCartItemAsync } from "../service/apiService";
+import { addCartItemToCartAsync, createCartAsync, deleteCartItemAsync, fetchTotalPriceOfCartAsync, getAllCartsAsync, joinCartAsync } from "../service/apiService";
 import { Cart } from "../Models/Cart";
 import { AddCartItemDto } from "../dtos/dtos";
 
@@ -9,9 +9,11 @@ interface CartContextType {
     addToCart: (cartItemDto: AddCartItemDto) => Promise<void>;
     removeFromCart: (id: number) => Promise<void>;
     quantityChange: (id: number, value: number) => Promise<void>;
-    createNewCart: () => Promise<void>;
+    cartTotalQuantity: number;
+    createNewCart: (name: string) => Promise<void>;
     joinCart: (code: string) => Promise<void>;
-    setSelectedCart: (cart: Cart) => void;
+    setSelectedCart: (cart: Cart | null) => void;
+    totalPrice: number;
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
@@ -31,18 +33,26 @@ interface CartProviderProps {
 export const CartProvider: React.FC<CartProviderProps> = ({ children }: CartProviderProps) => {
     const [allCarts, setAllCarts] = useState<Cart[]>([]);
     const [selectedCart, setSelectedCart] = useState<Cart | null>(null); // Initialize selectedCart
-
+    const [cartTotalQuantity, setCartTotalQuantity] = useState<number>(0);
+    const [totalPrice, setTotalPrice] = useState<number>(0);
 
     useEffect(() => {
         fetchAllCarts();
-        setSelectedCart(allCarts[0]);
     }, []);
+
+    useEffect(() => {
+        if(selectedCart) {
+            const totalQuantity = selectedCart.cartItems.reduce((acc, item) => acc + item.quantity, 0);
+            setCartTotalQuantity(totalQuantity);
+            fetchTotalPriceOfCart(selectedCart?.id ?? 0);
+        }
+    }, [selectedCart]);
 
     //TODO: calculate total price of cart
 
-    const createNewCart = async () => {
+    const createNewCart = async (name: string) => {
         try {
-            await createCartAsync();
+            await createCartAsync(name);
             await fetchAllCarts();
         } catch(error) {
             console.error('Error creating new cart:', error);
@@ -62,8 +72,18 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }: CartProv
         try {
             const data = await getAllCartsAsync();
             setAllCarts(data);
+            setSelectedCart(data[0]);
         } catch(error) {
             console.error('Error fetching all carts:', error);
+        }
+    };
+
+    const fetchTotalPriceOfCart = async (cartId: number) => {
+        try {
+            const price = await fetchTotalPriceOfCartAsync(cartId);
+            setTotalPrice(price);
+        } catch(error) {
+            throw error;
         }
     };
 
@@ -87,7 +107,7 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }: CartProv
 
     const quantityChange = async (id: number, value: number) => {
         try {
-            await updateCartItemAsync(id, value);
+            //todo: implement quantity change
             await fetchAllCarts();
         } catch(error) {
             console.error('Error changing quantity:', error);
@@ -100,9 +120,11 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }: CartProv
         addToCart,
         removeFromCart,
         quantityChange,
+        cartTotalQuantity,
         createNewCart,
         joinCart,
-        setSelectedCart
+        setSelectedCart,
+        totalPrice
     };
 
     return (

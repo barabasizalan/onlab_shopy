@@ -86,8 +86,11 @@ namespace BLL.Services
 
             await _orderRepository.AddOrderAsync(order);
 
-            // Clear the cart
+            // Clear the cartitems from the cart
             await _cartRepository.DeleteCartItemsFromCartAsync(userId);
+
+            //delete the cart
+            await _cartRepository.DeleteCartAsync(cart);
 
             //Delete the products with quantity 0
             //var products = await _productRepository.GetAllProductsAsync("none");

@@ -13,6 +13,7 @@ namespace BLL.Repositories
     {
         Task AddCartItemAsync(CartItem cartItem);
         Task<CartItem> GetCartItemAsync(int cartId, int productId);
+        Task<CartItem> GetCartItemByIdAsync(int id);
         Task<IEnumerable<CartItem>> GetCartItemsAsync(int id);
         Task RemoveCartItemAsync(int cartItemId);
         Task UpdateCartItemAsync(int cartItemId, int newQuantity);

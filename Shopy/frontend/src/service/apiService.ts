@@ -1,5 +1,4 @@
 import axios from "axios";
-import { CartItem } from "../Models/CartItem";
 import API_URLS from "./apiConfig";
 import { Category } from "../Models/Category";
 import { Product } from "../Models/Product";
@@ -8,16 +7,6 @@ import { PaymentMethod } from "../Models/PaymentMethod";
 import { Order } from "../Models/Order";
 import { Cart } from "../Models/Cart";
 import { AddCartItemDto, CartItemUpdateDto } from "../dtos/dtos";
-
-export const fetchCartItemsAsync = async ():Promise<CartItem[]> => {
-    try {
-        const response = await axios.get<CartItem[]>(API_URLS.getAllCartItems);
-        return response.data;
-    } catch(error) {
-        console.log('Error fetching cart items: ', error);
-        throw error;
-    }
-};
 
 export const fetchCategoriesAsync = async ():Promise<Category[]> => {
     try {
@@ -71,57 +60,12 @@ export const saveProductChangesAsync = async (editedProduct: Product): Promise<v
     }
 };
 
-export const addToCartAsync = async (productId: number, quantity: number): Promise<void> => {
-    try {
-        const response = await axios.post(API_URLS.addProductToCart, {
-            productId: productId,
-            quantity: quantity
-        });
-        if (response.status === 200) {
-            return;
-        } else {
-            throw new Error('Error adding product to cart');
-        }
-    } catch(error) {
-        console.error('Error adding product to cart: ', error);
-        throw error;
-    }
-};
-
 export const getProductById = async (productId: number): Promise<Product> => {
     try {
         const response = await axios.get(API_URLS.getProductById(productId));
         return response.data;
     } catch(error) {
         console.error('Error fetching product: ', error);
-        throw error;
-    }
-};
-
-export const deleteCartItemAsync = async (cartItemId: number): Promise<void> => {
-    try {
-        const response = await axios.delete(API_URLS.removeProductFromCart(cartItemId));
-        if (response.status === 200) {
-            return;
-        } else {
-            throw new Error('Error deleting cart item');
-        }
-    } catch(error) {
-        console.error('Error deleting cart item: ', error);
-        throw error;
-    }
-};
-
-export const updateCartItemAsync = async (cartItemId: number, quantity: number): Promise<void> => {
-    try {
-        const response = await axios.put(API_URLS.updateCartItem(cartItemId, quantity));
-        if (response.status === 200) {
-            return;
-        } else {
-            throw new Error('Error updating cart item');
-        }
-    } catch(error) {
-        console.error('Error updating cart item: ', error);
         throw error;
     }
 };
@@ -183,34 +127,6 @@ export const updateAddressAsync = async (address: Address): Promise<void> => {
     }
 };
 
-export const fetchNumberOfCartElements = async (): Promise<number> => {
-    try {
-        const response = await axios.get(API_URLS.getNumberOfCartItems);
-        if(response.status === 200 && Number(response.data) > 0) {
-            return Number(response.data);
-        } else {
-            return 0;
-        }
-    } catch(error) {
-        console.error('Error fetching number of cart items: ', error);
-        throw error;
-    }
-};
-
-export const fetchTotalPriceOfCart = async (): Promise<number> => {
-    try {
-        const response = await axios.get(API_URLS.getTotalPriceOfCart);
-        if(response.status === 200) {
-            return response.data;
-        } else {
-            throw new Error('Error fetching total price of cart');
-        }
-    } catch(error) {
-        console.error('Error fetching total price of cart: ', error);
-        throw error;
-    }
-};
-
 export const fetchUsersOrdersAsync = async (): Promise<Order[]> => {
     try {
         const response = await axios.get<Order[]>(API_URLS.getUsersOrders);
@@ -256,22 +172,10 @@ export const createAddressAsync = async (address: Address): Promise<void> => {
 };
 
 // Cart endpoints
-export const getAllOwnedCartsAsync = async (): Promise<Cart[]> => {
-    try {
-        const response = await axios.get<Cart[]>(API_URLS.getAllOwnedCarts);
-        if(response.status === 200) {
-            return response.data;
-        } else {
-            throw new Error('Error fetching owned carts');
-        }
-    } catch(error) {
-        throw error;
-    }
-};
 
-export const createCartAsync = async (): Promise<void> => {
+export const createCartAsync = async (name: string): Promise<void> => {
     try {
-        const response = await axios.post(API_URLS.createCart);
+        const response = await axios.post(API_URLS.createCart, name);
         if(response.status === 200) {
             return;
         } else {
@@ -308,19 +212,6 @@ export const joinCartAsync = async (code: string): Promise<void> => {
     }
 };
 
-export const getAllJoinedCartsAsync = async (): Promise<Cart[]> => {
-    try {
-        const response = await axios.get<Cart[]>(API_URLS.getAllJoinedCarts);
-        if(response.status === 200) {
-            return response.data;
-        } else {
-            throw new Error('Error fetching joined carts');
-        }
-    } catch(error) {
-        throw error;
-    }
-};
-
 export const getAllCartsAsync = async (): Promise<Cart[]> => {
     try {
         const response = await axios.get<Cart[]>(API_URLS.getAllCarts);
@@ -330,6 +221,20 @@ export const getAllCartsAsync = async (): Promise<Cart[]> => {
             throw new Error('Error fetching all carts');
         }
     } catch(error) {
+        throw error;
+    }
+};
+
+export const fetchTotalPriceOfCartAsync = async (cartId: number): Promise<number> => {
+    try {
+        const response = await axios.get(API_URLS.getTotalPriceOfCart(cartId));
+        if(response.status === 200) {
+            return response.data;
+        } else {
+            throw new Error('Error fetching total price of cart');
+        }
+    } catch(error) {
+        console.error('Error fetching total price of cart: ', error);
         throw error;
     }
 };
@@ -348,19 +253,19 @@ export const addCartItemToCartAsync = async (addCartItemDto: AddCartItemDto): Pr
     }
 };
 
-// export const deleteCartItemAsync = async (cartItemId: number): Promise<void> => {
-//     try {
-//         const response = await axios.delete(API_URLS.deleteCartItem(cartItemId));
-//         if(response.status === 200) {
-//             return;
-//         } else {
-//             throw new Error('Error deleting cart item');
-//         }
-//     } catch(error) {
-//         throw error;
-//     }
+export const deleteCartItemAsync = async (cartItemId: number): Promise<void> => {
+    try {
+        const response = await axios.delete(API_URLS.deleteCartItem(cartItemId));
+        if(response.status === 200) {
+            return;
+        } else {
+            throw new Error('Error deleting cart item');
+        }
+    } catch(error) {
+        throw error;
+    }
 
-// };
+};
 
 export const updateCartItemQuantityAsync = async (cartItemUpdateDto: CartItemUpdateDto): Promise<void> => {
     try {

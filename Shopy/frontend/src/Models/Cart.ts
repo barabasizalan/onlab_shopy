@@ -4,5 +4,6 @@ export interface Cart {
     id: number;
     cartItems: CartItem[];
     code: string;
+    name: string;
     isOwner: boolean;
 }
