@@ -44,7 +44,6 @@ const ProductDetailPage: React.FC = () => {
         quantity: quantity,
         cartId: selectedCart?.id ?? 0,
       };
-      console.log('addToCartDto: ' + addToCartDto.cartId + ' ' + addToCartDto.productId + ' ' + addToCartDto.quantity);
       await addToCart(addToCartDto);
       toast({
         title: "Product added to cart!",

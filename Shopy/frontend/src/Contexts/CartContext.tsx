@@ -1,19 +1,21 @@
 import { ReactNode, createContext, useContext, useEffect, useState } from "react";
-import { addCartItemToCartAsync, createCartAsync, deleteCartItemAsync, fetchTotalPriceOfCartAsync, getAllCartsAsync, joinCartAsync } from "../service/apiService";
+import { addCartItemToCartAsync, createCartAsync, deleteCartItemAsync, fetchTotalPriceOfCartAsync, getAllCartsAsync, joinCartAsync, updateCartItemQuantityAsync } from "../service/apiService";
 import { Cart } from "../Models/Cart";
-import { AddCartItemDto } from "../dtos/dtos";
+import { AddCartItemDto, CartItemUpdateDto } from "../dtos/dtos";
+import { useAuth } from "./AuthContext";
 
 interface CartContextType {
     allCarts: Cart[];
     selectedCart: Cart | null;
     addToCart: (cartItemDto: AddCartItemDto) => Promise<void>;
     removeFromCart: (id: number) => Promise<void>;
-    quantityChange: (id: number, value: number) => Promise<void>;
+    quantityChange: (cartItemUpdateDto: CartItemUpdateDto) => Promise<void>;
     cartTotalQuantity: number;
     createNewCart: (name: string) => Promise<void>;
     joinCart: (code: string) => Promise<void>;
     setSelectedCart: (cart: Cart | null) => void;
     totalPrice: number;
+    fetchAllCarts: () => Promise<void>;
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
@@ -32,23 +34,42 @@ interface CartProviderProps {
 
 export const CartProvider: React.FC<CartProviderProps> = ({ children }: CartProviderProps) => {
     const [allCarts, setAllCarts] = useState<Cart[]>([]);
-    const [selectedCart, setSelectedCart] = useState<Cart | null>(null); // Initialize selectedCart
+    const [selectedCart, setSelectedCart] = useState<Cart | null>(null);
+    const [selectedCartId, setSelectedCartId] = useState<number | null>(null);
     const [cartTotalQuantity, setCartTotalQuantity] = useState<number>(0);
     const [totalPrice, setTotalPrice] = useState<number>(0);
 
+    const { isLoggedIn } = useAuth();
+
     useEffect(() => {
-        fetchAllCarts();
-    }, []);
+        if(isLoggedIn) {
+            fetchAllCarts();
+        } else {
+            setAllCarts([]);
+            setSelectedCart(null);
+            setSelectedCartId(null);
+        }
+    }, [isLoggedIn]);
+
+
 
     useEffect(() => {
         if(selectedCart) {
             const totalQuantity = selectedCart.cartItems.reduce((acc, item) => acc + item.quantity, 0);
             setCartTotalQuantity(totalQuantity);
-            fetchTotalPriceOfCart(selectedCart?.id ?? 0);
+            fetchTotalPriceOfCart(selectedCart.id);
+            setSelectedCartId(selectedCart.id);
+            //save to localstorage, after refresh the active cart is still the one that was before..
+            localStorage.setItem('selectedCartId', selectedCart.id.toString());
         }
     }, [selectedCart]);
 
-    //TODO: calculate total price of cart
+    useEffect(() => {
+        const selectedCartIdFromStorage = localStorage.getItem('selectedCartId');
+        if(selectedCartIdFromStorage) {
+            setSelectedCartId(Number(selectedCartIdFromStorage));
+        }
+    }, []);
 
     const createNewCart = async (name: string) => {
         try {
@@ -72,7 +93,15 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }: CartProv
         try {
             const data = await getAllCartsAsync();
             setAllCarts(data);
-            setSelectedCart(data[0]);
+
+            console.log('selectedCartId:', selectedCartId);
+
+            if (selectedCartId) {
+                const selected = data.find(cart => cart.id === selectedCartId);
+                setSelectedCart(selected ?? data[0]);
+            } else {
+                setSelectedCart(data[0]);
+            }
         } catch(error) {
             console.error('Error fetching all carts:', error);
         }
@@ -105,9 +134,9 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }: CartProv
         }
     };
 
-    const quantityChange = async (id: number, value: number) => {
+    const quantityChange = async (cartItemUpdateDto: CartItemUpdateDto) => {
         try {
-            //todo: implement quantity change
+            await updateCartItemQuantityAsync(cartItemUpdateDto);
             await fetchAllCarts();
         } catch(error) {
             console.error('Error changing quantity:', error);
@@ -124,7 +153,8 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }: CartProv
         createNewCart,
         joinCart,
         setSelectedCart,
-        totalPrice
+        totalPrice,
+        fetchAllCarts
     };
 
     return (

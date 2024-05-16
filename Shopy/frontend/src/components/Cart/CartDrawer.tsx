@@ -1,5 +1,6 @@
 import {
   Button,
+  Center,
   Divider,
   Drawer,
   DrawerBody,
@@ -115,8 +116,11 @@ const CartDrawer: React.FC<CartDrawerProps> = ({
                 {allCarts.map((cart) => (
                   <MenuItem key={cart.id} onClick={() => setSelectedCart(cart)}>
                     <Text>{cart.name}</Text>
-                    {selectedCart?.isOwner && 
+                    {cart?.isOwner ? (
                       <Tag ml='auto' colorScheme='blue'>Owner</Tag>
+                    ) : (
+                      <Tag ml='auto' colorScheme='yellow'>Member</Tag>
+                    )
                     }
                   </MenuItem>
                 ))}
@@ -126,18 +130,23 @@ const CartDrawer: React.FC<CartDrawerProps> = ({
         </DrawerHeader>
         <Divider />
         <DrawerBody>
-          <Text fontWeight='bold' fontSize='xl'>Selected cart: {selectedCart?.name ?? 'Please select a cart'}</Text>
-          <Divider my={4} />
-          {
-            cartItems.length !== 0 ? (
-            cartItems.map((item) => (
-            <CartItemCard key={item.id} item={item} />
-          ))) : (
-            <Text textAlign='center' fontSize='lg' fontWeight='bold' mt={10}>
-              The cart is empty
-            </Text>
+          {selectedCart?.name ? (
+            <>
+              <Text fontWeight='bold' fontSize='xl'>Selected cart: {selectedCart.name}</Text>
+              <Divider my={4} />
+              {cartItems.length !== 0 ? (
+                cartItems.map((item) => (
+                  <CartItemCard key={item.id} item={item} />
+                ))
+              ) : (
+                <Center>
+                  <Text fontWeight='bold' fontSize='xl'>This cart is empty!</Text>
+                </Center>
+              )}
+            </>
+          ) : (
+            <Text fontWeight='bold' fontSize='xl'>Create a new cart to get started!</Text>
           )}
-
         </DrawerBody>
         <DrawerFooter borderTopWidth='1px' flexDirection='column' alignItems='flex-start'>
           <Text fontSize='lg' fontWeight='bold'>

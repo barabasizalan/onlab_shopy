@@ -174,7 +174,11 @@ export const createAddressAsync = async (address: Address): Promise<void> => {
 
 export const createCartAsync = async (name: string): Promise<void> => {
     try {
-        const response = await axios.post(API_URLS.createCart, name);
+        const response = await axios.post(API_URLS.createCart, name, {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
         if(response.status === 200) {
             return;
         } else {

@@ -10,13 +10,18 @@ interface CardProps {
 
 const HomeProductCard: React.FC<CardProps> = ({ product, onClick, margin: mx }) => {
 
-  const { addToCart } = useCart();
+  const { addToCart, selectedCart } = useCart();
   const toast = useToast();
 
   const handleAddToCart = async () => {
     try {
       if(product.quantity >= 1) {
-        await addToCart(product.id, 1);
+        const addToCartDto = {
+          productId: product.id,
+          quantity: 1,
+          cartId: selectedCart?.id ?? 0,
+        };
+        await addToCart(addToCartDto);
         toast({
           title: "Product added to cart!",
           status: "success",

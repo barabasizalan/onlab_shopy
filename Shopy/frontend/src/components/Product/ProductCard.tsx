@@ -5,9 +5,10 @@ interface ProductCardProps {
     product: Product;
     onClick?: () => void;
     order?: boolean;
+    orderQuantity?: number;
 }
 
-const ProductCard: React.FC<ProductCardProps> = ({ product, onClick, order }) => {
+const ProductCard: React.FC<ProductCardProps> = ({ product, onClick, order, orderQuantity }) => {
 
     return (
         <Box
@@ -30,6 +31,11 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onClick, order }) =>
             { !order &&
               <Text fontSize="md" color="gray.500">
                 Available Quantity: {product.quantity}
+              </Text>
+            }
+            { orderQuantity !== undefined && 
+              <Text fontSize="md" color="gray.500">
+                Quantity: {orderQuantity}
               </Text>
             }
         </VStack>

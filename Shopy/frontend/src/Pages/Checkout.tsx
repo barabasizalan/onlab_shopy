@@ -41,7 +41,7 @@ const Checkout: React.FC = () => {
 
   const toast = useToast();
   const navigate = useNavigate();
-  const { totalPrice, selectedCart } = useCart();
+  const { totalPrice, selectedCart, fetchAllCarts } = useCart();
 
   useEffect(() => {
     fetchAddress();
@@ -116,6 +116,7 @@ const Checkout: React.FC = () => {
     };
     const data = await createOrderAsync(createOrderDto);
     if (data) {
+      await fetchAllCarts();
       toast({
         title: "Order placed successfully",
         status: "success",

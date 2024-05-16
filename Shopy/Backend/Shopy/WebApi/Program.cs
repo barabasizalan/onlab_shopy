@@ -6,6 +6,7 @@ using DAL.DbContext;
 using DAL.Repositories;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using System.Net;
 
 namespace WebApi
 {

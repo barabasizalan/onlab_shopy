@@ -63,7 +63,7 @@ namespace DAL.Repositories
 
         public async Task DeleteCartItemsFromCartAsync(string userId)
         {
-            var cart = await _context.Carts.FirstOrDefaultAsync(c => c.OwnerUserId == userId);
+            var cart = await _context.Carts.Include(c => c.CartItems).FirstOrDefaultAsync(c => c.OwnerUserId == userId);
             if(cart == null)
             {
                 throw new Exception("Cart not found.");
@@ -71,6 +71,7 @@ namespace DAL.Repositories
             if (cart.CartItems != null)
             {
                 cart.CartItems.Clear();
+                _ = _context.Carts.Update(cart);
                 await _context.SaveChangesAsync();
             }
             else

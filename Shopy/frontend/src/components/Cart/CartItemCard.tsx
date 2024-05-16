@@ -17,6 +17,7 @@ import { useEffect, useRef, useState } from "react";
 import { Product } from "../../Models/Product";
 import { getProductById } from "../../service/apiService";
 import { useCart } from "../../Contexts/CartContext";
+import { CartItemUpdateDto } from "../../dtos/dtos";
 
 interface CartItemCardProps {
   item: CartItem;
@@ -24,7 +25,7 @@ interface CartItemCardProps {
 
 const CartItemCard: React.FC<CartItemCardProps> = ({ item }) => {
   const [product, setProduct] = useState<Product | null>(null);
-  const { removeFromCart, quantityChange} = useCart();
+  const { removeFromCart, quantityChange, selectedCart} = useCart();
   const inputRef = useRef<HTMLInputElement>(null);
   const toast = useToast();
 
@@ -56,7 +57,12 @@ const CartItemCard: React.FC<CartItemCardProps> = ({ item }) => {
         });
         return;
       }
-      await quantityChange(item.id, value);
+      const cartItemUpdateDto: CartItemUpdateDto = {
+        cartId: selectedCart?.id || 0,
+        cartItemId: item.id,
+        newQuantity: value,
+      };
+      await quantityChange(cartItemUpdateDto);
       if (inputRef.current) {
         inputRef.current.blur();
       }
