@@ -3,11 +3,43 @@
   "WorkspaceRootPath": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{866469B7-8FFC-46BA-BEEE-370881CEECB6}|BLL\\BLL.csproj|C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\bll\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{866469B7-8FFC-46BA-BEEE-370881CEECB6}|BLL\\BLL.csproj|solutionrelative:bll\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{866469B7-8FFC-46BA-BEEE-370881CEECB6}|BLL\\BLL.csproj|C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\bll\\services\\iauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{866469B7-8FFC-46BA-BEEE-370881CEECB6}|BLL\\BLL.csproj|solutionrelative:bll\\services\\iauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B87AB7CC-F42E-404B-A743-8A5567795FD8}|WebApi\\WebApi.csproj|C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\webapi\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B87AB7CC-F42E-404B-A743-8A5567795FD8}|WebApi\\WebApi.csproj|solutionrelative:webapi\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{866469B7-8FFC-46BA-BEEE-370881CEECB6}|BLL\\BLL.csproj|c:\\users\\zalan\\egyetem\\onlab2024\\onlab_shopy\\shopy\\backend\\shopy\\bll\\dto\\registerrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{866469B7-8FFC-46BA-BEEE-370881CEECB6}|BLL\\BLL.csproj|solutionrelative:bll\\dto\\registerrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{866469B7-8FFC-46BA-BEEE-370881CEECB6}|BLL\\BLL.csproj|C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\bll\\dto\\createorderdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{866469B7-8FFC-46BA-BEEE-370881CEECB6}|BLL\\BLL.csproj|solutionrelative:bll\\dto\\createorderdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B87AB7CC-F42E-404B-A743-8A5567795FD8}|WebApi\\WebApi.csproj|C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\webapi\\controllers\\addresscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B87AB7CC-F42E-404B-A743-8A5567795FD8}|WebApi\\WebApi.csproj|solutionrelative:webapi\\controllers\\addresscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B87AB7CC-F42E-404B-A743-8A5567795FD8}|WebApi\\WebApi.csproj|c:\\users\\zalan\\egyetem\\onlab2024\\onlab_shopy\\shopy\\backend\\shopy\\webapi\\controllers\\cartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B87AB7CC-F42E-404B-A743-8A5567795FD8}|WebApi\\WebApi.csproj|solutionrelative:webapi\\controllers\\cartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{B87AB7CC-F42E-404B-A743-8A5567795FD8}|WebApi\\WebApi.csproj|C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\webapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B87AB7CC-F42E-404B-A743-8A5567795FD8}|WebApi\\WebApi.csproj|solutionrelative:webapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B87AB7CC-F42E-404B-A743-8A5567795FD8}|WebApi\\WebApi.csproj|c:\\users\\zalan\\egyetem\\onlab2024\\onlab_shopy\\shopy\\backend\\shopy\\webapi\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "AbsoluteMoniker": "D:0:0:{866469B7-8FFC-46BA-BEEE-370881CEECB6}|BLL\\BLL.csproj|C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\bll\\dto\\resetpassworddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{866469B7-8FFC-46BA-BEEE-370881CEECB6}|BLL\\BLL.csproj|solutionrelative:bll\\dto\\resetpassworddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B87AB7CC-F42E-404B-A743-8A5567795FD8}|WebApi\\WebApi.csproj|C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\webapi\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{B87AB7CC-F42E-404B-A743-8A5567795FD8}|WebApi\\WebApi.csproj|solutionrelative:webapi\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
@@ -35,10 +67,6 @@
       "RelativeMoniker": "D:0:0:{866469B7-8FFC-46BA-BEEE-370881CEECB6}|BLL\\BLL.csproj|solutionrelative:bll\\entities\\cartitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{866469B7-8FFC-46BA-BEEE-370881CEECB6}|BLL\\BLL.csproj|C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\bll\\dto\\createorderdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{866469B7-8FFC-46BA-BEEE-370881CEECB6}|BLL\\BLL.csproj|solutionrelative:bll\\dto\\createorderdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{866469B7-8FFC-46BA-BEEE-370881CEECB6}|BLL\\BLL.csproj|C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\bll\\services\\iorderservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{866469B7-8FFC-46BA-BEEE-370881CEECB6}|BLL\\BLL.csproj|solutionrelative:bll\\services\\iorderservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -53,10 +81,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{8F708E4D-172F-4E19-BCBB-79A73FE66A1B}|DAL\\DAL.csproj|C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\dal\\repositories\\productrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8F708E4D-172F-4E19-BCBB-79A73FE66A1B}|DAL\\DAL.csproj|solutionrelative:dal\\repositories\\productrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B87AB7CC-F42E-404B-A743-8A5567795FD8}|WebApi\\WebApi.csproj|C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\webapi\\controllers\\cartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B87AB7CC-F42E-404B-A743-8A5567795FD8}|WebApi\\WebApi.csproj|solutionrelative:webapi\\controllers\\cartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8F708E4D-172F-4E19-BCBB-79A73FE66A1B}|DAL\\DAL.csproj|C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\dal\\repositories\\cartitemrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -87,14 +111,6 @@
       "RelativeMoniker": "D:0:0:{B87AB7CC-F42E-404B-A743-8A5567795FD8}|WebApi\\WebApi.csproj|solutionrelative:webapi\\controllers\\categorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B87AB7CC-F42E-404B-A743-8A5567795FD8}|WebApi\\WebApi.csproj|C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\webapi\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B87AB7CC-F42E-404B-A743-8A5567795FD8}|WebApi\\WebApi.csproj|solutionrelative:webapi\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B87AB7CC-F42E-404B-A743-8A5567795FD8}|WebApi\\WebApi.csproj|C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\webapi\\controllers\\addresscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B87AB7CC-F42E-404B-A743-8A5567795FD8}|WebApi\\WebApi.csproj|solutionrelative:webapi\\controllers\\addresscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{866469B7-8FFC-46BA-BEEE-370881CEECB6}|BLL\\BLL.csproj|C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\bll\\services\\cartservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{866469B7-8FFC-46BA-BEEE-370881CEECB6}|BLL\\BLL.csproj|solutionrelative:bll\\services\\cartservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -120,14 +136,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{866469B7-8FFC-46BA-BEEE-370881CEECB6}|BLL\\BLL.csproj|C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\bll\\dto\\cartdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{866469B7-8FFC-46BA-BEEE-370881CEECB6}|BLL\\BLL.csproj|solutionrelative:bll\\dto\\cartdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{866469B7-8FFC-46BA-BEEE-370881CEECB6}|BLL\\BLL.csproj|C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\bll\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{866469B7-8FFC-46BA-BEEE-370881CEECB6}|BLL\\BLL.csproj|solutionrelative:bll\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{866469B7-8FFC-46BA-BEEE-370881CEECB6}|BLL\\BLL.csproj|C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\bll\\services\\iauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{866469B7-8FFC-46BA-BEEE-370881CEECB6}|BLL\\BLL.csproj|solutionrelative:bll\\services\\iauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8F708E4D-172F-4E19-BCBB-79A73FE66A1B}|DAL\\DAL.csproj|C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\dal\\repositories\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -189,133 +197,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 238,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 8,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "launchSettings.json",
-              "DocumentMoniker": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\WebApi\\Properties\\launchSettings.json",
-              "RelativeDocumentMoniker": "WebApi\\Properties\\launchSettings.json",
-              "ToolTip": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\WebApi\\Properties\\launchSettings.json",
-              "RelativeToolTip": "WebApi\\Properties\\launchSettings.json",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAFAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-05-16T17:43:40.368Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "CartRepository.cs",
-              "DocumentMoniker": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\DAL\\Repositories\\CartRepository.cs",
-              "RelativeDocumentMoniker": "DAL\\Repositories\\CartRepository.cs",
-              "ToolTip": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\DAL\\Repositories\\CartRepository.cs",
-              "RelativeToolTip": "DAL\\Repositories\\CartRepository.cs",
-              "ViewState": "AQIAAC8AAAAAAAAAAAAAAEMAAAANAAAA",
+              "Title": "RegisterRequestDto.cs",
+              "DocumentMoniker": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\BLL\\DTO\\RegisterRequestDto.cs",
+              "RelativeDocumentMoniker": "BLL\\DTO\\RegisterRequestDto.cs",
+              "ToolTip": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\BLL\\DTO\\RegisterRequestDto.cs",
+              "RelativeToolTip": "BLL\\DTO\\RegisterRequestDto.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-16T16:15:04.736Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\WebApi\\Program.cs",
-              "RelativeDocumentMoniker": "WebApi\\Program.cs",
-              "ToolTip": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\WebApi\\Program.cs",
-              "RelativeToolTip": "WebApi\\Program.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAFIAAAA2AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-14T09:16:47.152Z",
+              "WhenOpened": "2024-05-17T16:33:15.809Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "IOrderService.cs",
-              "DocumentMoniker": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\BLL\\Services\\IOrderService.cs",
-              "RelativeDocumentMoniker": "BLL\\Services\\IOrderService.cs",
-              "ToolTip": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\BLL\\Services\\IOrderService.cs",
-              "RelativeToolTip": "BLL\\Services\\IOrderService.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAuwAYAAAAcAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-14T14:23:00.4Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "OrderController.cs",
-              "DocumentMoniker": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\WebApi\\Controllers\\OrderController.cs",
-              "RelativeDocumentMoniker": "WebApi\\Controllers\\OrderController.cs",
-              "ToolTip": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\WebApi\\Controllers\\OrderController.cs",
-              "RelativeToolTip": "WebApi\\Controllers\\OrderController.cs",
-              "ViewState": "AQIAABMAAAAAAAAAAAAQwCcAAAAIAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-14T14:24:47.969Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "OrderService.cs",
-              "DocumentMoniker": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\BLL\\Services\\OrderService.cs",
-              "RelativeDocumentMoniker": "BLL\\Services\\OrderService.cs",
-              "ToolTip": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\BLL\\Services\\OrderService.cs",
-              "RelativeToolTip": "BLL\\Services\\OrderService.cs",
-              "ViewState": "AQIAAA0AAAAAAAAAAAAuwBoAAAAMAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-14T14:23:04.576Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ShopyDbContext.cs",
-              "DocumentMoniker": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\DAL\\DbContext\\ShopyDbContext.cs",
-              "RelativeDocumentMoniker": "DAL\\DbContext\\ShopyDbContext.cs",
-              "ToolTip": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\DAL\\DbContext\\ShopyDbContext.cs",
-              "RelativeToolTip": "DAL\\DbContext\\ShopyDbContext.cs",
-              "ViewState": "AQIAAC0AAAAAAAAAAAAiwEUAAAA5AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-14T20:22:24.759Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "CartItem.cs",
-              "DocumentMoniker": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\BLL\\Entities\\CartItem.cs",
-              "RelativeDocumentMoniker": "BLL\\Entities\\CartItem.cs",
-              "ToolTip": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\BLL\\Entities\\CartItem.cs",
-              "RelativeToolTip": "BLL\\Entities\\CartItem.cs",
-              "ViewState": "AQIAAAUAAAAAAAAAAAAAwBAAAAA0AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-14T11:02:09.671Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "CreateOrderDto.cs",
-              "DocumentMoniker": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\BLL\\DTO\\CreateOrderDto.cs",
-              "RelativeDocumentMoniker": "BLL\\DTO\\CreateOrderDto.cs",
-              "ToolTip": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\BLL\\DTO\\CreateOrderDto.cs",
-              "RelativeToolTip": "BLL\\DTO\\CreateOrderDto.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAfAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-15T19:58:04.353Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "ICartRepository.cs",
-              "DocumentMoniker": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\BLL\\Repositories\\ICartRepository.cs",
-              "RelativeDocumentMoniker": "BLL\\Repositories\\ICartRepository.cs",
-              "ToolTip": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\BLL\\Repositories\\ICartRepository.cs",
-              "RelativeToolTip": "BLL\\Repositories\\ICartRepository.cs",
-              "ViewState": "AQIAAAoAAAAAAAAAAAAIwBIAAAAaAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-14T08:59:09.093Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 17,
               "Title": "CartItemController.cs",
               "DocumentMoniker": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\WebApi\\Controllers\\CartItemController.cs",
               "RelativeDocumentMoniker": "WebApi\\Controllers\\CartItemController.cs",
@@ -327,7 +226,205 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AccountController.cs",
+              "DocumentMoniker": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\WebApi\\Controllers\\AccountController.cs",
+              "RelativeDocumentMoniker": "WebApi\\Controllers\\AccountController.cs",
+              "ToolTip": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\WebApi\\Controllers\\AccountController.cs",
+              "RelativeToolTip": "WebApi\\Controllers\\AccountController.cs",
+              "ViewState": "AQIAADEAAAAAAAAAAAAkwEQAAABNAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-15T07:29:59.055Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "AddressController.cs",
+              "DocumentMoniker": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\WebApi\\Controllers\\AddressController.cs",
+              "RelativeDocumentMoniker": "WebApi\\Controllers\\AddressController.cs",
+              "ToolTip": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\WebApi\\Controllers\\AddressController.cs",
+              "RelativeToolTip": "WebApi\\Controllers\\AddressController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-15T18:09:47.196Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "OrderController.cs",
+              "DocumentMoniker": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\WebApi\\Controllers\\OrderController.cs",
+              "RelativeDocumentMoniker": "WebApi\\Controllers\\OrderController.cs",
+              "ToolTip": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\WebApi\\Controllers\\OrderController.cs",
+              "RelativeToolTip": "WebApi\\Controllers\\OrderController.cs",
+              "ViewState": "AQIAABMAAAAAAAAAAAAQwCcAAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-14T14:24:47.969Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "IAuthService.cs",
+              "DocumentMoniker": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\BLL\\Services\\IAuthService.cs",
+              "RelativeDocumentMoniker": "BLL\\Services\\IAuthService.cs",
+              "ToolTip": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\BLL\\Services\\IAuthService.cs",
+              "RelativeToolTip": "BLL\\Services\\IAuthService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAuwA0AAAAiAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-15T07:30:08.621Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "CartController.cs",
+              "DocumentMoniker": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\WebApi\\Controllers\\CartController.cs",
+              "RelativeDocumentMoniker": "WebApi\\Controllers\\CartController.cs",
+              "ToolTip": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\WebApi\\Controllers\\CartController.cs",
+              "RelativeToolTip": "WebApi\\Controllers\\CartController.cs",
+              "ViewState": "AQIAAF0AAAAAAAAAAAAgwGoAAAAaAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-14T08:17:08.048Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ResetPasswordDto.cs",
+              "DocumentMoniker": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\BLL\\DTO\\ResetPasswordDto.cs",
+              "RelativeDocumentMoniker": "BLL\\DTO\\ResetPasswordDto.cs",
+              "ToolTip": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\BLL\\DTO\\ResetPasswordDto.cs",
+              "RelativeToolTip": "BLL\\DTO\\ResetPasswordDto.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-17T15:10:13.847Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AuthService.cs",
+              "DocumentMoniker": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\BLL\\Services\\AuthService.cs",
+              "RelativeDocumentMoniker": "BLL\\Services\\AuthService.cs",
+              "ToolTip": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\BLL\\Services\\AuthService.cs",
+              "RelativeToolTip": "BLL\\Services\\AuthService.cs",
+              "ViewState": "AQIAADgAAAAAAAAAAAAcwFAAAAAfAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-15T07:30:17.806Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "CreateOrderDto.cs",
+              "DocumentMoniker": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\BLL\\DTO\\CreateOrderDto.cs",
+              "RelativeDocumentMoniker": "BLL\\DTO\\CreateOrderDto.cs",
+              "ToolTip": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\BLL\\DTO\\CreateOrderDto.cs",
+              "RelativeToolTip": "BLL\\DTO\\CreateOrderDto.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAfAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-15T19:58:04.353Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "ICartRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\BLL\\Repositories\\ICartRepository.cs",
+              "RelativeDocumentMoniker": "BLL\\Repositories\\ICartRepository.cs",
+              "ToolTip": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\BLL\\Repositories\\ICartRepository.cs",
+              "RelativeToolTip": "BLL\\Repositories\\ICartRepository.cs",
+              "ViewState": "AQIAAAoAAAAAAAAAAAAIwBIAAAAaAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-14T08:59:09.093Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "CartItem.cs",
+              "DocumentMoniker": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\BLL\\Entities\\CartItem.cs",
+              "RelativeDocumentMoniker": "BLL\\Entities\\CartItem.cs",
+              "ToolTip": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\BLL\\Entities\\CartItem.cs",
+              "RelativeToolTip": "BLL\\Entities\\CartItem.cs",
+              "ViewState": "AQIAAAUAAAAAAAAAAAAAwBAAAAA0AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-14T11:02:09.671Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\WebApi\\Program.cs",
+              "RelativeDocumentMoniker": "WebApi\\Program.cs",
+              "ToolTip": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\WebApi\\Program.cs",
+              "RelativeToolTip": "WebApi\\Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAFIAAAA2AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-14T09:16:47.152Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "ShopyDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\DAL\\DbContext\\ShopyDbContext.cs",
+              "RelativeDocumentMoniker": "DAL\\DbContext\\ShopyDbContext.cs",
+              "ToolTip": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\DAL\\DbContext\\ShopyDbContext.cs",
+              "RelativeToolTip": "DAL\\DbContext\\ShopyDbContext.cs",
+              "ViewState": "AQIAAC0AAAAAAAAAAAAiwEUAAAA5AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-14T20:22:24.759Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "OrderService.cs",
+              "DocumentMoniker": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\BLL\\Services\\OrderService.cs",
+              "RelativeDocumentMoniker": "BLL\\Services\\OrderService.cs",
+              "ToolTip": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\BLL\\Services\\OrderService.cs",
+              "RelativeToolTip": "BLL\\Services\\OrderService.cs",
+              "ViewState": "AQIAAA0AAAAAAAAAAAAuwBoAAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-14T14:23:04.576Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "IOrderService.cs",
+              "DocumentMoniker": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\BLL\\Services\\IOrderService.cs",
+              "RelativeDocumentMoniker": "BLL\\Services\\IOrderService.cs",
+              "ToolTip": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\BLL\\Services\\IOrderService.cs",
+              "RelativeToolTip": "BLL\\Services\\IOrderService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAuwAYAAAAcAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-14T14:23:00.4Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 11,
+              "Title": "CartRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\DAL\\Repositories\\CartRepository.cs",
+              "RelativeDocumentMoniker": "DAL\\Repositories\\CartRepository.cs",
+              "ToolTip": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\DAL\\Repositories\\CartRepository.cs",
+              "RelativeToolTip": "DAL\\Repositories\\CartRepository.cs",
+              "ViewState": "AQIAAC8AAAAAAAAAAAAAAEMAAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-16T16:15:04.736Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\WebApi\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "WebApi\\Properties\\launchSettings.json",
+              "ToolTip": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\WebApi\\Properties\\launchSettings.json",
+              "RelativeToolTip": "WebApi\\Properties\\launchSettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-05-16T17:43:40.368Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
               "Title": "Product.cs",
               "DocumentMoniker": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\BLL\\Entities\\Product.cs",
               "RelativeDocumentMoniker": "BLL\\Entities\\Product.cs",
@@ -339,7 +436,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 44,
+              "DocumentIndex": 46,
               "Title": "20240515214409_AddIsBlockedColumnToProductsTable.cs",
               "DocumentMoniker": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\DAL\\Migrations\\20240515214409_AddIsBlockedColumnToProductsTable.cs",
               "RelativeDocumentMoniker": "DAL\\Migrations\\20240515214409_AddIsBlockedColumnToProductsTable.cs",
@@ -351,7 +448,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 19,
               "Title": "ProductRepository.cs",
               "DocumentMoniker": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\DAL\\Repositories\\ProductRepository.cs",
               "RelativeDocumentMoniker": "DAL\\Repositories\\ProductRepository.cs",
@@ -363,7 +460,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 20,
               "Title": "CartItemRepository.cs",
               "DocumentMoniker": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\DAL\\Repositories\\CartItemRepository.cs",
               "RelativeDocumentMoniker": "DAL\\Repositories\\CartItemRepository.cs",
@@ -375,19 +472,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "CartController.cs",
-              "DocumentMoniker": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\WebApi\\Controllers\\CartController.cs",
-              "RelativeDocumentMoniker": "WebApi\\Controllers\\CartController.cs",
-              "ToolTip": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\WebApi\\Controllers\\CartController.cs",
-              "RelativeToolTip": "WebApi\\Controllers\\CartController.cs",
-              "ViewState": "AQIAAG4AAAAAAAAAAAAkwHwAAAA/AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-14T08:17:08.048Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 22,
               "Title": "ICartItemRepository.cs",
               "DocumentMoniker": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\BLL\\Repositories\\ICartItemRepository.cs",
               "RelativeDocumentMoniker": "BLL\\Repositories\\ICartItemRepository.cs",
@@ -399,7 +484,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 21,
               "Title": "CartItemService.cs",
               "DocumentMoniker": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\BLL\\Services\\CartItemService.cs",
               "RelativeDocumentMoniker": "BLL\\Services\\CartItemService.cs",
@@ -411,7 +496,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 23,
               "Title": "ICartItemService.cs",
               "DocumentMoniker": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\BLL\\Services\\ICartItemService.cs",
               "RelativeDocumentMoniker": "BLL\\Services\\ICartItemService.cs",
@@ -423,7 +508,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 24,
               "Title": "ProductController.cs",
               "DocumentMoniker": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\WebApi\\Controllers\\ProductController.cs",
               "RelativeDocumentMoniker": "WebApi\\Controllers\\ProductController.cs",
@@ -435,7 +520,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 25,
               "Title": "PaymentMethodController.cs",
               "DocumentMoniker": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\WebApi\\Controllers\\PaymentMethodController.cs",
               "RelativeDocumentMoniker": "WebApi\\Controllers\\PaymentMethodController.cs",
@@ -447,7 +532,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 26,
               "Title": "CategoryController.cs",
               "DocumentMoniker": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\WebApi\\Controllers\\CategoryController.cs",
               "RelativeDocumentMoniker": "WebApi\\Controllers\\CategoryController.cs",
@@ -459,31 +544,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
-              "Title": "AccountController.cs",
-              "DocumentMoniker": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\WebApi\\Controllers\\AccountController.cs",
-              "RelativeDocumentMoniker": "WebApi\\Controllers\\AccountController.cs",
-              "ToolTip": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\WebApi\\Controllers\\AccountController.cs",
-              "RelativeToolTip": "WebApi\\Controllers\\AccountController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAACcAAAAIAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-15T07:29:59.055Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 22,
-              "Title": "AddressController.cs",
-              "DocumentMoniker": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\WebApi\\Controllers\\AddressController.cs",
-              "RelativeDocumentMoniker": "WebApi\\Controllers\\AddressController.cs",
-              "ToolTip": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\WebApi\\Controllers\\AddressController.cs",
-              "RelativeToolTip": "WebApi\\Controllers\\AddressController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-15T18:09:47.196Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 33,
               "Title": "CartDto.cs",
               "DocumentMoniker": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\BLL\\DTO\\CartDto.cs",
               "RelativeDocumentMoniker": "BLL\\DTO\\CartDto.cs",
@@ -495,7 +556,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 30,
               "Title": "ICartService.cs",
               "DocumentMoniker": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\BLL\\Services\\ICartService.cs",
               "RelativeDocumentMoniker": "BLL\\Services\\ICartService.cs",
@@ -507,7 +568,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 27,
               "Title": "CartService.cs",
               "DocumentMoniker": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\BLL\\Services\\CartService.cs",
               "RelativeDocumentMoniker": "BLL\\Services\\CartService.cs",
@@ -519,7 +580,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 31,
               "Title": "Order.cs",
               "DocumentMoniker": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\BLL\\Entities\\Order.cs",
               "RelativeDocumentMoniker": "BLL\\Entities\\Order.cs",
@@ -531,7 +592,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 28,
               "Title": "CartController.cs",
               "DocumentMoniker": "C:\\Users\\Zalan\\AppData\\Local\\SourceServer\\34ff653e9051599aa055c085b55a445ff7f67436f2d5e434f00c0013e0b6b168\\Shopy\\Backend\\Shopy\\WebApi\\Controllers\\CartController.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\AppData\\Local\\SourceServer\\34ff653e9051599aa055c085b55a445ff7f67436f2d5e434f00c0013e0b6b168\\Shopy\\Backend\\Shopy\\WebApi\\Controllers\\CartController.cs",
@@ -543,7 +604,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 29,
               "Title": "Cart.cs",
               "DocumentMoniker": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\BLL\\Entities\\Cart.cs",
               "RelativeDocumentMoniker": "BLL\\Entities\\Cart.cs",
@@ -555,7 +616,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 32,
               "Title": "OrderDetail.cs",
               "DocumentMoniker": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\BLL\\Entities\\OrderDetail.cs",
               "RelativeDocumentMoniker": "BLL\\Entities\\OrderDetail.cs",
@@ -567,7 +628,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 34,
               "Title": "UserRepository.cs",
               "DocumentMoniker": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\DAL\\Repositories\\UserRepository.cs",
               "RelativeDocumentMoniker": "DAL\\Repositories\\UserRepository.cs",
@@ -579,7 +640,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 43,
+              "DocumentIndex": 45,
               "Title": "20240515180725_AddNamePropertyToCard.cs",
               "DocumentMoniker": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\DAL\\Migrations\\20240515180725_AddNamePropertyToCard.cs",
               "RelativeDocumentMoniker": "DAL\\Migrations\\20240515180725_AddNamePropertyToCard.cs",
@@ -591,7 +652,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 35,
               "Title": "IUserRepository.cs",
               "DocumentMoniker": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\BLL\\Repositories\\IUserRepository.cs",
               "RelativeDocumentMoniker": "BLL\\Repositories\\IUserRepository.cs",
@@ -603,31 +664,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
-              "Title": "AuthService.cs",
-              "DocumentMoniker": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\BLL\\Services\\AuthService.cs",
-              "RelativeDocumentMoniker": "BLL\\Services\\AuthService.cs",
-              "ToolTip": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\BLL\\Services\\AuthService.cs",
-              "RelativeToolTip": "BLL\\Services\\AuthService.cs",
-              "ViewState": "AQIAACYAAAAAAAAAAAAawDwAAAAMAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-15T07:30:17.806Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 31,
-              "Title": "IAuthService.cs",
-              "DocumentMoniker": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\BLL\\Services\\IAuthService.cs",
-              "RelativeDocumentMoniker": "BLL\\Services\\IAuthService.cs",
-              "ToolTip": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\BLL\\Services\\IAuthService.cs",
-              "RelativeToolTip": "BLL\\Services\\IAuthService.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAuwAwAAAA3AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-15T07:30:08.621Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 36,
               "Title": "User.cs",
               "DocumentMoniker": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\BLL\\Entities\\User.cs",
               "RelativeDocumentMoniker": "BLL\\Entities\\User.cs",
@@ -639,7 +676,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 37,
               "Title": "UpdateQuantityDto.cs",
               "DocumentMoniker": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\BLL\\DTO\\UpdateQuantityDto.cs",
               "RelativeDocumentMoniker": "BLL\\DTO\\UpdateQuantityDto.cs",
@@ -651,7 +688,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
+              "DocumentIndex": 38,
               "Title": "ProductService.cs",
               "DocumentMoniker": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\BLL\\Services\\ProductService.cs",
               "RelativeDocumentMoniker": "BLL\\Services\\ProductService.cs",
@@ -663,7 +700,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 37,
+              "DocumentIndex": 39,
               "Title": "PaymentMethodService.cs",
               "DocumentMoniker": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\BLL\\Services\\PaymentMethodService.cs",
               "RelativeDocumentMoniker": "BLL\\Services\\PaymentMethodService.cs",
@@ -675,7 +712,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 38,
+              "DocumentIndex": 40,
               "Title": "ImageService.cs",
               "DocumentMoniker": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\BLL\\Services\\ImageService.cs",
               "RelativeDocumentMoniker": "BLL\\Services\\ImageService.cs",
@@ -687,7 +724,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 39,
+              "DocumentIndex": 41,
               "Title": "IProductService.cs",
               "DocumentMoniker": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\BLL\\Services\\IProductService.cs",
               "RelativeDocumentMoniker": "BLL\\Services\\IProductService.cs",
@@ -699,7 +736,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 40,
+              "DocumentIndex": 42,
               "Title": "AddItemToCartDto.cs",
               "DocumentMoniker": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\BLL\\DTO\\AddItemToCartDto.cs",
               "RelativeDocumentMoniker": "BLL\\DTO\\AddItemToCartDto.cs",
@@ -711,7 +748,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 41,
+              "DocumentIndex": 43,
               "Title": "Category.cs",
               "DocumentMoniker": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\BLL\\Entities\\Category.cs",
               "RelativeDocumentMoniker": "BLL\\Entities\\Category.cs",
@@ -723,7 +760,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 42,
+              "DocumentIndex": 44,
               "Title": "CartItemDto.cs",
               "DocumentMoniker": "C:\\Users\\Zalan\\Egyetem\\Onlab2024\\onlab_shopy\\Shopy\\Backend\\Shopy\\BLL\\DTO\\CartItemDto.cs",
               "RelativeDocumentMoniker": "BLL\\DTO\\CartItemDto.cs",

@@ -11,6 +11,7 @@ import { Category } from '../Models/Category';
 import CartDrawer from './Cart/CartDrawer';
 import { fetchCategoriesAsync } from '../service/apiService';
 import { useCart } from '../Contexts/CartContext';
+import logo from '../assets/logo.png';
 
 function Navbar() {
   const { isLoggedIn, logout } = useAuth();
@@ -36,6 +37,7 @@ function Navbar() {
 
   const handleImageClick = () => {
     navigate('/');
+    setQuery('');
   };
 
   const handleSellClick = () => {
@@ -109,25 +111,25 @@ function Navbar() {
     <chakra.header id="header">
       <Flex
         w="100%"
-        px="10"
-        py="5"
+        h='80px'
+        pr={5}
         align="center"
         justify="space-between"
         backgroundColor={"#bed1cf"}
       >
-        <Box w="6%">
+        <Box w='10%' display='flex' alignContent='center'>
           <Link to="/" onClick={handleImageClick}>
-            <Image src="https://seeklogo.com/images/S/shopee-logo-DD5CAE562A-seeklogo.com.png" alt="Shopy" paddingEnd={10} />
+            <Image src={logo} alt="logo" maxH='100px' maxW='100%'/>
           </Link>
         </Box>
         <SearchBar initialQuery={query} />
 
         <HStack as="nav" spacing="10">
           {!isLoggedIn ? (
-            <Button as={Link} to="/login" variant="ghost">Login</Button>
+            <Button as={Link} to="/login" variant="ghost" size='lg'>Login</Button>
           ) : (
             <Menu >
-              <MenuButton as={Button} variant="ghost">My Profile</MenuButton>
+              <MenuButton as={Button} variant="ghost" size='lg'>My Profile</MenuButton>
               <MenuList className="ProfileDropDown">
                 <Text m={3} fontSize="lg" fontWeight="bold">Welcome, username(todo)!</Text>
                 <Divider />
@@ -141,14 +143,14 @@ function Navbar() {
           )}
         </HStack>
 
-        <HStack paddingStart="10">
-          <Button onClick={handleSellClick} variant="ghost">
+        <HStack paddingStart="8">
+          <Button onClick={handleSellClick} variant="ghost" size='lg'>
             Sell
           </Button>
         </HStack>
         <HStack paddingStart="10">
-          <Button as="button" onClick={handleCartClick} variant="ghost">
-            <Icon as={MdShoppingCart} boxSize={6} />
+          <Button as="button" onClick={handleCartClick} variant="ghost" mr={6}>
+            <Icon as={MdShoppingCart} boxSize={7} />
             {isLoggedIn && cartTotalQuantity > 0 && (
               <Box
                 bg="red"

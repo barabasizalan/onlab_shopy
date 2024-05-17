@@ -1,6 +1,7 @@
 import { Box, Image, Text, chakra, useToast } from '@chakra-ui/react';
 import { useCart } from '../../Contexts/CartContext';
 import { Product } from '../../Models/Product';
+import { useAuth } from '../../Contexts/AuthContext';
 
 interface CardProps {
   product: Product
@@ -10,10 +11,20 @@ interface CardProps {
 
 const HomeProductCard: React.FC<CardProps> = ({ product, onClick, margin: mx }) => {
 
+  const {isLoggedIn} = useAuth();
   const { addToCart, selectedCart } = useCart();
   const toast = useToast();
 
   const handleAddToCart = async () => {
+    if(!isLoggedIn) {
+      toast({
+        title: "You need to be logged in to add products to cart!",
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+      });
+      return;
+    }
     try {
       if(product.quantity >= 1) {
         const addToCartDto = {

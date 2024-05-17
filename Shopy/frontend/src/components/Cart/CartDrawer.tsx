@@ -64,7 +64,7 @@ const CartDrawer: React.FC<CartDrawerProps> = ({
 
   const handleJoinCartClick = async (code: string) => {
     try {
-      joinCart(code);
+      await joinCart(code);
       setCartCode('');
       setIsJoinCartModalOpen(false);
     } catch (error) {

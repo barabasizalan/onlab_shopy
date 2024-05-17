@@ -283,4 +283,32 @@ export const updateCartItemQuantityAsync = async (cartItemUpdateDto: CartItemUpd
     }
 };
 
+export const getPhoneNumberAsync = async (): Promise<string> => {
+    try {
+        const response = await axios.get(API_URLS.getPhoneNumber);
+        return response.data.phoneNumber;
+    } catch(error) {
+        console.error('Error fetching phone number: ', error);
+        throw error;
+    }
+};
+
+export const updatePhoneNumberAsync = async (phoneNumber: string): Promise<void> => {
+    try {
+        const response = await axios.post(API_URLS.changePhoneNumber, phoneNumber, {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        if(response.status === 200) {
+            return;
+        } else {
+            throw new Error('Error updating phone number');
+        }
+    } catch(error) {
+        console.error('Error updating phone number: ', error);
+        throw error;
+    }
+}
+
 

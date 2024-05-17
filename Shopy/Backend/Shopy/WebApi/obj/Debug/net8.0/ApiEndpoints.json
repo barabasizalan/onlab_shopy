@@ -1,6 +1,32 @@
 [
   {
     "ContainingType": "WebApi.Controllers.AccountController",
+    "Method": "ChangePhoneNumber",
+    "RelativePath": "account/change-phone-number",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "newPhoneNumber",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApi.Controllers.AccountController",
+    "Method": "GetPhoneNumber",
+    "RelativePath": "account/phone-number",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApi.Controllers.AccountController",
     "Method": "Register",
     "RelativePath": "account/register",
     "HttpMethod": "POST",

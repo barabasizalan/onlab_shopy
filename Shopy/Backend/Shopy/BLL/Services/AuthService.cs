@@ -47,7 +47,7 @@ namespace BLL.Services
             {
                 UserName = registerRequest.Username,
                 Email = registerRequest.Email,
-                PhoneNumber = registerRequest.PhoneNumber
+                PhoneNumber = "+36" + registerRequest.PhoneNumber
             };
 
             var result = await _userManager.CreateAsync(user, registerRequest.Password);
@@ -69,6 +69,28 @@ namespace BLL.Services
             }
 
             return null;
+        }
+
+        public async Task<string> ChangePhoneNumberAsync(string userId, string newPhoneNumber)
+        {
+            var user = await _userManager.FindByIdAsync(userId);
+            if (user == null)
+            {
+                return "User not found.";
+            }
+            user.PhoneNumber = newPhoneNumber;
+            var result = await _userManager.UpdateAsync(user);
+            return result.Succeeded ? "Phone number changed successfully." : "Phone number change failed.";
+        }
+
+        public async Task<string> GetPhoneNumber(string userId)
+        {
+            var user = await _userManager.FindByIdAsync(userId);
+            if(user == null)
+            {
+                return "User not found.";
+            }
+            return user.PhoneNumber ?? "There is no phone number registered.";
         }
     }
 }

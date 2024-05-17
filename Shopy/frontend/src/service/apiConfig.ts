@@ -6,6 +6,8 @@ interface ApiEndpoints {
   logout: string;
   register: string;
   getUserRole: (email: string) => string;
+  getPhoneNumber: string;
+  changePhoneNumber: string;
 
   //order endpoints
   createOrder: string;
@@ -49,6 +51,8 @@ const API_URLS: ApiEndpoints = {
   logout: `${BASE_URL}/logout`,
   register: `${BASE_URL}/account/register`,
   createAddress: `${BASE_URL}/Address/create`,
+  getPhoneNumber: `${BASE_URL}/Account/phone-number`,
+  changePhoneNumber: `${BASE_URL}/Account/change-phone-number`,
   getCategories: `${BASE_URL}/Category/all`,
   createOrder: `${BASE_URL}/Order/create-order`,
   getUsersOrders: `${BASE_URL}/Order/user/orders`,
