@@ -39,6 +39,8 @@ interface ApiEndpoints {
   getAllJoinedCarts: string;
   getAllCarts: string;
   getTotalPriceOfCart: (cartId: number) => string;
+  getCartMembers: (cartId: number) => string;
+  deleteCartMember: string;
 
   //cartItem endpoints
   addCartItemToCard: string;
@@ -90,6 +92,8 @@ const API_URLS: ApiEndpoints = {
   getAllJoinedCarts: `${BASE_URL}/Cart/joined/all`,
   getAllCarts: `${BASE_URL}/Cart/owned-joined/all`,
   getTotalPriceOfCart: (cartId) => `${BASE_URL}/Cart/total-price?cartId=${cartId}`,
+  getCartMembers: (cartId) => `${BASE_URL}/Cart/members/${cartId}`,
+  deleteCartMember: `${BASE_URL}/Cart/remove-member`,
 
   //cartItem endpoints
   addCartItemToCard: `${BASE_URL}/CartItem/add`,

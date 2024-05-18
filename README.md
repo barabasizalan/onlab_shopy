@@ -98,8 +98,11 @@
         - Rendelések felülvizsgálata
     - User role kezdetleges beállítás?
     - Közös kosár
+        - A kosár tulajdonosa megtekintheti, hogy kik vannak a kosárban, valamint ki is teheti őket
+        - Kód alapján lehet csatlakozni
+        - Létre lehet hozni új kosarat, és kiválasztani, melyik legyen az aktuális
 <hr>
 
 - Máj. 20. - Máj.24
-    - todo
+    - Dokumentáció készítése
     

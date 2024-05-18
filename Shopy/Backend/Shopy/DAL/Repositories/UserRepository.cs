@@ -39,5 +39,18 @@ namespace DAL.Repositories
         {
             await _userManager.UpdateAsync(user);
         }
+
+        public async Task<User> GetUserByUsername(string username)
+        {
+            var user = await _userManager.Users.Where(_userManager => _userManager.UserName == username).FirstOrDefaultAsync();
+            if(user != null)
+            {
+                return user;
+            }
+            else
+            {
+                throw new Exception("User not found.");
+            }
+        }
     }
 }

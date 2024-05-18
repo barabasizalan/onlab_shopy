@@ -153,5 +153,60 @@ namespace WebApi.Controllers
             }
         }
 
+        [HttpGet]
+        [Route("members/{cartId}")]
+        public async Task<ActionResult<string[]>> GetCartMembers(int cartId)
+        {
+            try
+            {
+                var userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+                if (string.IsNullOrEmpty(userId))
+                {
+                    return Unauthorized("User is not authenticated.");
+                }
+
+                var cart = await _cartService.GetCartById(cartId);
+                if (cart == null)
+                {
+                    return NotFound("Cart not found.");
+                }
+
+                var members = cart.Members.Select(c => c.UserName).ToArray();
+                return Ok(members);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
+        }
+
+        [HttpDelete]
+        [Route("remove-member")]
+        public async Task<ActionResult> RemoveMember([FromBody] RemoveCartMemberDto removeCartMemberDto)
+        {
+            try
+            {
+                var userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+                if (string.IsNullOrEmpty(userId))
+                {
+                    return Unauthorized("User is not authenticated.");
+                }
+
+                var result = await _cartService.RemoveMemberFromCart(userId, removeCartMemberDto);
+                if(result)
+                {
+                    return Ok("Member successfully removed.");
+                } else
+                {
+                    return BadRequest("Member not found in the cart.");
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
+        }
+        
+
     }
 }

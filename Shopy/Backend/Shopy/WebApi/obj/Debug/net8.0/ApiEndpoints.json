@@ -143,6 +143,32 @@
   },
   {
     "ContainingType": "WebApi.Controllers.CartController",
+    "Method": "GetCartMembers",
+    "RelativePath": "Cart/members/{cartId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "cartId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.String[]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "WebApi.Controllers.CartController",
     "Method": "GetAllCarts",
     "RelativePath": "Cart/owned-joined/all",
     "HttpMethod": "GET",
@@ -160,6 +186,22 @@
         "StatusCode": 200
       }
     ]
+  },
+  {
+    "ContainingType": "WebApi.Controllers.CartController",
+    "Method": "RemoveMember",
+    "RelativePath": "Cart/remove-member",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "removeCartMemberDto",
+        "Type": "BLL.DTO.RemoveCartMemberDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   },
   {
     "ContainingType": "WebApi.Controllers.CartController",

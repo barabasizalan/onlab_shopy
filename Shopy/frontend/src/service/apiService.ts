@@ -6,7 +6,7 @@ import { Address } from "../Models/Address";
 import { PaymentMethod } from "../Models/PaymentMethod";
 import { Order } from "../Models/Order";
 import { Cart } from "../Models/Cart";
-import { AddCartItemDto, CartItemUpdateDto, CreateOrderDto } from "../dtos/dtos";
+import { AddCartItemDto, CartItemUpdateDto, CreateOrderDto, RemoveCartMemberDto } from "../dtos/dtos";
 
 export const fetchCategoriesAsync = async ():Promise<Category[]> => {
     try {
@@ -309,6 +309,33 @@ export const updatePhoneNumberAsync = async (phoneNumber: string): Promise<void>
         console.error('Error updating phone number: ', error);
         throw error;
     }
-}
+};
+
+export const getCartMembersAsync = async (cartId: number): Promise<string[]> => {
+    try {
+        const response = await axios.get<string[]>(API_URLS.getCartMembers(cartId));
+        return response.data;
+    } catch(error) {
+        console.error('Error fetching cart members: ', error);
+        throw error;
+    }
+};
+
+export const deleteCartMemberAsync = async (removeCartMemberDto: RemoveCartMemberDto): Promise<void> => {
+    try {
+        const response = await axios.delete(API_URLS.deleteCartMember, {
+            data: removeCartMemberDto
+        });
+        if(response.status === 200) {
+            return;
+        } else {
+            throw new Error('Error deleting cart member');
+        }
+    } catch(error) {
+        console.error('Error deleting cart member: ', error);
+        throw error;
+    }
+};
+
 
 

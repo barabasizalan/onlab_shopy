@@ -1,5 +1,6 @@
 import {
   Button,
+  Card,
   Center,
   Divider,
   Drawer,
@@ -9,6 +10,7 @@ import {
   DrawerFooter,
   DrawerHeader,
   DrawerOverlay,
+  Flex,
   HStack,
   IconButton,
   Input,
@@ -25,37 +27,53 @@ import {
   ModalOverlay,
   Tag,
   Text,
-} from '@chakra-ui/react';
-import CartItemCard from './CartItemCard';
-import { useNavigate } from 'react-router';
-import {  useEffect, useState } from 'react';
-import { useCart } from '../../Contexts/CartContext';
-import { AddIcon, ChevronDownIcon, HamburgerIcon, LinkIcon } from '@chakra-ui/icons';
-import { CartItem } from '../../Models/CartItem';
+} from "@chakra-ui/react";
+import CartItemCard from "./CartItemCard";
+import { useNavigate } from "react-router";
+import { useEffect, useState } from "react";
+import { useCart } from "../../Contexts/CartContext";
+import {
+  AddIcon,
+  ChevronDownIcon,
+  HamburgerIcon,
+  LinkIcon,
+} from "@chakra-ui/icons";
+import { CartItem } from "../../Models/CartItem";
+import { BiTrash, BiUser } from "react-icons/bi";
 
 interface CartDrawerProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
-const CartDrawer: React.FC<CartDrawerProps> = ({
-  isOpen,
-  onClose,
-}) => {
-  const [isJoinCartModalOpen, setIsJoinCartModalOpen] = useState<boolean>(false);
-  const [cartCode, setCartCode] = useState<string>('');
+const CartDrawer: React.FC<CartDrawerProps> = ({ isOpen, onClose }) => {
+  const [isJoinCartModalOpen, setIsJoinCartModalOpen] =
+    useState<boolean>(false);
+  const [cartCode, setCartCode] = useState<string>("");
 
-  const [isCreatingCartModalOpen, setIsCreatingCartModalOpen] = useState<boolean>(false);
-  const [cartName, setCartName] = useState<string>('');
+  const [isCreatingCartModalOpen, setIsCreatingCartModalOpen] =
+    useState<boolean>(false);
+  const [cartName, setCartName] = useState<string>("");
 
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
 
+  const [isMembersModalOpen, setIsMembersModalOpen] = useState<boolean>(false);
+
   const navigate = useNavigate();
-  const { allCarts, createNewCart, joinCart, selectedCart, setSelectedCart, totalPrice } =useCart();
+  const {
+    allCarts,
+    createNewCart,
+    joinCart,
+    selectedCart,
+    setSelectedCart,
+    totalPrice,
+    cartMembers,
+    deleteCartMember,
+  } = useCart();
 
   const handlePlaceOrder = () => {
     onClose();
-    navigate('/checkout');
+    navigate("/checkout");
   };
 
   useEffect(() => {
@@ -65,45 +83,58 @@ const CartDrawer: React.FC<CartDrawerProps> = ({
   const handleJoinCartClick = async (code: string) => {
     try {
       await joinCart(code);
-      setCartCode('');
+      setCartCode("");
       setIsJoinCartModalOpen(false);
     } catch (error) {
-      console.error('Error joining cart:', error);
+      console.error("Error joining cart:", error);
     }
   };
 
   const handleCreateNewCart = async (name: string) => {
     try {
       createNewCart(name);
-      setCartName('');
+      setCartName("");
       setIsCreatingCartModalOpen(false);
     } catch (error) {
-      console.error('Error creating new cart:', error);
+      console.error("Error creating new cart:", error);
+    }
+  };
+
+  const handleDeleteMember = async (username: string) => {
+    try {
+      await deleteCartMember(username);
+    } catch (error) {
+      console.error("Error deleting member:", error);
     }
   };
 
   return (
-    <Drawer isOpen={isOpen} placement='right' size='lg' onClose={onClose}>
+    <Drawer isOpen={isOpen} placement="right" size="lg" onClose={onClose}>
       <DrawerOverlay />
       <DrawerContent>
-      <DrawerCloseButton mt={3}/>
-        <DrawerHeader >
+        <DrawerCloseButton mt={3} />
+        <DrawerHeader>
           <HStack spacing={8}>
             <Menu>
               <MenuButton
                 as={IconButton}
-                aria-label={'Cart actions'}
+                aria-label={"Cart actions"}
                 icon={<HamburgerIcon />}
-                variant='outline'
-                mr={8}
+                variant="outline"
               />
               <MenuList>
                 <Text m={3}>Cart actions</Text>
-                <Divider mb={2}/>
-                <MenuItem icon={<AddIcon />} onClick={() => setIsCreatingCartModalOpen(true)}>
+                <Divider mb={2} />
+                <MenuItem
+                  icon={<AddIcon />}
+                  onClick={() => setIsCreatingCartModalOpen(true)}
+                >
                   New Cart
                 </MenuItem>
-                <MenuItem icon={<LinkIcon />} onClick={() => setIsJoinCartModalOpen(true)}>
+                <MenuItem
+                  icon={<LinkIcon />}
+                  onClick={() => setIsJoinCartModalOpen(true)}
+                >
                   Join Cart
                 </MenuItem>
               </MenuList>
@@ -117,22 +148,35 @@ const CartDrawer: React.FC<CartDrawerProps> = ({
                   <MenuItem key={cart.id} onClick={() => setSelectedCart(cart)}>
                     <Text>{cart.name}</Text>
                     {cart?.isOwner ? (
-                      <Tag ml='auto' colorScheme='blue'>Owner</Tag>
+                      <Tag ml="auto" colorScheme="blue">
+                        Owner
+                      </Tag>
                     ) : (
-                      <Tag ml='auto' colorScheme='yellow'>Member</Tag>
-                    )
-                    }
+                      <Tag ml="auto" colorScheme="yellow">
+                        Member
+                      </Tag>
+                    )}
                   </MenuItem>
                 ))}
               </MenuList>
             </Menu>
+            {selectedCart?.isOwner && (
+              <IconButton
+                aria-label="Cart-members"
+                icon={<BiUser />}
+                variant="outline"
+                onClick={() => setIsMembersModalOpen(true)}
+              />
+            )}
           </HStack>
         </DrawerHeader>
         <Divider />
         <DrawerBody>
           {selectedCart?.name ? (
             <>
-              <Text fontWeight='bold' fontSize='xl'>Selected cart: {selectedCart.name}</Text>
+              <Text fontWeight="bold" fontSize="xl">
+                Selected cart: {selectedCart.name}
+              </Text>
               <Divider my={4} />
               {cartItems.length !== 0 ? (
                 cartItems.map((item) => (
@@ -140,63 +184,137 @@ const CartDrawer: React.FC<CartDrawerProps> = ({
                 ))
               ) : (
                 <Center>
-                  <Text fontWeight='bold' fontSize='xl'>This cart is empty!</Text>
+                  <Text fontWeight="bold" fontSize="xl">
+                    This cart is empty!
+                  </Text>
                 </Center>
               )}
             </>
           ) : (
-            <Text fontWeight='bold' fontSize='xl'>Create a new cart to get started!</Text>
+            <Text fontWeight="bold" fontSize="xl">
+              Create or join a cart to get started!
+            </Text>
           )}
         </DrawerBody>
-        <DrawerFooter borderTopWidth='1px' flexDirection='column' alignItems='flex-start'>
-          <Text fontSize='lg' fontWeight='bold'>
+        <DrawerFooter
+          borderTopWidth="1px"
+          flexDirection="column"
+          alignItems="flex-start"
+        >
+          <Text fontSize="lg" fontWeight="bold">
             Total: {totalPrice} €
           </Text>
           <Button
-            colorScheme='blue'
-            variant='solid'
+            colorScheme="blue"
+            variant="solid"
             onClick={handlePlaceOrder}
-            width='100%'
+            width="100%"
           >
             Place Order
           </Button>
         </DrawerFooter>
       </DrawerContent>
-      <Modal isOpen={isJoinCartModalOpen} onClose={() => setIsJoinCartModalOpen(false)}>
-          <ModalOverlay />
-          <ModalContent>
-            <ModalHeader>Enter Cart Code</ModalHeader>
-            <ModalCloseButton />
-            <ModalBody>
-              <Input placeholder='Enter code' value={cartCode} onChange={(e) => setCartCode(e.target.value)} />
-            </ModalBody>
-            <ModalFooter>
-              <Button colorScheme='blue' mr='auto' onClick={() => handleJoinCartClick(cartCode)}>
-                Join
-              </Button>
-              <Button variant='ghost' onClick={() => setIsJoinCartModalOpen(false)}>
-                Cancel
-              </Button>
-            </ModalFooter>
-          </ModalContent>
+      <Modal
+        isOpen={isJoinCartModalOpen}
+        onClose={() => setIsJoinCartModalOpen(false)}
+      >
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Enter Cart Code</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            <Input
+              placeholder="Enter code"
+              value={cartCode}
+              onChange={(e) => setCartCode(e.target.value)}
+            />
+          </ModalBody>
+          <ModalFooter>
+            <Button
+              colorScheme="blue"
+              mr="auto"
+              onClick={() => handleJoinCartClick(cartCode)}
+            >
+              Join
+            </Button>
+            <Button
+              variant="ghost"
+              onClick={() => setIsJoinCartModalOpen(false)}
+            >
+              Cancel
+            </Button>
+          </ModalFooter>
+        </ModalContent>
       </Modal>
-      <Modal isOpen={isCreatingCartModalOpen} onClose={() => setIsCreatingCartModalOpen(false)}>
-          <ModalOverlay />
-          <ModalContent>
-            <ModalHeader>Name your cart</ModalHeader>
-            <ModalCloseButton />
-            <ModalBody>
-              <Input placeholder='Enter name' value={cartName} onChange={(e) => setCartName(e.target.value)} />
-            </ModalBody>
-            <ModalFooter>
-              <Button colorScheme='blue' mr='auto' onClick={() => handleCreateNewCart(cartName)}>
-                Create
-              </Button>
-              <Button variant='ghost' onClick={() => setIsCreatingCartModalOpen(false)}>
-                Cancel
-              </Button>
-            </ModalFooter>
-          </ModalContent>
+      <Modal
+        isOpen={isCreatingCartModalOpen}
+        onClose={() => setIsCreatingCartModalOpen(false)}
+      >
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Name your cart</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            <Input
+              placeholder="Enter name"
+              value={cartName}
+              onChange={(e) => setCartName(e.target.value)}
+            />
+          </ModalBody>
+          <ModalFooter>
+            <Button
+              colorScheme="blue"
+              mr="auto"
+              onClick={() => handleCreateNewCart(cartName)}
+            >
+              Create
+            </Button>
+            <Button
+              variant="ghost"
+              onClick={() => setIsCreatingCartModalOpen(false)}
+            >
+              Cancel
+            </Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
+      <Modal
+        isOpen={isMembersModalOpen}
+        onClose={() => setIsMembersModalOpen(false)}
+      >
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Cart Members</ModalHeader>
+          <ModalBody>
+            {cartMembers.length > 0 ? (
+              cartMembers.map((member) => (
+                <Card key={member} mb={2} p={2} background="#faf9f7">
+                  <Flex alignItems="center">
+                    <Text fontWeight="bold">{member}</Text>
+                    <IconButton
+                      aria-label="Remove member"
+                      icon={<BiTrash />}
+                      colorScheme="red"
+                      size="sm"
+                      ml="auto"
+                      onClick={() => handleDeleteMember(member)}
+                    />
+                  </Flex>
+                </Card>
+              ))
+            ) : (
+              <Text>No members in this cart</Text>
+            )}
+          </ModalBody>
+          <ModalFooter>
+            <Button
+              variant="ghost"
+              onClick={() => setIsMembersModalOpen(false)}
+            >
+              Close
+            </Button>
+          </ModalFooter>
+        </ModalContent>
       </Modal>
     </Drawer>
   );

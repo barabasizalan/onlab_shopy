@@ -113,8 +113,14 @@ namespace BLL.Services
             }
 
             cart.Members.Add(user);
-            await _cartRepository.UpdateCartAsync(cart);
-            return true;
+            try
+            {
+                await _cartRepository.UpdateCartAsync(cart);
+                return true;
+            } catch (Exception ex)
+            {
+                throw new Exception("An error occurred while joining the cart." + ex.Message.ToString());
+            }
         }
 
         public async Task<IEnumerable<CartDto>> GetJoinedCarts(string userId)
@@ -149,6 +155,37 @@ namespace BLL.Services
                 });
             }
             return cartDtos;
+        }
+
+        public async Task<bool> RemoveMemberFromCart(string userId, RemoveCartMemberDto removeCartMemberDto)
+        {
+            var cart = await _cartRepository.GetCartByIdAsync(removeCartMemberDto.CartId);
+            if (cart == null)
+            {
+                throw new Exception("Cart not found.");
+            }
+            if(cart.OwnerUserId != userId)
+            {
+                throw new Exception("You are not the owner of this cart.");
+            }
+            var user = await _userRepository.GetUserByUsername(removeCartMemberDto.Username);
+            if (user == null)
+            {
+                throw new Exception("User not found.");
+            }
+            if(!cart.Members.Contains(user))
+            {
+                return false;
+            }
+            cart.Members.Remove(user);
+            try
+            {
+                await _cartRepository.UpdateCartAsync(cart);
+                return true;
+            } catch(Exception ex)
+            {
+                throw new Exception("An error occurred while removing the user from the cart:" + ex.Message.ToString());
+            }
         }
     }
 }

@@ -12,5 +12,6 @@ namespace BLL.Services
         Task<Cart> GetCartByCode(string code);
         Task<bool> JoinCart(string userId, int cartId);
         Task<IEnumerable<CartDto>> GetJoinedCarts(string userId);
+        Task<bool> RemoveMemberFromCart(string userId, RemoveCartMemberDto removeCartMemberDto);
     }
 }

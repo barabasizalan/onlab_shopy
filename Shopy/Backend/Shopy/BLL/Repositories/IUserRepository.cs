@@ -11,5 +11,6 @@ namespace BLL.Repositories
     {
         Task<User> GetUserByIdAsync(string userId);
         Task UpdateUserAsync(User user);
+        Task<User> GetUserByUsername(string username);
     }
 }

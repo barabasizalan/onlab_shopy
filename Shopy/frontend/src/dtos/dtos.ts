@@ -13,4 +13,9 @@ export interface CartItemUpdateDto {
 export interface CreateOrderDto {
     paymentMethodId: number;
     cartId: number;
-}
+};
+
+export interface RemoveCartMemberDto {
+    username: string;
+    cartId: number;
+};

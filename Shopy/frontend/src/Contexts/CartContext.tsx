@@ -1,5 +1,5 @@
 import { ReactNode, createContext, useContext, useEffect, useState } from "react";
-import { addCartItemToCartAsync, createCartAsync, deleteCartItemAsync, fetchTotalPriceOfCartAsync, getAllCartsAsync, joinCartAsync, updateCartItemQuantityAsync } from "../service/apiService";
+import { addCartItemToCartAsync, createCartAsync, deleteCartItemAsync, deleteCartMemberAsync, fetchTotalPriceOfCartAsync, getAllCartsAsync, getCartMembersAsync, joinCartAsync, updateCartItemQuantityAsync } from "../service/apiService";
 import { Cart } from "../Models/Cart";
 import { AddCartItemDto, CartItemUpdateDto } from "../dtos/dtos";
 import { useAuth } from "./AuthContext";
@@ -16,6 +16,8 @@ interface CartContextType {
     setSelectedCart: (cart: Cart | null) => void;
     totalPrice: number;
     fetchAllCarts: () => Promise<void>;
+    cartMembers: string[];
+    deleteCartMember: (username: string) => Promise<void>;
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
@@ -38,6 +40,7 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }: CartProv
     const [selectedCartId, setSelectedCartId] = useState<number | null>(null);
     const [cartTotalQuantity, setCartTotalQuantity] = useState<number>(0);
     const [totalPrice, setTotalPrice] = useState<number>(0);
+    const [cartMembers, setCartMembers] = useState<string[]>([]);
 
     const { isLoggedIn } = useAuth();
 
@@ -59,6 +62,7 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }: CartProv
             setCartTotalQuantity(totalQuantity);
             fetchTotalPriceOfCart(selectedCart.id);
             setSelectedCartId(selectedCart.id);
+            fetchCartMembers(selectedCart.id);
             //save to localstorage, after refresh the active cart is still the one that was before..
             localStorage.setItem('selectedCartId', selectedCart.id.toString());
         }
@@ -94,8 +98,6 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }: CartProv
             const data = await getAllCartsAsync();
             setAllCarts(data);
 
-            console.log('selectedCartId:', selectedCartId);
-
             if (selectedCartId) {
                 const selected = data.find(cart => cart.id === selectedCartId);
                 setSelectedCart(selected ?? data[0]);
@@ -104,6 +106,15 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }: CartProv
             }
         } catch(error) {
             console.error('Error fetching all carts:', error);
+        }
+    };
+
+    const fetchCartMembers = async (cartId: number) => {
+        try {
+            const data = await getCartMembersAsync(cartId);
+            setCartMembers(data);
+        } catch(error) {
+            console.error('Error fetching cart members:', error);
         }
     };
 
@@ -143,6 +154,21 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }: CartProv
         }
     };
 
+    const deleteCartMember = async (username: string) => {
+        try {
+            if(selectedCart) {
+                const removeMemberDto = {
+                    username: username,
+                    cartId: selectedCart.id
+                }
+                await deleteCartMemberAsync(removeMemberDto);
+                await fetchCartMembers(selectedCart.id);
+            }
+        } catch(error) {
+            console.error('Error deleting member:', error);
+        }
+    };
+
     const contextValue: CartContextType = {
         allCarts,
         selectedCart,
@@ -154,7 +180,9 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }: CartProv
         joinCart,
         setSelectedCart,
         totalPrice,
-        fetchAllCarts
+        fetchAllCarts,
+        cartMembers,
+        deleteCartMember
     };
 
     return (
