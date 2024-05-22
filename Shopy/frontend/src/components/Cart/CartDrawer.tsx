@@ -27,6 +27,7 @@ import {
   ModalOverlay,
   Tag,
   Text,
+  useToast,
 } from "@chakra-ui/react";
 import CartItemCard from "./CartItemCard";
 import { useNavigate } from "react-router";
@@ -60,6 +61,9 @@ const CartDrawer: React.FC<CartDrawerProps> = ({ isOpen, onClose }) => {
   const [isMembersModalOpen, setIsMembersModalOpen] = useState<boolean>(false);
 
   const navigate = useNavigate();
+  
+  const toast = useToast();
+
   const {
     allCarts,
     createNewCart,
@@ -106,6 +110,29 @@ const CartDrawer: React.FC<CartDrawerProps> = ({ isOpen, onClose }) => {
     } catch (error) {
       console.error("Error deleting member:", error);
     }
+  };
+  
+  const copyToClipboard = (text: string) => {
+    navigator.clipboard.writeText(text)
+      .then(() => {
+        toast({
+          title: 'Copied to clipboard',
+          description: `Code "${text}" has been copied to your clipboard.`,
+          status: 'success',
+          duration: 2000,
+          isClosable: true,
+        });
+      })
+      .catch((err) => {
+        toast({
+          title: 'Failed to copy',
+          description: 'An error occurred while copying to clipboard.',
+          status: 'error',
+          duration: 2000,
+          isClosable: true,
+        });
+        console.error('Failed to copy text: ', err);
+      });
   };
 
   return (
@@ -174,9 +201,14 @@ const CartDrawer: React.FC<CartDrawerProps> = ({ isOpen, onClose }) => {
         <DrawerBody>
           {selectedCart?.name ? (
             <>
-              <Text fontWeight="bold" fontSize="xl">
-                Selected cart: {selectedCart.name}
-              </Text>
+              <Flex justifyContent="space-between">
+                <Text fontWeight="bold" fontSize="xl">
+                  Selected cart: {selectedCart.name}
+                </Text>
+                <Text fontSize="lg" onClick={() => copyToClipboard(selectedCart.code)} cursor='pointer'>
+                  Code: <b>{selectedCart.code}</b>
+                </Text>
+              </Flex>
               <Divider my={4} />
               {cartItems.length !== 0 ? (
                 cartItems.map((item) => (

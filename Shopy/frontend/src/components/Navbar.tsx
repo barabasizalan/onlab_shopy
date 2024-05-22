@@ -184,7 +184,7 @@ function Navbar() {
             })}
           </MenuList>
         </Menu>
-        <Button pr={10}  variant="ghost">Popular products</Button>
+        {/* <Button pr={10}  variant="ghost">Popular products</Button> */}
       </Flex>
       <CartDrawer isOpen={cartDrawerOpen} onClose={toggleCartDrawer}/>
     </chakra.header>
